@@ -41,7 +41,7 @@
             // 
             this.CadernetasButton.Location = new System.Drawing.Point(12, 12);
             this.CadernetasButton.Name = "CadernetasButton";
-            this.CadernetasButton.Size = new System.Drawing.Size(94, 23);
+            this.CadernetasButton.Size = new System.Drawing.Size(100, 23);
             this.CadernetasButton.TabIndex = 0;
             this.CadernetasButton.Text = "Cadernetas";
             this.CadernetasButton.UseVisualStyleBackColor = true;
@@ -50,7 +50,7 @@
             // 
             this.TrocasButton.Location = new System.Drawing.Point(12, 70);
             this.TrocasButton.Name = "TrocasButton";
-            this.TrocasButton.Size = new System.Drawing.Size(94, 23);
+            this.TrocasButton.Size = new System.Drawing.Size(100, 23);
             this.TrocasButton.TabIndex = 2;
             this.TrocasButton.Text = "Trocas";
             this.TrocasButton.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@
             // 
             this.EntradasButton.Location = new System.Drawing.Point(12, 41);
             this.EntradasButton.Name = "EntradasButton";
-            this.EntradasButton.Size = new System.Drawing.Size(94, 23);
+            this.EntradasButton.Size = new System.Drawing.Size(100, 23);
             this.EntradasButton.TabIndex = 3;
             this.EntradasButton.Text = "Entradas";
             this.EntradasButton.UseVisualStyleBackColor = true;
@@ -68,7 +68,7 @@
             // 
             this.HistoricoButton.Location = new System.Drawing.Point(12, 99);
             this.HistoricoButton.Name = "HistoricoButton";
-            this.HistoricoButton.Size = new System.Drawing.Size(94, 23);
+            this.HistoricoButton.Size = new System.Drawing.Size(100, 23);
             this.HistoricoButton.TabIndex = 4;
             this.HistoricoButton.Text = "Histórico";
             this.HistoricoButton.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
             // 
             this.ConfigButton.Location = new System.Drawing.Point(12, 128);
             this.ConfigButton.Name = "ConfigButton";
-            this.ConfigButton.Size = new System.Drawing.Size(94, 23);
+            this.ConfigButton.Size = new System.Drawing.Size(100, 23);
             this.ConfigButton.TabIndex = 6;
             this.ConfigButton.Text = "Configurações";
             this.ConfigButton.UseVisualStyleBackColor = true;

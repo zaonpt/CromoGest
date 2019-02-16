@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CadernetasComboBox = new System.Windows.Forms.ComboBox();
             this.CadernetasLabel = new System.Windows.Forms.Label();
             this.CadernetaGroupBox = new System.Windows.Forms.GroupBox();
@@ -40,10 +41,11 @@
             this.QuantidadeLabel = new System.Windows.Forms.Label();
             this.NomeText = new System.Windows.Forms.TextBox();
             this.NomeLabel = new System.Windows.Forms.Label();
-            this.CriarButton = new System.Windows.Forms.Button();
-            this.CancelarButton = new System.Windows.Forms.Button();
+            this.NovaButton = new System.Windows.Forms.Button();
+            this.SairButton = new System.Windows.Forms.Button();
             this.AlterarButton = new System.Windows.Forms.Button();
             this.TrocasTituloLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.CadernetaGroupBox.SuspendLayout();
             this.CarteiraGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +57,7 @@
             this.CadernetasComboBox.Name = "CadernetasComboBox";
             this.CadernetasComboBox.Size = new System.Drawing.Size(240, 21);
             this.CadernetasComboBox.TabIndex = 0;
+            this.CadernetasComboBox.TabStop = false;
             // 
             // CadernetasLabel
             // 
@@ -97,7 +100,7 @@
             this.textBox3.Location = new System.Drawing.Point(100, 80);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(164, 20);
-            this.textBox3.TabIndex = 8;
+            this.textBox3.TabIndex = 3;
             // 
             // CarteiraQuantidadeLabel
             // 
@@ -113,7 +116,7 @@
             this.CarteiraCustoText.Location = new System.Drawing.Point(100, 34);
             this.CarteiraCustoText.Name = "CarteiraCustoText";
             this.CarteiraCustoText.Size = new System.Drawing.Size(164, 20);
-            this.CarteiraCustoText.TabIndex = 6;
+            this.CarteiraCustoText.TabIndex = 2;
             // 
             // CarteiraCustoLabel
             // 
@@ -129,7 +132,7 @@
             this.textBox1.Location = new System.Drawing.Point(106, 85);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(164, 20);
-            this.textBox1.TabIndex = 3;
+            this.textBox1.TabIndex = 1;
             // 
             // QuantidadeLabel
             // 
@@ -145,7 +148,8 @@
             this.NomeText.Location = new System.Drawing.Point(106, 41);
             this.NomeText.Name = "NomeText";
             this.NomeText.Size = new System.Drawing.Size(164, 20);
-            this.NomeText.TabIndex = 1;
+            this.NomeText.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.NomeText, "Nome da Caderneta");
             // 
             // NomeLabel
             // 
@@ -156,31 +160,36 @@
             this.NomeLabel.TabIndex = 0;
             this.NomeLabel.Text = "Nome";
             // 
-            // CriarButton
+            // NovaButton
             // 
-            this.CriarButton.Location = new System.Drawing.Point(38, 358);
-            this.CriarButton.Name = "CriarButton";
-            this.CriarButton.Size = new System.Drawing.Size(75, 23);
-            this.CriarButton.TabIndex = 3;
-            this.CriarButton.Text = "Criar";
-            this.CriarButton.UseVisualStyleBackColor = true;
+            this.NovaButton.Location = new System.Drawing.Point(19, 358);
+            this.NovaButton.Name = "NovaButton";
+            this.NovaButton.Size = new System.Drawing.Size(100, 23);
+            this.NovaButton.TabIndex = 3;
+            this.NovaButton.TabStop = false;
+            this.NovaButton.Text = "&Nova";
+            this.toolTip1.SetToolTip(this.NovaButton, "Criar Caderneta nova");
+            this.NovaButton.UseVisualStyleBackColor = true;
             // 
-            // CancelarButton
+            // SairButton
             // 
-            this.CancelarButton.Location = new System.Drawing.Point(236, 358);
-            this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelarButton.TabIndex = 4;
-            this.CancelarButton.Text = "Cancelar";
-            this.CancelarButton.UseVisualStyleBackColor = true;
+            this.SairButton.Location = new System.Drawing.Point(236, 358);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
+            this.SairButton.TabIndex = 4;
+            this.SairButton.TabStop = false;
+            this.SairButton.Text = "&Sair";
+            this.SairButton.UseVisualStyleBackColor = true;
             // 
             // AlterarButton
             // 
-            this.AlterarButton.Location = new System.Drawing.Point(140, 358);
+            this.AlterarButton.Location = new System.Drawing.Point(130, 358);
             this.AlterarButton.Name = "AlterarButton";
-            this.AlterarButton.Size = new System.Drawing.Size(75, 23);
+            this.AlterarButton.Size = new System.Drawing.Size(100, 23);
             this.AlterarButton.TabIndex = 5;
-            this.AlterarButton.Text = "Alterar";
+            this.AlterarButton.TabStop = false;
+            this.AlterarButton.Text = "&Alterar";
+            this.toolTip1.SetToolTip(this.AlterarButton, "Alterar caderneta selecionada.");
             this.AlterarButton.UseVisualStyleBackColor = true;
             // 
             // TrocasTituloLabel
@@ -201,8 +210,8 @@
             this.ClientSize = new System.Drawing.Size(356, 397);
             this.Controls.Add(this.TrocasTituloLabel);
             this.Controls.Add(this.AlterarButton);
-            this.Controls.Add(this.CancelarButton);
-            this.Controls.Add(this.CriarButton);
+            this.Controls.Add(this.SairButton);
+            this.Controls.Add(this.NovaButton);
             this.Controls.Add(this.CadernetaGroupBox);
             this.Controls.Add(this.CadernetasLabel);
             this.Controls.Add(this.CadernetasComboBox);
@@ -231,10 +240,11 @@
         private System.Windows.Forms.Label CarteiraCustoLabel;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label CarteiraQuantidadeLabel;
-        private System.Windows.Forms.Button CriarButton;
-        private System.Windows.Forms.Button CancelarButton;
+        private System.Windows.Forms.Button NovaButton;
+        private System.Windows.Forms.Button SairButton;
         private System.Windows.Forms.Button AlterarButton;
         private System.Windows.Forms.Label TrocasTituloLabel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

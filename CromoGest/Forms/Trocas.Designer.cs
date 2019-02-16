@@ -49,6 +49,7 @@
             this.CriarButton = new System.Windows.Forms.Button();
             this.TrocaTituloLabel = new System.Windows.Forms.Label();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.SairButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.ProgressoGroupBox.SuspendLayout();
@@ -145,6 +146,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SairButton);
             this.panel1.Controls.Add(this.TrocasStatusStrip);
             this.panel1.Controls.Add(this.AlterarButton);
             this.panel1.Controls.Add(this.ProgressoGroupBox);
@@ -168,7 +170,7 @@
             // 
             // AlterarButton
             // 
-            this.AlterarButton.Location = new System.Drawing.Point(145, 345);
+            this.AlterarButton.Location = new System.Drawing.Point(10, 329);
             this.AlterarButton.Name = "AlterarButton";
             this.AlterarButton.Size = new System.Drawing.Size(100, 23);
             this.AlterarButton.TabIndex = 8;
@@ -181,9 +183,9 @@
             this.ProgressoGroupBox.Controls.Add(this.label1);
             this.ProgressoGroupBox.Controls.Add(this.comboBox1);
             this.ProgressoGroupBox.Controls.Add(this.button1);
-            this.ProgressoGroupBox.Location = new System.Drawing.Point(313, 320);
+            this.ProgressoGroupBox.Location = new System.Drawing.Point(215, 320);
             this.ProgressoGroupBox.Name = "ProgressoGroupBox";
-            this.ProgressoGroupBox.Size = new System.Drawing.Size(521, 66);
+            this.ProgressoGroupBox.Size = new System.Drawing.Size(619, 66);
             this.ProgressoGroupBox.TabIndex = 11;
             this.ProgressoGroupBox.TabStop = false;
             this.ProgressoGroupBox.Text = "Alterar Progresso";
@@ -191,7 +193,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 30);
+            this.label1.Location = new System.Drawing.Point(121, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(148, 13);
             this.label1.TabIndex = 12;
@@ -200,23 +202,25 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(177, 27);
+            this.comboBox1.Location = new System.Drawing.Point(275, 21);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(183, 21);
             this.comboBox1.TabIndex = 11;
+            this.comboBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(394, 25);
+            this.button1.Location = new System.Drawing.Point(492, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 23);
             this.button1.TabIndex = 10;
+            this.button1.TabStop = false;
             this.button1.Text = "Alterar";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // CriarButton
             // 
-            this.CriarButton.Location = new System.Drawing.Point(28, 345);
+            this.CriarButton.Location = new System.Drawing.Point(10, 300);
             this.CriarButton.Name = "CriarButton";
             this.CriarButton.Size = new System.Drawing.Size(100, 23);
             this.CriarButton.TabIndex = 9;
@@ -234,6 +238,16 @@
             this.TrocaTituloLabel.Size = new System.Drawing.Size(59, 24);
             this.TrocaTituloLabel.TabIndex = 7;
             this.TrocaTituloLabel.Text = "Troca";
+            // 
+            // SairButton
+            // 
+            this.SairButton.Location = new System.Drawing.Point(10, 358);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
+            this.SairButton.TabIndex = 13;
+            this.SairButton.Text = "Alterar Seleção";
+            this.TrocasToolTip.SetToolTip(this.SairButton, "Regressar ao Dashboard");
+            this.SairButton.UseVisualStyleBackColor = true;
             // 
             // Trocas
             // 
@@ -276,5 +290,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
         private System.Windows.Forms.ToolTip TrocasToolTip;
+        private System.Windows.Forms.Button SairButton;
     }
 }

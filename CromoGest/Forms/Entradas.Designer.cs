@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Cromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -41,6 +42,7 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.EntradasTituloLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.ResultadosGroupBox.SuspendLayout();
@@ -82,27 +84,30 @@
             // 
             this.IntroduzirButton.Location = new System.Drawing.Point(329, 52);
             this.IntroduzirButton.Name = "IntroduzirButton";
-            this.IntroduzirButton.Size = new System.Drawing.Size(75, 23);
+            this.IntroduzirButton.Size = new System.Drawing.Size(100, 23);
             this.IntroduzirButton.TabIndex = 2;
             this.IntroduzirButton.Text = "Introduzir";
+            this.toolTip1.SetToolTip(this.IntroduzirButton, "Registar os cromos");
             this.IntroduzirButton.UseVisualStyleBackColor = true;
             // 
             // VerificarButton
             // 
             this.VerificarButton.Location = new System.Drawing.Point(329, 115);
             this.VerificarButton.Name = "VerificarButton";
-            this.VerificarButton.Size = new System.Drawing.Size(75, 23);
+            this.VerificarButton.Size = new System.Drawing.Size(100, 23);
             this.VerificarButton.TabIndex = 3;
             this.VerificarButton.Text = "Verificar";
+            this.toolTip1.SetToolTip(this.VerificarButton, "Verificar cromos na lista sem os registar.");
             this.VerificarButton.UseVisualStyleBackColor = true;
             // 
             // SairButton
             // 
             this.SairButton.Location = new System.Drawing.Point(329, 179);
             this.SairButton.Name = "SairButton";
-            this.SairButton.Size = new System.Drawing.Size(75, 23);
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
             this.SairButton.TabIndex = 4;
             this.SairButton.Text = "Sair";
+            this.toolTip1.SetToolTip(this.SairButton, "Sair, cromos escritos serão perdidos.");
             this.SairButton.UseVisualStyleBackColor = true;
             // 
             // ResultadosGroupBox
@@ -204,5 +209,6 @@
         private System.Windows.Forms.Label RepetidosLabel;
         private System.Windows.Forms.Label NovosLabel;
         private System.Windows.Forms.Label EntradasTituloLabel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
