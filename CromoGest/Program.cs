@@ -18,6 +18,7 @@ namespace CromoGest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Entradas());
+
         }
     }
 }
