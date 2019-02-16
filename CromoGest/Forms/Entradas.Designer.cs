@@ -28,8 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Cromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.IntroduzirButton = new System.Windows.Forms.Button();
@@ -41,6 +41,8 @@
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.EntradasTituloLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.Cromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.ResultadosGroupBox.SuspendLayout();
@@ -51,16 +53,10 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cromos});
-            this.dataGridView1.Location = new System.Drawing.Point(71, 52);
+            this.dataGridView1.Location = new System.Drawing.Point(21, 52);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(179, 150);
+            this.dataGridView1.Size = new System.Drawing.Size(294, 150);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // Cromos
-            // 
-            this.Cromos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cromos.HeaderText = "Cromos";
-            this.Cromos.Name = "Cromos";
             // 
             // statusStrip1
             // 
@@ -80,29 +76,32 @@
             // 
             // IntroduzirButton
             // 
-            this.IntroduzirButton.Location = new System.Drawing.Point(329, 52);
+            this.IntroduzirButton.Location = new System.Drawing.Point(352, 88);
             this.IntroduzirButton.Name = "IntroduzirButton";
-            this.IntroduzirButton.Size = new System.Drawing.Size(75, 23);
+            this.IntroduzirButton.Size = new System.Drawing.Size(100, 23);
             this.IntroduzirButton.TabIndex = 2;
             this.IntroduzirButton.Text = "Introduzir";
+            this.toolTip1.SetToolTip(this.IntroduzirButton, "Registar cromos na tabela");
             this.IntroduzirButton.UseVisualStyleBackColor = true;
             // 
             // VerificarButton
             // 
-            this.VerificarButton.Location = new System.Drawing.Point(329, 115);
+            this.VerificarButton.Location = new System.Drawing.Point(352, 117);
             this.VerificarButton.Name = "VerificarButton";
-            this.VerificarButton.Size = new System.Drawing.Size(75, 23);
+            this.VerificarButton.Size = new System.Drawing.Size(100, 23);
             this.VerificarButton.TabIndex = 3;
-            this.VerificarButton.Text = "Verificar";
+            this.VerificarButton.Text = "&Verificar";
+            this.toolTip1.SetToolTip(this.VerificarButton, "Verificar cromos sem os alterar.");
             this.VerificarButton.UseVisualStyleBackColor = true;
             // 
             // SairButton
             // 
-            this.SairButton.Location = new System.Drawing.Point(329, 179);
+            this.SairButton.Location = new System.Drawing.Point(352, 146);
             this.SairButton.Name = "SairButton";
-            this.SairButton.Size = new System.Drawing.Size(75, 23);
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
             this.SairButton.TabIndex = 4;
-            this.SairButton.Text = "Sair";
+            this.SairButton.Text = "&Sair";
+            this.toolTip1.SetToolTip(this.SairButton, "Sair");
             this.SairButton.UseVisualStyleBackColor = true;
             // 
             // ResultadosGroupBox
@@ -162,7 +161,12 @@
             this.EntradasTituloLabel.Size = new System.Drawing.Size(84, 24);
             this.EntradasTituloLabel.TabIndex = 6;
             this.EntradasTituloLabel.Text = "Entradas";
-            this.EntradasTituloLabel.Click += new System.EventHandler(this.TrocasTituloLabel_Click);
+            // 
+            // Cromos
+            // 
+            this.Cromos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cromos.HeaderText = "Cromos a dar entrada";
+            this.Cromos.Name = "Cromos";
             // 
             // Entradas
             // 
@@ -192,7 +196,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Cromos;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.Button IntroduzirButton;
@@ -204,5 +207,7 @@
         private System.Windows.Forms.Label RepetidosLabel;
         private System.Windows.Forms.Label NovosLabel;
         private System.Windows.Forms.Label EntradasTituloLabel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cromos;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

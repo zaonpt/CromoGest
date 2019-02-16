@@ -22,9 +22,5 @@ namespace CromoGest
 
         }
 
-        private void TrocasTituloLabel_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

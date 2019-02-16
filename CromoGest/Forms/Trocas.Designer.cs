@@ -49,6 +49,7 @@
             this.CriarButton = new System.Windows.Forms.Button();
             this.TrocaTituloLabel = new System.Windows.Forms.Label();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.SairButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.ProgressoGroupBox.SuspendLayout();
@@ -145,6 +146,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.SairButton);
             this.panel1.Controls.Add(this.TrocasStatusStrip);
             this.panel1.Controls.Add(this.AlterarButton);
             this.panel1.Controls.Add(this.ProgressoGroupBox);
@@ -168,11 +170,11 @@
             // 
             // AlterarButton
             // 
-            this.AlterarButton.Location = new System.Drawing.Point(145, 345);
+            this.AlterarButton.Location = new System.Drawing.Point(10, 330);
             this.AlterarButton.Name = "AlterarButton";
             this.AlterarButton.Size = new System.Drawing.Size(100, 23);
             this.AlterarButton.TabIndex = 8;
-            this.AlterarButton.Text = "Alterar Seleção";
+            this.AlterarButton.Text = "&Alterar Seleção";
             this.TrocasToolTip.SetToolTip(this.AlterarButton, "PLACEHOLDER");
             this.AlterarButton.UseVisualStyleBackColor = true;
             // 
@@ -216,11 +218,11 @@
             // 
             // CriarButton
             // 
-            this.CriarButton.Location = new System.Drawing.Point(28, 345);
+            this.CriarButton.Location = new System.Drawing.Point(10, 301);
             this.CriarButton.Name = "CriarButton";
             this.CriarButton.Size = new System.Drawing.Size(100, 23);
             this.CriarButton.TabIndex = 9;
-            this.CriarButton.Text = "Nova";
+            this.CriarButton.Text = "&Nova";
             this.TrocasToolTip.SetToolTip(this.CriarButton, "Criar um registo novo de Troca");
             this.CriarButton.UseVisualStyleBackColor = true;
             // 
@@ -234,6 +236,16 @@
             this.TrocaTituloLabel.Size = new System.Drawing.Size(59, 24);
             this.TrocaTituloLabel.TabIndex = 7;
             this.TrocaTituloLabel.Text = "Troca";
+            // 
+            // SairButton
+            // 
+            this.SairButton.Location = new System.Drawing.Point(10, 359);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
+            this.SairButton.TabIndex = 13;
+            this.SairButton.Text = "&Sair";
+            this.TrocasToolTip.SetToolTip(this.SairButton, "PLACEHOLDER");
+            this.SairButton.UseVisualStyleBackColor = true;
             // 
             // Trocas
             // 
@@ -276,5 +288,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
         private System.Windows.Forms.ToolTip TrocasToolTip;
+        private System.Windows.Forms.Button SairButton;
     }
 }

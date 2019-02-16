@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.CadernetasComboBox = new System.Windows.Forms.ComboBox();
             this.CadernetasLabel = new System.Windows.Forms.Label();
             this.CadernetaGroupBox = new System.Windows.Forms.GroupBox();
@@ -41,9 +42,10 @@
             this.NomeText = new System.Windows.Forms.TextBox();
             this.NomeLabel = new System.Windows.Forms.Label();
             this.CriarButton = new System.Windows.Forms.Button();
-            this.CancelarButton = new System.Windows.Forms.Button();
+            this.SairButton = new System.Windows.Forms.Button();
             this.AlterarButton = new System.Windows.Forms.Button();
             this.TrocasTituloLabel = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.CadernetaGroupBox.SuspendLayout();
             this.CarteiraGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -158,29 +160,34 @@
             // 
             // CriarButton
             // 
-            this.CriarButton.Location = new System.Drawing.Point(38, 358);
+            this.CriarButton.Location = new System.Drawing.Point(12, 358);
             this.CriarButton.Name = "CriarButton";
-            this.CriarButton.Size = new System.Drawing.Size(75, 23);
+            this.CriarButton.Size = new System.Drawing.Size(100, 23);
             this.CriarButton.TabIndex = 3;
-            this.CriarButton.Text = "Criar";
+            this.CriarButton.TabStop = false;
+            this.CriarButton.Text = "&Nova";
+            this.toolTip1.SetToolTip(this.CriarButton, "Registar uma nova caderneta.");
             this.CriarButton.UseVisualStyleBackColor = true;
             // 
-            // CancelarButton
+            // SairButton
             // 
-            this.CancelarButton.Location = new System.Drawing.Point(236, 358);
-            this.CancelarButton.Name = "CancelarButton";
-            this.CancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelarButton.TabIndex = 4;
-            this.CancelarButton.Text = "Cancelar";
-            this.CancelarButton.UseVisualStyleBackColor = true;
+            this.SairButton.Location = new System.Drawing.Point(244, 358);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
+            this.SairButton.TabIndex = 4;
+            this.SairButton.Text = "&Sair";
+            this.toolTip1.SetToolTip(this.SairButton, "Regressar ao Dashboard");
+            this.SairButton.UseVisualStyleBackColor = true;
             // 
             // AlterarButton
             // 
-            this.AlterarButton.Location = new System.Drawing.Point(140, 358);
+            this.AlterarButton.Location = new System.Drawing.Point(129, 358);
             this.AlterarButton.Name = "AlterarButton";
-            this.AlterarButton.Size = new System.Drawing.Size(75, 23);
+            this.AlterarButton.Size = new System.Drawing.Size(100, 23);
             this.AlterarButton.TabIndex = 5;
+            this.AlterarButton.TabStop = false;
             this.AlterarButton.Text = "Alterar";
+            this.toolTip1.SetToolTip(this.AlterarButton, "Registar alteração na caderneta selecionada.");
             this.AlterarButton.UseVisualStyleBackColor = true;
             // 
             // TrocasTituloLabel
@@ -188,11 +195,11 @@
             this.TrocasTituloLabel.AutoSize = true;
             this.TrocasTituloLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.TrocasTituloLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.TrocasTituloLabel.Location = new System.Drawing.Point(147, 9);
+            this.TrocasTituloLabel.Location = new System.Drawing.Point(122, 9);
             this.TrocasTituloLabel.Name = "TrocasTituloLabel";
-            this.TrocasTituloLabel.Size = new System.Drawing.Size(68, 24);
+            this.TrocasTituloLabel.Size = new System.Drawing.Size(106, 24);
             this.TrocasTituloLabel.TabIndex = 6;
-            this.TrocasTituloLabel.Text = "Trocas";
+            this.TrocasTituloLabel.Text = "Cadernetas";
             // 
             // Cadernetas
             // 
@@ -201,7 +208,7 @@
             this.ClientSize = new System.Drawing.Size(356, 397);
             this.Controls.Add(this.TrocasTituloLabel);
             this.Controls.Add(this.AlterarButton);
-            this.Controls.Add(this.CancelarButton);
+            this.Controls.Add(this.SairButton);
             this.Controls.Add(this.CriarButton);
             this.Controls.Add(this.CadernetaGroupBox);
             this.Controls.Add(this.CadernetasLabel);
@@ -232,9 +239,10 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label CarteiraQuantidadeLabel;
         private System.Windows.Forms.Button CriarButton;
-        private System.Windows.Forms.Button CancelarButton;
+        private System.Windows.Forms.Button SairButton;
         private System.Windows.Forms.Button AlterarButton;
         private System.Windows.Forms.Label TrocasTituloLabel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
