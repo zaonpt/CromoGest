@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.329
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CromoGestLibrary", "CromoGestLibrary\CromoGestLibrary.csproj", "{B768CD49-2DAE-432C-8EFA-531B15BE7CFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CromoGest", "CromoGest\CromoGest.csproj", "{D1E3F013-598D-4CC8-93C3-B8F269A8C3FA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B768CD49-2DAE-432C-8EFA-531B15BE7CFB} = {B768CD49-2DAE-432C-8EFA-531B15BE7CFB}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B768CD49-2DAE-432C-8EFA-531B15BE7CFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B768CD49-2DAE-432C-8EFA-531B15BE7CFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B768CD49-2DAE-432C-8EFA-531B15BE7CFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B768CD49-2DAE-432C-8EFA-531B15BE7CFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1E3F013-598D-4CC8-93C3-B8F269A8C3FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1E3F013-598D-4CC8-93C3-B8F269A8C3FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1E3F013-598D-4CC8-93C3-B8F269A8C3FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1E3F013-598D-4CC8-93C3-B8F269A8C3FA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F421BC82-0D30-4727-9447-EC492F6CCAD2}
+	EndGlobalSection
+EndGlobal
