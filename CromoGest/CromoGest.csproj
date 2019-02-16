@@ -64,6 +64,12 @@
     <Compile Include="Forms\Entradas.Designer.cs">
       <DependentUpon>Entradas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Historico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Historico.Designer.cs">
+      <DependentUpon>Historico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Trocas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entradas.resx">
       <DependentUpon>Entradas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Historico.resx">
+      <DependentUpon>Historico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trocas.resx">
       <DependentUpon>Trocas.cs</DependentUpon>

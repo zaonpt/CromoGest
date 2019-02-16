@@ -30,16 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Editar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.IdTroca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Progresso = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataProposta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataRececao = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CromosRecebidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CromosEnviados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SairButton = new System.Windows.Forms.Button();
             this.TrocasStatusStrip = new System.Windows.Forms.StatusStrip();
             this.AlterarButton = new System.Windows.Forms.Button();
             this.ProgressoGroupBox = new System.Windows.Forms.GroupBox();
@@ -49,7 +41,15 @@
             this.CriarButton = new System.Windows.Forms.Button();
             this.TrocaTituloLabel = new System.Windows.Forms.Label();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.SairButton = new System.Windows.Forms.Button();
+            this.Editar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.IdTroca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Progresso = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataProposta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataEnvio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DataRececao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CromosRecebidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CromosEnviados = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.ProgressoGroupBox.SuspendLayout();
@@ -72,77 +72,8 @@
             this.CromosEnviados});
             this.dataGridView1.Location = new System.Drawing.Point(10, 72);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(828, 210);
+            this.dataGridView1.Size = new System.Drawing.Size(941, 210);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Editar
-            // 
-            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Editar.Frozen = true;
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Name = "Editar";
-            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Editar.Width = 40;
-            // 
-            // IdTroca
-            // 
-            this.IdTroca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.IdTroca.Frozen = true;
-            this.IdTroca.HeaderText = "Nº Troca";
-            this.IdTroca.Name = "IdTroca";
-            this.IdTroca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.IdTroca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IdTroca.Width = 50;
-            // 
-            // Progresso
-            // 
-            this.Progresso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Progresso.Frozen = true;
-            this.Progresso.HeaderText = "Progresso";
-            this.Progresso.Name = "Progresso";
-            this.Progresso.Width = 60;
-            // 
-            // DataProposta
-            // 
-            this.DataProposta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataProposta.Frozen = true;
-            this.DataProposta.HeaderText = "Data Proposta";
-            this.DataProposta.Name = "DataProposta";
-            // 
-            // DataEnvio
-            // 
-            this.DataEnvio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataEnvio.Frozen = true;
-            this.DataEnvio.HeaderText = "Data Envio";
-            this.DataEnvio.Name = "DataEnvio";
-            // 
-            // DataRececao
-            // 
-            this.DataRececao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.DataRececao.Frozen = true;
-            this.DataRececao.HeaderText = "Data Receção";
-            this.DataRececao.Name = "DataRececao";
-            // 
-            // Destinatario
-            // 
-            this.Destinatario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Destinatario.HeaderText = "Destinatário";
-            this.Destinatario.Name = "Destinatario";
-            this.Destinatario.Width = 88;
-            // 
-            // CromosRecebidos
-            // 
-            this.CromosRecebidos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CromosRecebidos.HeaderText = "Cromos Recebidos";
-            this.CromosRecebidos.Name = "CromosRecebidos";
-            this.CromosRecebidos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CromosRecebidos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // CromosEnviados
-            // 
-            this.CromosEnviados.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.CromosEnviados.HeaderText = "Cromos Enviados";
-            this.CromosEnviados.Name = "CromosEnviados";
             // 
             // panel1
             // 
@@ -157,14 +88,24 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Padding = new System.Windows.Forms.Padding(10);
-            this.panel1.Size = new System.Drawing.Size(848, 429);
+            this.panel1.Size = new System.Drawing.Size(961, 429);
             this.panel1.TabIndex = 2;
+            // 
+            // SairButton
+            // 
+            this.SairButton.Location = new System.Drawing.Point(10, 359);
+            this.SairButton.Name = "SairButton";
+            this.SairButton.Size = new System.Drawing.Size(100, 23);
+            this.SairButton.TabIndex = 13;
+            this.SairButton.Text = "&Sair";
+            this.TrocasToolTip.SetToolTip(this.SairButton, "PLACEHOLDER");
+            this.SairButton.UseVisualStyleBackColor = true;
             // 
             // TrocasStatusStrip
             // 
             this.TrocasStatusStrip.Location = new System.Drawing.Point(10, 397);
             this.TrocasStatusStrip.Name = "TrocasStatusStrip";
-            this.TrocasStatusStrip.Size = new System.Drawing.Size(828, 22);
+            this.TrocasStatusStrip.Size = new System.Drawing.Size(941, 22);
             this.TrocasStatusStrip.TabIndex = 12;
             this.TrocasStatusStrip.Text = "statusStrip1";
             // 
@@ -237,21 +178,80 @@
             this.TrocaTituloLabel.TabIndex = 7;
             this.TrocaTituloLabel.Text = "Troca";
             // 
-            // SairButton
+            // Editar
             // 
-            this.SairButton.Location = new System.Drawing.Point(10, 359);
-            this.SairButton.Name = "SairButton";
-            this.SairButton.Size = new System.Drawing.Size(100, 23);
-            this.SairButton.TabIndex = 13;
-            this.SairButton.Text = "&Sair";
-            this.TrocasToolTip.SetToolTip(this.SairButton, "PLACEHOLDER");
-            this.SairButton.UseVisualStyleBackColor = true;
+            this.Editar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Editar.Frozen = true;
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.Width = 40;
+            // 
+            // IdTroca
+            // 
+            this.IdTroca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.IdTroca.Frozen = true;
+            this.IdTroca.HeaderText = "Nº Troca";
+            this.IdTroca.Name = "IdTroca";
+            this.IdTroca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.IdTroca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.IdTroca.Width = 70;
+            // 
+            // Progresso
+            // 
+            this.Progresso.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Progresso.Frozen = true;
+            this.Progresso.HeaderText = "Progresso";
+            this.Progresso.Name = "Progresso";
+            this.Progresso.Width = 60;
+            // 
+            // DataProposta
+            // 
+            this.DataProposta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataProposta.Frozen = true;
+            this.DataProposta.HeaderText = "Data Proposta";
+            this.DataProposta.Name = "DataProposta";
+            // 
+            // DataEnvio
+            // 
+            this.DataEnvio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataEnvio.Frozen = true;
+            this.DataEnvio.HeaderText = "Data Envio";
+            this.DataEnvio.Name = "DataEnvio";
+            // 
+            // DataRececao
+            // 
+            this.DataRececao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.DataRececao.Frozen = true;
+            this.DataRececao.HeaderText = "Data Receção";
+            this.DataRececao.Name = "DataRececao";
+            // 
+            // Destinatario
+            // 
+            this.Destinatario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Destinatario.HeaderText = "Destinatário";
+            this.Destinatario.Name = "Destinatario";
+            this.Destinatario.Width = 88;
+            // 
+            // CromosRecebidos
+            // 
+            this.CromosRecebidos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CromosRecebidos.HeaderText = "Cromos Recebidos";
+            this.CromosRecebidos.Name = "CromosRecebidos";
+            this.CromosRecebidos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CromosRecebidos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // CromosEnviados
+            // 
+            this.CromosEnviados.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CromosEnviados.HeaderText = "Cromos Enviados";
+            this.CromosEnviados.Name = "CromosEnviados";
             // 
             // Trocas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(848, 429);
+            this.ClientSize = new System.Drawing.Size(961, 429);
             this.Controls.Add(this.panel1);
             this.MaximumSize = new System.Drawing.Size(2000, 468);
             this.MinimumSize = new System.Drawing.Size(860, 468);
@@ -278,6 +278,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolTip TrocasToolTip;
+        private System.Windows.Forms.Button SairButton;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTroca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Progresso;
@@ -287,7 +289,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
-        private System.Windows.Forms.ToolTip TrocasToolTip;
-        private System.Windows.Forms.Button SairButton;
     }
 }
