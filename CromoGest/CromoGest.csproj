@@ -58,6 +58,12 @@
     <Compile Include="Forms\Caderntas.Designer.cs">
       <DependentUpon>Caderntas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Config.Designer.cs">
+      <DependentUpon>Config.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CromoGest.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Caderntas.resx">
       <DependentUpon>Caderntas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Config.resx">
+      <DependentUpon>Config.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CromoGest.resx">
       <DependentUpon>CromoGest.cs</DependentUpon>

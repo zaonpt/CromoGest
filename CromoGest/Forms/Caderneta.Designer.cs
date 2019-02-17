@@ -30,27 +30,27 @@
         {
             this.components = new System.ComponentModel.Container();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.ListaRepetidoLabel = new System.Windows.Forms.Label();
+            this.ListaRepetidosLabel = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
             this.NovosButton = new System.Windows.Forms.Button();
             this.TrocasButton = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.EditarButton = new System.Windows.Forms.Button();
+            this.CadernetaComboBox = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Pagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CadernetaComboBox = new System.Windows.Forms.ComboBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.ListaCromosLabel = new System.Windows.Forms.Label();
             this.ListaCromosText = new System.Windows.Forms.TextBox();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.ListaRepetidoLabel = new System.Windows.Forms.Label();
-            this.ListaRepetidosLabel = new System.Windows.Forms.TextBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
-            this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -73,6 +73,40 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 651);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.ListaRepetidoLabel, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ListaRepetidosLabel, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 604);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 24);
+            this.tableLayoutPanel4.TabIndex = 4;
+            // 
+            // ListaRepetidoLabel
+            // 
+            this.ListaRepetidoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ListaRepetidoLabel.AutoSize = true;
+            this.ListaRepetidoLabel.Location = new System.Drawing.Point(3, 5);
+            this.ListaRepetidoLabel.Name = "ListaRepetidoLabel";
+            this.ListaRepetidoLabel.Size = new System.Drawing.Size(80, 13);
+            this.ListaRepetidoLabel.TabIndex = 0;
+            this.ListaRepetidoLabel.Text = "Lista Repetidos";
+            // 
+            // ListaRepetidosLabel
+            // 
+            this.ListaRepetidosLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ListaRepetidosLabel.Location = new System.Drawing.Point(153, 3);
+            this.ListaRepetidosLabel.Name = "ListaRepetidosLabel";
+            this.ListaRepetidosLabel.ReadOnly = true;
+            this.ListaRepetidosLabel.Size = new System.Drawing.Size(838, 20);
+            this.ListaRepetidosLabel.TabIndex = 1;
             // 
             // tableLayoutPanel2
             // 
@@ -130,14 +164,6 @@
             this.toolTip1.SetToolTip(this.TrocasButton, "Aceder ao registo de trocas de cromos.");
             this.TrocasButton.UseVisualStyleBackColor = true;
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Location = new System.Drawing.Point(0, 631);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1000, 20);
-            this.statusStrip1.TabIndex = 2;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
             // EditarButton
             // 
             this.EditarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -148,6 +174,16 @@
             this.EditarButton.Text = "&Editar";
             this.toolTip1.SetToolTip(this.EditarButton, "Editar a descrição dos cromos e as paginas a que pertencem.");
             this.EditarButton.UseVisualStyleBackColor = true;
+            // 
+            // CadernetaComboBox
+            // 
+            this.CadernetaComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.CadernetaComboBox.FormattingEnabled = true;
+            this.CadernetaComboBox.Location = new System.Drawing.Point(443, 6);
+            this.CadernetaComboBox.Name = "CadernetaComboBox";
+            this.CadernetaComboBox.Size = new System.Drawing.Size(201, 21);
+            this.CadernetaComboBox.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.CadernetaComboBox, "Selecionar caderneta.");
             // 
             // dataGridView1
             // 
@@ -171,15 +207,13 @@
             this.Pagina.ReadOnly = true;
             this.Pagina.Width = 200;
             // 
-            // CadernetaComboBox
+            // statusStrip1
             // 
-            this.CadernetaComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CadernetaComboBox.FormattingEnabled = true;
-            this.CadernetaComboBox.Location = new System.Drawing.Point(443, 6);
-            this.CadernetaComboBox.Name = "CadernetaComboBox";
-            this.CadernetaComboBox.Size = new System.Drawing.Size(201, 21);
-            this.CadernetaComboBox.TabIndex = 16;
-            this.toolTip1.SetToolTip(this.CadernetaComboBox, "Selecionar caderneta.");
+            this.statusStrip1.Location = new System.Drawing.Point(0, 631);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1000, 20);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // tableLayoutPanel3
             // 
@@ -211,41 +245,9 @@
             this.ListaCromosText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ListaCromosText.Location = new System.Drawing.Point(153, 3);
             this.ListaCromosText.Name = "ListaCromosText";
+            this.ListaCromosText.ReadOnly = true;
             this.ListaCromosText.Size = new System.Drawing.Size(838, 20);
             this.ListaCromosText.TabIndex = 1;
-            // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Controls.Add(this.ListaRepetidoLabel, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.ListaRepetidosLabel, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 604);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 24);
-            this.tableLayoutPanel4.TabIndex = 4;
-            // 
-            // ListaRepetidoLabel
-            // 
-            this.ListaRepetidoLabel.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ListaRepetidoLabel.AutoSize = true;
-            this.ListaRepetidoLabel.Location = new System.Drawing.Point(3, 5);
-            this.ListaRepetidoLabel.Name = "ListaRepetidoLabel";
-            this.ListaRepetidoLabel.Size = new System.Drawing.Size(80, 13);
-            this.ListaRepetidoLabel.TabIndex = 0;
-            this.ListaRepetidoLabel.Text = "Lista Repetidos";
-            // 
-            // ListaRepetidosLabel
-            // 
-            this.ListaRepetidosLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ListaRepetidosLabel.Location = new System.Drawing.Point(153, 3);
-            this.ListaRepetidosLabel.Name = "ListaRepetidosLabel";
-            this.ListaRepetidosLabel.Size = new System.Drawing.Size(838, 20);
-            this.ListaRepetidosLabel.TabIndex = 1;
             // 
             // Caderneta
             // 
@@ -257,12 +259,12 @@
             this.Text = "Caderneta";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
-            this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
