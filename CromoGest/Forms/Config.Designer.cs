@@ -48,37 +48,45 @@
             // 
             // LinguagemLabel
             // 
-            this.LinguagemLabel.AutoSize = true;
-            this.LinguagemLabel.Location = new System.Drawing.Point(67, 117);
+            this.LinguagemLabel.Location = new System.Drawing.Point(31, 114);
             this.LinguagemLabel.Name = "LinguagemLabel";
-            this.LinguagemLabel.Size = new System.Drawing.Size(59, 13);
+            this.LinguagemLabel.Size = new System.Drawing.Size(95, 18);
             this.LinguagemLabel.TabIndex = 1;
-            this.LinguagemLabel.Text = "Linguagem";
+            this.LinguagemLabel.Text = "Lingua";
+            this.LinguagemLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // LimguagemComboBox
             // 
             this.LimguagemComboBox.FormattingEnabled = true;
+            this.LimguagemComboBox.Items.AddRange(new object[] {
+            "Português",
+            "English",
+            "Franch",
+            "Dutch"});
             this.LimguagemComboBox.Location = new System.Drawing.Point(132, 114);
             this.LimguagemComboBox.Name = "LimguagemComboBox";
             this.LimguagemComboBox.Size = new System.Drawing.Size(186, 21);
             this.LimguagemComboBox.TabIndex = 2;
+            this.LimguagemComboBox.Text = "Português";
             this.ConfigToolTip.SetToolTip(this.LimguagemComboBox, "Lingua usada em toda a aplicação.");
             // 
             // CaracterLabel
             // 
-            this.CaracterLabel.AutoSize = true;
-            this.CaracterLabel.Location = new System.Drawing.Point(70, 184);
+            this.CaracterLabel.Location = new System.Drawing.Point(34, 184);
             this.CaracterLabel.Name = "CaracterLabel";
-            this.CaracterLabel.Size = new System.Drawing.Size(56, 13);
+            this.CaracterLabel.Size = new System.Drawing.Size(92, 13);
             this.CaracterLabel.TabIndex = 3;
             this.CaracterLabel.Text = "Separador";
+            this.CaracterLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // SeparadorText
             // 
             this.SeparadorText.Location = new System.Drawing.Point(132, 181);
+            this.SeparadorText.MaxLength = 1;
             this.SeparadorText.Name = "SeparadorText";
-            this.SeparadorText.Size = new System.Drawing.Size(76, 20);
+            this.SeparadorText.Size = new System.Drawing.Size(29, 20);
             this.SeparadorText.TabIndex = 4;
+            this.SeparadorText.Text = ",";
             this.ConfigToolTip.SetToolTip(this.SeparadorText, "Caracter separador para usar nas listas de cromos (default é virgula).");
             // 
             // Config

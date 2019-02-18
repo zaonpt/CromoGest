@@ -34,11 +34,12 @@
             this.ListaRepetidoLabel = new System.Windows.Forms.Label();
             this.ListaRepetidosLabel = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.NovosButton = new System.Windows.Forms.Button();
+            this.InfoButton = new System.Windows.Forms.Button();
+            this.EntradasButton = new System.Windows.Forms.Button();
             this.TrocasButton = new System.Windows.Forms.Button();
             this.EditarButton = new System.Windows.Forms.Button();
             this.CadernetaComboBox = new System.Windows.Forms.ComboBox();
+            this.CadernetaLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Pagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -120,11 +121,12 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.NovosButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.InfoButton, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.EntradasButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.TrocasButton, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.EditarButton, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.CadernetaComboBox, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.CadernetaLabel, 3, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -132,26 +134,26 @@
             this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 34);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
-            // button3
+            // InfoButton
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.Location = new System.Drawing.Point(223, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(104, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Futuro";
-            this.button3.UseVisualStyleBackColor = true;
+            this.InfoButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.InfoButton.Location = new System.Drawing.Point(223, 5);
+            this.InfoButton.Name = "InfoButton";
+            this.InfoButton.Size = new System.Drawing.Size(104, 23);
+            this.InfoButton.TabIndex = 13;
+            this.InfoButton.Text = "Info";
+            this.InfoButton.UseVisualStyleBackColor = true;
             // 
-            // NovosButton
+            // EntradasButton
             // 
-            this.NovosButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.NovosButton.Location = new System.Drawing.Point(113, 5);
-            this.NovosButton.Name = "NovosButton";
-            this.NovosButton.Size = new System.Drawing.Size(104, 23);
-            this.NovosButton.TabIndex = 12;
-            this.NovosButton.Text = "&Novos";
-            this.toolTip1.SetToolTip(this.NovosButton, "Registar entrada de cromos.");
-            this.NovosButton.UseVisualStyleBackColor = true;
+            this.EntradasButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.EntradasButton.Location = new System.Drawing.Point(113, 5);
+            this.EntradasButton.Name = "EntradasButton";
+            this.EntradasButton.Size = new System.Drawing.Size(104, 23);
+            this.EntradasButton.TabIndex = 12;
+            this.EntradasButton.Text = "&Entradas";
+            this.toolTip1.SetToolTip(this.EntradasButton, "Registar entrada de cromos.");
+            this.EntradasButton.UseVisualStyleBackColor = true;
             // 
             // TrocasButton
             // 
@@ -184,6 +186,16 @@
             this.CadernetaComboBox.Size = new System.Drawing.Size(201, 21);
             this.CadernetaComboBox.TabIndex = 16;
             this.toolTip1.SetToolTip(this.CadernetaComboBox, "Selecionar caderneta.");
+            // 
+            // CadernetaLabel
+            // 
+            this.CadernetaLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.CadernetaLabel.Location = new System.Drawing.Point(344, 9);
+            this.CadernetaLabel.Name = "CadernetaLabel";
+            this.CadernetaLabel.Size = new System.Drawing.Size(93, 16);
+            this.CadernetaLabel.TabIndex = 17;
+            this.CadernetaLabel.Text = "Caderneta";
+            this.CadernetaLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // dataGridView1
             // 
@@ -273,8 +285,8 @@
 
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button NovosButton;
+        private System.Windows.Forms.Button InfoButton;
+        private System.Windows.Forms.Button EntradasButton;
         private System.Windows.Forms.Button TrocasButton;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
@@ -288,5 +300,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label ListaCromosLabel;
         private System.Windows.Forms.TextBox ListaCromosText;
+        private System.Windows.Forms.Label CadernetaLabel;
     }
 }

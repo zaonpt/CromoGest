@@ -17,7 +17,7 @@ namespace CromoGest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Caderneta());
+            Application.Run(new Config());
         }
     }
 }
