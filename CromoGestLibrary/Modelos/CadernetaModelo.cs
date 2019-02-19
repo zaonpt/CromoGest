@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CromoGestLibrary
+namespace CromoGestLibrary.Modelos
 {
     class CadernetaModelo
     {
@@ -32,5 +32,13 @@ namespace CromoGestLibrary
         /// Custo de uma carteira
         /// </summary>
         public decimal CustoCarteira { get; set; }
+
+        /// <summary>
+        /// Listagem dos nomes das paginas
+        /// </summary>
+        public List<PaginaModelo> Paginas { get; set; }
+
+        public List<CromoModelo> Cromos { get; set; }
+
     }
 }

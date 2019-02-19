@@ -60,6 +60,7 @@
     <Compile Include="Modelos\CromoModelo.cs" />
     <Compile Include="Modelos\DestinatarioModelo.cs" />
     <Compile Include="Modelos\MetaCromoModelo.cs" />
+    <Compile Include="Modelos\PaginaModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelos\TrocaModelo.cs" />
   </ItemGroup>

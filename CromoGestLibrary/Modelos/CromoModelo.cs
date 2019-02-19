@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CromoGestLibrary
+namespace CromoGestLibrary.Modelos
 {
     class CromoModelo
     {
@@ -13,14 +13,14 @@ namespace CromoGestLibrary
         /// </summary>
         public int Id { get; set; }
 
-        /// <summary>
-        /// Identificador do Meta Cromo correspondente
-        /// </summary>
-        public int IdMetaCromo { get; set; }
+        public string Nome { get; set; }
 
-        /// <summary>
-        /// Identificador do Status do Cromo
-        /// </summary>
-        public int IdStatusCromo { get; set; }
+        public string Descricao { get; set; }
+
+        public string Caderneta { get; set; }
+
+        public int Posicao { get; set; }
+
+        public int MyProperty { get; set; }
     }
 }
