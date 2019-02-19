@@ -17,6 +17,9 @@ namespace CromoGest.Forms
             InitializeComponent();
         }
 
+        private void Config_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

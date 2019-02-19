@@ -101,6 +101,7 @@
             this.Controls.Add(this.Labellixo);
             this.Name = "Config";
             this.Text = "Config";
+            this.Load += new System.EventHandler(this.Config_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
