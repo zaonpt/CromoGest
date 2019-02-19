@@ -28,9 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.HistoricoTituloLabel = new System.Windows.Forms.Label();
-            this.SairButton = new System.Windows.Forms.Button();
+            this.DataGridViewHistorico = new System.Windows.Forms.DataGridView();
             this.IdTroca = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Progresso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataProposta = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,15 +37,17 @@
             this.Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CromosRecebidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CromosEnviados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.LabelHistoricoTitulo = new System.Windows.Forms.Label();
+            this.ButtonSair = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewHistorico)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // DataGridViewHistorico
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DataGridViewHistorico.AllowUserToAddRows = false;
+            this.DataGridViewHistorico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.DataGridViewHistorico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridViewHistorico.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.IdTroca,
             this.Progresso,
             this.DataProposta,
@@ -56,30 +56,10 @@
             this.Destinatario,
             this.CromosRecebidos,
             this.CromosEnviados});
-            this.dataGridView1.Location = new System.Drawing.Point(-1, 91);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(952, 210);
-            this.dataGridView1.TabIndex = 2;
-            // 
-            // HistoricoTituloLabel
-            // 
-            this.HistoricoTituloLabel.AutoSize = true;
-            this.HistoricoTituloLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HistoricoTituloLabel.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.HistoricoTituloLabel.Location = new System.Drawing.Point(354, 24);
-            this.HistoricoTituloLabel.Name = "HistoricoTituloLabel";
-            this.HistoricoTituloLabel.Size = new System.Drawing.Size(83, 24);
-            this.HistoricoTituloLabel.TabIndex = 8;
-            this.HistoricoTituloLabel.Text = "Historico";
-            // 
-            // SairButton
-            // 
-            this.SairButton.Location = new System.Drawing.Point(12, 395);
-            this.SairButton.Name = "SairButton";
-            this.SairButton.Size = new System.Drawing.Size(100, 23);
-            this.SairButton.TabIndex = 14;
-            this.SairButton.Text = "&Sair";
-            this.SairButton.UseVisualStyleBackColor = true;
+            this.DataGridViewHistorico.Location = new System.Drawing.Point(-1, 91);
+            this.DataGridViewHistorico.Name = "DataGridViewHistorico";
+            this.DataGridViewHistorico.Size = new System.Drawing.Size(952, 210);
+            this.DataGridViewHistorico.TabIndex = 2;
             // 
             // IdTroca
             // 
@@ -89,7 +69,7 @@
             this.IdTroca.Name = "IdTroca";
             this.IdTroca.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.IdTroca.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.IdTroca.Width = 56;
+            this.IdTroca.Width = 50;
             // 
             // Progresso
             // 
@@ -141,19 +121,39 @@
             this.CromosEnviados.HeaderText = "Cromos Enviados";
             this.CromosEnviados.Name = "CromosEnviados";
             // 
+            // LabelHistoricoTitulo
+            // 
+            this.LabelHistoricoTitulo.AutoSize = true;
+            this.LabelHistoricoTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelHistoricoTitulo.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.LabelHistoricoTitulo.Location = new System.Drawing.Point(354, 24);
+            this.LabelHistoricoTitulo.Name = "LabelHistoricoTitulo";
+            this.LabelHistoricoTitulo.Size = new System.Drawing.Size(83, 24);
+            this.LabelHistoricoTitulo.TabIndex = 8;
+            this.LabelHistoricoTitulo.Text = "Historico";
+            // 
+            // ButtonSair
+            // 
+            this.ButtonSair.Location = new System.Drawing.Point(12, 395);
+            this.ButtonSair.Name = "ButtonSair";
+            this.ButtonSair.Size = new System.Drawing.Size(100, 23);
+            this.ButtonSair.TabIndex = 14;
+            this.ButtonSair.Text = "&Sair";
+            this.ButtonSair.UseVisualStyleBackColor = true;
+            // 
             // Historico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(950, 450);
-            this.Controls.Add(this.SairButton);
-            this.Controls.Add(this.HistoricoTituloLabel);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.ButtonSair);
+            this.Controls.Add(this.LabelHistoricoTitulo);
+            this.Controls.Add(this.DataGridViewHistorico);
             this.MaximumSize = new System.Drawing.Size(1500, 489);
             this.MinimumSize = new System.Drawing.Size(887, 489);
             this.Name = "Historico";
             this.Text = "Historico";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewHistorico)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -161,8 +161,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label HistoricoTituloLabel;
+        private System.Windows.Forms.DataGridView DataGridViewHistorico;
+        private System.Windows.Forms.Label LabelHistoricoTitulo;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTroca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Progresso;
         private System.Windows.Forms.DataGridViewTextBoxColumn DataProposta;
@@ -171,6 +171,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
-        private System.Windows.Forms.Button SairButton;
+        private System.Windows.Forms.Button ButtonSair;
     }
 }

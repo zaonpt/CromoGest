@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Cadernetas
 {
-    public partial class Cadernetas : Form
+    public partial class NovaCaderneta : Form
     {
-        public Cadernetas()
+        public NovaCaderneta()
         {
             InitializeComponent();
         }
