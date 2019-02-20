@@ -197,6 +197,7 @@
             this.ButtonCriar.Text = "&Nova";
             this.toolTip1.SetToolTip(this.ButtonCriar, "Registar uma nova caderneta.");
             this.ButtonCriar.UseVisualStyleBackColor = true;
+            this.ButtonCriar.Click += new System.EventHandler(this.ButtonCriar_Click);
             // 
             // ButtonSair
             // 

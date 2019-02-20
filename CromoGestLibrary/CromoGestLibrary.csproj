@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalConfig.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Modelos\CadernetaModelo.cs" />
     <Compile Include="Modelos\CromoModelo.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelos\TrocaModelo.cs" />
     <Compile Include="SQL\IDataConnection.cs" />
+    <Compile Include="SQL\SqlConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SQL\CromoGestBD.mdf">

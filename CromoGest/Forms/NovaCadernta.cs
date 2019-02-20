@@ -17,7 +17,9 @@ namespace CromoGest.Forms
             InitializeComponent();
         }
 
-        private void NovaCaderneta_Load(object sender, EventArgs e)
+
+
+        private void ButtonCriar_Click(object sender, EventArgs e)
         {
 
         }

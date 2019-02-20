@@ -133,5 +133,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CromoGestLibrary\CromoGestLibrary.csproj">
+      <Project>{b768cd49-2dae-432c-8efa-531b15be7cfb}</Project>
+      <Name>CromoGestLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

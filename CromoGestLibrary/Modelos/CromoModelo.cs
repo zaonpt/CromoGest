@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CromoGestLibrary.Modelos
 {
-    class CromoModelo
+    public class CromoModelo
     {
         /// <summary>
         /// Identificador automático

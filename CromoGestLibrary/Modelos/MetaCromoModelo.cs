@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CromoGestLibrary.Modelos
 {
-    class MetaCromoModelo
+    public class MetaCromoModelo
     {
         /// <summary>
         /// Identificador automático.

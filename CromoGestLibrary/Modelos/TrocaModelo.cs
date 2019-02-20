@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CromoGestLibrary.Modelos
 {
-    class TrocaModelo
+    public class TrocaModelo
     {
         /// <summary>
         /// Destinatário da troca

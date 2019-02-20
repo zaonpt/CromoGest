@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CromoGestLibrary.Modelos
 {
-    class PaginaModelo
+    public class PaginaModelo
     {
         public int Id { get; set; }
 
