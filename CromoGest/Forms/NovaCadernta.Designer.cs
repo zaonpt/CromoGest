@@ -33,13 +33,13 @@
             this.LabelCadernetas = new System.Windows.Forms.Label();
             this.GroupBoxCaderneta = new System.Windows.Forms.GroupBox();
             this.GroupBoxCarteira = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.TextQuantidadeCarteira = new System.Windows.Forms.TextBox();
             this.LabelCarteiraQuantidade = new System.Windows.Forms.Label();
-            this.CarteiraCustoText = new System.Windows.Forms.TextBox();
+            this.TextCarteiraCusto = new System.Windows.Forms.TextBox();
             this.LabelCarteiraCusto = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TextQuantidade = new System.Windows.Forms.TextBox();
             this.LabelQuantidade = new System.Windows.Forms.Label();
-            this.NomeText = new System.Windows.Forms.TextBox();
+            this.TextNome = new System.Windows.Forms.TextBox();
             this.LabelNome = new System.Windows.Forms.Label();
             this.ButtonCriar = new System.Windows.Forms.Button();
             this.ButtonSair = new System.Windows.Forms.Button();
@@ -99,9 +99,9 @@
             // GroupBoxCaderneta
             // 
             this.GroupBoxCaderneta.Controls.Add(this.GroupBoxCarteira);
-            this.GroupBoxCaderneta.Controls.Add(this.textBox1);
+            this.GroupBoxCaderneta.Controls.Add(this.TextQuantidade);
             this.GroupBoxCaderneta.Controls.Add(this.LabelQuantidade);
-            this.GroupBoxCaderneta.Controls.Add(this.NomeText);
+            this.GroupBoxCaderneta.Controls.Add(this.TextNome);
             this.GroupBoxCaderneta.Controls.Add(this.LabelNome);
             this.GroupBoxCaderneta.Location = new System.Drawing.Point(3, 3);
             this.GroupBoxCaderneta.Name = "GroupBoxCaderneta";
@@ -112,9 +112,9 @@
             // 
             // GroupBoxCarteira
             // 
-            this.GroupBoxCarteira.Controls.Add(this.textBox3);
+            this.GroupBoxCarteira.Controls.Add(this.TextQuantidadeCarteira);
             this.GroupBoxCarteira.Controls.Add(this.LabelCarteiraQuantidade);
-            this.GroupBoxCarteira.Controls.Add(this.CarteiraCustoText);
+            this.GroupBoxCarteira.Controls.Add(this.TextCarteiraCusto);
             this.GroupBoxCarteira.Controls.Add(this.LabelCarteiraCusto);
             this.GroupBoxCarteira.Location = new System.Drawing.Point(6, 129);
             this.GroupBoxCarteira.Name = "GroupBoxCarteira";
@@ -123,12 +123,12 @@
             this.GroupBoxCarteira.TabStop = false;
             this.GroupBoxCarteira.Text = "Carteira";
             // 
-            // textBox3
+            // TextQuantidadeCarteira
             // 
-            this.textBox3.Location = new System.Drawing.Point(100, 80);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(164, 20);
-            this.textBox3.TabIndex = 8;
+            this.TextQuantidadeCarteira.Location = new System.Drawing.Point(100, 80);
+            this.TextQuantidadeCarteira.Name = "TextQuantidadeCarteira";
+            this.TextQuantidadeCarteira.Size = new System.Drawing.Size(164, 20);
+            this.TextQuantidadeCarteira.TabIndex = 8;
             // 
             // LabelCarteiraQuantidade
             // 
@@ -139,12 +139,12 @@
             this.LabelCarteiraQuantidade.TabIndex = 7;
             this.LabelCarteiraQuantidade.Text = "Quantidade";
             // 
-            // CarteiraCustoText
+            // TextCarteiraCusto
             // 
-            this.CarteiraCustoText.Location = new System.Drawing.Point(100, 34);
-            this.CarteiraCustoText.Name = "CarteiraCustoText";
-            this.CarteiraCustoText.Size = new System.Drawing.Size(164, 20);
-            this.CarteiraCustoText.TabIndex = 6;
+            this.TextCarteiraCusto.Location = new System.Drawing.Point(100, 34);
+            this.TextCarteiraCusto.Name = "TextCarteiraCusto";
+            this.TextCarteiraCusto.Size = new System.Drawing.Size(164, 20);
+            this.TextCarteiraCusto.TabIndex = 6;
             // 
             // LabelCarteiraCusto
             // 
@@ -155,12 +155,12 @@
             this.LabelCarteiraCusto.TabIndex = 5;
             this.LabelCarteiraCusto.Text = "Custo";
             // 
-            // textBox1
+            // TextQuantidade
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 85);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(164, 20);
-            this.textBox1.TabIndex = 3;
+            this.TextQuantidade.Location = new System.Drawing.Point(106, 85);
+            this.TextQuantidade.Name = "TextQuantidade";
+            this.TextQuantidade.Size = new System.Drawing.Size(164, 20);
+            this.TextQuantidade.TabIndex = 3;
             // 
             // LabelQuantidade
             // 
@@ -171,12 +171,12 @@
             this.LabelQuantidade.TabIndex = 2;
             this.LabelQuantidade.Text = "Quantidade";
             // 
-            // NomeText
+            // TextNome
             // 
-            this.NomeText.Location = new System.Drawing.Point(106, 41);
-            this.NomeText.Name = "NomeText";
-            this.NomeText.Size = new System.Drawing.Size(164, 20);
-            this.NomeText.TabIndex = 1;
+            this.TextNome.Location = new System.Drawing.Point(106, 41);
+            this.TextNome.Name = "TextNome";
+            this.TextNome.Size = new System.Drawing.Size(164, 20);
+            this.TextNome.TabIndex = 1;
             // 
             // LabelNome
             // 
@@ -456,7 +456,6 @@
             this.MinimumSize = new System.Drawing.Size(857, 687);
             this.Name = "NovaCaderneta";
             this.Text = "CromoGest";
-            this.Load += new System.EventHandler(this.NovaCaderneta_Load);
             this.GroupBoxCaderneta.ResumeLayout(false);
             this.GroupBoxCaderneta.PerformLayout();
             this.GroupBoxCarteira.ResumeLayout(false);
@@ -481,14 +480,14 @@
         private System.Windows.Forms.ComboBox CadernetasComboBox;
         private System.Windows.Forms.Label LabelCadernetas;
         private System.Windows.Forms.GroupBox GroupBoxCaderneta;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TextQuantidade;
         private System.Windows.Forms.Label LabelQuantidade;
-        private System.Windows.Forms.TextBox NomeText;
+        private System.Windows.Forms.TextBox TextNome;
         private System.Windows.Forms.Label LabelNome;
         private System.Windows.Forms.GroupBox GroupBoxCarteira;
-        private System.Windows.Forms.TextBox CarteiraCustoText;
+        private System.Windows.Forms.TextBox TextCarteiraCusto;
         private System.Windows.Forms.Label LabelCarteiraCusto;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox TextQuantidadeCarteira;
         private System.Windows.Forms.Label LabelCarteiraQuantidade;
         private System.Windows.Forms.Button ButtonCriar;
         private System.Windows.Forms.Button ButtonSair;
