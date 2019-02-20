@@ -47,6 +47,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper.cs" />
     <Compile Include="Modelos\CadernetaModelo.cs" />
     <Compile Include="Modelos\CromoModelo.cs" />
     <Compile Include="Modelos\DestinatarioModelo.cs" />
@@ -63,6 +65,7 @@
     <Compile Include="Modelos\PaginaModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelos\TrocaModelo.cs" />
+    <Compile Include="SQL\IDataConnection.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="SQL\CromoGestBD.mdf">

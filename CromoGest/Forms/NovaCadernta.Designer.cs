@@ -46,6 +46,8 @@
             this.ButtonAlterar = new System.Windows.Forms.Button();
             this.LabelNovaCadernetaTitulo = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ButtonGravar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -62,8 +64,6 @@
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ToolStripNovaCaderneta = new System.Windows.Forms.ToolStrip();
             this.ToolStripLabelNovaCaderneta = new System.Windows.Forms.ToolStripLabel();
-            this.ButtonGravar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.GroupBoxCaderneta.SuspendLayout();
             this.GroupBoxCarteira.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -228,10 +228,32 @@
             this.LabelNovaCadernetaTitulo.ForeColor = System.Drawing.Color.DarkSlateBlue;
             this.LabelNovaCadernetaTitulo.Location = new System.Drawing.Point(3, 0);
             this.LabelNovaCadernetaTitulo.Name = "LabelNovaCadernetaTitulo";
-            this.LabelNovaCadernetaTitulo.Size = new System.Drawing.Size(835, 40);
+            this.LabelNovaCadernetaTitulo.Size = new System.Drawing.Size(959, 40);
             this.LabelNovaCadernetaTitulo.TabIndex = 6;
             this.LabelNovaCadernetaTitulo.Text = "Nova Caderneta";
             this.LabelNovaCadernetaTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // ButtonGravar
+            // 
+            this.ButtonGravar.Location = new System.Drawing.Point(317, 461);
+            this.ButtonGravar.Name = "ButtonGravar";
+            this.ButtonGravar.Size = new System.Drawing.Size(100, 23);
+            this.ButtonGravar.TabIndex = 6;
+            this.ButtonGravar.TabStop = false;
+            this.ButtonGravar.Text = "&Gravar";
+            this.toolTip1.SetToolTip(this.ButtonGravar, "Registar uma nova caderneta.");
+            this.ButtonGravar.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(3, 461);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 7;
+            this.button1.TabStop = false;
+            this.button1.Text = "&Criar";
+            this.toolTip1.SetToolTip(this.button1, "Registar uma nova caderneta.");
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -251,7 +273,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(841, 648);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(965, 648);
             this.tableLayoutPanel1.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -267,7 +289,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(835, 35);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(959, 35);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // tableLayoutPanel3
@@ -286,7 +308,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(835, 31);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(959, 31);
             this.tableLayoutPanel3.TabIndex = 8;
             // 
             // tableLayoutPanel4
@@ -301,20 +323,20 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(835, 494);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(959, 494);
             this.tableLayoutPanel4.TabIndex = 6;
             // 
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Controls.Add(this.GroupBoxCaderneta, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55.03212F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 44.96788F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(318, 488);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
@@ -336,7 +358,7 @@
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(505, 488);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(629, 488);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // DataGridViewCromos
@@ -346,9 +368,9 @@
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.DataGridViewCromos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridViewCromos.Location = new System.Drawing.Point(255, 33);
+            this.DataGridViewCromos.Location = new System.Drawing.Point(317, 33);
             this.DataGridViewCromos.Name = "DataGridViewCromos";
-            this.DataGridViewCromos.Size = new System.Drawing.Size(247, 422);
+            this.DataGridViewCromos.Size = new System.Drawing.Size(309, 422);
             this.DataGridViewCromos.TabIndex = 5;
             // 
             // dataGridViewTextBoxColumn1
@@ -369,7 +391,7 @@
             this.LabelPaginas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.LabelPaginas.Location = new System.Drawing.Point(3, 8);
             this.LabelPaginas.Name = "LabelPaginas";
-            this.LabelPaginas.Size = new System.Drawing.Size(246, 13);
+            this.LabelPaginas.Size = new System.Drawing.Size(308, 13);
             this.LabelPaginas.TabIndex = 2;
             this.LabelPaginas.Text = "Paginas";
             this.LabelPaginas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -377,9 +399,9 @@
             // LabelCromos
             // 
             this.LabelCromos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.LabelCromos.Location = new System.Drawing.Point(255, 8);
+            this.LabelCromos.Location = new System.Drawing.Point(317, 8);
             this.LabelCromos.Name = "LabelCromos";
-            this.LabelCromos.Size = new System.Drawing.Size(247, 13);
+            this.LabelCromos.Size = new System.Drawing.Size(309, 13);
             this.LabelCromos.TabIndex = 3;
             this.LabelCromos.Text = "Cromos";
             this.LabelCromos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -393,7 +415,7 @@
             this.DataGridViewPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewPaginas.Location = new System.Drawing.Point(3, 33);
             this.DataGridViewPaginas.Name = "DataGridViewPaginas";
-            this.DataGridViewPaginas.Size = new System.Drawing.Size(246, 422);
+            this.DataGridViewPaginas.Size = new System.Drawing.Size(308, 422);
             this.DataGridViewPaginas.TabIndex = 4;
             // 
             // Pagina
@@ -414,7 +436,7 @@
             this.ToolStripLabelNovaCaderneta});
             this.ToolStripNovaCaderneta.Location = new System.Drawing.Point(0, 618);
             this.ToolStripNovaCaderneta.Name = "ToolStripNovaCaderneta";
-            this.ToolStripNovaCaderneta.Size = new System.Drawing.Size(841, 25);
+            this.ToolStripNovaCaderneta.Size = new System.Drawing.Size(965, 25);
             this.ToolStripNovaCaderneta.TabIndex = 9;
             this.ToolStripNovaCaderneta.Text = "toolStrip1";
             // 
@@ -424,33 +446,11 @@
             this.ToolStripLabelNovaCaderneta.Size = new System.Drawing.Size(73, 22);
             this.ToolStripLabelNovaCaderneta.Text = "Notificações";
             // 
-            // ButtonGravar
-            // 
-            this.ButtonGravar.Location = new System.Drawing.Point(255, 461);
-            this.ButtonGravar.Name = "ButtonGravar";
-            this.ButtonGravar.Size = new System.Drawing.Size(100, 23);
-            this.ButtonGravar.TabIndex = 6;
-            this.ButtonGravar.TabStop = false;
-            this.ButtonGravar.Text = "&Gravar";
-            this.toolTip1.SetToolTip(this.ButtonGravar, "Registar uma nova caderneta.");
-            this.ButtonGravar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(3, 461);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 23);
-            this.button1.TabIndex = 7;
-            this.button1.TabStop = false;
-            this.button1.Text = "&Criar";
-            this.toolTip1.SetToolTip(this.button1, "Registar uma nova caderneta.");
-            this.button1.UseVisualStyleBackColor = true;
-            // 
             // NovaCaderneta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(841, 648);
+            this.ClientSize = new System.Drawing.Size(965, 648);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MinimumSize = new System.Drawing.Size(857, 687);
             this.Name = "NovaCaderneta";
