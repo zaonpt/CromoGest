@@ -40,5 +40,19 @@ namespace CromoGestLibrary.Modelos
 
         public List<CromoModelo> Cromos { get; set; }
 
+        public CadernetaModelo() { }
+
+        public CadernetaModelo(string nome, string quantidade, string quantidadeSaqueta, string custoSaqueta)
+        {
+            Nome = nome;
+            int.TryParse(quantidade, out int quantidadeCromos);
+            QuantidadeCromos = quantidadeCromos;
+            int.TryParse(quantidadeSaqueta, out int quantidadeCromosSaqueta);
+            QuantidadeCromosSaqueta = quantidadeCromosSaqueta;
+            decimal.TryParse(custoSaqueta, out decimal custoCarteira);
+            CustoCarteira = custoCarteira;
+
+
+        }
     }
 }
