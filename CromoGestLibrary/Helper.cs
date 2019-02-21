@@ -10,9 +10,9 @@ namespace CromoGestLibrary
     public static class Helper
     {
 
-        public static string CnnVal(string nome)
+        public static string CnnVal(string name)
         {
-            return ConfigurationManager.ConnectionStrings[nome].ConnectionString;
+            return ConfigurationManager.ConnectionStrings[name].ConnectionString;
         }
 
     }
