@@ -14,12 +14,20 @@ namespace CromoGest.Forms
 { 
     public partial class NovaCaderneta : Form
     {
+        private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
+               
         public NovaCaderneta()
         {
             InitializeComponent();
+            LigaLista();
         }
-
-
+        
+        private void LigaLista()
+        {
+            CadernetasComboBox.DataSource = null;
+            CadernetasComboBox.DataSource = cadernetasExistentes;
+            CadernetasComboBox.DisplayMember =  "Nome";
+        }
 
         private void ButtonCriar_Click(object sender, EventArgs e)
         {
@@ -32,11 +40,16 @@ namespace CromoGest.Forms
                     TextCarteiraCusto.Text);
                 GlobalConfig.Connection.CriarCaderneta(caderneta);
 
+                cadernetasExistentes.Add(caderneta);
+
+                LigaLista();
+
+                CadernetasComboBox.Text = TextNome.Text;
+
                 TextNome.Text = "";
                 TextQuantidade.Text = "";
                 TextQuantidadeCarteira.Text = "";
                 TextCarteiraCusto.Text = "";
-
             }
             else
             {
@@ -66,5 +79,6 @@ namespace CromoGest.Forms
 
             return valido;
         }
+
     }
 }

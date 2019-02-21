@@ -51,8 +51,6 @@ namespace CromoGestLibrary.Modelos
             QuantidadeCromosSaqueta = quantidadeCromosSaqueta;
             decimal.TryParse(custoSaqueta, out decimal custoCarteira);
             CustoCarteira = custoCarteira;
-
-
         }
     }
 }

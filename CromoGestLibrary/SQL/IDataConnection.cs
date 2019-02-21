@@ -11,7 +11,7 @@ namespace CromoGestLibrary.SQL
     {
         CadernetaModelo CriarCaderneta(CadernetaModelo Caderneta);
 
-
+        List<CadernetaModelo> GetCadernetas();
 
     }
 }
