@@ -26,7 +26,7 @@ namespace CromoGest.Forms
         {
             CadernetasComboBox.DataSource = null;
             CadernetasComboBox.DataSource = cadernetasExistentes;
-            CadernetasComboBox.DisplayMember =  "Nome";
+            CadernetasComboBox.DisplayMember =  "Nome";            
         }
 
         private void ButtonCriar_Click(object sender, EventArgs e)
@@ -41,15 +41,8 @@ namespace CromoGest.Forms
                 GlobalConfig.Connection.CriarCaderneta(caderneta);
 
                 cadernetasExistentes.Add(caderneta);
-
                 LigaLista();
-
                 CadernetasComboBox.Text = TextNome.Text;
-
-                TextNome.Text = "";
-                TextQuantidade.Text = "";
-                TextQuantidadeCarteira.Text = "";
-                TextCarteiraCusto.Text = "";
             }
             else
             {
@@ -80,5 +73,9 @@ namespace CromoGest.Forms
             return valido;
         }
 
+        private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

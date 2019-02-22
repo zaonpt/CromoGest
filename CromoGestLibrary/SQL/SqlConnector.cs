@@ -12,7 +12,7 @@ namespace CromoGestLibrary.SQL
     public class SqlConnector : IDataConnection
     {
         private const string bd = "CromoGestBD";
-        // TODO - implementar o metodo.
+        
         /// <summary>
         /// Cria uma Caderneta na Base de dados MS SQL 
         /// </summary>
@@ -34,6 +34,17 @@ namespace CromoGestLibrary.SQL
                 Caderneta.Id = p.Get<int>("@id");
                 return Caderneta;
             }
+        }
+
+        public CadernetaModelo GetCadernetaByNome(string nome)
+        {
+            //using(IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            //{
+            //    CadernetaModelo caderneta;
+            //    //caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome");
+            //    return null;
+            //}
+            return null;
         }
 
         public List<CadernetaModelo> GetCadernetas()

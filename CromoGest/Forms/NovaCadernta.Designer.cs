@@ -85,6 +85,7 @@
             this.CadernetasComboBox.Name = "CadernetasComboBox";
             this.CadernetasComboBox.Size = new System.Drawing.Size(240, 21);
             this.CadernetasComboBox.TabIndex = 0;
+            this.CadernetasComboBox.SelectedValueChanged += new System.EventHandler(this.CadernetasComboBox_SelectedValueChanged);
             // 
             // LabelCadernetas
             // 
