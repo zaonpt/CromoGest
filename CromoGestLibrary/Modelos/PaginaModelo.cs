@@ -8,10 +8,18 @@ namespace CromoGestLibrary.Modelos
 {
     public class PaginaModelo
     {
+        private string name;
+
+        public PaginaModelo(string name)
+        {
+            this.name = name;
+        }
+
         public int Id { get; set; }
 
         public string Nome { get; set; }
 
-        public int Quantidade { get; set; }
+        public List<CromoModelo> CromosNaPagina { get; set; } = new List<CromoModelo>();
+
     }
 }

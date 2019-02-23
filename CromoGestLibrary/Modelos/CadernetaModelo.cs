@@ -38,8 +38,6 @@ namespace CromoGestLibrary.Modelos
         /// </summary>
         public List<PaginaModelo> Paginas { get; set; }
 
-        public List<CromoModelo> Cromos { get; set; }
-
         public CadernetaModelo() { }
 
         public CadernetaModelo(string nome, string quantidade, string quantidadeSaqueta, string custoSaqueta)
