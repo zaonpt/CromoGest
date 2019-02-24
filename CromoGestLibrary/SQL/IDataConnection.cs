@@ -13,7 +13,6 @@ namespace CromoGestLibrary.SQL
 
         List<CadernetaModelo> GetCadernetas();
 
-        //CadernetaModelo GetCadernetaByNome(string nome);
-
+        bool PopulateCaderneta(CadernetaModelo caderneta);
     }
 }

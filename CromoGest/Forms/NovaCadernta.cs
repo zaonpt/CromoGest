@@ -50,7 +50,7 @@ namespace CromoGest.Forms
                     TextQuantidade.Text, 
                     TextQuantidadeCarteira.Text, 
                     TextCarteiraCusto.Text);
-                GlobalConfig.Connection.CriarCaderneta(caderneta);
+                caderneta = GlobalConfig.Connection.CriarCaderneta(caderneta);
 
                 cadernetasExistentes.Add(caderneta);
                 LigaLista();
@@ -59,12 +59,8 @@ namespace CromoGest.Forms
                 CadernetasComboBox.SelectedValue = caderneta.Id;
 
                 LigaGridPaginas();
-
             }
-            else
-            {
-                MessageBox.Show("Campos incorrectos, verificar e tentar novamente.");
-            }
+            else { MessageBox.Show("Campos incorrectos, verificar e tentar novamente."); }
         }
 
         private bool ValidarForm()
@@ -92,10 +88,12 @@ namespace CromoGest.Forms
         {
             // TODO - Bindar TextBoxes com ComboBoxes para evitar o HORROR que se segue
             CadernetaModelo caderneta = ((CadernetaModelo)CadernetasComboBox.SelectedItem);
-            TextNome.Text = caderneta.Nome;
-            TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
-            TextQuantidadeCarteira.Text = caderneta.QuantidadeCromosSaqueta.ToString();
-            TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
+            if (caderneta != null) { 
+                TextNome.Text = caderneta.Nome;
+                TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
+                TextQuantidadeCarteira.Text = caderneta.QuantidadeCromosCarteira.ToString();
+                TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
+            }
         }
                      
         private void LigaGridPaginas()
@@ -111,11 +109,17 @@ namespace CromoGest.Forms
             DataGridViewCromos.Rows.Clear();
         }
 
-        private void ButtonAceitarPaginas_Click(object sender, EventArgs e)
+        private int SomatorioCromosPaginas()
         {
-            int quantidade = DataGridViewPaginas.Rows.
+            return DataGridViewPaginas.Rows.
                         Cast<DataGridViewRow>().
                         Sum(t => Convert.ToInt32(t.Cells["Quantidade"].Value));
+        }
+
+        private void ButtonAceitarPaginas_Click(object sender, EventArgs e)
+        {
+            int quantidade = SomatorioCromosPaginas();
+
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
@@ -128,14 +132,9 @@ namespace CromoGest.Forms
                         DataGridViewCromos.Rows.Add(new object[] { i.ToString(), "" });
                     }
                 }
-                else
-                {
-                    MessageBox.Show("Implementar refazer lista de cromos existente!");
-                }
+                else  { MessageBox.Show("Implementar refazer lista de cromos existente!"); }
             }
-            else {
-                MessageBox.Show("Erro: Quantidade errada de cromos. O total de cromos tem de ser igual à soma dos cromo das paginas.");
-            }
+            else { MessageBox.Show("Erro: Quantidade errada de cromos. O total de cromos tem de ser igual à soma dos cromo das paginas."); }
         }
 
         private bool GerarNovaspaginas()
@@ -144,39 +143,45 @@ namespace CromoGest.Forms
             return true;
         }
 
-
-        private void ButtonGravar_Click(object sender, EventArgs e)
-        {
+        private bool Confirmado() {
             string message = "Tem a certeza que a informação que introduziu está toda correcta?";
             string caption = "Atenção:";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-            result = MessageBox.Show(message, caption, buttons);
-            if (result == DialogResult.Yes)
-            {
-                List<PaginaModelo> paginasDaCaderneta = new List<PaginaModelo>(); //trocar uma chamada da globalconfig
-
-
-
-            }
-
-            //CRIAR UMA LISTA?! COM CROMOS NOVOS (TODOS LOGO) 
-            //OU SACAR À BD E GUARDAS NUMA LISTA (POR ORDEM) E APAGAR CROMOS E PAGINAS DA BD
-
-            //PARA CADA PAGINA INTRODUZIDA NO GRID IR SACAR À LISTA O NUMERO DE CROMOS INDICADOS NA GRID
-            //AINDA EM CADA PAGINA, GRAVAR TUDO NA BD
-
-
-
-
-            //LIXO!!!!!!!!!!!!!!!!!!!!
-            //PaginaModelo pagina;
-            //foreach (DataGridViewRow row in DataGridViewPaginas.Rows)
-            //{
-            //    pagina = new PaginaModelo(Name);
-            //    pagina.CromosNaPagina.Add(new CromoModelo(Name));
-            //    //paginasDaCaderneta.Add();
-            //}
+            return (MessageBox.Show(message, caption, buttons) == DialogResult.Yes);
         }
+
+
+        private void ButtonGravar_Click(object sender, EventArgs e)
+        {
+            if (Confirmado() && DadosValidados())
+            {
+                CadernetaModelo caderneta = (CadernetaModelo)CadernetasComboBox.SelectedItem;
+                int totalCromos = SomatorioCromosPaginas();
+                int cromoCounter = 0;
+
+                int nrows = DataGridViewPaginas.Rows.Count - 1;
+                for (int j = 0; j < nrows; j++)
+                {
+                    int cromosPagina = Convert.ToInt32(DataGridViewPaginas.Rows[j].Cells["Quantidade"].Value.ToString());
+                    caderneta.Paginas.Add(new PaginaModelo(DataGridViewPaginas.Rows[j].Cells["Pagina"].Value.ToString()));
+                    for (int i = 0; i < cromosPagina; i++)
+                    {
+                        string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
+                        caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
+                            numero: cromoCounter.ToString(),
+                            descricao: descricaoCromo
+                        ));
+                    }
+                }
+                if (GlobalConfig.Connection.PopulateCaderneta(caderneta)) { }
+            }
+        }
+
+        private bool DadosValidados()
+        {
+            return SomatorioCromosPaginas() == Convert.ToInt32(TextQuantidade.Text);
+        }
+
+
     }
 }

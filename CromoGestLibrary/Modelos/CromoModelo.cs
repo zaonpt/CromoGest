@@ -8,20 +8,24 @@ namespace CromoGestLibrary.Modelos
 {
     public class CromoModelo
     {
-        private string name;
-
-        public CromoModelo(string name)
+        public CromoModelo()
         {
-            this.name = name;
         }
 
-        /// <summary>
-        /// Identificador automático
-        /// </summary>
+        public CromoModelo(string numero, string descricao, int quantidade = 0)
+        {
+            Numero = numero;
+            Descricao = descricao;
+            Quantidade = quantidade;
+        }
+
         public int Id { get; set; }
 
-        public string Nome { get; set; }
+        public string Numero { get; set; }
 
         public string Descricao { get; set; }
+
+        public int Quantidade { get; set; }
+
     }
 }
