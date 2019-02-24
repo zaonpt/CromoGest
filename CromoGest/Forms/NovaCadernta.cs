@@ -173,7 +173,9 @@ namespace CromoGest.Forms
                         ));
                     }
                 }
-                if (GlobalConfig.Connection.PopulateCaderneta(caderneta)) { }
+                if (GlobalConfig.Connection.PopulateCaderneta(caderneta)) {
+                    MessageBox.Show("Caderneta Criada com sucesso!");
+                }
             }
         }
 
