@@ -28,6 +28,10 @@ namespace CromoGest.Forms
             ComboBoxCadernetas.DataSource = cadernetasExistentes;
             ComboBoxCadernetas.DisplayMember =  "Nome";
             ComboBoxCadernetas.ValueMember = "Id";
+            DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+            DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
+            DataGridViewPaginas.Columns["Id"].Visible = false;
+
             if (cadernetasExistentes.Count==0)
             {
                 DataGridViewPaginas.Enabled = false;
@@ -51,7 +55,6 @@ namespace CromoGest.Forms
                     TextQuantidadeCarteira.Text, 
                     TextCarteiraCusto.Text);
                 caderneta = GlobalConfig.Connection.CriarCaderneta(caderneta);
-
                 cadernetasExistentes.Add(caderneta);
                 LigaLista();
                 
@@ -93,6 +96,8 @@ namespace CromoGest.Forms
                 TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
                 TextQuantidadeCarteira.Text = caderneta.QuantidadeCromosCarteira.ToString();
                 TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
+                DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+
             }
         }
                      

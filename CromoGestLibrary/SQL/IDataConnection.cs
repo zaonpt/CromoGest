@@ -18,5 +18,6 @@ namespace CromoGestLibrary.SQL
         int TotalCromos(CadernetaModelo IdCaderneta);
 
         bool TemCromos(CadernetaModelo Idcaderneta);
+
     }
 }

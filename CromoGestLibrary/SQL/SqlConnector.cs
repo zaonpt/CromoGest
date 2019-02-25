@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdLuso;
+        private const string bd = bdCasa;
 
         /// <summary>
         /// Cria uma Caderneta na Base de dados MS SQL 
@@ -37,6 +37,8 @@ namespace CromoGestLibrary.SQL
                 return Caderneta;
             }
         }
+
+
 
 
         /// <summary>
@@ -66,8 +68,28 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 List<CadernetaModelo> cadernetas;
+                List<PaginaModelo> paginas;
+                List<CromoModelo> cromos;
+                DynamicParameters p;
                 cadernetas = connection.Query<CadernetaModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
 
+                foreach (CadernetaModelo caderneta in cadernetas)
+                {
+                    p = new DynamicParameters();
+                    p.Add("@IdCaderneta", caderneta.Id);
+                    paginas = connection.Query<PaginaModelo>("dbo.spGetPaginasDeCadernetaById", p, commandType: CommandType.StoredProcedure).ToList();
+                    if (paginas == null) return cadernetas;
+                    caderneta.Paginas = paginas;
+    
+                    foreach (PaginaModelo pagina in paginas)
+                    {
+                        p = new DynamicParameters();
+                        p.Add("@IdPagina", pagina.Id);
+                        cromos = connection.Query<CromoModelo>("dbo.spGetCromosDePaginaById", p, commandType: CommandType.StoredProcedure).ToList();
+                        if (cromos == null) return cadernetas;
+                        pagina.Cromos = cromos;
+                    }
+                }
                 return cadernetas;
             }
         }

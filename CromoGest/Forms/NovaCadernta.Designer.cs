@@ -66,12 +66,12 @@
             this.LabelPaginas = new System.Windows.Forms.Label();
             this.LabelCromos = new System.Windows.Forms.Label();
             this.DataGridViewPaginas = new System.Windows.Forms.DataGridView();
-            this.Pagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableLayoutPanelButtons_Paginas = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelButtons_Cromos = new System.Windows.Forms.TableLayoutPanel();
             this.ToolStripNovaCaderneta = new System.Windows.Forms.ToolStrip();
             this.ToolStripLabelNovaCaderneta = new System.Windows.Forms.ToolStripLabel();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBoxCaderneta.SuspendLayout();
             this.GroupBoxCarteira.SuspendLayout();
             this.TableLayoutPanelTitulo.SuspendLayout();
@@ -484,7 +484,7 @@
             this.DataGridViewPaginas.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewPaginas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewPaginas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Pagina,
+            this.Nome,
             this.Quantidade});
             this.DataGridViewPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewPaginas.Enabled = false;
@@ -492,24 +492,6 @@
             this.DataGridViewPaginas.Name = "DataGridViewPaginas";
             this.DataGridViewPaginas.Size = new System.Drawing.Size(329, 482);
             this.DataGridViewPaginas.TabIndex = 4;
-            // 
-            // Pagina
-            // 
-            this.Pagina.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.Pagina.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Pagina.HeaderText = "Pagina";
-            this.Pagina.Name = "Pagina";
-            // 
-            // Quantidade
-            // 
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Quantidade.HeaderText = "Quantidade Cromos";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.Width = 80;
             // 
             // TableLayoutPanelButtons_Paginas
             // 
@@ -556,6 +538,26 @@
             this.ToolStripLabelNovaCaderneta.Text = "Preencher a informação da caderneta (Esq). Depois preenche a informação de cada p" +
     "agina (centro). For fim e facultativamente, customizar os cromos (dir).";
             this.ToolStripLabelNovaCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Nome
+            // 
+            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nome.DataPropertyName = "Nome";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Nome.HeaderText = "Pagina";
+            this.Nome.Name = "Nome";
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.DataPropertyName = "Quantidade";
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Quantidade.HeaderText = "Quantidade Cromos";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.Width = 80;
             // 
             // FormNovaCaderneta
             // 
@@ -625,11 +627,11 @@
         private System.Windows.Forms.Button ButtonEliminar;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons_Paginas;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons_Cromos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pagina;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.Button ButtonLimpar;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
     }
 }
 

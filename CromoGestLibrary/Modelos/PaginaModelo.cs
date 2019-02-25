@@ -12,6 +12,10 @@ namespace CromoGestLibrary.Modelos
 
         public string Nome { get; set; }
 
+        public int Quantidade { get; set; }
+
+        public int IdCaderneta { get; set; }
+
         public List<CromoModelo> Cromos { get; set; } = new List<CromoModelo>();
 
         public PaginaModelo(string nome)
