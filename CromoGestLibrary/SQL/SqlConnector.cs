@@ -108,14 +108,39 @@ namespace CromoGestLibrary.SQL
             return SemErros;
         }
 
-        public int TotalCromos(int IdCaderneta)
+
+        /// <summary>
+        /// Contabiliza a quantidade de cromos aquiridos (e introduzidos na BD)
+        /// </summary>
+        /// <param name="IdCaderneta">Quantidade de cromos adquiridos</param>
+        /// <returns></returns>
+        public bool TemCromos(CadernetaModelo IdCaderneta)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
-                p.Add("@IdCaderneta", IdCaderneta);
+                p.Add("@IdCaderneta", IdCaderneta.Id);
 
-                return connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int r = connection.Query<int>("spTotalCromosAdquiridos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                return r > 0;
+            }
+        }
+
+
+        /// <summary>
+        /// Contabiliza a quantidade de cromos que a caderneta tem populados
+        /// </summary>
+        /// <param name="IdCaderneta">Quantidade de cromos populados</param>
+        /// <returns></returns>
+        public int TotalCromos(CadernetaModelo IdCaderneta)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@IdCaderneta", IdCaderneta.Id);
+
+                int r = connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                return r;
             }
         }
     }

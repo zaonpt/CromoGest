@@ -196,8 +196,17 @@ namespace CromoGest.Forms
         private void ButtonAlterar_Click(object sender, EventArgs e)
         {
             // TODO - VERIFICAR SE CADERNETA JA TEM CROMOS (SE SIM PERGUNTAR O QUE FAZER, SE NAO PERGUNTAR O QUE FAZER)
-            int totalCromos = GlobalConfig.Connection.TotalCromos(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
-            MessageBox.Show(totalCromos.ToString());
+            int totalCromos = GlobalConfig.Connection.TotalCromos((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
+            
+            if(totalCromos == 0)
+            {
+
+            }
+            else
+            {
+
+            }
+
         }
     }
 }
