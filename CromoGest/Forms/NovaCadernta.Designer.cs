@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.CadernetasComboBox = new System.Windows.Forms.ComboBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCadernetas = new System.Windows.Forms.Label();
             this.GroupBoxCaderneta = new System.Windows.Forms.GroupBox();
             this.GroupBoxCarteira = new System.Windows.Forms.GroupBox();
@@ -61,6 +61,8 @@
             this.TableLayoutPanelButttons_Caderneta = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelPag_Crom = new System.Windows.Forms.TableLayoutPanel();
             this.DataGridViewCromos = new System.Windows.Forms.DataGridView();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LabelPaginas = new System.Windows.Forms.Label();
             this.LabelCromos = new System.Windows.Forms.Label();
             this.DataGridViewPaginas = new System.Windows.Forms.DataGridView();
@@ -70,8 +72,6 @@
             this.TableLayoutPanelButtons_Cromos = new System.Windows.Forms.TableLayoutPanel();
             this.ToolStripNovaCaderneta = new System.Windows.Forms.ToolStrip();
             this.ToolStripLabelNovaCaderneta = new System.Windows.Forms.ToolStripLabel();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBoxCaderneta.SuspendLayout();
             this.GroupBoxCarteira.SuspendLayout();
             this.TableLayoutPanelTitulo.SuspendLayout();
@@ -87,16 +87,16 @@
             this.ToolStripNovaCaderneta.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CadernetasComboBox
+            // ComboBoxCadernetas
             // 
-            this.CadernetasComboBox.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.CadernetasComboBox.ForeColor = System.Drawing.Color.Black;
-            this.CadernetasComboBox.FormattingEnabled = true;
-            this.CadernetasComboBox.Location = new System.Drawing.Point(152, 7);
-            this.CadernetasComboBox.Name = "CadernetasComboBox";
-            this.CadernetasComboBox.Size = new System.Drawing.Size(240, 21);
-            this.CadernetasComboBox.TabIndex = 0;
-            this.CadernetasComboBox.SelectedValueChanged += new System.EventHandler(this.CadernetasComboBox_SelectedValueChanged);
+            this.ComboBoxCadernetas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ComboBoxCadernetas.ForeColor = System.Drawing.Color.Black;
+            this.ComboBoxCadernetas.FormattingEnabled = true;
+            this.ComboBoxCadernetas.Location = new System.Drawing.Point(152, 7);
+            this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(240, 21);
+            this.ComboBoxCadernetas.TabIndex = 0;
+            this.ComboBoxCadernetas.SelectedValueChanged += new System.EventHandler(this.CadernetasComboBox_SelectedValueChanged);
             // 
             // LabelCadernetas
             // 
@@ -219,7 +219,7 @@
             // 
             this.ButtonSair.BackColor = System.Drawing.SystemColors.Control;
             this.ButtonSair.ForeColor = System.Drawing.Color.Black;
-            this.ButtonSair.Location = new System.Drawing.Point(15, 133);
+            this.ButtonSair.Location = new System.Drawing.Point(15, 259);
             this.ButtonSair.Name = "ButtonSair";
             this.ButtonSair.Size = new System.Drawing.Size(100, 23);
             this.ButtonSair.TabIndex = 4;
@@ -239,6 +239,7 @@
             this.ButtonAlterar.Text = "Alterar";
             this.toolTip1.SetToolTip(this.ButtonAlterar, "Registar alteração na caderneta selecionada e existente.");
             this.ButtonAlterar.UseVisualStyleBackColor = false;
+            this.ButtonAlterar.Click += new System.EventHandler(this.ButtonAlterar_Click);
             // 
             // LabelNovaCadernetaTitulo
             // 
@@ -249,7 +250,7 @@
             this.LabelNovaCadernetaTitulo.ForeColor = System.Drawing.Color.White;
             this.LabelNovaCadernetaTitulo.Location = new System.Drawing.Point(3, 0);
             this.LabelNovaCadernetaTitulo.Name = "LabelNovaCadernetaTitulo";
-            this.LabelNovaCadernetaTitulo.Size = new System.Drawing.Size(959, 40);
+            this.LabelNovaCadernetaTitulo.Size = new System.Drawing.Size(1001, 40);
             this.LabelNovaCadernetaTitulo.TabIndex = 6;
             this.LabelNovaCadernetaTitulo.Text = "Caderneta Nova";
             this.LabelNovaCadernetaTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -327,7 +328,7 @@
             this.TableLayoutPanelTitulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelTitulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.TableLayoutPanelTitulo.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelTitulo.Size = new System.Drawing.Size(965, 648);
+            this.TableLayoutPanelTitulo.Size = new System.Drawing.Size(1007, 677);
             this.TableLayoutPanelTitulo.TabIndex = 7;
             // 
             // tableLayoutPanel2
@@ -336,14 +337,14 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 149F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 263F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.CadernetasComboBox, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.LabelCadernetas, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 43);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(959, 35);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1001, 35);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // TableLayoutPanelCad_Pag_Crom
@@ -358,7 +359,7 @@
             this.TableLayoutPanelCad_Pag_Crom.Name = "TableLayoutPanelCad_Pag_Crom";
             this.TableLayoutPanelCad_Pag_Crom.RowCount = 1;
             this.TableLayoutPanelCad_Pag_Crom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelCad_Pag_Crom.Size = new System.Drawing.Size(959, 529);
+            this.TableLayoutPanelCad_Pag_Crom.Size = new System.Drawing.Size(1001, 558);
             this.TableLayoutPanelCad_Pag_Crom.TabIndex = 6;
             // 
             // TableLayoutPanelCaderneta_Buttons
@@ -373,7 +374,7 @@
             this.TableLayoutPanelCaderneta_Buttons.RowCount = 2;
             this.TableLayoutPanelCaderneta_Buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 260F));
             this.TableLayoutPanelCaderneta_Buttons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelCaderneta_Buttons.Size = new System.Drawing.Size(318, 523);
+            this.TableLayoutPanelCaderneta_Buttons.Size = new System.Drawing.Size(318, 552);
             this.TableLayoutPanelCaderneta_Buttons.TabIndex = 3;
             // 
             // TableLayoutPanelButttons_Caderneta
@@ -385,9 +386,9 @@
             this.TableLayoutPanelButttons_Caderneta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonCriar, 1, 1);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonAlterar, 1, 2);
-            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonSair, 1, 5);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonEliminar, 1, 4);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonLimpar, 1, 3);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonSair, 1, 6);
             this.TableLayoutPanelButttons_Caderneta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelButttons_Caderneta.Location = new System.Drawing.Point(3, 263);
             this.TableLayoutPanelButttons_Caderneta.Name = "TableLayoutPanelButttons_Caderneta";
@@ -397,9 +398,9 @@
             this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelButttons_Caderneta.Size = new System.Drawing.Size(312, 257);
+            this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.TableLayoutPanelButttons_Caderneta.Size = new System.Drawing.Size(312, 286);
             this.TableLayoutPanelButttons_Caderneta.TabIndex = 3;
             // 
             // TableLayoutPanelPag_Crom
@@ -420,7 +421,7 @@
             this.TableLayoutPanelPag_Crom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelPag_Crom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelPag_Crom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.TableLayoutPanelPag_Crom.Size = new System.Drawing.Size(629, 523);
+            this.TableLayoutPanelPag_Crom.Size = new System.Drawing.Size(671, 552);
             this.TableLayoutPanelPag_Crom.TabIndex = 4;
             // 
             // DataGridViewCromos
@@ -432,10 +433,29 @@
             this.Descricao});
             this.DataGridViewCromos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewCromos.Enabled = false;
-            this.DataGridViewCromos.Location = new System.Drawing.Point(317, 33);
+            this.DataGridViewCromos.Location = new System.Drawing.Point(338, 33);
             this.DataGridViewCromos.Name = "DataGridViewCromos";
-            this.DataGridViewCromos.Size = new System.Drawing.Size(309, 453);
+            this.DataGridViewCromos.Size = new System.Drawing.Size(330, 482);
             this.DataGridViewCromos.TabIndex = 5;
+            // 
+            // Numero
+            // 
+            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Numero.HeaderText = "Cromo";
+            this.Numero.Name = "Numero";
+            this.Numero.Width = 70;
+            // 
+            // Descricao
+            // 
+            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
             // 
             // LabelPaginas
             // 
@@ -443,7 +463,7 @@
             this.LabelPaginas.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPaginas.Location = new System.Drawing.Point(3, 0);
             this.LabelPaginas.Name = "LabelPaginas";
-            this.LabelPaginas.Size = new System.Drawing.Size(308, 30);
+            this.LabelPaginas.Size = new System.Drawing.Size(329, 30);
             this.LabelPaginas.TabIndex = 2;
             this.LabelPaginas.Text = "Paginas";
             this.LabelPaginas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -452,9 +472,9 @@
             // 
             this.LabelCromos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabelCromos.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelCromos.Location = new System.Drawing.Point(317, 0);
+            this.LabelCromos.Location = new System.Drawing.Point(338, 0);
             this.LabelCromos.Name = "LabelCromos";
-            this.LabelCromos.Size = new System.Drawing.Size(309, 30);
+            this.LabelCromos.Size = new System.Drawing.Size(330, 30);
             this.LabelCromos.TabIndex = 3;
             this.LabelCromos.Text = "Cromos";
             this.LabelCromos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -470,7 +490,7 @@
             this.DataGridViewPaginas.Enabled = false;
             this.DataGridViewPaginas.Location = new System.Drawing.Point(3, 33);
             this.DataGridViewPaginas.Name = "DataGridViewPaginas";
-            this.DataGridViewPaginas.Size = new System.Drawing.Size(308, 453);
+            this.DataGridViewPaginas.Size = new System.Drawing.Size(329, 482);
             this.DataGridViewPaginas.TabIndex = 4;
             // 
             // Pagina
@@ -498,11 +518,11 @@
             this.TableLayoutPanelButtons_Paginas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutPanelButtons_Paginas.Controls.Add(this.ButtonAceitarPaginas, 0, 0);
             this.TableLayoutPanelButtons_Paginas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelButtons_Paginas.Location = new System.Drawing.Point(3, 492);
+            this.TableLayoutPanelButtons_Paginas.Location = new System.Drawing.Point(3, 521);
             this.TableLayoutPanelButtons_Paginas.Name = "TableLayoutPanelButtons_Paginas";
             this.TableLayoutPanelButtons_Paginas.RowCount = 1;
             this.TableLayoutPanelButtons_Paginas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelButtons_Paginas.Size = new System.Drawing.Size(308, 28);
+            this.TableLayoutPanelButtons_Paginas.Size = new System.Drawing.Size(329, 28);
             this.TableLayoutPanelButtons_Paginas.TabIndex = 7;
             // 
             // TableLayoutPanelButtons_Cromos
@@ -512,20 +532,20 @@
             this.TableLayoutPanelButtons_Cromos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutPanelButtons_Cromos.Controls.Add(this.ButtonConcluir, 0, 0);
             this.TableLayoutPanelButtons_Cromos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelButtons_Cromos.Location = new System.Drawing.Point(317, 492);
+            this.TableLayoutPanelButtons_Cromos.Location = new System.Drawing.Point(338, 521);
             this.TableLayoutPanelButtons_Cromos.Name = "TableLayoutPanelButtons_Cromos";
             this.TableLayoutPanelButtons_Cromos.RowCount = 1;
             this.TableLayoutPanelButtons_Cromos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelButtons_Cromos.Size = new System.Drawing.Size(309, 28);
+            this.TableLayoutPanelButtons_Cromos.Size = new System.Drawing.Size(330, 28);
             this.TableLayoutPanelButtons_Cromos.TabIndex = 8;
             // 
             // ToolStripNovaCaderneta
             // 
             this.ToolStripNovaCaderneta.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripLabelNovaCaderneta});
-            this.ToolStripNovaCaderneta.Location = new System.Drawing.Point(0, 624);
+            this.ToolStripNovaCaderneta.Location = new System.Drawing.Point(0, 653);
             this.ToolStripNovaCaderneta.Name = "ToolStripNovaCaderneta";
-            this.ToolStripNovaCaderneta.Size = new System.Drawing.Size(965, 24);
+            this.ToolStripNovaCaderneta.Size = new System.Drawing.Size(1007, 24);
             this.ToolStripNovaCaderneta.TabIndex = 9;
             this.ToolStripNovaCaderneta.Text = "toolStrip1";
             // 
@@ -537,31 +557,12 @@
     "agina (centro). For fim e facultativamente, customizar os cromos (dir).";
             this.ToolStripLabelNovaCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // Numero
-            // 
-            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Numero.HeaderText = "Cromo";
-            this.Numero.Name = "Numero";
-            this.Numero.Width = 70;
-            // 
-            // Descricao
-            // 
-            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
-            // 
             // FormNovaCaderneta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(965, 648);
+            this.ClientSize = new System.Drawing.Size(1007, 677);
             this.Controls.Add(this.TableLayoutPanelTitulo);
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(857, 687);
@@ -590,7 +591,7 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox CadernetasComboBox;
+        private System.Windows.Forms.ComboBox ComboBoxCadernetas;
         private System.Windows.Forms.Label LabelCadernetas;
         private System.Windows.Forms.GroupBox GroupBoxCaderneta;
         private System.Windows.Forms.TextBox TextQuantidade;

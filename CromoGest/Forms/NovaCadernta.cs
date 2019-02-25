@@ -24,10 +24,10 @@ namespace CromoGest.Forms
         
         private void LigaLista()
         {
-            CadernetasComboBox.DataSource = null;
-            CadernetasComboBox.DataSource = cadernetasExistentes;
-            CadernetasComboBox.DisplayMember =  "Nome";
-            CadernetasComboBox.ValueMember = "Id";
+            ComboBoxCadernetas.DataSource = null;
+            ComboBoxCadernetas.DataSource = cadernetasExistentes;
+            ComboBoxCadernetas.DisplayMember =  "Nome";
+            ComboBoxCadernetas.ValueMember = "Id";
             if (cadernetasExistentes.Count==0)
             {
                 DataGridViewPaginas.Enabled = false;
@@ -56,7 +56,7 @@ namespace CromoGest.Forms
                 LigaLista();
                 
                 // TODO - Apagar proxima linha quando implentar bindagem aos TextBoxes
-                CadernetasComboBox.SelectedValue = caderneta.Id;
+                ComboBoxCadernetas.SelectedValue = caderneta.Id;
 
                 LigaGridPaginas();
             }
@@ -87,7 +87,7 @@ namespace CromoGest.Forms
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             // TODO - Bindar TextBoxes com ComboBoxes para evitar o HORROR que se segue
-            CadernetaModelo caderneta = ((CadernetaModelo)CadernetasComboBox.SelectedItem);
+            CadernetaModelo caderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
             if (caderneta != null) { 
                 TextNome.Text = caderneta.Nome;
                 TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
@@ -100,6 +100,14 @@ namespace CromoGest.Forms
         {
             DataGridViewPaginas.Enabled = true;
             ButtonAceitarPaginas.Enabled = true;
+            TextNome.Enabled = false;
+            TextQuantidade.Enabled = false;
+            TextQuantidadeCarteira.Enabled = false;
+            TextCarteiraCusto.Enabled = false;
+            ComboBoxCadernetas.Enabled = false;
+            ButtonAlterar.Enabled = false;
+            ButtonLimpar.Enabled = false;
+            ButtonEliminar.Enabled = false;
         }
 
         private void LigaGridCromos()
@@ -123,6 +131,7 @@ namespace CromoGest.Forms
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
+                DataGridViewPaginas.Enabled = false;
                 if (GerarNovaspaginas())
                 {
                     LigaGridCromos();
@@ -155,7 +164,7 @@ namespace CromoGest.Forms
         {
             if (Confirmado() && DadosValidados())
             {
-                CadernetaModelo caderneta = (CadernetaModelo)CadernetasComboBox.SelectedItem;
+                CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
                 int totalCromos = SomatorioCromosPaginas();
                 int cromoCounter = 0;
 
@@ -184,6 +193,11 @@ namespace CromoGest.Forms
             return SomatorioCromosPaginas() == Convert.ToInt32(TextQuantidade.Text);
         }
 
-
+        private void ButtonAlterar_Click(object sender, EventArgs e)
+        {
+            // TODO - VERIFICAR SE CADERNETA JA TEM CROMOS (SE SIM PERGUNTAR O QUE FAZER, SE NAO PERGUNTAR O QUE FAZER)
+            int totalCromos = GlobalConfig.Connection.TotalCromos(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+            MessageBox.Show(totalCromos.ToString());
+        }
     }
 }

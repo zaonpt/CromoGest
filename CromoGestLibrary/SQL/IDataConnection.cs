@@ -14,5 +14,7 @@ namespace CromoGestLibrary.SQL
         List<CadernetaModelo> GetCadernetas();
 
         bool PopulateCaderneta(CadernetaModelo caderneta);
+
+        int TotalCromos(int IdCaderneta);
     }
 }

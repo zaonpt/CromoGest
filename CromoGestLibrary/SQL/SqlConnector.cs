@@ -12,8 +12,8 @@ namespace CromoGestLibrary.SQL
     public class SqlConnector : IDataConnection
     {
         private const string bdCasa = "CromoGestBDCasa";
-        private const string bdLuso = "CromoGestBDCasa";
-        private const string bd = bdCasa;
+        private const string bdLuso = "CromoGestBDLuso";
+        private const string bd = bdLuso;
 
         /// <summary>
         /// Cria uma Caderneta na Base de dados MS SQL 
@@ -51,7 +51,7 @@ namespace CromoGestLibrary.SQL
                 CadernetaModelo caderneta;
                 var p = new DynamicParameters();
                 p.Add("@nome", nome);
-                caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome",p, commandType: CommandType.StoredProcedure).ToList()[0];
+                caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return null;
             }
         }
@@ -66,7 +66,7 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 List<CadernetaModelo> cadernetas;
-                cadernetas = connection.Query<CadernetaModelo>("dbo.spGetCadernetas").ToList();
+                cadernetas = connection.Query<CadernetaModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
 
                 return cadernetas;
             }
@@ -106,6 +106,17 @@ namespace CromoGestLibrary.SQL
                 }
             }
             return SemErros;
+        }
+
+        public int TotalCromos(int IdCaderneta)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@IdCaderneta", IdCaderneta);
+
+                return connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+            }
         }
     }
 }
