@@ -15,6 +15,7 @@ namespace CromoGest.Forms
     public partial class FormNovaCaderneta : Form
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
+        private List<CromoModelo> CromosCadernetaSelecionada = new List<CromoModelo>();
                
         public FormNovaCaderneta()
         {
@@ -22,6 +23,28 @@ namespace CromoGest.Forms
             LigaLista();
         }
         
+        private void LigaTextboxes(bool ligar)
+        {
+            TextNome.Enabled = ligar;
+            TextQuantidade.Enabled = ligar;
+            TextQuantidadeCarteira.Enabled = ligar;
+            TextCarteiraCusto.Enabled = ligar;
+        }
+
+        private void LigaGridPaginas(bool ligar)
+        {
+            DataGridViewPaginas.Enabled = ligar;
+            ButtonAceitarPaginas.Enabled = ligar;
+        }
+
+        private void LigaGridCromos(bool ligar)
+        {
+            DataGridViewCromos.Enabled = ligar;
+            ButtonConcluir.Enabled = ligar;
+            if (ligar) DataGridViewCromos.Rows.Clear();
+        }
+
+
         private void LigaLista()
         {
             ComboBoxCadernetas.DataSource = null;
@@ -31,18 +54,6 @@ namespace CromoGest.Forms
             DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
             DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
             DataGridViewPaginas.Columns["Id"].Visible = false;
-
-            if (cadernetasExistentes.Count==0)
-            {
-                DataGridViewPaginas.Enabled = false;
-                ButtonAceitarPaginas.Enabled = false;
-            }
-            else
-            {
-                DataGridViewPaginas.Enabled = true;
-                ButtonAceitarPaginas.Enabled = true;
-                // TODO - Buscar as paginas que existam nesta caderneta
-            }            
         }
 
         private void ButtonCriar_Click(object sender, EventArgs e)
@@ -62,12 +73,6 @@ namespace CromoGest.Forms
                 ComboBoxCadernetas.SelectedValue = caderneta.Id;
 
                 LigaGridPaginas();
-
-                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
-                {
-                    DataGridViewPaginas.AutoGenerateColumns = false;
-                    DataGridViewPaginas.DataSource = null;
-                }
             }
             else { MessageBox.Show("Campos incorrectos, verificar e tentar novamente."); }
         }
@@ -93,6 +98,14 @@ namespace CromoGest.Forms
             return valido;
         }
 
+        private void LimpaGrids()
+        {
+            DataGridViewPaginas.AutoGenerateColumns = false;
+            DataGridViewPaginas.DataSource = null;
+            DataGridViewCromos.AutoGenerateColumns = false;
+            DataGridViewCromos.DataSource = null;
+        }
+
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             // TODO - Bindar TextBoxes com ComboBoxes para evitar o HORROR que se segue
@@ -104,36 +117,43 @@ namespace CromoGest.Forms
                 TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
                 if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
                 {
-                    DataGridViewPaginas.AutoGenerateColumns = false;
-                    DataGridViewPaginas.DataSource = null;
+                    LimpaGrids();
+                    LigaGridPaginas(true);
                 }
                 else
                 {
+                    LigaGridPaginas(false);
                     DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+                    FillCromos();
                 }
             }
         }
-                     
-        private void LigaGridPaginas()
+
+        private void FillCromos()
         {
-            DataGridViewPaginas.Enabled = true;
-            ButtonAceitarPaginas.Enabled = true;
-            TextNome.Enabled = false;
-            TextQuantidade.Enabled = false;
-            TextQuantidadeCarteira.Enabled = false;
-            TextCarteiraCusto.Enabled = false;
-            ComboBoxCadernetas.Enabled = false;
-            ButtonAlterar.Enabled = false;
-            ButtonLimpar.Enabled = false;
-            ButtonEliminar.Enabled = false;
+            CromosCadernetaSelecionada = new List<CromoModelo>();
+            foreach (PaginaModelo pagina in ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas)
+            {
+                foreach (CromoModelo cromo in pagina.Cromos)
+                {
+                    CromosCadernetaSelecionada.Add(cromo);
+                }
+            }
+            DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
+            DataGridViewCromos.Columns["Id"].Visible = false;
+            DataGridViewCromos.Columns["Quantidade"].Visible = false;
+            DataGridViewCromos.Columns["IdPagina"].Visible = false;
+
+
         }
 
-        private void LigaGridCromos()
+        private void LigaGridPaginas()
         {
-            DataGridViewCromos.Enabled = true;
-            ButtonConcluir.Enabled = true;
-            DataGridViewCromos.Rows.Clear();
+            LigaTextboxes(false);
+            LigaGridPaginas(true);
+            LigaGridCromos(false);
         }
+
 
         private int SomatorioCromosPaginas()
         {
@@ -149,10 +169,10 @@ namespace CromoGest.Forms
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
-                DataGridViewPaginas.Enabled = false;
+                LigaGridPaginas(false);
                 if (GerarNovaspaginas())
                 {
-                    LigaGridCromos();
+                    LigaGridCromos(true);
 
                     for (int i = 1; i <= quantidade; i++)
                     {
@@ -225,6 +245,21 @@ namespace CromoGest.Forms
 
             }
 
+        }
+
+        private void ButtonLimpar_Click(object sender, EventArgs e)
+        {
+            ComboBoxCadernetas.SelectedItem = null;
+            LimpaGrids();
+            LimpaTexts();
+        }
+
+        private void LimpaTexts()
+        {
+            TextNome.Text = "";
+            TextQuantidade.Text ="";
+            TextQuantidadeCarteira.Text = "";
+            TextCarteiraCusto.Text = "";
         }
     }
 }

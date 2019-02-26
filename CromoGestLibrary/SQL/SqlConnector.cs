@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdLuso;
+        private const string bd = bdCasa;
 
         /// <summary>
         /// Cria uma Caderneta na Base de dados MS SQL 
@@ -22,6 +22,7 @@ namespace CromoGestLibrary.SQL
         /// <returns>Caderneta que foi inserida</returns>
         public CadernetaModelo CriarCaderneta(CadernetaModelo Caderneta)
         {
+            if (Caderneta == null) return null;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
@@ -48,6 +49,7 @@ namespace CromoGestLibrary.SQL
         /// <returns>Devolve a caderneta com o nome fornecido</returns>
         public CadernetaModelo GetCadernetaByNome(string nome)
         {
+            if (nome == null) return null;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 CadernetaModelo caderneta;
@@ -103,6 +105,8 @@ namespace CromoGestLibrary.SQL
         public bool PopulateCaderneta(CadernetaModelo caderneta)
         {
             bool SemErros = true;
+            if (caderneta == null) return !SemErros;
+
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 foreach (PaginaModelo pagina in caderneta.Paginas)
@@ -138,6 +142,7 @@ namespace CromoGestLibrary.SQL
         /// <returns></returns>
         public bool TemCromos(CadernetaModelo IdCaderneta)
         {
+            if (IdCaderneta == null) return false;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
@@ -156,6 +161,7 @@ namespace CromoGestLibrary.SQL
         /// <returns></returns>
         public int TotalCromos(CadernetaModelo IdCaderneta)
         {
+            if (IdCaderneta == null) return 0;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
