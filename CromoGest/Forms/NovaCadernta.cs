@@ -62,6 +62,12 @@ namespace CromoGest.Forms
                 ComboBoxCadernetas.SelectedValue = caderneta.Id;
 
                 LigaGridPaginas();
+
+                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
+                {
+                    DataGridViewPaginas.AutoGenerateColumns = false;
+                    DataGridViewPaginas.DataSource = null;
+                }
             }
             else { MessageBox.Show("Campos incorrectos, verificar e tentar novamente."); }
         }
@@ -96,8 +102,15 @@ namespace CromoGest.Forms
                 TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
                 TextQuantidadeCarteira.Text = caderneta.QuantidadeCromosCarteira.ToString();
                 TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
-                DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
-
+                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
+                {
+                    DataGridViewPaginas.AutoGenerateColumns = false;
+                    DataGridViewPaginas.DataSource = null;
+                }
+                else
+                {
+                    DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+                }
             }
         }
                      

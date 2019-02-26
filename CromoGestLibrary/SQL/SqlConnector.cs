@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdCasa;
+        private const string bd = bdLuso;
 
         /// <summary>
         /// Cria uma Caderneta na Base de dados MS SQL 
