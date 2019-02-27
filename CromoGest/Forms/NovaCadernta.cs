@@ -35,25 +35,67 @@ namespace CromoGest.Forms
         {
             DataGridViewPaginas.Enabled = ligar;
             ButtonAceitarPaginas.Enabled = ligar;
+            if (ligar)
+            {
+                DataGridViewPaginas.Rows.Clear();
+                foreach (DataGridViewColumn c in DataGridViewPaginas.Columns)
+                { 
+                    c.DefaultCellStyle.SelectionForeColor = Color.Black;
+                    c.DefaultCellStyle.ForeColor = Color.Black;
+                }
+            }
+            else
+            {
+                DataGridViewPaginas.ForeColor = Color.Gray;
+                DataGridViewPaginas.DefaultCellStyle.ForeColor = Color.Gray;
+                foreach (DataGridViewColumn c in DataGridViewPaginas.Columns)
+                {
+                    c.DefaultCellStyle.SelectionForeColor = Color.Gray;
+                    c.DefaultCellStyle.ForeColor = Color.Gray;
+                }
+            }
         }
 
         private void LigaGridCromos(bool ligar)
         {
             DataGridViewCromos.Enabled = ligar;
             ButtonConcluir.Enabled = ligar;
-            if (ligar) DataGridViewCromos.Rows.Clear();
+            if (ligar)
+            {
+                DataGridViewCromos.Rows.Clear();
+                DataGridViewCromos.Enabled = true;
+                foreach (DataGridViewColumn c in DataGridViewCromos.Columns)
+                    c.DefaultCellStyle.ForeColor = Color.Black;
+            }
+            else
+            {
+                DataGridViewCromos.Enabled = false;
+                DataGridViewCromos.ForeColor = Color.Gray;
+                DataGridViewCromos.DefaultCellStyle.ForeColor = Color.Gray;
+                foreach (DataGridViewColumn c in DataGridViewCromos.Columns)
+                    c.DefaultCellStyle.ForeColor = Color.Gray;
+            }
         }
 
-
-        private void LigaLista()
+        private void ResetComboBox()
         {
             ComboBoxCadernetas.DataSource = null;
             ComboBoxCadernetas.DataSource = cadernetasExistentes;
-            ComboBoxCadernetas.DisplayMember =  "Nome";
+            ComboBoxCadernetas.DisplayMember = "Nome";
             ComboBoxCadernetas.ValueMember = "Id";
+        }
+
+        private void ResetGridPaginas()
+        {
             DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
             DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
             DataGridViewPaginas.Columns["Id"].Visible = false;
+        }
+
+        private void LigaLista()
+        {
+            ResetComboBox();
+            ResetGridPaginas();
         }
 
         private void ButtonCriar_Click(object sender, EventArgs e)
@@ -125,6 +167,12 @@ namespace CromoGest.Forms
                     LigaGridPaginas(false);
                     DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
                     FillCromos();
+                    LigaGridCromos(false);
+                    LigaGridPaginas(false);
+                    LigaTextboxes(false);
+
+                    ButtonCriar.Enabled=false;
+                    ButtonAlterar.Enabled = false;
                 }
             }
         }
@@ -174,27 +222,33 @@ namespace CromoGest.Forms
                 LigaGridPaginas(false);
                 if (GerarNovaspaginas())
                 {
+                    CromosCadernetaSelecionada = null;
+                    CromosCadernetaSelecionada = new List<CromoModelo>();
+
                     LigaGridCromos(true);
                     int cromosTotal = 1;
                     int paginas = DataGridViewPaginas.Rows.Count-1;
                     for (int p = 0; p < paginas; p++)
                     {
                         string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
-                        novaPagina = new PaginaModelo(nome: novaPaginaNome);
+                        
+                        novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
                         caderneta.Paginas.Add(novaPagina);
                         int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
                         for (int c = 0;  c < cromos; c++)
                         {
-                            string novoCromoNumero = cromosTotal.ToString();
+                            string novoCromoNumero = (cromosTotal++).ToString();
                             string novoCromoDescricao = "";
                             novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao, idPagina: novaPagina.Id);
                             caderneta.Paginas[p].Cromos.Add(novoCromo);
+                            CromosCadernetaSelecionada.Add(novoCromo);
                         }
                     }
-                    DataGridViewCromos.DataSource = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
+                    DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
                     DataGridViewCromos.Columns["Id"].Visible = false;
                     DataGridViewCromos.Columns["Quantidade"].Visible = false;
                     DataGridViewCromos.Columns["IdPagina"].Visible = false;
+                    DataGridViewCromos.Refresh();
 
                 }
                 else  { MessageBox.Show("Implementar refazer lista de cromos existente!"); }
@@ -208,7 +262,7 @@ namespace CromoGest.Forms
             return true;
         }
 
-        private bool Confirmado() {
+        private bool ConfirmadoGravar() {
             string message = "Tem a certeza que a informação que introduziu está toda correcta?";
             string caption = "Atenção:";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -218,28 +272,34 @@ namespace CromoGest.Forms
 
         private void ButtonGravar_Click(object sender, EventArgs e)
         {
-            if (Confirmado() && DadosValidados())
+            if (ConfirmadoGravar() && DadosValidados())
             {
                 CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
-                int totalCromos = SomatorioCromosPaginas();
-                int cromoCounter = 0;
-
-                int nrows = DataGridViewPaginas.Rows.Count - 1;
-                for (int j = 0; j < nrows; j++)
+                if (caderneta.Paginas.Count == 0)
                 {
-                    int cromosPagina = Convert.ToInt32(DataGridViewPaginas.Rows[j].Cells["Quantidade"].Value.ToString());
-                    caderneta.Paginas.Add(new PaginaModelo(DataGridViewPaginas.Rows[j].Cells["Pagina"].Value.ToString()));
-                    for (int i = 0; i < cromosPagina; i++)
+                    int totalCromos = SomatorioCromosPaginas();
+                    int cromoCounter = 0;
+                    int nrows = DataGridViewPaginas.Rows.Count - 1;
+                    for (int j = 0; j < nrows; j++)
                     {
-                        string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
-                        caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
-                            numero: cromoCounter.ToString(),
-                            descricao: descricaoCromo,
-                            idPagina: caderneta.Paginas.Last<PaginaModelo>().Id
-                        ));
+                        int cromosPagina = Convert.ToInt32(DataGridViewPaginas.Rows[j].Cells["Quantidade"].Value.ToString());
+                        caderneta.Paginas.Add(new PaginaModelo(
+                                DataGridViewPaginas.Rows[j].Cells["Pagina"].Value.ToString(),
+                                idCaderneta: caderneta.Id
+                                ));
+                        for (int i = 0; i < cromosPagina; i++)
+                        {
+                            string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
+                            caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
+                                numero: cromoCounter.ToString(),
+                                descricao: descricaoCromo,
+                                idPagina: caderneta.Paginas.Last<PaginaModelo>().Id
+                            ));
+                        }
                     }
                 }
-                if (GlobalConfig.Connection.PopulateCaderneta(caderneta)) {
+                caderneta = GlobalConfig.Connection.PopulateCaderneta(caderneta);
+                if (caderneta != null) {
                     MessageBox.Show("Caderneta Criada com sucesso!");
                 }
             }
@@ -271,6 +331,9 @@ namespace CromoGest.Forms
             ComboBoxCadernetas.SelectedItem = null;
             LimpaGrids();
             LimpaTexts();
+            LigaGridPaginas(true);
+            LigaGridCromos(true);
+            LigaTextboxes(true);
         }
 
         private void LimpaTexts()
@@ -279,6 +342,31 @@ namespace CromoGest.Forms
             TextQuantidade.Text ="";
             TextQuantidadeCarteira.Text = "";
             TextCarteiraCusto.Text = "";
+        }
+
+        private void ButtonSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private bool ConfirmadoEliminar()
+        {
+            string caption = "Atenção:";
+            string message = "Tem a certeza que quer eliminar a caderneta : "+ ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Nome +"?";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            return (MessageBox.Show(message, caption, buttons) == DialogResult.Yes);
+        }
+
+
+        private void ButtonEliminar_Click(object sender, EventArgs e)
+        {
+            if (ConfirmadoEliminar())
+            {
+                GlobalConfig.Connection.ApagarCaderneta(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+                cadernetasExistentes.Remove((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
+                ResetComboBox();
+                LimpaGrids();
+            }
         }
     }
 }

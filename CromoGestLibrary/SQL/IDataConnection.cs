@@ -9,15 +9,15 @@ namespace CromoGestLibrary.SQL
 {
     public interface IDataConnection
     {
-        CadernetaModelo CriarCaderneta(CadernetaModelo Caderneta);
+        CadernetaModelo CriarCaderneta(CadernetaModelo caderneta);
 
         List<CadernetaModelo> GetCadernetas();
 
-        bool PopulateCaderneta(CadernetaModelo caderneta);
+        CadernetaModelo PopulateCaderneta(CadernetaModelo caderneta);
 
-        int TotalCromos(CadernetaModelo IdCaderneta);
+        int TotalCromos(CadernetaModelo idCaderneta);
 
-        bool TemCromos(CadernetaModelo Idcaderneta);
-
+        bool TemCromos(CadernetaModelo idcaderneta);
+        void ApagarCaderneta(int id);
     }
 }

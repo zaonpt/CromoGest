@@ -13,29 +13,44 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdLuso;
+        private const string bd = bdCasa;
 
         /// <summary>
-        /// Cria uma Caderneta na Base de dados MS SQL 
+        /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
         /// </summary>
-        /// <param name="Caderneta">Caderneta a inserir</param>
-        /// <returns>Caderneta que foi inserida</returns>
-        public CadernetaModelo CriarCaderneta(CadernetaModelo Caderneta)
+        /// <param name="id"></param>
+        public void ApagarCaderneta(int id)
         {
-            if (Caderneta == null) return null;
+            if (id == 0) return ;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
-                p.Add("@Nome", Caderneta.Nome);
-                p.Add("@QuantidadeCromos", Caderneta.QuantidadeCromos);
-                p.Add("@QuantidadeCromosCarteira", Caderneta.QuantidadeCromosCarteira);
-                p.Add("@CustoCarteira", Caderneta.CustoCarteira);
+                p.Add("@Id", id);
+                connection.Execute("dbo.spApagaCaderneta", p, commandType: CommandType.StoredProcedure);
+            }
+            return;
+        }
+            /// <summary>
+            /// Cria uma Caderneta na Base de dados MS SQL 
+            /// </summary>
+            /// <param name="Caderneta">Caderneta a inserir</param>
+            /// <returns>Caderneta que foi inserida</returns>
+            public CadernetaModelo CriarCaderneta(CadernetaModelo caderneta)
+        {
+            if (caderneta == null) return null;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Nome", caderneta.Nome);
+                p.Add("@QuantidadeCromos", caderneta.QuantidadeCromos);
+                p.Add("@QuantidadeCromosCarteira", caderneta.QuantidadeCromosCarteira);
+                p.Add("@CustoCarteira", caderneta.CustoCarteira);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute("dbo.spCriaCaderneta", p, commandType: CommandType.StoredProcedure);
 
-                Caderneta.Id = p.Get<int>("@id");
-                return Caderneta;
+                caderneta.Id = p.Get<int>("@id");
+                return caderneta;
             }
         }
 
@@ -102,10 +117,10 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="caderneta"></param>
         /// <returns></returns>
-        public bool PopulateCaderneta(CadernetaModelo caderneta)
+        public CadernetaModelo PopulateCaderneta(CadernetaModelo caderneta)
         {
-            bool SemErros = true;
-            if (caderneta == null) return !SemErros;
+            
+            if (caderneta == null) return null;
 
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
@@ -131,7 +146,7 @@ namespace CromoGestLibrary.SQL
                     }
                 }
             }
-            return SemErros;
+            return caderneta;
         }
 
 
@@ -140,13 +155,13 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos adquiridos</param>
         /// <returns></returns>
-        public bool TemCromos(CadernetaModelo IdCaderneta)
+        public bool TemCromos(CadernetaModelo idCaderneta)
         {
-            if (IdCaderneta == null) return false;
+            if (idCaderneta == null) return false;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
-                p.Add("@IdCaderneta", IdCaderneta.Id);
+                p.Add("@IdCaderneta", idCaderneta.Id);
 
                 int r = connection.Query<int>("spTotalCromosAdquiridos", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return r > 0;
@@ -159,13 +174,13 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos populados</param>
         /// <returns></returns>
-        public int TotalCromos(CadernetaModelo IdCaderneta)
+        public int TotalCromos(CadernetaModelo idCaderneta)
         {
-            if (IdCaderneta == null) return 0;
+            if (idCaderneta == null) return 0;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 var p = new DynamicParameters();
-                p.Add("@IdCaderneta", IdCaderneta.Id);
+                p.Add("@IdCaderneta", idCaderneta.Id);
 
                 int r = connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return r;
