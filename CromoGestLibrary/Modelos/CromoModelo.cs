@@ -12,11 +12,12 @@ namespace CromoGestLibrary.Modelos
         {
         }
 
-        public CromoModelo(string numero, string descricao, int quantidade = 0)
+        public CromoModelo(string numero, string descricao, int idPagina, int quantidade = 0)
         {
             Numero = numero;
             Descricao = descricao;
             Quantidade = quantidade;
+            IdPagina = idPagina;
         }
 
         public int Id { get; set; }

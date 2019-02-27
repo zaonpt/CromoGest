@@ -175,26 +175,27 @@ namespace CromoGest.Forms
                 if (GerarNovaspaginas())
                 {
                     LigaGridCromos(true);
-
-                    int paginas = DataGridViewPaginas.Rows.Count;
+                    int cromosTotal = 1;
+                    int paginas = DataGridViewPaginas.Rows.Count-1;
                     for (int p = 0; p < paginas; p++)
                     {
                         string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
                         novaPagina = new PaginaModelo(nome: novaPaginaNome);
                         caderneta.Paginas.Add(novaPagina);
-                        int cromos = Convert.ToInt32(DataGridViewCromos.Rows[p].Cells["Quantidade"].Value);
+                        int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
                         for (int c = 0;  c < cromos; c++)
                         {
-                            string novoCromoNumero = DataGridViewCromos.Rows[p].Cells["Numero"].Value.ToString();
-                            string novoCromoDescricao = DataGridViewCromos.Rows[p].Cells["Descricao"].Value.ToString();
-                            novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao);
-                            caderneta.Paginas[p].Cromos[c].
+                            string novoCromoNumero = cromosTotal.ToString();
+                            string novoCromoDescricao = "";
+                            novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao, idPagina: novaPagina.Id);
+                            caderneta.Paginas[p].Cromos.Add(novoCromo);
                         }
                     }
-                    //for (int i = 1; i <= quantidade; i++)
-                    //{
-                    //    DataGridViewCromos.Rows.Add(new object[] { i.ToString(), "" });
-                    //}
+                    DataGridViewCromos.DataSource = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
+                    DataGridViewCromos.Columns["Id"].Visible = false;
+                    DataGridViewCromos.Columns["Quantidade"].Visible = false;
+                    DataGridViewCromos.Columns["IdPagina"].Visible = false;
+
                 }
                 else  { MessageBox.Show("Implementar refazer lista de cromos existente!"); }
             }
@@ -233,7 +234,8 @@ namespace CromoGest.Forms
                         string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
                         caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
                             numero: cromoCounter.ToString(),
-                            descricao: descricaoCromo
+                            descricao: descricaoCromo,
+                            idPagina: caderneta.Paginas.Last<PaginaModelo>().Id
                         ));
                     }
                 }
