@@ -165,7 +165,9 @@ namespace CromoGest.Forms
         private void ButtonAceitarPaginas_Click(object sender, EventArgs e)
         {
             int quantidade = SomatorioCromosPaginas();
-
+            CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
+            PaginaModelo novaPagina;
+            CromoModelo novoCromo;
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
@@ -174,10 +176,25 @@ namespace CromoGest.Forms
                 {
                     LigaGridCromos(true);
 
-                    for (int i = 1; i <= quantidade; i++)
+                    int paginas = DataGridViewPaginas.Rows.Count;
+                    for (int p = 0; p < paginas; p++)
                     {
-                        DataGridViewCromos.Rows.Add(new object[] { i.ToString(), "" });
+                        string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
+                        novaPagina = new PaginaModelo(nome: novaPaginaNome);
+                        caderneta.Paginas.Add(novaPagina);
+                        int cromos = Convert.ToInt32(DataGridViewCromos.Rows[p].Cells["Quantidade"].Value);
+                        for (int c = 0;  c < cromos; c++)
+                        {
+                            string novoCromoNumero = DataGridViewCromos.Rows[p].Cells["Numero"].Value.ToString();
+                            string novoCromoDescricao = DataGridViewCromos.Rows[p].Cells["Descricao"].Value.ToString();
+                            novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao);
+                            caderneta.Paginas[p].Cromos[c].
+                        }
                     }
+                    //for (int i = 1; i <= quantidade; i++)
+                    //{
+                    //    DataGridViewCromos.Rows.Add(new object[] { i.ToString(), "" });
+                    //}
                 }
                 else  { MessageBox.Show("Implementar refazer lista de cromos existente!"); }
             }
