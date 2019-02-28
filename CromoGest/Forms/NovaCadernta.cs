@@ -172,7 +172,6 @@ namespace CromoGest.Forms
                     LigaTextboxes(false);
 
                     ButtonCriar.Enabled=false;
-                    ButtonAlterar.Enabled = false;
                 }
             }
         }
@@ -310,12 +309,9 @@ namespace CromoGest.Forms
             return SomatorioCromosPaginas() == Convert.ToInt32(TextQuantidade.Text);
         }
 
-
-
         private void LigaBotoes(bool liga)
         {
             ButtonCriar.Enabled = liga;
-            ButtonAlterar.Enabled = liga;
             ButtonLimpar.Enabled = liga;
             ButtonEliminar.Enabled = liga;
         }
