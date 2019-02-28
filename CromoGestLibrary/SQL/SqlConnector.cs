@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdLuso;
+        private const string bd = bdCasa;
 
         /// <summary>
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.

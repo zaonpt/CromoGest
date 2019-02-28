@@ -18,9 +18,10 @@ namespace CromoGest.Forms
         private List<CromoModelo> CromosCadernetaSelecionada = new List<CromoModelo>();
                
         public FormNovaCaderneta()
-        {
+        { 
             InitializeComponent();
             LigaLista();
+            DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
         
         private void LigaTextboxes(bool ligar)
@@ -360,6 +361,49 @@ namespace CromoGest.Forms
             }
         }
 
+        private void DataGridViewCromos_KeyUp(object sender, KeyEventArgs e)
+        {
+            //if user clicked Shift+Ins or Ctrl+V (paste from clipboard)
 
+            if ((e.Shift && e.KeyCode == Keys.Insert) || (e.Control && e.KeyCode == Keys.V))
+            {
+                char[] rowSplitter = { '\r', '\n' };
+                char[] columnSplitter = { '\t' };
+
+                //get the text from clipboard
+                IDataObject dataInClipboard = Clipboard.GetDataObject();
+                string stringInClipboard = (string)dataInClipboard.GetData(DataFormats.Text);
+
+                //split it into lines
+                string[] rowsInClipboard = stringInClipboard.Split(rowSplitter, StringSplitOptions.RemoveEmptyEntries);
+
+                //get the row and column of selected cell in grid
+                int r = DataGridViewCromos.SelectedCells[0].RowIndex;
+                int c = DataGridViewCromos.SelectedCells[0].ColumnIndex;
+
+                //add rows into grid to fit clipboard lines
+                if (DataGridViewCromos.Rows.Count < (r + rowsInClipboard.Length))
+                {
+                    DataGridViewCromos.Rows.Add(r + rowsInClipboard.Length - DataGridViewCromos.Rows.Count);
+                }
+
+                // loop through the lines, split them into cells and place the values in the corresponding cell.
+                for (int iRow = 0; iRow < rowsInClipboard.Length; iRow++)
+                {
+                    //split row into cell values
+                    string[] valuesInRow = rowsInClipboard[iRow].Split(columnSplitter);
+
+                    //cycle through cell values
+                    for (int iCol = 0; iCol < valuesInRow.Length; iCol++)
+                    {
+                        //assign cell value, only if it within columns of the grid
+                        if (DataGridViewCromos.ColumnCount - 1 >= c + iCol)
+                        {
+                            DataGridViewCromos.Rows[r + iRow].Cells[c + iCol].Value = valuesInRow[iCol];
+                        }
+                    }
+                }
+            }
+        }
     }
 }

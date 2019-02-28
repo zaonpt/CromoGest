@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCadernetas = new System.Windows.Forms.Label();
             this.GroupBoxCaderneta = new System.Windows.Forms.GroupBox();
@@ -474,14 +474,15 @@
             this.DataGridViewCromos.Name = "DataGridViewCromos";
             this.DataGridViewCromos.Size = new System.Drawing.Size(330, 482);
             this.DataGridViewCromos.TabIndex = 5;
+            this.DataGridViewCromos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DataGridViewCromos_KeyUp);
             // 
             // Numero
             // 
             this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Numero.DataPropertyName = "Numero";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.Numero.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
             this.Numero.HeaderText = "Cromo";
             this.Numero.Name = "Numero";
             this.Numero.Width = 70;
@@ -490,9 +491,9 @@
             // 
             this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.Descricao.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
             this.Descricao.HeaderText = "Descrição";
             this.Descricao.Name = "Descricao";
             // 
@@ -536,18 +537,18 @@
             // 
             this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nome.DataPropertyName = "Nome";
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle3;
             this.Nome.HeaderText = "Pagina";
             this.Nome.Name = "Nome";
             // 
             // Quantidade
             // 
             this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
             this.Quantidade.HeaderText = "Quantidade Cromos";
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.Width = 80;
