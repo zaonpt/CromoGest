@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCadernetas = new System.Windows.Forms.Label();
             this.GroupBoxCaderneta = new System.Windows.Forms.GroupBox();
@@ -47,7 +47,6 @@
             this.LabelNome = new System.Windows.Forms.Label();
             this.ButtonCriar = new System.Windows.Forms.Button();
             this.ButtonSair = new System.Windows.Forms.Button();
-            this.ButtonAlterar = new System.Windows.Forms.Button();
             this.LabelNovaCadernetaTitulo = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ButtonConcluir = new System.Windows.Forms.Button();
@@ -59,6 +58,11 @@
             this.TableLayoutPanelCad_Pag_Crom = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelCaderneta_Buttons = new System.Windows.Forms.TableLayoutPanel();
             this.TableLayoutPanelButttons_Caderneta = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.TableLayoutPanelPag_Crom = new System.Windows.Forms.TableLayoutPanel();
             this.DataGridViewCromos = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,7 +73,9 @@
             this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableLayoutPanelButtons_Paginas = new System.Windows.Forms.TableLayoutPanel();
+            this.label5 = new System.Windows.Forms.Label();
             this.TableLayoutPanelButtons_Cromos = new System.Windows.Forms.TableLayoutPanel();
+            this.label6 = new System.Windows.Forms.Label();
             this.ToolStripNovaCaderneta = new System.Windows.Forms.ToolStrip();
             this.ToolStripLabelNovaCaderneta = new System.Windows.Forms.ToolStripLabel();
             this.GroupBoxCaderneta.SuspendLayout();
@@ -228,20 +234,6 @@
             this.ButtonSair.UseVisualStyleBackColor = false;
             this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
             // 
-            // ButtonAlterar
-            // 
-            this.ButtonAlterar.BackColor = System.Drawing.SystemColors.Control;
-            this.ButtonAlterar.ForeColor = System.Drawing.Color.Black;
-            this.ButtonAlterar.Location = new System.Drawing.Point(15, 43);
-            this.ButtonAlterar.Name = "ButtonAlterar";
-            this.ButtonAlterar.Size = new System.Drawing.Size(100, 23);
-            this.ButtonAlterar.TabIndex = 5;
-            this.ButtonAlterar.TabStop = false;
-            this.ButtonAlterar.Text = "Alterar";
-            this.toolTip1.SetToolTip(this.ButtonAlterar, "Registar alteração na caderneta selecionada e existente.");
-            this.ButtonAlterar.UseVisualStyleBackColor = false;
-            this.ButtonAlterar.Click += new System.EventHandler(this.ButtonAlterar_Click);
-            // 
             // LabelNovaCadernetaTitulo
             // 
             this.LabelNovaCadernetaTitulo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -290,7 +282,7 @@
             // 
             this.ButtonEliminar.BackColor = System.Drawing.SystemColors.Control;
             this.ButtonEliminar.ForeColor = System.Drawing.Color.Black;
-            this.ButtonEliminar.Location = new System.Drawing.Point(15, 103);
+            this.ButtonEliminar.Location = new System.Drawing.Point(15, 73);
             this.ButtonEliminar.Name = "ButtonEliminar";
             this.ButtonEliminar.Size = new System.Drawing.Size(100, 23);
             this.ButtonEliminar.TabIndex = 6;
@@ -304,7 +296,7 @@
             // 
             this.ButtonLimpar.BackColor = System.Drawing.SystemColors.Control;
             this.ButtonLimpar.ForeColor = System.Drawing.Color.Black;
-            this.ButtonLimpar.Location = new System.Drawing.Point(15, 73);
+            this.ButtonLimpar.Location = new System.Drawing.Point(15, 43);
             this.ButtonLimpar.Name = "ButtonLimpar";
             this.ButtonLimpar.Size = new System.Drawing.Size(100, 23);
             this.ButtonLimpar.TabIndex = 7;
@@ -385,13 +377,17 @@
             this.TableLayoutPanelButttons_Caderneta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.TableLayoutPanelButttons_Caderneta.ColumnCount = 3;
             this.TableLayoutPanelButttons_Caderneta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 12F));
+            this.TableLayoutPanelButttons_Caderneta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.TableLayoutPanelButttons_Caderneta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelButttons_Caderneta.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonCriar, 1, 1);
-            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonAlterar, 1, 2);
-            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonEliminar, 1, 4);
-            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonLimpar, 1, 3);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonSair, 1, 6);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label1, 2, 1);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label2, 2, 2);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label3, 2, 3);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label4, 2, 4);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label7, 2, 6);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonLimpar, 1, 2);
+            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonEliminar, 1, 3);
             this.TableLayoutPanelButttons_Caderneta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelButttons_Caderneta.Location = new System.Drawing.Point(3, 263);
             this.TableLayoutPanelButttons_Caderneta.Name = "TableLayoutPanelButttons_Caderneta";
@@ -405,6 +401,56 @@
             this.TableLayoutPanelButttons_Caderneta.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelButttons_Caderneta.Size = new System.Drawing.Size(312, 286);
             this.TableLayoutPanelButttons_Caderneta.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(125, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Prepara nova caderneta";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(125, 42);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(165, 26);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Limpar para criar introduzir dados para nova";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(125, 78);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "label3";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(125, 108);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "label4";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(125, 264);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "label7";
             // 
             // TableLayoutPanelPag_Crom
             // 
@@ -445,9 +491,9 @@
             // 
             this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.Numero.DataPropertyName = "Numero";
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
-            this.Numero.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
             this.Numero.HeaderText = "Cromo";
             this.Numero.Name = "Numero";
             this.Numero.Width = 70;
@@ -456,9 +502,9 @@
             // 
             this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Descricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            this.Descricao.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
             this.Descricao.HeaderText = "Descrição";
             this.Descricao.Name = "Descricao";
             // 
@@ -502,18 +548,18 @@
             // 
             this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Nome.DataPropertyName = "Nome";
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle3;
             this.Nome.HeaderText = "Pagina";
             this.Nome.Name = "Nome";
             // 
             // Quantidade
             // 
             this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
             this.Quantidade.HeaderText = "Quantidade Cromos";
             this.Quantidade.Name = "Quantidade";
             this.Quantidade.Width = 80;
@@ -521,30 +567,52 @@
             // TableLayoutPanelButtons_Paginas
             // 
             this.TableLayoutPanelButtons_Paginas.ColumnCount = 2;
-            this.TableLayoutPanelButtons_Paginas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelButtons_Paginas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelButtons_Paginas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.TableLayoutPanelButtons_Paginas.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelButtons_Paginas.Controls.Add(this.ButtonAceitarPaginas, 0, 0);
+            this.TableLayoutPanelButtons_Paginas.Controls.Add(this.label5, 1, 0);
             this.TableLayoutPanelButtons_Paginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelButtons_Paginas.Location = new System.Drawing.Point(3, 521);
             this.TableLayoutPanelButtons_Paginas.Name = "TableLayoutPanelButtons_Paginas";
             this.TableLayoutPanelButtons_Paginas.RowCount = 1;
-            this.TableLayoutPanelButtons_Paginas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelButtons_Paginas.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelButtons_Paginas.Size = new System.Drawing.Size(329, 28);
             this.TableLayoutPanelButtons_Paginas.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(113, 7);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "label5";
             // 
             // TableLayoutPanelButtons_Cromos
             // 
             this.TableLayoutPanelButtons_Cromos.ColumnCount = 2;
-            this.TableLayoutPanelButtons_Cromos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelButtons_Cromos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelButtons_Cromos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.TableLayoutPanelButtons_Cromos.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelButtons_Cromos.Controls.Add(this.ButtonConcluir, 0, 0);
+            this.TableLayoutPanelButtons_Cromos.Controls.Add(this.label6, 1, 0);
             this.TableLayoutPanelButtons_Cromos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelButtons_Cromos.Location = new System.Drawing.Point(338, 521);
             this.TableLayoutPanelButtons_Cromos.Name = "TableLayoutPanelButtons_Cromos";
             this.TableLayoutPanelButtons_Cromos.RowCount = 1;
-            this.TableLayoutPanelButtons_Cromos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelButtons_Cromos.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelButtons_Cromos.Size = new System.Drawing.Size(330, 28);
             this.TableLayoutPanelButtons_Cromos.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(113, 7);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "label6";
             // 
             // ToolStripNovaCaderneta
             // 
@@ -585,11 +653,14 @@
             this.TableLayoutPanelCad_Pag_Crom.ResumeLayout(false);
             this.TableLayoutPanelCaderneta_Buttons.ResumeLayout(false);
             this.TableLayoutPanelButttons_Caderneta.ResumeLayout(false);
+            this.TableLayoutPanelButttons_Caderneta.PerformLayout();
             this.TableLayoutPanelPag_Crom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCromos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewPaginas)).EndInit();
             this.TableLayoutPanelButtons_Paginas.ResumeLayout(false);
+            this.TableLayoutPanelButtons_Paginas.PerformLayout();
             this.TableLayoutPanelButtons_Cromos.ResumeLayout(false);
+            this.TableLayoutPanelButtons_Cromos.PerformLayout();
             this.ToolStripNovaCaderneta.ResumeLayout(false);
             this.ToolStripNovaCaderneta.PerformLayout();
             this.ResumeLayout(false);
@@ -612,7 +683,6 @@
         private System.Windows.Forms.Label LabelCarteiraQuantidade;
         private System.Windows.Forms.Button ButtonCriar;
         private System.Windows.Forms.Button ButtonSair;
-        private System.Windows.Forms.Button ButtonAlterar;
         private System.Windows.Forms.Label LabelNovaCadernetaTitulo;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelTitulo;
@@ -637,6 +707,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
         private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

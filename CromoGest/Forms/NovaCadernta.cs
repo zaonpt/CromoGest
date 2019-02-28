@@ -310,20 +310,14 @@ namespace CromoGest.Forms
             return SomatorioCromosPaginas() == Convert.ToInt32(TextQuantidade.Text);
         }
 
-        private void ButtonAlterar_Click(object sender, EventArgs e)
+
+
+        private void LigaBotoes(bool liga)
         {
-            // TODO - VERIFICAR SE CADERNETA JA TEM CROMOS (SE SIM PERGUNTAR O QUE FAZER, SE NAO PERGUNTAR O QUE FAZER)
-            int totalCromos = GlobalConfig.Connection.TotalCromos((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
-            
-            if(totalCromos == 0)
-            {
-
-            }
-            else
-            {
-
-            }
-
+            ButtonCriar.Enabled = liga;
+            ButtonAlterar.Enabled = liga;
+            ButtonLimpar.Enabled = liga;
+            ButtonEliminar.Enabled = liga;
         }
 
         private void ButtonLimpar_Click(object sender, EventArgs e)
@@ -331,15 +325,16 @@ namespace CromoGest.Forms
             ComboBoxCadernetas.SelectedItem = null;
             LimpaGrids();
             LimpaTexts();
-            LigaGridPaginas(true);
-            LigaGridCromos(true);
+            LigaGridPaginas(false);
+            LigaGridCromos(false);
             LigaTextboxes(true);
+            LigaBotoes(true);
         }
 
         private void LimpaTexts()
         {
             TextNome.Text = "";
-            TextQuantidade.Text ="";
+            TextQuantidade.Text = "";
             TextQuantidadeCarteira.Text = "";
             TextCarteiraCusto.Text = "";
         }
@@ -368,5 +363,7 @@ namespace CromoGest.Forms
                 LimpaGrids();
             }
         }
+
+
     }
 }
