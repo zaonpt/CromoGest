@@ -361,10 +361,16 @@ namespace CromoGest.Forms
             }
         }
 
+        /// <summary>
+        /// past from clipboard
+        /// </summary>
+        /// <remarks>CREDITS TO: Pratik Bhoir in https://stackoverflow.com/questions/22833327/pasting-excel-data-into-a-blank-datagridview-index-out-of-range-exception</remarks>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DataGridViewCromos_KeyUp(object sender, KeyEventArgs e)
         {
             //if user clicked Shift+Ins or Ctrl+V (paste from clipboard)
-
+            
             if ((e.Shift && e.KeyCode == Keys.Insert) || (e.Control && e.KeyCode == Keys.V))
             {
                 char[] rowSplitter = { '\r', '\n' };
