@@ -19,5 +19,7 @@ namespace CromoGestLibrary.SQL
 
         bool TemCromos(CadernetaModelo idcaderneta);
         void ApagarCaderneta(int id);
+        string GetConfig(string desc);
+        void IncCromoQuatidade(string numero);
     }
 }

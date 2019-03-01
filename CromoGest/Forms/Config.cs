@@ -21,5 +21,9 @@ namespace CromoGest.Forms
         {
 
         }
+        public string SeparadorChar()
+        {
+            return TextSeparador.Text;
+        }
     }
 }

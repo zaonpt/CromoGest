@@ -191,8 +191,6 @@ namespace CromoGest.Forms
             DataGridViewCromos.Columns["Id"].Visible = false;
             DataGridViewCromos.Columns["Quantidade"].Visible = false;
             DataGridViewCromos.Columns["IdPagina"].Visible = false;
-
-
         }
 
         private void LigaGridPaginas()

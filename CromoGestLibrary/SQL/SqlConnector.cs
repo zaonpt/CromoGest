@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdCasa;
+        private const string bd = bdLuso;
 
         /// <summary>
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
@@ -111,17 +111,50 @@ namespace CromoGestLibrary.SQL
             }
         }
 
+        public string GetConfig(string desc)
+        {
+            if (desc == null) return null;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Descricao", desc);
+                return connection.Query<string>("spGetConfig", p, commandType: CommandType.StoredProcedure).ToList()[0];                
+            }
+        }
 
-        /// <summary>
-        /// populaciona a caderneta na base de dados com as informacoes dos cromos.
-        /// </summary>
-        /// <param name="caderneta"></param>
-        /// <returns></returns>
-        public CadernetaModelo PopulateCaderneta(CadernetaModelo caderneta)
+
+        public void IncCromoQuatidade(string numero)
+        {
+            if (numero == null) return;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                int id = GetCromoId(numero);
+                var p = new DynamicParameters();
+                p.Add("@Descricao", id);
+                connection.Execute("spIncCromoQuantidade", p, commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        private int GetCromoId(string numero)
+        {
+            //if (numero == null) return n;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Descricao", numero);
+                return connection.Query<int>("spGetCromoId", p, commandType: CommandType.StoredProcedure).ToList()[0];
+            }
+        }
+
+            /// <summary>
+            /// populaciona a caderneta na base de dados com as informacoes dos cromos.
+            /// </summary>
+            /// <param name="caderneta"></param>
+            /// <returns></returns>
+            public CadernetaModelo PopulateCaderneta(CadernetaModelo caderneta)
         {
             
             if (caderneta == null) return null;
-
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
             {
                 foreach (PaginaModelo pagina in caderneta.Paginas)
