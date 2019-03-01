@@ -18,7 +18,7 @@ namespace CromoGest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             CromoGestLibrary.GlobalConfig.InicializarConns(true);
-            Application.Run(new FormNovaCaderneta());
+            Application.Run(new Entradas());
         }
     }
 }

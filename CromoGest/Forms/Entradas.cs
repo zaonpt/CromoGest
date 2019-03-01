@@ -22,5 +22,16 @@ namespace CromoGest
 
         }
 
+        private void ButtonSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ButtonIntroduzir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }
