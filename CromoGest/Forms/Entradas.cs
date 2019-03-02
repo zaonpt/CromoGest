@@ -16,12 +16,12 @@ namespace CromoGest
     public partial class Entradas : Form
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
-        string charSeparador;
+        char charSeparador;
         public Entradas()
         {
             InitializeComponent();
             ResetComboBox();
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value);
+            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
         }
 
         private void ResetComboBox()
@@ -42,6 +42,21 @@ namespace CromoGest
             this.Close();
         }
 
+        private void AddCromoToResults(string cromo, bool isNew)
+        {
+            if (isNew == true)
+                ListBoxNovos.Items.Add(cromo);
+            else
+                ListBoxRepetidos.Items.Add(cromo);            
+        }
+
+        bool IncCromoQuantidade(string cromo)
+        {
+            return Convert.ToBoolean(Convert.ToBoolean(
+                        GlobalConfig.Connection.IncCromoQuatidade(cromo)));
+        }
+
+
         private void ButtonIntroduzir_Click(object sender, EventArgs e)
         {
             if (ComboBoxCadernetas.SelectedItem == null)
@@ -49,33 +64,26 @@ namespace CromoGest
                 MessageBox.Show("Sem cadernetas");
                 return;
             }
-            if (!CromosValidos())
-            {
-                MessageBox.Show("Cromos invalidos, verifique e tente de novo.");
-                return;
-            }
-            bool novo;
-            int rows = dataGridViewCromos.Rows.Count-1;
+            if (!CromosValidos()) return;
+            bool IsNovo;
+            int rows = dataGridViewCromos.Rows.Count - 1;
             for (int i = 0; i < rows; i++)
             {
-                if (dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString().Contains(charSeparador))
+                string row = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
+                if (row.Contains(charSeparador))
                 {
-                    // TODO - SEPARAR OS CROMO NA CELULA E INSERIR NA BD
+                    string[] cromos = row.Replace(" ", string.Empty).Split(charSeparador);
+                    foreach (string cromo in cromos)
+                    {
+                        IsNovo = IncCromoQuantidade(cromo);
+                        AddCromoToResults(cromo, IsNovo);
+                    }
                 }
                 else
                 {
-                    novo = Convert.ToBoolean(
-                        GlobalConfig.Connection.IncCromoQuatidade(
-                            dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString()
-                        ));
-                    if (novo)
-                    {
-                        ListBoxNovos.Items.Add(dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString());
-                    }
-                    else
-                    {
-                        ListBoxRepetidos.Items.Add(dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString());
-                    }
+                    string cromo = row;
+                    IsNovo = IncCromoQuantidade(cromo);
+                    AddCromoToResults(cromo, IsNovo);
                 }
             }
             ActivarControles(false);
@@ -88,14 +96,31 @@ namespace CromoGest
             ButtonVerificar.Enabled = v;
         }
 
+        private bool CromoValido(string cromo) { return GlobalConfig.Connection.IsValidCromo(cromo); }
+
+
         private bool CromosValidos()
         {
-            int cromos = dataGridViewCromos.Rows.Count - 1;
-            for (int i = 0; i < cromos; i++)
+            int ncromos = dataGridViewCromos.Rows.Count - 1;
+            for (int i = 0; i < ncromos; i++)
             {
-                string cromo = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
-                if (!GlobalConfig.Connection.IsValidCromo(cromo))
+                string row = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
+                if (row.Contains(charSeparador))
                 {
+                    string[] cromos = row.Replace(" ", string.Empty).Split(charSeparador);
+                    foreach (string cromo in cromos)
+                    {
+                        if (!CromoValido(cromo))
+                        {
+                            MessageBox.Show($"Cromo {cromo} não existe na caderneta, corriga e tente de novo.");
+                            return false;
+                        }
+                    }
+
+                }
+                else if (!CromoValido(row))
+                {
+                    MessageBox.Show($"Cromo {row} não existe na caderneta, corriga e tente de novo.");
                     return false;
                 }
             }
