@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridViewCromos = new System.Windows.Forms.DataGridView();
+            this.Cromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ButtonIntroduzir = new System.Windows.Forms.Button();
@@ -48,7 +51,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelCadernetas = new System.Windows.Forms.Label();
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
-            this.Cromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCromos)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.GroupBoxResultados.SuspendLayout();
@@ -63,11 +65,33 @@
             this.dataGridViewCromos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Cromos});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewCromos, 2);
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCromos.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCromos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCromos.Location = new System.Drawing.Point(3, 63);
             this.dataGridViewCromos.Name = "dataGridViewCromos";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCromos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCromos.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridViewCromos.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewCromos.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCromos.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridViewCromos.Size = new System.Drawing.Size(386, 234);
             this.dataGridViewCromos.TabIndex = 0;
+            // 
+            // Cromos
+            // 
+            this.Cromos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Cromos.DataPropertyName = "Cromos";
+            this.Cromos.HeaderText = "Lista de Cromos";
+            this.Cromos.Name = "Cromos";
             // 
             // statusStrip1
             // 
@@ -214,6 +238,7 @@
             this.ButtonLimpar.Text = "&Limpar";
             this.toolTip1.SetToolTip(this.ButtonLimpar, "Limpar tabelas para introduzir mais cromos.");
             this.ButtonLimpar.UseVisualStyleBackColor = true;
+            this.ButtonLimpar.Click += new System.EventHandler(this.ButtonLimpar_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -276,13 +301,6 @@
             this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
             this.ComboBoxCadernetas.Size = new System.Drawing.Size(190, 21);
             this.ComboBoxCadernetas.TabIndex = 8;
-            // 
-            // Cromos
-            // 
-            this.Cromos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Cromos.DataPropertyName = "Cromos";
-            this.Cromos.HeaderText = "Lista de Cromos";
-            this.Cromos.Name = "Cromos";
             // 
             // Entradas
             // 

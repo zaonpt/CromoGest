@@ -49,18 +49,63 @@ namespace CromoGest
                 MessageBox.Show("Sem cadernetas");
                 return;
             }
-
-            foreach (DataGridViewRow row in dataGridViewCromos.Rows)
+            if (!CromosValidos())
             {
-                if (row.Cells["Cromos"].Value.ToString().Contains(charSeparador))
+                MessageBox.Show("Cromos invalidos, verifique e tente de novo.");
+                return;
+            }
+            bool novo;
+            int rows = dataGridViewCromos.Rows.Count-1;
+            for (int i = 0; i < rows; i++)
+            {
+                if (dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString().Contains(charSeparador))
                 {
-                    // TODO - SEPARAR OS CROMO NA CELULA
+                    // TODO - SEPARAR OS CROMO NA CELULA E INSERIR NA BD
                 }
                 else
                 {
-                    GlobalConfig.Connection.IncCromoQuatidade(row.Cells["Cromos"].Value.ToString());
+                    novo = Convert.ToBoolean(
+                        GlobalConfig.Connection.IncCromoQuatidade(
+                            dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString()
+                        ));
+                    if (novo)
+                    {
+                        ListBoxNovos.Items.Add(dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString());
+                    }
+                    else
+                    {
+                        ListBoxRepetidos.Items.Add(dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString());
+                    }
                 }
-            } 
+            }
+            ActivarControles(false);
+        }
+
+        private void ActivarControles(bool v)
+        {
+            dataGridViewCromos.Enabled = v;
+            ButtonIntroduzir.Enabled = v;
+            ButtonVerificar.Enabled = v;
+        }
+
+        private bool CromosValidos()
+        {
+            int cromos = dataGridViewCromos.Rows.Count - 1;
+            for (int i = 0; i < cromos; i++)
+            {
+                string cromo = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
+                if (!GlobalConfig.Connection.IsValidCromo(cromo))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void ButtonLimpar_Click(object sender, EventArgs e)
+        {
+            ActivarControles(true);
+
         }
     }
 }

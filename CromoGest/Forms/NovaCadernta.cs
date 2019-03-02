@@ -32,24 +32,22 @@ namespace CromoGest.Forms
             TextCarteiraCusto.Enabled = ligar;
         }
 
-        private void LigaGridPaginas(bool ligar)
+        private void LigaGrid(DataGridView dgv, bool liga)
         {
-            DataGridViewPaginas.Enabled = ligar;
-            ButtonAceitarPaginas.Enabled = ligar;
-            if (ligar)
+            if (liga)
             {
-                DataGridViewPaginas.Rows.Clear();
-                foreach (DataGridViewColumn c in DataGridViewPaginas.Columns)
-                { 
+                dgv.Rows.Clear();
+                foreach (DataGridViewColumn c in dgv.Columns)
+                {
                     c.DefaultCellStyle.SelectionForeColor = Color.Black;
                     c.DefaultCellStyle.ForeColor = Color.Black;
                 }
             }
             else
             {
-                DataGridViewPaginas.ForeColor = Color.Gray;
-                DataGridViewPaginas.DefaultCellStyle.ForeColor = Color.Gray;
-                foreach (DataGridViewColumn c in DataGridViewPaginas.Columns)
+                dgv.ForeColor = Color.Gray;
+                dgv.DefaultCellStyle.ForeColor = Color.Gray;
+                foreach (DataGridViewColumn c in dgv.Columns)
                 {
                     c.DefaultCellStyle.SelectionForeColor = Color.Gray;
                     c.DefaultCellStyle.ForeColor = Color.Gray;
@@ -57,25 +55,15 @@ namespace CromoGest.Forms
             }
         }
 
-        private void LigaGridCromos(bool ligar)
+        private void LigaButtonsPaginas(bool liga)
         {
-            DataGridViewCromos.Enabled = ligar;
-            ButtonConcluir.Enabled = ligar;
-            if (ligar)
-            {
-                DataGridViewCromos.Rows.Clear();
-                DataGridViewCromos.Enabled = true;
-                foreach (DataGridViewColumn c in DataGridViewCromos.Columns)
-                    c.DefaultCellStyle.ForeColor = Color.Black;
-            }
-            else
-            {
-                DataGridViewCromos.Enabled = false;
-                DataGridViewCromos.ForeColor = Color.Gray;
-                DataGridViewCromos.DefaultCellStyle.ForeColor = Color.Gray;
-                foreach (DataGridViewColumn c in DataGridViewCromos.Columns)
-                    c.DefaultCellStyle.ForeColor = Color.Gray;
-            }
+            DataGridViewPaginas.Enabled = liga;
+            ButtonAceitarPaginas.Enabled = liga;
+        }
+
+        private void LigaButtonsCromos(bool liga) {
+            DataGridViewCromos.Enabled = liga;
+            ButtonConcluir.Enabled = liga;
         }
 
         private void ResetComboBox()
@@ -161,15 +149,21 @@ namespace CromoGest.Forms
                 if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
                 {
                     LimpaGrids();
-                    LigaGridPaginas(true);
+                    LigaGrid(DataGridViewPaginas,true);
+                    DataGridViewPaginas.Enabled = true;
+                    ButtonAceitarPaginas.Enabled = true;
                 }
                 else
                 {
-                    LigaGridPaginas(false);
                     DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
                     FillCromos();
-                    LigaGridCromos(false);
-                    LigaGridPaginas(false);
+                    LigaGrid(DataGridViewCromos,false);
+                    LigaButtonsCromos(false);
+
+                    LigaGrid(DataGridViewPaginas,false);
+                    DataGridViewPaginas.Enabled = false;
+                    ButtonAceitarPaginas.Enabled = false;
+
                     LigaTextboxes(false);
 
                     ButtonCriar.Enabled=false;
@@ -196,10 +190,11 @@ namespace CromoGest.Forms
         private void LigaGridPaginas()
         {
             LigaTextboxes(false);
-            LigaGridPaginas(true);
-            LigaGridCromos(false);
+            LigaGrid(DataGridViewPaginas, true);
+            LigaButtonsPaginas(true);
+            LigaGrid(DataGridViewCromos, false);
+            LigaButtonsCromos(false);
         }
-
 
         private int SomatorioCromosPaginas()
         {
@@ -217,13 +212,15 @@ namespace CromoGest.Forms
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
-                LigaGridPaginas(false);
+                LigaGrid(DataGridViewPaginas, false);
+                LigaButtonsPaginas(false);
                 if (GerarNovaspaginas())
                 {
                     CromosCadernetaSelecionada = null;
                     CromosCadernetaSelecionada = new List<CromoModelo>();
 
-                    LigaGridCromos(true);
+                    LigaGrid(DataGridViewCromos, true);
+                    LigaButtonsCromos(true);
                     int cromosTotal = 1;
                     int paginas = DataGridViewPaginas.Rows.Count-1;
                     for (int p = 0; p < paginas; p++)
@@ -320,8 +317,10 @@ namespace CromoGest.Forms
             ComboBoxCadernetas.SelectedItem = null;
             LimpaGrids();
             LimpaTexts();
-            LigaGridPaginas(false);
-            LigaGridCromos(false);
+            LigaGrid(DataGridViewPaginas, false);
+            LigaButtonsPaginas(false);
+            LigaGrid(DataGridViewCromos, false);
+            LigaButtonsCromos(false);
             LigaTextboxes(true);
             LigaBotoes(true);
         }
