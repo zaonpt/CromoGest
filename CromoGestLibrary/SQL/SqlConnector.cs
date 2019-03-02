@@ -128,11 +128,11 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="numero">Numero do cromo</param>
         /// <returns>true se for novo</returns>
-        public bool IncCromoQuatidade(string numero)
+        public bool IncCromoQuatidade(string numero, int idCaderneta)
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                int id = GetCromoId(numero);
+                int id = GetCromoId(numero, idCaderneta);
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
                 int inseridos = connection.Query<int>("spIncCromoQuantidade", p, commandType: CommandType.StoredProcedure).ToList()[0];
@@ -140,13 +140,21 @@ namespace CromoGestLibrary.SQL
             }
         }
 
-        private int GetCromoId(string numero)
+
+        /// <summary>
+        /// Saca o Id de um cromo atraves do numero, relativamente a uma caderneta (ID)
+        /// </summary>
+        /// <param name="numero">Numero do cromo</param>
+        /// <param name="idCadernta">Identificador da caderneta</param>
+        /// <returns></returns>
+        private int GetCromoId(string numero, int idCadernta)
         {
             //if (numero == null) return n;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Numero", numero);
+                p.Add("@IdCaderneta", idCadernta);
                 return connection.Query<int>("spGetCromoIdByNumero", p, commandType: CommandType.StoredProcedure).ToList()[0];
             }
         }

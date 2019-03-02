@@ -19,7 +19,8 @@ namespace CromoGest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             GlobalConfig.InicializarConns(ConnType.LOCALDB);
-           Application.Run(new Entradas());
+            Application.Run(new Entradas());
+            //Application.Run(new FormNovaCaderneta());
 
         }
     }

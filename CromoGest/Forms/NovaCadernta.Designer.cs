@@ -61,7 +61,6 @@
             this.LabelNova = new System.Windows.Forms.Label();
             this.LabelLimpar = new System.Windows.Forms.Label();
             this.LabelEliminar = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.TableLayoutPanelPag_Crom = new System.Windows.Forms.TableLayoutPanel();
             this.DataGridViewCromos = new System.Windows.Forms.DataGridView();
             this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -383,7 +382,6 @@
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.LabelNova, 2, 1);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.LabelLimpar, 2, 2);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.LabelEliminar, 2, 3);
-            this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.label7, 2, 6);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonLimpar, 1, 2);
             this.TableLayoutPanelButttons_Caderneta.Controls.Add(this.ButtonEliminar, 1, 3);
             this.TableLayoutPanelButttons_Caderneta.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -429,16 +427,6 @@
             this.LabelEliminar.Size = new System.Drawing.Size(94, 13);
             this.LabelEliminar.TabIndex = 10;
             this.LabelEliminar.Text = "Eliminar caderneta";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(125, 264);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "label7";
             // 
             // TableLayoutPanelPag_Crom
             // 
@@ -699,7 +687,6 @@
         private System.Windows.Forms.Label LabelNova;
         private System.Windows.Forms.Label LabelLimpar;
         private System.Windows.Forms.Label LabelEliminar;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label LabelAceitar;
         private System.Windows.Forms.Label label6;
     }
