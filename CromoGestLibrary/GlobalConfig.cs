@@ -13,17 +13,16 @@ namespace CromoGestLibrary
         public static IDataConnection Connection { get; private set; }
 
 
-
-        public static void InicializarConns(bool MSSQLdatabase)
+        public static void InicializarConns(ConnType connType)
         {
-            if (MSSQLdatabase)
+            if (connType == ConnType.LOCALDB)
             {
                 // TODO - Establecer ligacao
                 Connection = new SqlConnector();
             }
         }
 
-        public static string CnnString(string name)
+        public static string CnnStringLocalDB(string name)
         {
             string executable = System.Reflection.Assembly.GetExecutingAssembly().Location;
             string path = (System.IO.Path.GetDirectoryName(executable));

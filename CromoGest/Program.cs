@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CromoGestLibrary;
 
 namespace CromoGest
 {
@@ -17,9 +18,8 @@ namespace CromoGest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            CromoGestLibrary.GlobalConfig.InicializarConns(true);
-            //            Application.Run(new Entradas());
-            Application.Run(new FormNovaCaderneta());
+            GlobalConfig.InicializarConns(ConnType.LOCALDB);
+           Application.Run(new Entradas());
 
         }
     }

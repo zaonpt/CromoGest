@@ -301,6 +301,7 @@
             this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
             this.ComboBoxCadernetas.Size = new System.Drawing.Size(190, 21);
             this.ComboBoxCadernetas.TabIndex = 8;
+            this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCadernetas_SelectedIndexChanged);
             // 
             // Entradas
             // 

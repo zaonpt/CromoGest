@@ -21,7 +21,7 @@ namespace CromoGest
         {
             InitializeComponent();
             ResetComboBox();
-            charSeparador = GlobalConfig.Connection.GetConfig("Separador");
+            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value);
         }
 
         private void ResetComboBox()
@@ -102,10 +102,24 @@ namespace CromoGest
             return true;
         }
 
+        private void LimpaListas()
+        {
+            dataGridViewCromos.Rows.Clear();
+            dataGridViewCromos.Refresh();
+            ListBoxNovos.Items.Clear();
+            ListBoxRepetidos.Items.Clear();
+        }
+
         private void ButtonLimpar_Click(object sender, EventArgs e)
         {
             ActivarControles(true);
+            LimpaListas();
+        }
 
+        private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimpaListas();
+            ActivarControles(true);
         }
     }
 }

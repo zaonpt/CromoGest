@@ -19,10 +19,10 @@ namespace CromoGestLibrary.SQL
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
         /// </summary>
         /// <param name="id"></param>
-        public void ApagarCaderneta(int id)
+        public void DeleteCaderneta(int id)
         {
             if (id == 0) return;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
@@ -35,10 +35,10 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="Caderneta">Caderneta a inserir</param>
         /// <returns>Caderneta que foi inserida</returns>
-        public CadernetaModelo CriarCaderneta(CadernetaModelo caderneta)
+        public CadernetaModelo NewCaderneta(CadernetaModelo caderneta)
         {
             if (caderneta == null) return null;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Nome", caderneta.Nome);
@@ -65,7 +65,7 @@ namespace CromoGestLibrary.SQL
         public CadernetaModelo GetCadernetaByNome(string nome)
         {
             if (nome == null) return null;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 CadernetaModelo caderneta;
                 var p = new DynamicParameters();
@@ -82,7 +82,7 @@ namespace CromoGestLibrary.SQL
         /// <returns>Devolve uma Lista com as cadernetas todas.</returns>
         public List<CadernetaModelo> GetCadernetas()
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 List<CadernetaModelo> cadernetas;
                 List<PaginaModelo> paginas;
@@ -114,7 +114,7 @@ namespace CromoGestLibrary.SQL
         public string GetConfig(string desc)
         {
             if (desc == null) return null;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Desc", desc);
@@ -130,7 +130,7 @@ namespace CromoGestLibrary.SQL
         /// <returns>true se for novo</returns>
         public bool IncCromoQuatidade(string numero)
         {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 int id = GetCromoId(numero);
                 var p = new DynamicParameters();
@@ -143,7 +143,7 @@ namespace CromoGestLibrary.SQL
         private int GetCromoId(string numero)
         {
             //if (numero == null) return n;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Numero", numero);
@@ -160,7 +160,7 @@ namespace CromoGestLibrary.SQL
         {
 
             if (caderneta == null) return null;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 foreach (PaginaModelo pagina in caderneta.Paginas)
                 {
@@ -193,10 +193,10 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos adquiridos</param>
         /// <returns></returns>
-        public bool TemCromos(CadernetaModelo idCaderneta)
+        public bool GotCromos(CadernetaModelo idCaderneta)
         {
             if (idCaderneta == null) return false;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@IdCaderneta", idCaderneta.Id);
@@ -215,7 +215,7 @@ namespace CromoGestLibrary.SQL
         public int TotalCromos(CadernetaModelo idCaderneta)
         {
             if (idCaderneta == null) return 0;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@IdCaderneta", idCaderneta.Id);
@@ -228,7 +228,7 @@ namespace CromoGestLibrary.SQL
         public bool IsValidCromo(string cromo)
         {
             if (cromo == null) return false;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnString(bd)))
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
                 p.Add("@Numero", cromo);
