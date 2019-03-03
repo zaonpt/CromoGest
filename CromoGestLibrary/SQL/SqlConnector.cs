@@ -35,9 +35,9 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="Caderneta">Caderneta a inserir</param>
         /// <returns>Caderneta que foi inserida</returns>
-        public CadernetaModelo NewCaderneta(CadernetaModelo caderneta)
+        public void NewCaderneta(CadernetaModelo caderneta)
         {
-            if (caderneta == null) return null;
+            if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
@@ -50,7 +50,6 @@ namespace CromoGestLibrary.SQL
                 connection.Execute("dbo.spCriaCaderneta", p, commandType: CommandType.StoredProcedure);
 
                 caderneta.Id = p.Get<int>("@id");
-                return caderneta;
             }
         }
 
@@ -136,10 +135,21 @@ namespace CromoGestLibrary.SQL
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
                 int inseridos = connection.Query<int>("spIncCromoQuantidade", p, commandType: CommandType.StoredProcedure).ToList()[0];
-                return inseridos == 1;
+                return inseridos == 0;
             }
         }
 
+        public int GetCromoQuatidade(string cromo, int idCaderneta)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                int id = GetCromoId(cromo, idCaderneta);
+                var p = new DynamicParameters();
+                p.Add("@Id", id);
+                int inseridos = connection.Query<int>("spGetCromoCountById", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                return inseridos;
+            }
+        }
 
         /// <summary>
         /// Saca o Id de um cromo atraves do numero, relativamente a uma caderneta (ID)
@@ -147,7 +157,7 @@ namespace CromoGestLibrary.SQL
         /// <param name="numero">Numero do cromo</param>
         /// <param name="idCadernta">Identificador da caderneta</param>
         /// <returns></returns>
-        private int GetCromoId(string numero, int idCadernta)
+        public int GetCromoId(string numero, int idCadernta)
         {
             //if (numero == null) return n;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
@@ -155,19 +165,23 @@ namespace CromoGestLibrary.SQL
                 var p = new DynamicParameters();
                 p.Add("@Numero", numero);
                 p.Add("@IdCaderneta", idCadernta);
-                return connection.Query<int>("spGetCromoIdByNumero", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                var result = connection.Query<int>("spGetCromoIdByNumero", p, commandType: CommandType.StoredProcedure);
+                if (result.Count() == 0) return -1;
+                return result.ToList()[0];
             }
         }
+
+
 
         /// <summary>
         /// populaciona a caderneta na base de dados com as informacoes dos cromos.
         /// </summary>
         /// <param name="caderneta"></param>
         /// <returns></returns>
-        public CadernetaModelo PopulateCaderneta(CadernetaModelo caderneta)
+        public void PopulateCaderneta(CadernetaModelo caderneta)
         {
 
-            if (caderneta == null) return null;
+            if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 foreach (PaginaModelo pagina in caderneta.Paginas)
@@ -192,7 +206,6 @@ namespace CromoGestLibrary.SQL
                     }
                 }
             }
-            return caderneta;
         }
 
 
@@ -233,16 +246,11 @@ namespace CromoGestLibrary.SQL
             }
         }
 
-        public bool IsValidCromo(string cromo)
+        public bool IsValidCromo(string cromo, int idCaderneta)
         {
             if (cromo == null) return false;
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
-            {
-                var p = new DynamicParameters();
-                p.Add("@Numero", cromo);
-                int cromoCount = connection.Query<int>("spGetCromoCountByName", p, commandType: CommandType.StoredProcedure).ToList()[0];
-                if (cromoCount == 0) return false;
-            }            
+            int cromoId = GetCromoId(cromo, idCaderneta);
+            if (cromoId == -1) return false;
             return true;
         }
     }

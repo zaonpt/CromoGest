@@ -96,7 +96,7 @@ namespace CromoGest.Forms
                     TextQuantidade.Text, 
                     TextQuantidadeCarteira.Text, 
                     TextCarteiraCusto.Text);
-                caderneta = GlobalConfig.Connection.NewCaderneta(caderneta);
+                GlobalConfig.Connection.NewCaderneta(caderneta);
                 cadernetasExistentes.Add(caderneta);
                 LigaLista();
                 
@@ -293,10 +293,8 @@ namespace CromoGest.Forms
                         }
                     }
                 }
-                caderneta = GlobalConfig.Connection.PopulateCaderneta(caderneta);
-                if (caderneta != null) {
-                    MessageBox.Show("Caderneta Criada com sucesso!");
-                }
+                GlobalConfig.Connection.PopulateCaderneta(caderneta);
+                MessageBox.Show("Caderneta Criada com sucesso!");
             }
         }
 
@@ -355,6 +353,7 @@ namespace CromoGest.Forms
                 cadernetasExistentes.Remove((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
                 ResetComboBox();
                 LimpaGrids();
+                LimpaTexts();
             }
         }
 

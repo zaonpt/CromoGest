@@ -134,6 +134,7 @@
             this.ButtonVerificar.Text = "&Verificar";
             this.toolTip1.SetToolTip(this.ButtonVerificar, "Verificar cromos sem os alterar.");
             this.ButtonVerificar.UseVisualStyleBackColor = true;
+            this.ButtonVerificar.Click += new System.EventHandler(this.ButtonVerificar_Click);
             // 
             // ButtonSair
             // 

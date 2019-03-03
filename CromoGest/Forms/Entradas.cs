@@ -56,6 +56,12 @@ namespace CromoGest
             return GlobalConfig.Connection.IncCromoQuatidade(cromo, idCaderneta);
         }
 
+        int GetCromoQuantidade(string cromo)
+        {
+            int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
+            return GlobalConfig.Connection.GetCromoQuatidade(cromo, idCaderneta);
+        }
+
         private void ButtonIntroduzir_Click(object sender, EventArgs e)
         {
             if (!CromosValidos()) return;
@@ -90,7 +96,13 @@ namespace CromoGest
             ButtonVerificar.Enabled = v;
         }
 
-        private bool CromoValido(string cromo) { return GlobalConfig.Connection.IsValidCromo(cromo); }
+        private bool CromoValido(string cromo)
+        {
+            return GlobalConfig.Connection.IsValidCromo(
+                cromo: cromo, 
+                idCaderneta: ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id
+            );
+        }
 
 
         private bool CromosValidos()
@@ -105,6 +117,7 @@ namespace CromoGest
             if (GlobalConfig.Connection.TotalCromos(caderneta) == 0) {
                 MessageBox.Show("Caderneta existe mas não está populada com informacão das paginas e cromos. " +
                     "Por favor sair e ir 'Nova Caderneta' selecionar esta caderneta e preencher a informação em falta.");
+                LimpaListas();
                 return false;
             }
             
@@ -152,5 +165,35 @@ namespace CromoGest
             LimpaListas();
             ActivarControles(true);
         }
+
+        private void ButtonVerificar_Click(object sender, EventArgs e)
+        {
+            if (!CromosValidos()) return;
+            int CromoQuantidade;
+            int rows = dataGridViewCromos.Rows.Count - 1;
+            bool isNew;
+            for (int i = 0; i < rows; i++)
+            {
+                string row = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
+                if (row.Contains(charSeparador))
+                {
+                    string[] cromos = row.Replace(" ", string.Empty).Split(charSeparador);
+                    foreach (string cromo in cromos)
+                    {
+                        CromoQuantidade = GetCromoQuantidade(cromo);
+                        isNew = (CromoQuantidade == 0);
+                        AddCromoToResults(cromo, isNew);
+                    }
+                }
+                else
+                {
+                    string cromo = row;
+                    CromoQuantidade = GetCromoQuantidade(cromo);
+                    isNew = (CromoQuantidade == 0);
+                    AddCromoToResults(cromo, isNew);
+                }
+            }
+        }
+
     }
 }
