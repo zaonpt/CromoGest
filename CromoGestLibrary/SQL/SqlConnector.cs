@@ -35,7 +35,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="Caderneta">Caderneta a inserir</param>
         /// <returns>Caderneta que foi inserida</returns>
-        public void NewCaderneta(CadernetaModelo caderneta)
+        public void NewCaderneta(CadernetaVerticalModelo caderneta)
         {
             if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
@@ -61,15 +61,15 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="nome">Nome da caderneta que queremos procurar</param>
         /// <returns>Devolve a caderneta com o nome fornecido</returns>
-        public CadernetaModelo GetCadernetaByNome(string nome)
+        public CadernetaVerticalModelo GetCadernetaByNome(string nome)
         {
             if (nome == null) return null;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                CadernetaModelo caderneta;
+                CadernetaVerticalModelo caderneta;
                 var p = new DynamicParameters();
                 p.Add("@nome", nome);
-                caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                caderneta = connection.Query<CadernetaVerticalModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return null;
             }
         }
@@ -79,17 +79,17 @@ namespace CromoGestLibrary.SQL
         /// Procura na BD e devolve todas as cadernetas
         /// </summary>
         /// <returns>Devolve uma Lista com as cadernetas todas.</returns>
-        public List<CadernetaModelo> GetCadernetas()
+        public List<CadernetaVerticalModelo> GetCadernetasVerticias()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                List<CadernetaModelo> cadernetas;
+                List<CadernetaVerticalModelo> cadernetas;
                 List<PaginaModelo> paginas;
                 List<CromoModelo> cromos;
                 DynamicParameters p;
-                cadernetas = connection.Query<CadernetaModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
+                cadernetas = connection.Query<CadernetaVerticalModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
 
-                foreach (CadernetaModelo caderneta in cadernetas)
+                foreach (CadernetaVerticalModelo caderneta in cadernetas)
                 {
                     p = new DynamicParameters();
                     p.Add("@IdCaderneta", caderneta.Id);
@@ -178,12 +178,13 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="caderneta"></param>
         /// <returns></returns>
-        public void PopulateCaderneta(CadernetaModelo caderneta)
+        public void PopulateCaderneta(CadernetaVerticalModelo caderneta)
         {
 
             if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
+                int npagina = 1;
                 foreach (PaginaModelo pagina in caderneta.Paginas)
                 {
                     var p = new DynamicParameters();
@@ -214,7 +215,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos adquiridos</param>
         /// <returns></returns>
-        public bool GotCromos(CadernetaModelo idCaderneta)
+        public bool GotCromos(CadernetaVerticalModelo idCaderneta)
         {
             if (idCaderneta == null) return false;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
@@ -233,7 +234,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos populados</param>
         /// <returns></returns>
-        public int TotalCromos(CadernetaModelo idCaderneta)
+        public int TotalCromos(CadernetaVerticalModelo idCaderneta)
         {
             if (idCaderneta == null) return 0;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))

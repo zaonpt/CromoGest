@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CromoGestLibrary.Modelos
 {
-    public class CadernetaModelo
+    public class CadernetaVerticalModelo
     {
         /// <summary>
         /// Identificador Automático
@@ -35,9 +35,9 @@ namespace CromoGestLibrary.Modelos
 
         public List<PaginaModelo> Paginas { get; set; } = new List<PaginaModelo>();
 
-        public CadernetaModelo() { }
+        public CadernetaVerticalModelo() { }
 
-        public CadernetaModelo(string nome, string quantidade, string quantidadeSaqueta, string custoSaqueta)
+        public CadernetaVerticalModelo(string nome, string quantidade, string quantidadeSaqueta, string custoSaqueta)
         {
             // TODO : Validar esta informacao e dar lidar com informacao incorreta
             Nome = nome;

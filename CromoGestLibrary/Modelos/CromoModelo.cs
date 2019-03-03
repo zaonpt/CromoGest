@@ -30,5 +30,6 @@ namespace CromoGestLibrary.Modelos
 
         public int IdPagina { get; set; }
 
+
     }
 }

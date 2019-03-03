@@ -48,8 +48,8 @@
             this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
             this.ButtonAlterarStatus = new System.Windows.Forms.Button();
             this.ButtonCriar = new System.Windows.Forms.Button();
-            this.LabelTrocaTitulo = new System.Windows.Forms.Label();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.LabelTrocaTitulo = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTrocas)).BeginInit();
             this.panel1.SuspendLayout();
             this.GroupBoxProgresso.SuspendLayout();
@@ -162,6 +162,7 @@
             // 
             // ButtonSair
             // 
+            this.ButtonSair.ForeColor = System.Drawing.Color.Black;
             this.ButtonSair.Location = new System.Drawing.Point(10, 359);
             this.ButtonSair.Name = "ButtonSair";
             this.ButtonSair.Size = new System.Drawing.Size(100, 23);
@@ -180,6 +181,7 @@
             // 
             // ButtonAlterarSelecao
             // 
+            this.ButtonAlterarSelecao.ForeColor = System.Drawing.Color.Black;
             this.ButtonAlterarSelecao.Location = new System.Drawing.Point(10, 330);
             this.ButtonAlterarSelecao.Name = "ButtonAlterarSelecao";
             this.ButtonAlterarSelecao.Size = new System.Drawing.Size(100, 23);
@@ -219,6 +221,7 @@
             // 
             // ButtonAlterarStatus
             // 
+            this.ButtonAlterarStatus.ForeColor = System.Drawing.Color.Black;
             this.ButtonAlterarStatus.Location = new System.Drawing.Point(394, 25);
             this.ButtonAlterarStatus.Name = "ButtonAlterarStatus";
             this.ButtonAlterarStatus.Size = new System.Drawing.Size(100, 23);
@@ -228,6 +231,7 @@
             // 
             // ButtonCriar
             // 
+            this.ButtonCriar.ForeColor = System.Drawing.Color.Black;
             this.ButtonCriar.Location = new System.Drawing.Point(10, 301);
             this.ButtonCriar.Name = "ButtonCriar";
             this.ButtonCriar.Size = new System.Drawing.Size(100, 23);
@@ -240,7 +244,7 @@
             // 
             this.LabelTrocaTitulo.AutoSize = true;
             this.LabelTrocaTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelTrocaTitulo.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.LabelTrocaTitulo.ForeColor = System.Drawing.Color.White;
             this.LabelTrocaTitulo.Location = new System.Drawing.Point(418, 24);
             this.LabelTrocaTitulo.Name = "LabelTrocaTitulo";
             this.LabelTrocaTitulo.Size = new System.Drawing.Size(68, 24);
@@ -251,8 +255,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(961, 429);
             this.Controls.Add(this.panel1);
+            this.ForeColor = System.Drawing.Color.White;
             this.MaximumSize = new System.Drawing.Size(2000, 468);
             this.MinimumSize = new System.Drawing.Size(860, 468);
             this.Name = "Trocas";
@@ -270,7 +276,6 @@
 
         private System.Windows.Forms.DataGridView DataGridViewTrocas;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label LabelTrocaTitulo;
         private System.Windows.Forms.Button ButtonCriar;
         private System.Windows.Forms.Button ButtonAlterarSelecao;
         private System.Windows.Forms.StatusStrip StatusStripTrocas;
@@ -289,5 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
+        private System.Windows.Forms.Label LabelTrocaTitulo;
     }
 }

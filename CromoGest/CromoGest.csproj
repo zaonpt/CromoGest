@@ -64,23 +64,11 @@
     <Compile Include="Forms\Config.Designer.cs">
       <DependentUpon>Config.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CromoGest.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CromoGest.Designer.cs">
-      <DependentUpon>CromoGest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\Entradas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Entradas.Designer.cs">
       <DependentUpon>Entradas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\Historico.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Historico.Designer.cs">
-      <DependentUpon>Historico.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Trocas.cs">
       <SubType>Form</SubType>
@@ -99,14 +87,8 @@
     <EmbeddedResource Include="Forms\Config.resx">
       <DependentUpon>Config.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CromoGest.resx">
-      <DependentUpon>CromoGest.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Entradas.resx">
       <DependentUpon>Entradas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Historico.resx">
-      <DependentUpon>Historico.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Trocas.resx">
       <DependentUpon>Trocas.cs</DependentUpon>

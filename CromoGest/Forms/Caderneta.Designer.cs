@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelListaRepetido = new System.Windows.Forms.Label();
@@ -37,9 +39,9 @@
             this.ButtonInfo = new System.Windows.Forms.Button();
             this.ButtonEntradas = new System.Windows.Forms.Button();
             this.ButtonTrocas = new System.Windows.Forms.Button();
-            this.ButtonEditar = new System.Windows.Forms.Button();
-            this.ComboBoxCaderneta = new System.Windows.Forms.ComboBox();
+            this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCaderneta = new System.Windows.Forms.Label();
+            this.ButtonEditar = new System.Windows.Forms.Button();
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.Pagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -114,19 +116,20 @@
             this.tableLayoutPanel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel2.ColumnCount = 6;
+            this.tableLayoutPanel2.ColumnCount = 7;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.Controls.Add(this.ButtonInfo, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonEntradas, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonTrocas, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ButtonEditar, 5, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCaderneta, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.LabelCaderneta, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ButtonEditar, 6, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -137,6 +140,7 @@
             // ButtonInfo
             // 
             this.ButtonInfo.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonInfo.ForeColor = System.Drawing.Color.Black;
             this.ButtonInfo.Location = new System.Drawing.Point(223, 5);
             this.ButtonInfo.Name = "ButtonInfo";
             this.ButtonInfo.Size = new System.Drawing.Size(104, 23);
@@ -147,6 +151,7 @@
             // ButtonEntradas
             // 
             this.ButtonEntradas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonEntradas.ForeColor = System.Drawing.Color.Black;
             this.ButtonEntradas.Location = new System.Drawing.Point(113, 5);
             this.ButtonEntradas.Name = "ButtonEntradas";
             this.ButtonEntradas.Size = new System.Drawing.Size(104, 23);
@@ -158,6 +163,7 @@
             // ButtonTrocas
             // 
             this.ButtonTrocas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonTrocas.ForeColor = System.Drawing.Color.Black;
             this.ButtonTrocas.Location = new System.Drawing.Point(3, 5);
             this.ButtonTrocas.Name = "ButtonTrocas";
             this.ButtonTrocas.Size = new System.Drawing.Size(104, 23);
@@ -166,26 +172,15 @@
             this.toolTip1.SetToolTip(this.ButtonTrocas, "Aceder ao registo de trocas de cromos.");
             this.ButtonTrocas.UseVisualStyleBackColor = true;
             // 
-            // ButtonEditar
+            // ComboBoxCadernetas
             // 
-            this.ButtonEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ButtonEditar.Location = new System.Drawing.Point(887, 5);
-            this.ButtonEditar.Name = "ButtonEditar";
-            this.ButtonEditar.Size = new System.Drawing.Size(104, 23);
-            this.ButtonEditar.TabIndex = 15;
-            this.ButtonEditar.Text = "&Editar";
-            this.toolTip1.SetToolTip(this.ButtonEditar, "Editar a descrição dos cromos e as paginas a que pertencem.");
-            this.ButtonEditar.UseVisualStyleBackColor = true;
-            // 
-            // ComboBoxCaderneta
-            // 
-            this.ComboBoxCaderneta.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ComboBoxCaderneta.FormattingEnabled = true;
-            this.ComboBoxCaderneta.Location = new System.Drawing.Point(443, 6);
-            this.ComboBoxCaderneta.Name = "ComboBoxCaderneta";
-            this.ComboBoxCaderneta.Size = new System.Drawing.Size(201, 21);
-            this.ComboBoxCaderneta.TabIndex = 16;
-            this.toolTip1.SetToolTip(this.ComboBoxCaderneta, "Selecionar caderneta.");
+            this.ComboBoxCadernetas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ComboBoxCadernetas.FormattingEnabled = true;
+            this.ComboBoxCadernetas.Location = new System.Drawing.Point(443, 6);
+            this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(201, 21);
+            this.ComboBoxCadernetas.TabIndex = 16;
+            this.toolTip1.SetToolTip(this.ComboBoxCadernetas, "Selecionar caderneta.");
             // 
             // LabelCaderneta
             // 
@@ -197,17 +192,44 @@
             this.LabelCaderneta.Text = "Caderneta";
             this.LabelCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // ButtonEditar
+            // 
+            this.ButtonEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonEditar.ForeColor = System.Drawing.Color.Black;
+            this.ButtonEditar.Location = new System.Drawing.Point(887, 5);
+            this.ButtonEditar.Name = "ButtonEditar";
+            this.ButtonEditar.Size = new System.Drawing.Size(104, 23);
+            this.ButtonEditar.TabIndex = 15;
+            this.ButtonEditar.Text = "&Editar";
+            this.toolTip1.SetToolTip(this.ButtonEditar, "Editar a descrição dos cromos e as paginas a que pertencem.");
+            this.ButtonEditar.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewCaderneta
             // 
             this.dataGridViewCaderneta.AllowUserToAddRows = false;
             this.dataGridViewCaderneta.AllowUserToDeleteRows = false;
+            this.dataGridViewCaderneta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dataGridViewCaderneta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCaderneta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Pagina});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCaderneta.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCaderneta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewCaderneta.Name = "dataGridViewCaderneta";
             this.dataGridViewCaderneta.ReadOnly = true;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 525);
             this.dataGridViewCaderneta.TabIndex = 1;
             // 
@@ -265,8 +287,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(1000, 651);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "Caderneta";
             this.Text = "Caderneta";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -293,7 +317,7 @@
         private System.Windows.Forms.Button ButtonEditar;
         private System.Windows.Forms.DataGridView dataGridViewCaderneta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pagina;
-        private System.Windows.Forms.ComboBox ComboBoxCaderneta;
+        private System.Windows.Forms.ComboBox ComboBoxCadernetas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label LabelListaRepetido;
         private System.Windows.Forms.TextBox TextListaRepetidos;

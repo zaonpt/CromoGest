@@ -63,7 +63,8 @@
     <Compile Include="ConfigCategory.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="GlobalConfig.cs" />
-    <Compile Include="Modelos\CadernetaModelo.cs" />
+    <Compile Include="Modelos\CadernetaHorizontalModelo.cs" />
+    <Compile Include="Modelos\CadernetaVerticalModelo.cs" />
     <Compile Include="Modelos\CromoModelo.cs" />
     <Compile Include="Modelos\DestinatarioModelo.cs" />
     <Compile Include="Modelos\PaginaModelo.cs" />

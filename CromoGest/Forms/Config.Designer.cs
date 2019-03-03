@@ -35,6 +35,8 @@
             this.LabelCaracter = new System.Windows.Forms.Label();
             this.TextSeparador = new System.Windows.Forms.TextBox();
             this.ConfigToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Labellixo
@@ -89,16 +91,42 @@
             this.TextSeparador.Text = ",";
             this.ConfigToolTip.SetToolTip(this.TextSeparador, "Caracter separador para usar nas listas de cromos (default é virgula).");
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Escuro",
+            "Claro"});
+            this.comboBox1.Location = new System.Drawing.Point(132, 249);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(186, 21);
+            this.comboBox1.TabIndex = 6;
+            this.comboBox1.Text = "Escuro";
+            this.ConfigToolTip.SetToolTip(this.comboBox1, "Lingua usada em toda a aplicação.");
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(31, 249);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(95, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "theme";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.TextSeparador);
             this.Controls.Add(this.LabelCaracter);
             this.Controls.Add(this.ComboBoxLimguagem);
             this.Controls.Add(this.LabelLinguagem);
             this.Controls.Add(this.Labellixo);
+            this.ForeColor = System.Drawing.Color.White;
             this.Name = "Config";
             this.Text = "Config";
             this.Load += new System.EventHandler(this.Config_Load);
@@ -115,5 +143,7 @@
         private System.Windows.Forms.ToolTip ConfigToolTip;
         private System.Windows.Forms.Label LabelCaracter;
         private System.Windows.Forms.TextBox TextSeparador;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
