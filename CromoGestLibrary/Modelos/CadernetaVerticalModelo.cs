@@ -33,7 +33,7 @@ namespace CromoGestLibrary.Modelos
         /// </summary>
         public decimal CustoCarteira { get; set; }
 
-        public List<PaginaModelo> Paginas { get; set; } = new List<PaginaModelo>();
+        public List<PaginaVerticalModelo> Paginas { get; set; } = new List<PaginaVerticalModelo>();
 
         public CadernetaVerticalModelo() { }
 

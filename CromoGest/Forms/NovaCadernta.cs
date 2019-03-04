@@ -174,7 +174,7 @@ namespace CromoGest.Forms
         private void FillCromos()
         {
             CromosCadernetaSelecionada = new List<CromoModelo>();
-            foreach (PaginaModelo pagina in ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Paginas)
+            foreach (PaginaVerticalModelo pagina in ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Paginas)
             {
                 foreach (CromoModelo cromo in pagina.Cromos)
                 {
@@ -207,7 +207,7 @@ namespace CromoGest.Forms
         {
             int quantidade = SomatorioCromosPaginas();
             CadernetaVerticalModelo caderneta = (CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem;
-            PaginaModelo novaPagina;
+            PaginaVerticalModelo novaPagina;
             CromoModelo novoCromo;
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
@@ -227,7 +227,7 @@ namespace CromoGest.Forms
                     {
                         string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
                         
-                        novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
+                        novaPagina = new PaginaVerticalModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
                         caderneta.Paginas.Add(novaPagina);
                         int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
                         for (int c = 0;  c < cromos; c++)
@@ -278,17 +278,17 @@ namespace CromoGest.Forms
                     for (int j = 0; j < nrows; j++)
                     {
                         int cromosPagina = Convert.ToInt32(DataGridViewPaginas.Rows[j].Cells["Quantidade"].Value.ToString());
-                        caderneta.Paginas.Add(new PaginaModelo(
+                        caderneta.Paginas.Add(new PaginaVerticalModelo(
                                 DataGridViewPaginas.Rows[j].Cells["Pagina"].Value.ToString(),
                                 idCaderneta: caderneta.Id
                                 ));
                         for (int i = 0; i < cromosPagina; i++)
                         {
                             string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
-                            caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
+                            caderneta.Paginas.Last<PaginaVerticalModelo>().Cromos.Add(new CromoModelo(
                                 numero: cromoCounter.ToString(),
                                 descricao: descricaoCromo,
-                                idPagina: caderneta.Paginas.Last<PaginaModelo>().Id
+                                idPagina: caderneta.Paginas.Last<PaginaVerticalModelo>().Id
                             ));
                         }
                     }

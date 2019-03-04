@@ -84,7 +84,7 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 List<CadernetaVerticalModelo> cadernetas;
-                List<PaginaModelo> paginas;
+                List<PaginaVerticalModelo> paginas;
                 List<CromoModelo> cromos;
                 DynamicParameters p;
                 cadernetas = connection.Query<CadernetaVerticalModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
@@ -93,11 +93,11 @@ namespace CromoGestLibrary.SQL
                 {
                     p = new DynamicParameters();
                     p.Add("@IdCaderneta", caderneta.Id);
-                    paginas = connection.Query<PaginaModelo>("dbo.spGetPaginasDeCadernetaById", p, commandType: CommandType.StoredProcedure).ToList();
+                    paginas = connection.Query<PaginaVerticalModelo>("dbo.spGetPaginasDeCadernetaById", p, commandType: CommandType.StoredProcedure).ToList();
                     if (paginas == null) return cadernetas;
                     caderneta.Paginas = paginas;
 
-                    foreach (PaginaModelo pagina in paginas)
+                    foreach (PaginaVerticalModelo pagina in paginas)
                     {
                         p = new DynamicParameters();
                         p.Add("@IdPagina", pagina.Id);
@@ -108,6 +108,47 @@ namespace CromoGestLibrary.SQL
                 }
                 return cadernetas;
             }
+        }
+
+        public List<CadernetaHorizontalModelo> GetCadernetasHorizontais()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                List<CadernetaVerticalModelo> cadernetasV = GetCadernetasVerticias();
+                List<CadernetaHorizontalModelo> cadernetasH= new List<CadernetaHorizontalModelo>();
+                dynamic paginaHorizontal;
+                CadernetaHorizontalModelo cadernetaH;
+                int ncromo;
+                string catPagina;
+                foreach (CadernetaVerticalModelo cadernetaV in cadernetasV)
+                {
+                    cadernetaH = new CadernetaHorizontalModelo(
+                        cadernetaV.Id,
+                        cadernetaV.Nome,
+                        cadernetaV.QuantidadeCromos,
+                        cadernetaV.QuantidadeCromosCarteira,
+                        cadernetaV.CustoCarteira);
+
+                    cadernetasH.Add(cadernetaH);
+                    
+                    foreach (PaginaVerticalModelo pagina in cadernetaV.Paginas)
+                    {
+                        paginaHorizontal = new PaginaHorizontalModelo(pagina.Id, pagina.Nome, pagina.Quantidade, pagina.IdCaderneta);
+                        ncromo = 1;
+                        foreach (CromoModelo cromo in pagina.Cromos)
+                        {
+                            catPagina = "C" + ncromo++;
+                            paginaHorizontal[catPagina] = cromo;
+                            //if (!cadernetaH.HasProperty(catPagina))
+                            //    cadernetaH[catPagina] = new List<CromoModelo>();
+                            //((List<CromoModelo>)cadernetaH[catPagina]).Add(cromo);
+                        }
+                        cadernetaH.Paginas.Add(paginaHorizontal);
+                    }
+
+                }
+            }
+            return null;
         }
 
         public string GetConfig(string desc)
@@ -185,7 +226,7 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 int npagina = 1;
-                foreach (PaginaModelo pagina in caderneta.Paginas)
+                foreach (PaginaVerticalModelo pagina in caderneta.Paginas)
                 {
                     var p = new DynamicParameters();
                     p.Add("@Nome", pagina.Nome);
@@ -254,5 +295,7 @@ namespace CromoGestLibrary.SQL
             if (cromoId == -1) return false;
             return true;
         }
+
+
     }
 }

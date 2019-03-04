@@ -67,7 +67,8 @@
     <Compile Include="Modelos\CadernetaVerticalModelo.cs" />
     <Compile Include="Modelos\CromoModelo.cs" />
     <Compile Include="Modelos\DestinatarioModelo.cs" />
-    <Compile Include="Modelos\PaginaModelo.cs" />
+    <Compile Include="Modelos\PaginaHorizontalModelo.cs" />
+    <Compile Include="Modelos\PaginaVerticalModelo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Modelos\TrocaModelo.cs" />
     <Compile Include="SQL\IDataConnection.cs" />
