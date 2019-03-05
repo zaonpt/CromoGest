@@ -104,7 +104,7 @@ namespace CromoGestLibrary.SQL
                         cromos = connection.Query<CromoModelo>("dbo.spGetCromosByPaginaId", p, commandType: CommandType.StoredProcedure).ToList();
                         if (cromos == null) return cadernetas;
                         pagina.Cromos = cromos;
-                        pagina.set_pagina_property();
+                        //pagina.set_pagina_property();
                     }
                 }
                 return cadernetas;

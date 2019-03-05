@@ -1,6 +1,6 @@
 ﻿namespace CromoGest.Forms
 {
-    partial class Trocas
+    partial class TrocasForm
     {
         /// <summary>
         /// Required designer variable.

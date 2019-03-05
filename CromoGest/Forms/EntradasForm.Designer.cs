@@ -316,6 +316,7 @@
             this.MinimumSize = new System.Drawing.Size(520, 601);
             this.Name = "Entradas";
             this.Text = "Entradas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Entradas_FormClosing);
             this.Load += new System.EventHandler(this.Entradas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCromos)).EndInit();
             this.statusStrip1.ResumeLayout(false);

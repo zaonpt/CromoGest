@@ -19,9 +19,7 @@ namespace CromoGest
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             GlobalConfig.InicializarConns(ConnType.LOCALDB);
-            Application.Run(new Caderneta());
-            //Application.Run(new Entradas());
-            //Application.Run(new FormNovaCaderneta());
+            Application.Run(new CadernetaForm());
 
         }
     }

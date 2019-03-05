@@ -10,13 +10,20 @@ using System.Windows.Forms;
 
 namespace CromoGest.Forms
 {
-    public partial class Trocas : Form
+    public partial class ConfigForm : Form
     {
-        public Trocas()
+        public ConfigForm()
         {
             InitializeComponent();
         }
 
-   
+        private void Config_Load(object sender, EventArgs e)
+        {
+
+        }
+        public string SeparadorChar()
+        {
+            return TextSeparador.Text;
+        }
     }
 }

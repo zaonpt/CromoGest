@@ -1,6 +1,6 @@
 ﻿namespace CromoGest.Forms
 {
-    partial class FormNovaCaderneta
+    partial class NovaCaderneta
     {
         /// <summary>
         /// Required designer variable.
@@ -609,7 +609,7 @@
     "agina (centro). For fim e facultativamente, customizar os cromos (dir).";
             this.ToolStripLabelNovaCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // FormNovaCaderneta
+            // NovaCaderneta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -618,8 +618,9 @@
             this.Controls.Add(this.TableLayoutPanelTitulo);
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(857, 687);
-            this.Name = "FormNovaCaderneta";
+            this.Name = "NovaCaderneta";
             this.Text = "CromoGest";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NovaCaderneta_FormClosing);
             this.GroupBoxCaderneta.ResumeLayout(false);
             this.GroupBoxCaderneta.PerformLayout();
             this.GroupBoxCarteira.ResumeLayout(false);

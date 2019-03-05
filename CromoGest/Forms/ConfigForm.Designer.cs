@@ -1,6 +1,6 @@
 ﻿namespace CromoGest.Forms
 {
-    partial class Config
+    partial class ConfigForm
     {
         /// <summary>
         /// Required designer variable.

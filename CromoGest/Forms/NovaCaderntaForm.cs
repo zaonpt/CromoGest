@@ -12,18 +12,27 @@ using System.Windows.Forms;
 
 namespace CromoGest.Forms
 { 
-    public partial class FormNovaCaderneta : Form
+    public partial class NovaCaderneta : Form
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         private List<CromoModelo> CromosCadernetaSelecionada = new List<CromoModelo>();
+        private CadernetaForm caderneta;
                
-        public FormNovaCaderneta()
+        public NovaCaderneta()
         { 
             InitializeComponent();
             LigaLista();
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
-        
+
+        public NovaCaderneta(CadernetaForm cadernetaIN)
+        {
+            InitializeComponent();
+            LigaLista();
+            DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            caderneta = cadernetaIN;
+        }
+
         private void LigaTextboxes(bool ligar)
         {
             TextNome.Enabled = ligar;
@@ -406,6 +415,12 @@ namespace CromoGest.Forms
                     }
                 }
             }
+        }
+
+        private void NovaCaderneta_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Hide();
+            caderneta.Show();
         }
     }
 }

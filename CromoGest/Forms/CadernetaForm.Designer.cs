@@ -1,6 +1,6 @@
 ﻿namespace CromoGest.Forms
 {
-    partial class Caderneta
+    partial class CadernetaForm
     {
         /// <summary>
         /// Required designer variable.
@@ -41,13 +41,13 @@
             this.ButtonTrocas = new System.Windows.Forms.Button();
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCaderneta = new System.Windows.Forms.Label();
-            this.ButtonEditar = new System.Windows.Forms.Button();
+            this.ButtonNova = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelListaCromos = new System.Windows.Forms.Label();
             this.TextListaCromos = new System.Windows.Forms.TextBox();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -128,7 +128,7 @@
             this.tableLayoutPanel2.Controls.Add(this.ButtonTrocas, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.LabelCaderneta, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ButtonEditar, 6, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ButtonNova, 6, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -158,6 +158,7 @@
             this.ButtonEntradas.Text = "&Entradas";
             this.toolTip1.SetToolTip(this.ButtonEntradas, "Registar entrada de cromos.");
             this.ButtonEntradas.UseVisualStyleBackColor = true;
+            this.ButtonEntradas.Click += new System.EventHandler(this.ButtonEntradas_Click);
             // 
             // ButtonTrocas
             // 
@@ -192,17 +193,18 @@
             this.LabelCaderneta.Text = "Caderneta";
             this.LabelCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // ButtonEditar
+            // ButtonNova
             // 
-            this.ButtonEditar.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ButtonEditar.ForeColor = System.Drawing.Color.Black;
-            this.ButtonEditar.Location = new System.Drawing.Point(887, 5);
-            this.ButtonEditar.Name = "ButtonEditar";
-            this.ButtonEditar.Size = new System.Drawing.Size(104, 23);
-            this.ButtonEditar.TabIndex = 15;
-            this.ButtonEditar.Text = "&Editar";
-            this.toolTip1.SetToolTip(this.ButtonEditar, "Editar a descrição dos cromos e as paginas a que pertencem.");
-            this.ButtonEditar.UseVisualStyleBackColor = true;
+            this.ButtonNova.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonNova.ForeColor = System.Drawing.Color.Black;
+            this.ButtonNova.Location = new System.Drawing.Point(887, 5);
+            this.ButtonNova.Name = "ButtonNova";
+            this.ButtonNova.Size = new System.Drawing.Size(104, 23);
+            this.ButtonNova.TabIndex = 15;
+            this.ButtonNova.Text = "&Nova Caderneta";
+            this.toolTip1.SetToolTip(this.ButtonNova, "Editar a descrição dos cromos e as paginas a que pertencem.");
+            this.ButtonNova.UseVisualStyleBackColor = true;
+            this.ButtonNova.Click += new System.EventHandler(this.ButtonNova_Click);
             // 
             // statusStrip1
             // 
@@ -308,7 +310,7 @@
         private System.Windows.Forms.Button ButtonTrocas;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.Button ButtonEditar;
+        private System.Windows.Forms.Button ButtonNova;
         private System.Windows.Forms.ComboBox ComboBoxCadernetas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label LabelListaRepetido;

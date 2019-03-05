@@ -46,52 +46,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Caderneta.cs">
+    <Compile Include="Forms\CadernetaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Caderneta.Designer.cs">
-      <DependentUpon>Caderneta.cs</DependentUpon>
+    <Compile Include="Forms\CadernetaForm.Designer.cs">
+      <DependentUpon>CadernetaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\NovaCadernta.cs">
+    <Compile Include="Forms\NovaCaderntaForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\NovaCadernta.Designer.cs">
-      <DependentUpon>NovaCadernta.cs</DependentUpon>
+    <Compile Include="Forms\NovaCaderntaForm.Designer.cs">
+      <DependentUpon>NovaCaderntaForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Config.cs">
+    <Compile Include="Forms\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Config.Designer.cs">
-      <DependentUpon>Config.cs</DependentUpon>
+    <Compile Include="Forms\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Entradas.cs">
+    <Compile Include="Forms\EntradasForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Entradas.Designer.cs">
-      <DependentUpon>Entradas.cs</DependentUpon>
+    <Compile Include="Forms\EntradasForm.Designer.cs">
+      <DependentUpon>EntradasForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Trocas.cs">
+    <Compile Include="Forms\TrocasForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Trocas.Designer.cs">
-      <DependentUpon>Trocas.cs</DependentUpon>
+    <Compile Include="Forms\TrocasForm.Designer.cs">
+      <DependentUpon>TrocasForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Caderneta.resx">
-      <DependentUpon>Caderneta.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CadernetaForm.resx">
+      <DependentUpon>CadernetaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\NovaCadernta.resx">
-      <DependentUpon>NovaCadernta.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\NovaCaderntaForm.resx">
+      <DependentUpon>NovaCaderntaForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Config.resx">
-      <DependentUpon>Config.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Entradas.resx">
-      <DependentUpon>Entradas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\EntradasForm.resx">
+      <DependentUpon>EntradasForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Trocas.resx">
-      <DependentUpon>Trocas.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\TrocasForm.resx">
+      <DependentUpon>TrocasForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
