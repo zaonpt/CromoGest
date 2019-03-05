@@ -35,7 +35,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="Caderneta">Caderneta a inserir</param>
         /// <returns>Caderneta que foi inserida</returns>
-        public void NewCaderneta(CadernetaVerticalModelo caderneta)
+        public void NewCaderneta(CadernetaModelo caderneta)
         {
             if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
@@ -61,15 +61,15 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="nome">Nome da caderneta que queremos procurar</param>
         /// <returns>Devolve a caderneta com o nome fornecido</returns>
-        public CadernetaVerticalModelo GetCadernetaByNome(string nome)
+        public CadernetaModelo GetCadernetaByNome(string nome)
         {
             if (nome == null) return null;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                CadernetaVerticalModelo caderneta;
+                CadernetaModelo caderneta;
                 var p = new DynamicParameters();
                 p.Add("@nome", nome);
-                caderneta = connection.Query<CadernetaVerticalModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return null;
             }
         }
@@ -79,77 +79,39 @@ namespace CromoGestLibrary.SQL
         /// Procura na BD e devolve todas as cadernetas
         /// </summary>
         /// <returns>Devolve uma Lista com as cadernetas todas.</returns>
-        public List<CadernetaVerticalModelo> GetCadernetasVerticias()
+        public List<CadernetaModelo> GetCadernetas()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                List<CadernetaVerticalModelo> cadernetas;
-                List<PaginaVerticalModelo> paginas;
+                List<CadernetaModelo> cadernetas;
+                List<PaginaModelo> paginas;
                 List<CromoModelo> cromos;
                 DynamicParameters p;
-                cadernetas = connection.Query<CadernetaVerticalModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
+                cadernetas = connection.Query<CadernetaModelo>("dbo.spGetCadernetas", commandType: CommandType.StoredProcedure).ToList();
 
-                foreach (CadernetaVerticalModelo caderneta in cadernetas)
+                foreach (CadernetaModelo caderneta in cadernetas)
                 {
                     p = new DynamicParameters();
                     p.Add("@IdCaderneta", caderneta.Id);
-                    paginas = connection.Query<PaginaVerticalModelo>("dbo.spGetPaginasDeCadernetaById", p, commandType: CommandType.StoredProcedure).ToList();
+                    paginas = connection.Query<PaginaModelo>("dbo.spGetPaginasByCadernetaId", p, commandType: CommandType.StoredProcedure).ToList();
                     if (paginas == null) return cadernetas;
                     caderneta.Paginas = paginas;
 
-                    foreach (PaginaVerticalModelo pagina in paginas)
+                    foreach (PaginaModelo pagina in paginas)
                     {
                         p = new DynamicParameters();
                         p.Add("@IdPagina", pagina.Id);
-                        cromos = connection.Query<CromoModelo>("dbo.spGetCromosDePaginaById", p, commandType: CommandType.StoredProcedure).ToList();
+                        cromos = connection.Query<CromoModelo>("dbo.spGetCromosByPaginaId", p, commandType: CommandType.StoredProcedure).ToList();
                         if (cromos == null) return cadernetas;
                         pagina.Cromos = cromos;
+                        pagina.set_pagina_property();
                     }
                 }
                 return cadernetas;
             }
         }
+        
 
-        public List<CadernetaHorizontalModelo> GetCadernetasHorizontais()
-        {
-            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
-            {
-                List<CadernetaVerticalModelo> cadernetasV = GetCadernetasVerticias();
-                List<CadernetaHorizontalModelo> cadernetasH= new List<CadernetaHorizontalModelo>();
-                dynamic paginaHorizontal;
-                CadernetaHorizontalModelo cadernetaH;
-                int ncromo;
-                string catPagina;
-                foreach (CadernetaVerticalModelo cadernetaV in cadernetasV)
-                {
-                    cadernetaH = new CadernetaHorizontalModelo(
-                        cadernetaV.Id,
-                        cadernetaV.Nome,
-                        cadernetaV.QuantidadeCromos,
-                        cadernetaV.QuantidadeCromosCarteira,
-                        cadernetaV.CustoCarteira);
-
-                    cadernetasH.Add(cadernetaH);
-                    
-                    foreach (PaginaVerticalModelo pagina in cadernetaV.Paginas)
-                    {
-                        paginaHorizontal = new PaginaHorizontalModelo(pagina.Id, pagina.Nome, pagina.Quantidade, pagina.IdCaderneta);
-                        ncromo = 1;
-                        foreach (CromoModelo cromo in pagina.Cromos)
-                        {
-                            catPagina = "C" + ncromo++;
-                            paginaHorizontal[catPagina] = cromo;
-                            //if (!cadernetaH.HasProperty(catPagina))
-                            //    cadernetaH[catPagina] = new List<CromoModelo>();
-                            //((List<CromoModelo>)cadernetaH[catPagina]).Add(cromo);
-                        }
-                        cadernetaH.Paginas.Add(paginaHorizontal);
-                    }
-
-                }
-            }
-            return null;
-        }
 
         public string GetConfig(string desc)
         {
@@ -219,14 +181,14 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="caderneta"></param>
         /// <returns></returns>
-        public void PopulateCaderneta(CadernetaVerticalModelo caderneta)
+        public void PopulateCaderneta(CadernetaModelo caderneta)
         {
 
             if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 int npagina = 1;
-                foreach (PaginaVerticalModelo pagina in caderneta.Paginas)
+                foreach (PaginaModelo pagina in caderneta.Paginas)
                 {
                     var p = new DynamicParameters();
                     p.Add("@Nome", pagina.Nome);
@@ -256,7 +218,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos adquiridos</param>
         /// <returns></returns>
-        public bool GotCromos(CadernetaVerticalModelo idCaderneta)
+        public bool GotCromos(CadernetaModelo idCaderneta)
         {
             if (idCaderneta == null) return false;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
@@ -275,7 +237,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos populados</param>
         /// <returns></returns>
-        public int TotalCromos(CadernetaVerticalModelo idCaderneta)
+        public int TotalCromos(CadernetaModelo idCaderneta)
         {
             if (idCaderneta == null) return 0;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))

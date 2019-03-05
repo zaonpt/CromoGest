@@ -42,18 +42,17 @@
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCaderneta = new System.Windows.Forms.Label();
             this.ButtonEditar = new System.Windows.Forms.Button();
-            this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
-            this.Pagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelListaCromos = new System.Windows.Forms.Label();
             this.TextListaCromos = new System.Windows.Forms.TextBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCaderneta)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCaderneta)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -62,9 +61,9 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewCaderneta, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewCaderneta, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -181,6 +180,7 @@
             this.ComboBoxCadernetas.Size = new System.Drawing.Size(201, 21);
             this.ComboBoxCadernetas.TabIndex = 16;
             this.toolTip1.SetToolTip(this.ComboBoxCadernetas, "Selecionar caderneta.");
+            this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCadernetas_SelectedIndexChanged);
             // 
             // LabelCaderneta
             // 
@@ -203,43 +203,6 @@
             this.ButtonEditar.Text = "&Editar";
             this.toolTip1.SetToolTip(this.ButtonEditar, "Editar a descrição dos cromos e as paginas a que pertencem.");
             this.ButtonEditar.UseVisualStyleBackColor = true;
-            // 
-            // dataGridViewCaderneta
-            // 
-            this.dataGridViewCaderneta.AllowUserToAddRows = false;
-            this.dataGridViewCaderneta.AllowUserToDeleteRows = false;
-            this.dataGridViewCaderneta.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dataGridViewCaderneta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCaderneta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Pagina});
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewCaderneta.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridViewCaderneta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 43);
-            this.dataGridViewCaderneta.Name = "dataGridViewCaderneta";
-            this.dataGridViewCaderneta.ReadOnly = true;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 525);
-            this.dataGridViewCaderneta.TabIndex = 1;
-            // 
-            // Pagina
-            // 
-            this.Pagina.Frozen = true;
-            this.Pagina.HeaderText = "Pagina";
-            this.Pagina.Name = "Pagina";
-            this.Pagina.ReadOnly = true;
-            this.Pagina.Width = 200;
             // 
             // statusStrip1
             // 
@@ -283,6 +246,37 @@
             this.TextListaCromos.Size = new System.Drawing.Size(838, 20);
             this.TextListaCromos.TabIndex = 1;
             // 
+            // dataGridViewCaderneta
+            // 
+            this.dataGridViewCaderneta.AllowUserToAddRows = false;
+            this.dataGridViewCaderneta.AllowUserToDeleteRows = false;
+            this.dataGridViewCaderneta.AllowUserToResizeColumns = false;
+            this.dataGridViewCaderneta.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCaderneta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewCaderneta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCaderneta.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 43);
+            this.dataGridViewCaderneta.Name = "dataGridViewCaderneta";
+            this.dataGridViewCaderneta.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 525);
+            this.dataGridViewCaderneta.TabIndex = 5;
+            this.dataGridViewCaderneta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCaderneta_CellContentClick);
+            this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
+            // 
             // Caderneta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -298,9 +292,9 @@
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCaderneta)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCaderneta)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,8 +309,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button ButtonEditar;
-        private System.Windows.Forms.DataGridView dataGridViewCaderneta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Pagina;
         private System.Windows.Forms.ComboBox ComboBoxCadernetas;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label LabelListaRepetido;
@@ -325,5 +317,6 @@
         private System.Windows.Forms.Label LabelListaCromos;
         private System.Windows.Forms.TextBox TextListaCromos;
         private System.Windows.Forms.Label LabelCaderneta;
+        private System.Windows.Forms.DataGridView dataGridViewCaderneta;
     }
 }

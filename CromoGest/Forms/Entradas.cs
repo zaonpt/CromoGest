@@ -15,7 +15,7 @@ namespace CromoGest
 {
     public partial class Entradas : Form
     {
-        private List<CadernetaVerticalModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetasVerticias();
+        private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         char charSeparador;
         public Entradas()
         {
@@ -52,13 +52,13 @@ namespace CromoGest
 
         bool IncCromoQuantidade(string cromo)
         {
-            int idCaderneta = ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Id;
+            int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
             return GlobalConfig.Connection.IncCromoQuatidade(cromo, idCaderneta);
         }
 
         int GetCromoQuantidade(string cromo)
         {
-            int idCaderneta = ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Id;
+            int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
             return GlobalConfig.Connection.GetCromoQuatidade(cromo, idCaderneta);
         }
 
@@ -100,7 +100,7 @@ namespace CromoGest
         {
             return GlobalConfig.Connection.IsValidCromo(
                 cromo: cromo, 
-                idCaderneta: ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Id
+                idCaderneta: ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id
             );
         }
 
@@ -113,7 +113,7 @@ namespace CromoGest
                 return false;
             }
 
-            CadernetaVerticalModelo caderneta = (CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem;
+            CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
             if (GlobalConfig.Connection.TotalCromos(caderneta) == 0) {
                 MessageBox.Show("Caderneta existe mas não está populada com informacão das paginas e cromos. " +
                     "Por favor sair e ir 'Nova Caderneta' selecionar esta caderneta e preencher a informação em falta.");

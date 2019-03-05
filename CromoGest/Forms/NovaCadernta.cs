@@ -14,7 +14,7 @@ namespace CromoGest.Forms
 { 
     public partial class FormNovaCaderneta : Form
     {
-        private List<CadernetaVerticalModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetasVerticias();
+        private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         private List<CromoModelo> CromosCadernetaSelecionada = new List<CromoModelo>();
                
         public FormNovaCaderneta()
@@ -76,7 +76,7 @@ namespace CromoGest.Forms
 
         private void ResetGridPaginas()
         {
-            DataGridViewPaginas.DataSource = ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+            DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
             DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
             DataGridViewPaginas.Columns["Id"].Visible = false;
         }
@@ -91,7 +91,7 @@ namespace CromoGest.Forms
         {
             if (ValidarForm())
             {
-                CadernetaVerticalModelo caderneta = new CadernetaVerticalModelo(
+                CadernetaModelo caderneta = new CadernetaModelo(
                     TextNome.Text, 
                     TextQuantidade.Text, 
                     TextQuantidadeCarteira.Text, 
@@ -140,7 +140,7 @@ namespace CromoGest.Forms
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
         {
             // TODO - Bindar TextBoxes com ComboBoxes para evitar o HORROR que se segue
-            CadernetaVerticalModelo caderneta = ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem);
+            CadernetaModelo caderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
             if (caderneta != null) { 
                 TextNome.Text = caderneta.Nome;
                 TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
@@ -155,7 +155,7 @@ namespace CromoGest.Forms
                 }
                 else
                 {
-                    DataGridViewPaginas.DataSource = ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+                    DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
                     FillCromos();
                     LigaGrid(DataGridViewCromos,false);
                     LigaButtonsCromos(false);
@@ -174,7 +174,7 @@ namespace CromoGest.Forms
         private void FillCromos()
         {
             CromosCadernetaSelecionada = new List<CromoModelo>();
-            foreach (PaginaVerticalModelo pagina in ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Paginas)
+            foreach (PaginaModelo pagina in ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas)
             {
                 foreach (CromoModelo cromo in pagina.Cromos)
                 {
@@ -206,8 +206,8 @@ namespace CromoGest.Forms
         private void ButtonAceitarPaginas_Click(object sender, EventArgs e)
         {
             int quantidade = SomatorioCromosPaginas();
-            CadernetaVerticalModelo caderneta = (CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem;
-            PaginaVerticalModelo novaPagina;
+            CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
+            PaginaModelo novaPagina;
             CromoModelo novoCromo;
             if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
@@ -227,7 +227,7 @@ namespace CromoGest.Forms
                     {
                         string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
                         
-                        novaPagina = new PaginaVerticalModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
+                        novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
                         caderneta.Paginas.Add(novaPagina);
                         int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
                         for (int c = 0;  c < cromos; c++)
@@ -269,7 +269,7 @@ namespace CromoGest.Forms
         {
             if (ConfirmadoGravar() && DadosValidados())
             {
-                CadernetaVerticalModelo caderneta = (CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem;
+                CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
                 if (caderneta.Paginas.Count == 0)
                 {
                     int totalCromos = SomatorioCromosPaginas();
@@ -278,17 +278,17 @@ namespace CromoGest.Forms
                     for (int j = 0; j < nrows; j++)
                     {
                         int cromosPagina = Convert.ToInt32(DataGridViewPaginas.Rows[j].Cells["Quantidade"].Value.ToString());
-                        caderneta.Paginas.Add(new PaginaVerticalModelo(
+                        caderneta.Paginas.Add(new PaginaModelo(
                                 DataGridViewPaginas.Rows[j].Cells["Pagina"].Value.ToString(),
                                 idCaderneta: caderneta.Id
                                 ));
                         for (int i = 0; i < cromosPagina; i++)
                         {
                             string descricaoCromo = DataGridViewCromos.Rows[cromoCounter++].Cells["Descricao"].Value.ToString();
-                            caderneta.Paginas.Last<PaginaVerticalModelo>().Cromos.Add(new CromoModelo(
+                            caderneta.Paginas.Last<PaginaModelo>().Cromos.Add(new CromoModelo(
                                 numero: cromoCounter.ToString(),
                                 descricao: descricaoCromo,
-                                idPagina: caderneta.Paginas.Last<PaginaVerticalModelo>().Id
+                                idPagina: caderneta.Paginas.Last<PaginaModelo>().Id
                             ));
                         }
                     }
@@ -339,7 +339,7 @@ namespace CromoGest.Forms
         private bool ConfirmadoEliminar()
         {
             string caption = "Atenção:";
-            string message = "Tem a certeza que quer eliminar a caderneta : "+ ((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Nome +"?";
+            string message = "Tem a certeza que quer eliminar a caderneta : "+ ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Nome +"?";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             return (MessageBox.Show(message, caption, buttons) == DialogResult.Yes);
         }
@@ -349,8 +349,8 @@ namespace CromoGest.Forms
         {
             if (ConfirmadoEliminar())
             {
-                GlobalConfig.Connection.DeleteCaderneta(((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem).Id);
-                cadernetasExistentes.Remove((CadernetaVerticalModelo)ComboBoxCadernetas.SelectedItem);
+                GlobalConfig.Connection.DeleteCaderneta(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+                cadernetasExistentes.Remove((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
                 ResetComboBox();
                 LimpaGrids();
                 LimpaTexts();
