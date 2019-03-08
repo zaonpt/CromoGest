@@ -111,8 +111,8 @@ namespace CromoGest.Forms
 
 
 
-            //dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
-            //dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
+            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
         }
 
         private void ButtonSair_Click(object sender, EventArgs e)

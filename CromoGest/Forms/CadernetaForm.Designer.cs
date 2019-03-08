@@ -42,13 +42,13 @@
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.LabelCaderneta = new System.Windows.Forms.Label();
             this.ButtonNova = new System.Windows.Forms.Button();
+            this.ButtonSair = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelListaCromos = new System.Windows.Forms.Label();
             this.TextListaCromos = new System.Windows.Forms.TextBox();
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ButtonSair = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -208,6 +208,19 @@
             this.ButtonNova.UseVisualStyleBackColor = true;
             this.ButtonNova.Click += new System.EventHandler(this.ButtonNova_Click);
             // 
+            // ButtonSair
+            // 
+            this.ButtonSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonSair.ForeColor = System.Drawing.Color.Black;
+            this.ButtonSair.Location = new System.Drawing.Point(887, 5);
+            this.ButtonSair.Name = "ButtonSair";
+            this.ButtonSair.Size = new System.Drawing.Size(104, 23);
+            this.ButtonSair.TabIndex = 18;
+            this.ButtonSair.Text = "&Sair";
+            this.toolTip1.SetToolTip(this.ButtonSair, "Editar a descrição dos cromos e as paginas a que pertencem.");
+            this.ButtonSair.UseVisualStyleBackColor = true;
+            this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 631);
@@ -281,19 +294,6 @@
             this.dataGridViewCaderneta.TabIndex = 5;
             this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
-            // 
-            // ButtonSair
-            // 
-            this.ButtonSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.ButtonSair.ForeColor = System.Drawing.Color.Black;
-            this.ButtonSair.Location = new System.Drawing.Point(887, 5);
-            this.ButtonSair.Name = "ButtonSair";
-            this.ButtonSair.Size = new System.Drawing.Size(104, 23);
-            this.ButtonSair.TabIndex = 18;
-            this.ButtonSair.Text = "&Sair";
-            this.toolTip1.SetToolTip(this.ButtonSair, "Editar a descrição dos cromos e as paginas a que pertencem.");
-            this.ButtonSair.UseVisualStyleBackColor = true;
-            this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
             // 
             // CadernetaForm
             // 

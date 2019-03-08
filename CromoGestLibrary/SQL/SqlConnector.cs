@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdLuso;
+        private const string bd = bdCasa;
 
         /// <summary>
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
@@ -178,7 +178,6 @@ namespace CromoGestLibrary.SQL
             if (caderneta == null) return;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
-                int npagina = 1;
                 foreach (PaginaModelo pagina in caderneta.Paginas)
                 {
                     var p = new DynamicParameters();
