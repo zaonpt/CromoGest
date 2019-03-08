@@ -73,7 +73,7 @@ namespace CromoGest.Forms
                     dataGridViewCaderneta.DataSource = caderneta.PaginasHorizontais;
                 }
             }
-            
+
         }
 
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
@@ -93,14 +93,15 @@ namespace CromoGest.Forms
 
         private void ButtonNova_Click(object sender, EventArgs e)
         {
-            NovaCaderneta formNova = new NovaCaderneta(this);
+            NovaCadernetaForm formNova = new NovaCadernetaForm(this);
             formNova.Show();
             this.Hide();
+            cadernetas = GlobalConfig.Connection.GetCadernetas();
         }
 
         private void ButtonEntradas_Click(object sender, EventArgs e)
         {
-            Entradas entradas = new Entradas(this);
+            EntradasForm entradas = new EntradasForm(this);
             entradas.Show();
             this.Hide();
         }

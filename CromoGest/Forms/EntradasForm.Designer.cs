@@ -1,6 +1,6 @@
 ﻿namespace CromoGest
 {
-    partial class Entradas
+    partial class EntradasForm
     {
         /// <summary>
         /// Required designer variable.
@@ -222,7 +222,7 @@
             this.LabelEntradasTitulo.AutoSize = true;
             this.LabelEntradasTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelEntradasTitulo.ForeColor = System.Drawing.Color.White;
-            this.LabelEntradasTitulo.Location = new System.Drawing.Point(252, 3);
+            this.LabelEntradasTitulo.Location = new System.Drawing.Point(210, 3);
             this.LabelEntradasTitulo.Name = "LabelEntradasTitulo";
             this.LabelEntradasTitulo.Size = new System.Drawing.Size(84, 24);
             this.LabelEntradasTitulo.TabIndex = 6;
@@ -244,15 +244,15 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 112F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 2, 2);
             this.tableLayoutPanel1.Controls.Add(this.dataGridViewCromos, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.LabelCadernetas, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.LabelEntradasTitulo, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.ComboBoxCadernetas, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.GroupBoxResultados, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.LabelEntradasTitulo, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -288,7 +288,7 @@
             // 
             this.LabelCadernetas.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.LabelCadernetas.AutoSize = true;
-            this.LabelCadernetas.Location = new System.Drawing.Point(132, 38);
+            this.LabelCadernetas.Location = new System.Drawing.Point(48, 38);
             this.LabelCadernetas.Name = "LabelCadernetas";
             this.LabelCadernetas.Size = new System.Drawing.Size(61, 13);
             this.LabelCadernetas.TabIndex = 7;
@@ -298,13 +298,13 @@
             // 
             this.ComboBoxCadernetas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxCadernetas.FormattingEnabled = true;
-            this.ComboBoxCadernetas.Location = new System.Drawing.Point(199, 34);
+            this.ComboBoxCadernetas.Location = new System.Drawing.Point(115, 34);
             this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
-            this.ComboBoxCadernetas.Size = new System.Drawing.Size(190, 21);
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(274, 21);
             this.ComboBoxCadernetas.TabIndex = 8;
             this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCadernetas_SelectedIndexChanged);
             // 
-            // Entradas
+            // EntradasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -314,8 +314,8 @@
             this.Controls.Add(this.statusStrip1);
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(520, 601);
-            this.Name = "Entradas";
-            this.Text = "Entradas";
+            this.Name = "EntradasForm";
+            this.Text = "EntradasForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Entradas_FormClosing);
             this.Load += new System.EventHandler(this.Entradas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCromos)).EndInit();

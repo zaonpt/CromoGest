@@ -254,6 +254,7 @@
             this.dataGridViewCaderneta.AllowUserToDeleteRows = false;
             this.dataGridViewCaderneta.AllowUserToResizeColumns = false;
             this.dataGridViewCaderneta.AllowUserToResizeRows = false;
+            this.dataGridViewCaderneta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -279,7 +280,7 @@
             this.dataGridViewCaderneta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCaderneta_CellContentClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
             // 
-            // Caderneta
+            // CadernetaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -287,7 +288,7 @@
             this.ClientSize = new System.Drawing.Size(1000, 651);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.White;
-            this.Name = "Caderneta";
+            this.Name = "CadernetaForm";
             this.Text = "Caderneta";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

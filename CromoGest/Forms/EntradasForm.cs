@@ -13,20 +13,20 @@ using System.Windows.Forms;
 
 namespace CromoGest
 {
-    public partial class Entradas : Form
+    public partial class EntradasForm : Form
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         char charSeparador;
         CadernetaForm caderneta;
 
-        public Entradas()
+        public EntradasForm()
         {
             InitializeComponent();
             ResetComboBox();
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
         }
 
-        public Entradas(CadernetaForm cadernetaIN)
+        public EntradasForm(CadernetaForm cadernetaIN)
         {
             InitializeComponent();
             ResetComboBox();

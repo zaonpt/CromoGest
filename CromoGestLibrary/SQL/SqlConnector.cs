@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdCasa;
+        private const string bd = bdLuso;
 
         /// <summary>
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
@@ -52,10 +52,7 @@ namespace CromoGestLibrary.SQL
                 caderneta.Id = p.Get<int>("@id");
             }
         }
-
-
-
-
+                     
         /// <summary>
         /// Procura e retorna os dados de uma caderneta, dado um nome
         /// </summary>
@@ -73,7 +70,6 @@ namespace CromoGestLibrary.SQL
                 return null;
             }
         }
-
 
         /// <summary>
         /// Procura na BD e devolve todas as cadernetas
@@ -110,8 +106,6 @@ namespace CromoGestLibrary.SQL
                 return cadernetas;
             }
         }
-        
-
 
         public string GetConfig(string desc)
         {
@@ -123,7 +117,6 @@ namespace CromoGestLibrary.SQL
                 return connection.Query<string>("spGetConfig", p, commandType: CommandType.StoredProcedure).ToList()[0];
             }
         }
-
 
         /// <summary>
         /// Incrementa cromo na colecao, se for novo devolve true.
@@ -174,8 +167,6 @@ namespace CromoGestLibrary.SQL
             }
         }
 
-
-
         /// <summary>
         /// populaciona a caderneta na base de dados com as informacoes dos cromos.
         /// </summary>
@@ -212,7 +203,6 @@ namespace CromoGestLibrary.SQL
             }
         }
 
-
         /// <summary>
         /// Contabiliza a quantidade de cromos aquiridos (e introduzidos na BD)
         /// </summary>
@@ -230,7 +220,6 @@ namespace CromoGestLibrary.SQL
                 return r > 0;
             }
         }
-
 
         /// <summary>
         /// Contabiliza a quantidade de cromos que a caderneta tem populados
@@ -257,7 +246,5 @@ namespace CromoGestLibrary.SQL
             if (cromoId == -1) return false;
             return true;
         }
-
-
     }
 }

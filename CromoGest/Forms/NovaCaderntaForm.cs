@@ -12,20 +12,20 @@ using System.Windows.Forms;
 
 namespace CromoGest.Forms
 { 
-    public partial class NovaCaderneta : Form
+    public partial class NovaCadernetaForm : Form
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         private List<CromoModelo> CromosCadernetaSelecionada = new List<CromoModelo>();
         private CadernetaForm caderneta;
                
-        public NovaCaderneta()
+        public NovaCadernetaForm()
         { 
             InitializeComponent();
             LigaLista();
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
 
-        public NovaCaderneta(CadernetaForm cadernetaIN)
+        public NovaCadernetaForm(CadernetaForm cadernetaIN)
         {
             InitializeComponent();
             LigaLista();
@@ -45,7 +45,6 @@ namespace CromoGest.Forms
         {
             if (liga)
             {
-                dgv.Rows.Clear();
                 foreach (DataGridViewColumn c in dgv.Columns)
                 {
                     c.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -62,6 +61,11 @@ namespace CromoGest.Forms
                     c.DefaultCellStyle.ForeColor = Color.Gray;
                 }
             }
+        }
+
+        private void LimparGrid(DataGridView dgv)
+        {
+            if (dgv.Rows.Count > 0) dgv.Rows.Clear();
         }
 
         private void LigaButtonsPaginas(bool liga)
@@ -113,6 +117,8 @@ namespace CromoGest.Forms
                 ComboBoxCadernetas.SelectedValue = caderneta.Id;
 
                 LigaGridPaginas();
+                ToolStripLabelNovaCaderneta.Text = "Proximo passo é preencher informação das páginas. Descrição da pagina e quantidade de cromos por pagina";
+                ToolStripNovaCaderneta.Update();
             }
             else { MessageBox.Show("Campos incorrectos, verificar e tentar novamente."); }
         }
@@ -120,21 +126,10 @@ namespace CromoGest.Forms
         private bool ValidarForm()
         {
             bool valido = true;
-            if (!int.TryParse(TextQuantidade.Text, out int Quantidade) || Quantidade<1)
-            {
-                valido = false;
-            }
-            if (TextNome.Text.Length==0)
-            {
-                valido = false;
-            }
-            if (!decimal.TryParse(TextCarteiraCusto.Text, out decimal Custo) || Custo==0){
-                valido = false;
-            }
-            if(!int.TryParse(TextQuantidadeCarteira.Text, out int CQuantidade) || CQuantidade== 0)
-            {
-                valido = false;
-            }
+            if (!int.TryParse(TextQuantidade.Text, out int Quantidade) || Quantidade<1) { valido = false; }
+            if (TextNome.Text.Length==0) { valido = false; }
+            if (!decimal.TryParse(TextCarteiraCusto.Text, out decimal Custo) || Custo==0) { valido = false; }
+            if(!int.TryParse(TextQuantidadeCarteira.Text, out int CQuantidade) || CQuantidade== 0) { valido = false; }
             return valido;
         }
 
@@ -144,6 +139,8 @@ namespace CromoGest.Forms
             DataGridViewPaginas.DataSource = null;
             DataGridViewCromos.AutoGenerateColumns = false;
             DataGridViewCromos.DataSource = null;
+            LimparGrid(DataGridViewPaginas);
+            LimparGrid(DataGridViewCromos);
         }
 
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -161,6 +158,8 @@ namespace CromoGest.Forms
                     LigaGrid(DataGridViewPaginas,true);
                     DataGridViewPaginas.Enabled = true;
                     ButtonAceitarPaginas.Enabled = true;
+                    ToolStripLabelNovaCaderneta.Text = "Caderneta sem Paginas nem Cromos inseridos. Por favor preencher a informação das Paginas primeiro";
+                    ToolStripNovaCaderneta.Update();
                 }
                 else
                 {
@@ -176,7 +175,14 @@ namespace CromoGest.Forms
                     LigaTextboxes(false);
 
                     ButtonCriar.Enabled=false;
+                    ToolStripLabelNovaCaderneta.Text = "Criação da Caderneta terminada.";
+                    ToolStripNovaCaderneta.Update();
                 }
+            }
+            else
+            {
+                ToolStripLabelNovaCaderneta.Text = "Preencher informação geral da caderneta";
+                ToolStripNovaCaderneta.Update();
             }
         }
 
@@ -218,52 +224,43 @@ namespace CromoGest.Forms
             CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
             PaginaModelo novaPagina;
             CromoModelo novoCromo;
-            if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("quantidade de cromos invalida!"); }
+            if (!int.TryParse(TextQuantidade.Text, out int quantidadeText)) { MessageBox.Show("Quantidade de cromos invalida!"); }
             else if (quantidade == quantidadeText)
             {
                 LigaGrid(DataGridViewPaginas, false);
                 LigaButtonsPaginas(false);
-                if (GerarNovaspaginas())
+                CromosCadernetaSelecionada = null;
+                CromosCadernetaSelecionada = new List<CromoModelo>();
+
+                LigaGrid(DataGridViewCromos, true);
+                LigaButtonsCromos(true);
+                int cromosTotal = 1;
+                int paginas = DataGridViewPaginas.Rows.Count-1;
+                for (int p = 0; p < paginas; p++)
                 {
-                    CromosCadernetaSelecionada = null;
-                    CromosCadernetaSelecionada = new List<CromoModelo>();
-
-                    LigaGrid(DataGridViewCromos, true);
-                    LigaButtonsCromos(true);
-                    int cromosTotal = 1;
-                    int paginas = DataGridViewPaginas.Rows.Count-1;
-                    for (int p = 0; p < paginas; p++)
-                    {
-                        string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
+                    string novaPaginaNome = DataGridViewPaginas.Rows[p].Cells["Nome"].Value.ToString();
                         
-                        novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
-                        caderneta.Paginas.Add(novaPagina);
-                        int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
-                        for (int c = 0;  c < cromos; c++)
-                        {
-                            string novoCromoNumero = (cromosTotal++).ToString();
-                            string novoCromoDescricao = "";
-                            novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao, idPagina: novaPagina.Id);
-                            caderneta.Paginas[p].Cromos.Add(novoCromo);
-                            CromosCadernetaSelecionada.Add(novoCromo);
-                        }
+                    novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
+                    caderneta.Paginas.Add(novaPagina);
+                    int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
+                    for (int c = 0;  c < cromos; c++)
+                    {
+                        string novoCromoNumero = (cromosTotal++).ToString();
+                        string novoCromoDescricao = "";
+                        novoCromo = new CromoModelo(numero : novoCromoNumero, descricao: novoCromoDescricao, idPagina: novaPagina.Id);
+                        caderneta.Paginas[p].Cromos.Add(novoCromo);
+                        CromosCadernetaSelecionada.Add(novoCromo);
                     }
-                    DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
-                    DataGridViewCromos.Columns["Id"].Visible = false;
-                    DataGridViewCromos.Columns["Quantidade"].Visible = false;
-                    DataGridViewCromos.Columns["IdPagina"].Visible = false;
-                    DataGridViewCromos.Refresh();
-
                 }
-                else  { MessageBox.Show("Implementar refazer lista de cromos existente!"); }
+                DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
+                DataGridViewCromos.Columns["Id"].Visible = false;
+                DataGridViewCromos.Columns["Quantidade"].Visible = false;
+                DataGridViewCromos.Columns["IdPagina"].Visible = false;
+                DataGridViewCromos.Refresh();
+                ToolStripLabelNovaCaderneta.Text = "Criação da Caderneta terminada.";
+                ToolStripNovaCaderneta.Update();
             }
             else { MessageBox.Show("Erro: Quantidade errada de cromos. O total de cromos tem de ser igual à soma dos cromo das paginas."); }
-        }
-
-        private bool GerarNovaspaginas()
-        {
-            // TODO - Verificar se é para gerar novas paginas ou seja existem.
-            return true;
         }
 
         private bool ConfirmadoGravar() {
@@ -272,7 +269,6 @@ namespace CromoGest.Forms
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             return (MessageBox.Show(message, caption, buttons) == DialogResult.Yes);
         }
-
 
         private void ButtonGravar_Click(object sender, EventArgs e)
         {
@@ -353,7 +349,6 @@ namespace CromoGest.Forms
             return (MessageBox.Show(message, caption, buttons) == DialogResult.Yes);
         }
 
-
         private void ButtonEliminar_Click(object sender, EventArgs e)
         {
             if (ConfirmadoEliminar())
@@ -363,6 +358,10 @@ namespace CromoGest.Forms
                 ResetComboBox();
                 LimpaGrids();
                 LimpaTexts();
+                LigaBotoes(true);
+                LigaButtonsCromos(true);
+                LigaTextboxes(true);
+                LimparGrid(DataGridViewPaginas);
             }
         }
 
