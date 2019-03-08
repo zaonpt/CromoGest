@@ -47,7 +47,7 @@ namespace CromoGest.Forms
                     foreach (CromoModelo cromo in pagina.Cromos)
                     {
                         cromoPosicao = "C" + ncromo++;
-                        novaPagina[cromoPosicao]= cromo.Numero; 
+                        novaPagina[cromoPosicao] = cromo.Numero;
                     }
                     novaCaderneta.PaginasHorizontais.Add(novaPagina);
                 }
@@ -81,10 +81,7 @@ namespace CromoGest.Forms
             LoadCadernetasGrid();
         }
 
-        private void dataGridViewCaderneta_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
 
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {
@@ -104,6 +101,23 @@ namespace CromoGest.Forms
             EntradasForm entradas = new EntradasForm(this);
             entradas.Show();
             this.Hide();
+        }
+
+        private void dataGridViewCaderneta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int col = e.ColumnIndex;
+            int row = e.RowIndex;
+
+
+
+
+            //dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
+            //dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+        }
+
+        private void ButtonSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

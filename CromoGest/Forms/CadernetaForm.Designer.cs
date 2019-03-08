@@ -48,6 +48,7 @@
             this.TextListaCromos = new System.Windows.Forms.TextBox();
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ButtonSair = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -128,7 +129,8 @@
             this.tableLayoutPanel2.Controls.Add(this.ButtonTrocas, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.LabelCaderneta, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ButtonNova, 6, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ButtonNova, 5, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ButtonSair, 6, 0);
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -197,7 +199,7 @@
             // 
             this.ButtonNova.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ButtonNova.ForeColor = System.Drawing.Color.Black;
-            this.ButtonNova.Location = new System.Drawing.Point(887, 5);
+            this.ButtonNova.Location = new System.Drawing.Point(777, 5);
             this.ButtonNova.Name = "ButtonNova";
             this.ButtonNova.Size = new System.Drawing.Size(104, 23);
             this.ButtonNova.TabIndex = 15;
@@ -272,13 +274,26 @@
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Silver;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
             this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 525);
             this.dataGridViewCaderneta.TabIndex = 5;
-            this.dataGridViewCaderneta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewCaderneta_CellContentClick);
+            this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
+            // 
+            // ButtonSair
+            // 
+            this.ButtonSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonSair.ForeColor = System.Drawing.Color.Black;
+            this.ButtonSair.Location = new System.Drawing.Point(887, 5);
+            this.ButtonSair.Name = "ButtonSair";
+            this.ButtonSair.Size = new System.Drawing.Size(104, 23);
+            this.ButtonSair.TabIndex = 18;
+            this.ButtonSair.Text = "&Sair";
+            this.toolTip1.SetToolTip(this.ButtonSair, "Editar a descrição dos cromos e as paginas a que pertencem.");
+            this.ButtonSair.UseVisualStyleBackColor = true;
+            this.ButtonSair.Click += new System.EventHandler(this.ButtonSair_Click);
             // 
             // CadernetaForm
             // 
@@ -321,5 +336,6 @@
         private System.Windows.Forms.TextBox TextListaCromos;
         private System.Windows.Forms.Label LabelCaderneta;
         private System.Windows.Forms.DataGridView dataGridViewCaderneta;
+        private System.Windows.Forms.Button ButtonSair;
     }
 }
