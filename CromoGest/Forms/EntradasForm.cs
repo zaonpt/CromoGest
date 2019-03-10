@@ -60,7 +60,7 @@ namespace CromoGest
                 ListBoxRepetidos.Items.Add(cromo);            
         }
 
-        bool IncCromoQuantidade(string cromo)
+        int IncCromoQuantidade(string cromo)
         {
             int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
             return GlobalConfig.Connection.IncCromoQuatidade(cromo, idCaderneta);
@@ -76,6 +76,7 @@ namespace CromoGest
         {
             if (!CromosValidos()) return;
             bool IsNovo;
+            int oldQuant;
             int rows = dataGridViewCromos.Rows.Count - 1;
             for (int i = 0; i < rows; i++)
             {
@@ -85,14 +86,16 @@ namespace CromoGest
                     string[] cromos = row.Replace(" ", string.Empty).Split(charSeparador);
                     foreach (string cromo in cromos)
                     {
-                        IsNovo = IncCromoQuantidade(cromo);
+                        oldQuant = GetCromoQuantidade(cromo);
+                        IsNovo = (IncCromoQuantidade(cromo)==oldQuant);
                         AddCromoToResults(cromo, IsNovo);
                     }
                 }
                 else
                 {
                     string cromo = row;
-                    IsNovo = IncCromoQuantidade(cromo);
+                    oldQuant = GetCromoQuantidade(cromo);
+                    IsNovo = (IncCromoQuantidade(cromo) == oldQuant);
                     AddCromoToResults(cromo, IsNovo);
                 }
             }

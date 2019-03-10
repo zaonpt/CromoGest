@@ -23,7 +23,7 @@ namespace CromoGestLibrary.SQL
 
         string GetConfig(string desc);
 
-        bool IncCromoQuatidade(string numero, int idCaderneta);
+        int IncCromoQuatidade(string numero, int idCaderneta);
 
         bool IsValidCromo(string cromo, int idCaderneta);
 
@@ -31,5 +31,6 @@ namespace CromoGestLibrary.SQL
 
         int GetCromoId(string numero, int idCadernta);
 
+        int DecCromoQuatidade(string cromoNumero, int idCadernetaSelecionada);
     }
 }

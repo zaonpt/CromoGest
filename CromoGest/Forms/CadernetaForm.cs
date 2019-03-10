@@ -16,7 +16,7 @@ namespace CromoGest.Forms
     public partial class CadernetaForm : Form
     {
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
-        char charSeparador;
+        private char charSeparador;
         private List<CadernetaHorizontalModelo> cadernetasHorizontais = new List<CadernetaHorizontalModelo>();
 
         public CadernetaForm()
@@ -52,7 +52,6 @@ namespace CromoGest.Forms
                     novaCaderneta.PaginasHorizontais.Add(novaPagina);
                 }
             }
-
         }
 
         private void ResetComboBox()
@@ -65,7 +64,6 @@ namespace CromoGest.Forms
 
         private void LoadCadernetasGrid()
         {
-
             foreach (CadernetaHorizontalModelo caderneta in cadernetasHorizontais)
             {
                 if (caderneta.Id == ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id)
@@ -73,19 +71,68 @@ namespace CromoGest.Forms
                     dataGridViewCaderneta.DataSource = caderneta.PaginasHorizontais;
                 }
             }
+            ColorGrid();
+            dataGridViewCaderneta.Refresh();
+            dataGridViewCaderneta.ClearSelection();
+        }
 
+        private void ColorGrid()
+        {
+            int rowsCount;
+            int quantidade;
+            foreach (DataGridViewRow row in dataGridViewCaderneta.Rows)
+            {
+                rowsCount = dataGridViewCaderneta.Rows.Count;
+                for (int col = 1; col < rowsCount; col++)
+                {
+                    quantidade = GlobalConfig.Connection.GetCromoQuatidade(
+                          row.Cells[col].Value.ToString(),
+                          ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+
+                    switch (quantidade)
+                    {
+                        case 0:
+                            PaintCell(row.Cells[col], Color.LightSalmon);
+                            break;
+                        case 1:
+                            PaintCell(row.Cells[col], Color.LightGreen);
+                            break;
+                        default:
+                            PaintCell(row.Cells[col], Color.Green);
+                            break;
+                    }
+                }
+            }
         }
 
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadCadernetasGrid();
-        }
-
-
+        }        
 
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            //int quantidade;
+            //foreach (DataGridViewRow row in dataGridViewCaderneta.Rows)
+            //{
+            //    quantidade = GlobalConfig.Connection.GetCromoQuatidade(
+            //              row.Cells[e.Column.DisplayIndex].Value.ToString(),
+            //              ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+
+            //    switch (quantidade)
+            //    {
+            //        case 0:
+            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.LightSalmon);
+            //            break;
+            //        case 1:
+            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.LightGreen);
+            //            break;
+            //        default:
+            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.Green);
+            //            break;
+            //    }
+            //}
         }
 
         private void ButtonNova_Click(object sender, EventArgs e)
@@ -105,19 +152,69 @@ namespace CromoGest.Forms
 
         private void dataGridViewCaderneta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int col = e.ColumnIndex;
-            int row = e.RowIndex;
-
-
-
-
-            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
-            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+            if (CheckBoxHack.Checked)
+            {
+                int col = e.ColumnIndex;
+                int row = e.RowIndex;
+                string cromoNumero = dataGridViewCaderneta.Rows[row].Cells[col].Value.ToString();
+                int idCadernetaSelecionada = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
+                int cromoOldQuantidade = GlobalConfig.Connection.GetCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+                int cromoNewQuantidade;
+                switch (e.Button)
+                {
+                    case MouseButtons.Left:
+                        if (GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada) == 1)
+                        {
+                            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightGreen;
+                            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightGreen;
+                        }
+                        else // > 1 (com repetidos)
+                        {
+                            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
+                            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+                        }
+                        ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
+                        break;
+                    case MouseButtons.Right:
+                        if (cromoOldQuantidade > 0)
+                        {
+                            cromoNewQuantidade = GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+                            switch (cromoNewQuantidade)
+                            {
+                                case 0:
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightSalmon;
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightSalmon;
+                                    break;
+                                case 1:
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightGreen;
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightGreen;
+                                    break;
+                                default:
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
+                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+                                    break;
+                            }
+                            ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
+                        }
+                        break;
+                }
+            }
         }
 
         private void ButtonSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void PaintCell(DataGridViewCell cell, Color color)
+        {
+            cell.Style.BackColor = color;
+            cell.Style.SelectionBackColor = color;                
+        }
+
+        private void dataGridViewCaderneta_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ColorGrid();
         }
     }
 }
