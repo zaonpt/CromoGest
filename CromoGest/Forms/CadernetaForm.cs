@@ -78,12 +78,12 @@ namespace CromoGest.Forms
 
         private void ColorGrid()
         {
-            int rowsCount;
+            int colsCount;
             int quantidade;
             foreach (DataGridViewRow row in dataGridViewCaderneta.Rows)
             {
-                rowsCount = dataGridViewCaderneta.Rows.Count;
-                for (int col = 1; col < rowsCount; col++)
+                colsCount = dataGridViewCaderneta.Columns.Count;
+                for (int col = 1; col < colsCount; col++)
                 {
                     quantidade = GlobalConfig.Connection.GetCromoQuatidade(
                           row.Cells[col].Value.ToString(),
@@ -101,6 +101,7 @@ namespace CromoGest.Forms
                             PaintCell(row.Cells[col], Color.Green);
                             break;
                     }
+                    row.Cells[col].Tag = quantidade;
                 }
             }
         }
@@ -113,26 +114,6 @@ namespace CromoGest.Forms
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
-            //int quantidade;
-            //foreach (DataGridViewRow row in dataGridViewCaderneta.Rows)
-            //{
-            //    quantidade = GlobalConfig.Connection.GetCromoQuatidade(
-            //              row.Cells[e.Column.DisplayIndex].Value.ToString(),
-            //              ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
-
-            //    switch (quantidade)
-            //    {
-            //        case 0:
-            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.LightSalmon);
-            //            break;
-            //        case 1:
-            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.LightGreen);
-            //            break;
-            //        default:
-            //            PaintCell(row.Cells[e.Column.DisplayIndex], Color.Green);
-            //            break;
-            //    }
-            //}
         }
 
         private void ButtonNova_Click(object sender, EventArgs e)
@@ -216,5 +197,6 @@ namespace CromoGest.Forms
         {
             ColorGrid();
         }
+
     }
 }

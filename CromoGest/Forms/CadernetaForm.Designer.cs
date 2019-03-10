@@ -312,6 +312,7 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
             this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewCaderneta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 485);
             this.dataGridViewCaderneta.TabIndex = 5;
             this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);

@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\DataGridViewCromoCell.cs" />
+    <Compile Include="Controls\DataGridViewCromoColumn.cs" />
     <Compile Include="Forms\CadernetaForm.cs">
       <SubType>Form</SubType>
     </Compile>
