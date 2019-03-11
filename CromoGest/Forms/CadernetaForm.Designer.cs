@@ -356,6 +356,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "CadernetaForm";
             this.Text = "Caderneta";
+            this.VisibleChanged += new System.EventHandler(this.CadernetaForm_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);

@@ -92,13 +92,13 @@ namespace CromoGest.Forms
                     switch (quantidade)
                     {
                         case 0:
-                            PaintCell(row.Cells[col], Color.LightSalmon);
+                            SetCromosColors(Color.LightSalmon, Color.Black, row.Cells[col]);
                             break;
                         case 1:
-                            PaintCell(row.Cells[col], Color.LightGreen);
+                            SetCromosColors(Color.LightGreen, Color.Black, row.Cells[col]);
                             break;
                         default:
-                            PaintCell(row.Cells[col], Color.Green);
+                            SetCromosColors(Color.Green, Color.White, row.Cells[col]);
                             break;
                     }
                     row.Cells[col].Tag = quantidade;
@@ -118,7 +118,7 @@ namespace CromoGest.Forms
 
         private void ButtonNova_Click(object sender, EventArgs e)
         {
-            NovaCadernetaForm formNova = new NovaCadernetaForm(this);
+            NovaCadernetaForm formNova = new NovaCadernetaForm(this, ComboBoxCadernetas.SelectedIndex);
             formNova.Show();
             this.Hide();
             cadernetas = GlobalConfig.Connection.GetCadernetas();
@@ -126,10 +126,19 @@ namespace CromoGest.Forms
 
         private void ButtonEntradas_Click(object sender, EventArgs e)
         {
-            EntradasForm entradas = new EntradasForm(this);
+            EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
             entradas.Show();
             this.Hide();
         }
+
+        private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
+        {
+            cell.Style.BackColor = backcolor;
+            cell.Style.SelectionBackColor = backcolor;
+            cell.Style.ForeColor = textColor;
+            cell.Style.SelectionForeColor = textColor;
+        }
+
 
         private void dataGridViewCaderneta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -146,13 +155,11 @@ namespace CromoGest.Forms
                     case MouseButtons.Left:
                         if (GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada) == 1)
                         {
-                            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightGreen;
-                            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightGreen;
+                            SetCromosColors(Color.LightGreen, Color.Black, dataGridViewCaderneta.Rows[row].Cells[col]);
                         }
                         else // > 1 (com repetidos)
                         {
-                            dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
-                            dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+                            SetCromosColors(Color.Green, Color.White, dataGridViewCaderneta.Rows[row].Cells[col]);
                         }
                         ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
                         break;
@@ -163,16 +170,13 @@ namespace CromoGest.Forms
                             switch (cromoNewQuantidade)
                             {
                                 case 0:
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightSalmon;
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightSalmon;
+                                    SetCromosColors(Color.LightSalmon, Color.Black, dataGridViewCaderneta.Rows[row].Cells[col]);
                                     break;
                                 case 1:
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.LightGreen;
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.LightGreen;
+                                    SetCromosColors(Color.LightGreen, Color.Black, dataGridViewCaderneta.Rows[row].Cells[col]);
                                     break;
                                 default:
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.BackColor = Color.Green;
-                                    dataGridViewCaderneta.Rows[row].Cells[col].Style.SelectionBackColor = Color.Green;
+                                    SetCromosColors(Color.Green, Color.White, dataGridViewCaderneta.Rows[row].Cells[col]);
                                     break;
                             }
                             ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
@@ -187,16 +191,22 @@ namespace CromoGest.Forms
             this.Close();
         }
 
-        private void PaintCell(DataGridViewCell cell, Color color)
-        {
-            cell.Style.BackColor = color;
-            cell.Style.SelectionBackColor = color;                
-        }
-
         private void dataGridViewCaderneta_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ColorGrid();
         }
 
+        private void CadernetaForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                //returned from other form
+                ColorGrid();
+            }
+            else
+            {
+
+            }
+        }
     }
 }

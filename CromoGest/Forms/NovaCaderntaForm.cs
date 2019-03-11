@@ -25,12 +25,13 @@ namespace CromoGest.Forms
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
 
-        public NovaCadernetaForm(CadernetaForm cadernetaIN)
+        public NovaCadernetaForm(CadernetaForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
             LigaLista();
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             caderneta = cadernetaIN;
+            ComboBoxCadernetas.SelectedIndex = cbIndex;
         }
 
         private void LigaTextboxes(bool ligar)

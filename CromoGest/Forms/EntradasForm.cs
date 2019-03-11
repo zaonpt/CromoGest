@@ -26,12 +26,13 @@ namespace CromoGest
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
         }
 
-        public EntradasForm(CadernetaForm cadernetaIN)
+        public EntradasForm(CadernetaForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
             ResetComboBox();
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
             caderneta = cadernetaIN;
+            ComboBoxCadernetas.SelectedIndex = cbIndex;
         }
 
         private void ResetComboBox()
@@ -78,6 +79,8 @@ namespace CromoGest
             bool IsNovo;
             int oldQuant;
             int rows = dataGridViewCromos.Rows.Count - 1;
+
+            LimpaResultados();
             for (int i = 0; i < rows; i++)
             {
                 string row = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
@@ -87,7 +90,7 @@ namespace CromoGest
                     foreach (string cromo in cromos)
                     {
                         oldQuant = GetCromoQuantidade(cromo);
-                        IsNovo = (IncCromoQuantidade(cromo)==oldQuant);
+                        IsNovo = (IncCromoQuantidade(cromo)==1);
                         AddCromoToResults(cromo, IsNovo);
                     }
                 }
@@ -95,7 +98,7 @@ namespace CromoGest
                 {
                     string cromo = row;
                     oldQuant = GetCromoQuantidade(cromo);
-                    IsNovo = (IncCromoQuantidade(cromo) == oldQuant);
+                    IsNovo = (IncCromoQuantidade(cromo) == 1);
                     AddCromoToResults(cromo, IsNovo);
                 }
             }
@@ -116,7 +119,6 @@ namespace CromoGest
                 idCaderneta: ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id
             );
         }
-
 
         private bool CromosValidos()
         {
@@ -159,12 +161,22 @@ namespace CromoGest
             return true;
         }
 
-        private void LimpaListas()
+        private void LimpaResultados()
+        {
+            ListBoxNovos.Items.Clear();
+            ListBoxRepetidos.Items.Clear();
+        }
+
+        private void LimpaEntradas()
         {
             dataGridViewCromos.Rows.Clear();
             dataGridViewCromos.Refresh();
-            ListBoxNovos.Items.Clear();
-            ListBoxRepetidos.Items.Clear();
+        }
+
+        private void LimpaListas()
+        {
+            LimpaEntradas();
+            LimpaResultados();
         }
 
         private void ButtonLimpar_Click(object sender, EventArgs e)
@@ -185,6 +197,8 @@ namespace CromoGest
             int CromoQuantidade;
             int rows = dataGridViewCromos.Rows.Count - 1;
             bool isNew;
+
+            LimpaResultados();
             for (int i = 0; i < rows; i++)
             {
                 string row = dataGridViewCromos.Rows[i].Cells["Cromos"].Value.ToString();
