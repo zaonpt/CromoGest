@@ -48,6 +48,8 @@
   <ItemGroup>
     <Compile Include="Controls\DataGridViewCromoCell.cs" />
     <Compile Include="Controls\DataGridViewCromoColumn.cs" />
+    <Compile Include="Controls\DataGridViewCromoTextBoxCell.cs" />
+    <Compile Include="Controls\DataGridViewCromoTextBoxColumn.cs" />
     <Compile Include="Forms\CadernetaForm.cs">
       <SubType>Form</SubType>
     </Compile>

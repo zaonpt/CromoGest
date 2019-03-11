@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing;
 
 namespace CromoGest.Controls
 {
-    public class DataGridViewCromoCell : DataGridViewButtonCell
+    public class DataGridViewCromoTextBoxCell : DataGridViewTextBoxCell
     {
 
         public int NumCromos
@@ -31,13 +31,13 @@ namespace CromoGest.Controls
             }
         }
 
-        public DataGridViewCromoCell() : base()
+        public DataGridViewCromoTextBoxCell() : base()
         {
             Tag = "0";
             Style.BackColor = Color.LightSalmon;
         }
 
-        public DataGridViewCromoCell(string s) : base()
+        public DataGridViewCromoTextBoxCell(string s) : base()
         {
             Value = s;
             if (int.TryParse(s, out int n))
@@ -48,28 +48,13 @@ namespace CromoGest.Controls
             }
         }
 
-        public void IncCromo() { NumCromos++; }
-
-        public void DecCromo() { NumCromos = (NumCromos == 0) ? 0 : NumCromos--; }
-
-        protected override void Paint(
-            Graphics graphics, 
-            Rectangle clipBounds, 
-            Rectangle cellBounds, 
-            int rowIndex, 
-            DataGridViewElementStates elementState, 
-            object value, 
-            object formattedValue, 
-            string errorText, 
-            DataGridViewCellStyle cellStyle, 
-            DataGridViewAdvancedBorderStyle advancedBorderStyle, 
-            DataGridViewPaintParts paintParts) 
+        protected override void Paint(Graphics graphics, Rectangle clipBounds, Rectangle cellBounds, int rowIndex, DataGridViewElementStates cellState, object value, object formattedValue, string errorText, DataGridViewCellStyle cellStyle, DataGridViewAdvancedBorderStyle advancedBorderStyle, DataGridViewPaintParts paintParts)
         {
-            base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
+            base.Paint(graphics, clipBounds, cellBounds, rowIndex, cellState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
+
             TextFormatFlags flags = TextFormatFlags.Bottom | TextFormatFlags.Right | TextFormatFlags.RightToLeft;
             //Font Font2 = new Font(Style.Font.FontFamily, 9, Style.Font.Style, GraphicsUnit.Pixel);
             Font Font2 = new Font("Times New Roman", 7.0f);
-            this.UseColumnTextForButtonValue = true;
 
             //ButtonRenderer.DrawButton(graphics, cellBounds, formattedValue.ToString(), Font2, true,
             //    System.Windows.Forms.VisualStyles.PushButtonState.Default);
@@ -77,7 +62,8 @@ namespace CromoGest.Controls
             //TextRenderer.DrawText(graphics, Style.BackColor.ToString(), Font2,
             //    new Rectangle(0, 0, cellBounds.Width, cellBounds.Height), Color.Black, flags);
             graphics.DrawString(Tag.ToString(), Font2, myBrush,
-                new Rectangle(cellBounds.X+20,cellBounds.Y+7, cellBounds.Width,cellBounds.Height));
+                new Rectangle(cellBounds.X + 12, cellBounds.Y + 7, cellBounds.Width, cellBounds.Height));
+
         }
     }
 }
