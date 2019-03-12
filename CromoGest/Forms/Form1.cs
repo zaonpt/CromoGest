@@ -18,19 +18,23 @@ namespace CromoGest.Forms
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
 
-            DataGridViewCromoColumn col = new DataGridViewCromoColumn();
+            DataGridViewCromoColumn col1 = new DataGridViewCromoColumn();
+            DataGridViewCromoColumn col2 = new DataGridViewCromoColumn();
             DataGridViewCromoCell c1 = new DataGridViewCromoCell("aa", 1);
+            DataGridViewCromoCell c2 = new DataGridViewCromoCell("bb", 2);
 
             DataGridViewRow r1 = new DataGridViewRow();
 
             r1.Cells.Add(c1);
+            r1.Cells.Add(c2);
 
-            dataGridView1.Columns.Add(col);
+            dataGridView1.Columns.Add(col1);
+            dataGridView1.Columns.Add(col2);
             dataGridView1.Rows.Add(r1);
 
 
 
-            
+
             //dataGridView1.Rows.Add("aa");
 
 

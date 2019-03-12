@@ -66,8 +66,10 @@ namespace CromoGest.Controls
 
             //graphics.DrawRectangle(p, new Rectangle(cellBounds.X+1, cellBounds.Y+1, cellBounds.Width-2, cellBounds.Height-2));
 
-            graphics.FillRectangle(myBrush, new Rectangle(cellBounds.X+1, cellBounds.Y+1, cellBounds.Width-2, cellBounds.Height-2));
+            Rectangle r = new Rectangle(cellBounds.X , cellBounds.Y, cellBounds.Width-1, cellBounds.Height-1);
 
+            graphics.FillRectangle(myBrush, r);
+            graphics.DrawRectangle(new Pen(Color.Black, 1), r);
             try
             {
                 TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), Color.Black, flagsCentro);
