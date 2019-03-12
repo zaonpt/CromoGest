@@ -16,42 +16,31 @@ namespace CromoGest.Forms
         public Form1()
         {
             InitializeComponent();
+            dataGridView1.AutoGenerateColumns = false;
 
-            //dataGridView1 = new DataGridView();
-            DataGridViewCromoTextBoxColumn col =
-                new DataGridViewCromoTextBoxColumn();
+            DataGridViewCromoColumn col = new DataGridViewCromoColumn();
+            DataGridViewCromoCell c1 = new DataGridViewCromoCell("aa", 1);
+
+            DataGridViewRow r1 = new DataGridViewRow();
+
+            r1.Cells.Add(c1);
+
             dataGridView1.Columns.Add(col);
-            //dataGridView1.Rows.Add(new string[] { "11" });
-            //dataGridView1.Rows.Add(new string[] { "22" });
-            //dataGridView1.Rows.Add(new string[] { "33" });
-            //dataGridView1.Rows.Add(new string[] { "44" });
-            //this.Controls.Add(dataGridView1);
-            //this.Text = "DataGridView rollover-cell demo";
+            dataGridView1.Rows.Add(r1);
 
 
 
-            List<string> s1 = new List<string>();
-            s1.Add("a11");
-            s1.Add("a21");
-            List<string> s2 = new List<string>();
-            s2.Add("a12");
-            s2.Add("a22");
-            List<string> s3 = new List<string>();
-            s3.Add("a13");
-            s3.Add("a23");
-            List<string> s4 = new List<string>();
-            s4.Add("a14");
-            s4.Add("a24");
+            
+            //dataGridView1.Rows.Add("aa");
 
-            List<List<string>> ss = new List<List<string>>();
 
-            ss.Add(s1);
-            ss.Add(s2);
-            ss.Add(s3);
-            ss.Add(s4);
+            //dataGridView1.Rows.Add(new DataGridViewCromoCell("bb", 2));
+            //dataGridView1.Rows.Add(new DataGridViewCromoCell("cc", 3));
 
-            dataGridView1.DataSource = ss;
-            dataGridView1.AutoGenerateColumns = true;
+
+
+
+            //dataGridView1.DataSource = ss;
 
 
 
