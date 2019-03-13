@@ -18,36 +18,24 @@ namespace CromoGest.Forms
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
 
-            DataGridViewCromoColumn col1 = new DataGridViewCromoColumn();
-            DataGridViewCromoColumn col2 = new DataGridViewCromoColumn();
-            DataGridViewCromoCell c1 = new DataGridViewCromoCell("aa", 1);
-            DataGridViewCromoCell c2 = new DataGridViewCromoCell("bb", 2);
+            for (int i = 0; i < 3; i++)
+            {
+                dataGridView1.Columns.Add(new DataGridViewCromoColumn());
+            }
 
-            DataGridViewRow r1 = new DataGridViewRow();
+            for (int i = 0; i < 3; i++)
+            {
+                dataGridView1.Rows.Add(new DataGridViewRow());
+            }
 
-            r1.Cells.Add(c1);
-            r1.Cells.Add(c2);
-
-            dataGridView1.Columns.Add(col1);
-            dataGridView1.Columns.Add(col2);
-            dataGridView1.Rows.Add(r1);
-
-
-
-
-            //dataGridView1.Rows.Add("aa");
-
-
-            //dataGridView1.Rows.Add(new DataGridViewCromoCell("bb", 2));
-            //dataGridView1.Rows.Add(new DataGridViewCromoCell("cc", 3));
-
-
-
-
-            //dataGridView1.DataSource = ss;
-
-
-
+            for (int col = 0; col < 3; col++)
+            {
+                for (int row = 0; row < 3; row++)
+                {
+                    ((DataGridViewCromoCell)dataGridView1.Rows[row].Cells[col]).Value = $"a{row}{col}";
+                    ((DataGridViewCromoCell)dataGridView1.Rows[row].Cells[col]).NumCromos = row + col;
+                }
+            }
         }
     }
 }

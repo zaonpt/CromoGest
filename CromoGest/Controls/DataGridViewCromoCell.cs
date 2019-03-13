@@ -18,23 +18,7 @@ namespace CromoGest.Controls
         {
             Value = s;
             NumCromos = i;
-            switch (i)
-            {
-                case 0:
-                    Style.BackColor = Color.LightSalmon;
-                    Style.ForeColor = Color.Black;
-                    break;
-                case 1:
-                    Style.BackColor = Color.LightGreen;
-                    Style.ForeColor = Color.Black;
-                    break;
-                default:
-                    Style.BackColor = Color.Green;
-                    Style.ForeColor = Color.White;
-                    break;
-            }
-
-        }
+          }
 
         public void IncCromo() { NumCromos++; }
 
@@ -53,31 +37,51 @@ namespace CromoGest.Controls
             DataGridViewAdvancedBorderStyle advancedBorderStyle, 
             DataGridViewPaintParts paintParts) 
         {
+            
             //base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
             TextFormatFlags flagsCanto = TextFormatFlags.Bottom | TextFormatFlags.Right | TextFormatFlags.RightToLeft;
             TextFormatFlags flagsCentro = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
             Font FontValue = new Font(cellStyle.Font.FontFamily, 9, cellStyle.Font.Style, GraphicsUnit.Pixel);
             Font FontNum = new Font(cellStyle.Font.FontFamily, 7, cellStyle.Font.Style, GraphicsUnit.Pixel);
             this.UseColumnTextForButtonValue = true;
+            SolidBrush background;
+            Color corNumCromos;
+            Color corVal;
 
-            SolidBrush myBrush = new SolidBrush(Color.Gray);
+            switch (NumCromos)
+            {
+                case 0:
+                    background = new SolidBrush(Color.Tomato);
+                    corNumCromos = Color.Black;
+                    corVal = Color.Black;
+                    break;
+                case 1:
+                    background = new SolidBrush(Color.LightGreen);
+                    corNumCromos = Color.Black;
+                    corVal = Color.Black;
+                    break;
+                default:
+                    background = new SolidBrush(Color.Green);
+                    corNumCromos = Color.White;
+                    corVal = Color.White;
+                    break;
+            }
 
-            Pen p = new Pen(Color.Black, 1);
 
-            //graphics.DrawRectangle(p, new Rectangle(cellBounds.X+1, cellBounds.Y+1, cellBounds.Width-2, cellBounds.Height-2));
-
-            Rectangle r = new Rectangle(cellBounds.X , cellBounds.Y, cellBounds.Width-1, cellBounds.Height-1);
-
-            graphics.FillRectangle(myBrush, r);
-            graphics.DrawRectangle(new Pen(Color.Black, 1), r);
             try
             {
-                TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), Color.Black, flagsCentro);
+                Rectangle r = new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-2, cellBounds.Height-2);
+                graphics.DrawRectangle(new Pen(Color.White), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-1, cellBounds.Height-1));
+                graphics.FillRectangle(background, r);
+                graphics.DrawRectangle(new Pen(Color.Black), r);
 
-                TextRenderer.DrawText(graphics, NumCromos.ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y-2, cellBounds.Width, cellBounds.Height), Color.Black, flagsCanto);
+                TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
+                TextRenderer.DrawText(graphics, NumCromos.ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-1, cellBounds.Height-3), corNumCromos, flagsCanto);
             }
             catch { }
 
         }
+
+
     }
 }
