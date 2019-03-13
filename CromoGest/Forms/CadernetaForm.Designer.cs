@@ -317,7 +317,6 @@
             this.dataGridViewCaderneta.TabIndex = 5;
             this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
-            this.dataGridViewCaderneta.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridViewCaderneta_DataBindingComplete);
             // 
             // tableLayoutPanel5
             // 
@@ -356,7 +355,6 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "CadernetaForm";
             this.Text = "Caderneta";
-            this.VisibleChanged += new System.EventHandler(this.CadernetaForm_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);

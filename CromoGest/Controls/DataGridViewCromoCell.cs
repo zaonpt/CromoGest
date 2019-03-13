@@ -67,21 +67,23 @@ namespace CromoGest.Controls
                     break;
             }
 
-
             try
             {
-                Rectangle r = new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-2, cellBounds.Height-2);
-                graphics.DrawRectangle(new Pen(Color.White), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-1, cellBounds.Height-1));
-                graphics.FillRectangle(background, r);
-                graphics.DrawRectangle(new Pen(Color.Black), r);
+                if (NumCromos != -1)
+                {
+                    Rectangle r = new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 2, cellBounds.Height - 2);
+                    graphics.DrawRectangle(new Pen(Color.White), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 1));
+                    graphics.FillRectangle(background, r);
+                    graphics.DrawRectangle(new Pen(Color.Black), r);
 
-                TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
-                TextRenderer.DrawText(graphics, NumCromos.ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width-1, cellBounds.Height-3), corNumCromos, flagsCanto);
+                    TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
+                    TextRenderer.DrawText(graphics, NumCromos.ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 3), corNumCromos, flagsCanto);
+                }
+                else {
+                    base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
+                }
             }
-            catch { }
-
+            catch { }            
         }
-
-
     }
 }
