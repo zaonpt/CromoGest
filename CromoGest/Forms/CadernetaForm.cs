@@ -201,7 +201,5 @@ namespace CromoGest.Forms
         {
             this.Close();
         }
-
-
     }
 }
