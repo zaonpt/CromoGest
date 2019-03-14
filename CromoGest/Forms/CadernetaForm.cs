@@ -18,7 +18,6 @@ namespace CromoGest.Forms
     {
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
         private char charSeparador;
-        //private List<CadernetaHorizontalModelo> cadernetasHorizontais = new List<CadernetaHorizontalModelo>();
 
         public CadernetaForm()
         {
@@ -28,34 +27,9 @@ namespace CromoGest.Forms
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
             ResetComboBox();
-            //SetPosicoesCromosNaPagina();
         }
 
-        //private void SetPosicoesCromosNaPagina()
-        //{
-        //    string cromoPosicao;
-        //    int ncromo;
-        //    CadernetaHorizontalModelo novaCaderneta;
-        //    PaginaHorizontalModelo novaPagina;
-        //    foreach (CadernetaModelo caderneta in cadernetas)
-        //    {
-        //        novaCaderneta = new CadernetaHorizontalModelo();
-        //        novaCaderneta.Id = caderneta.Id;
-        //        cadernetasHorizontais.Add(novaCaderneta);
-        //        foreach (PaginaModelo pagina in caderneta.Paginas)
-        //        {
-        //            novaPagina = new PaginaHorizontalModelo();
-        //            novaPagina["Pagina"] = pagina.Nome;
-        //            ncromo = 1;
-        //            foreach (CromoModelo cromo in pagina.Cromos)
-        //            {
-        //                cromoPosicao = "C" + ncromo++;
-        //                novaPagina[cromoPosicao] = cromo.Numero;
-        //            }
-        //            novaCaderneta.PaginasHorizontais.Add(novaPagina);
-        //        }
-        //    }
-        //}
+
 
         private void ResetComboBox()
         {
@@ -175,6 +149,7 @@ namespace CromoGest.Forms
                     case MouseButtons.Left:
                         GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada);
                         ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col-1].Quantidade++;
+                        ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
                         ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
                         break;
                     case MouseButtons.Right:
@@ -182,11 +157,11 @@ namespace CromoGest.Forms
                         {
                             cromoNewQuantidade = GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
                             ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col-1].Quantidade--;
+                            ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos--;
                             ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
                         }
                         break;
                 }
-                dataGridViewCaderneta.InvalidateCell(dataGridViewCaderneta.Rows[row].Cells[col]);
                 dataGridViewCaderneta.Refresh();
             }
         }
@@ -196,21 +171,6 @@ namespace CromoGest.Forms
             this.Close();
         }
 
-        //private void dataGridViewCaderneta_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        //{
-        //    ColorGrid();
-        //}
 
-        //private void CadernetaForm_VisibleChanged(object sender, EventArgs e)
-        //{
-        //    if (this.Visible)
-        //    {
-
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
     }
 }
