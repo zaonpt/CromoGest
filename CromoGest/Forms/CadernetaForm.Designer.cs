@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.LabelListaRepetido = new System.Windows.Forms.Label();
             this.TextListaRepetidos = new System.Windows.Forms.TextBox();
+            this.CBmultiRepetidos = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.ButtonInfo = new System.Windows.Forms.Button();
             this.ButtonEntradas = new System.Windows.Forms.Button();
@@ -87,11 +88,13 @@
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel4.Controls.Add(this.LabelListaRepetido, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.TextListaRepetidos, 1, 0);
+            this.tableLayoutPanel4.Controls.Add(this.CBmultiRepetidos, 2, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 594);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -116,8 +119,21 @@
             this.TextListaRepetidos.Location = new System.Drawing.Point(153, 3);
             this.TextListaRepetidos.Name = "TextListaRepetidos";
             this.TextListaRepetidos.ReadOnly = true;
-            this.TextListaRepetidos.Size = new System.Drawing.Size(838, 20);
+            this.TextListaRepetidos.Size = new System.Drawing.Size(638, 20);
             this.TextListaRepetidos.TabIndex = 1;
+            // 
+            // CBmultiRepetidos
+            // 
+            this.CBmultiRepetidos.AutoSize = true;
+            this.CBmultiRepetidos.Checked = true;
+            this.CBmultiRepetidos.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CBmultiRepetidos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CBmultiRepetidos.Location = new System.Drawing.Point(797, 3);
+            this.CBmultiRepetidos.Name = "CBmultiRepetidos";
+            this.CBmultiRepetidos.Size = new System.Drawing.Size(194, 18);
+            this.CBmultiRepetidos.TabIndex = 2;
+            this.CBmultiRepetidos.Text = "Mostrar multiplos";
+            this.CBmultiRepetidos.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -253,9 +269,10 @@
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnCount = 3;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel3.Controls.Add(this.LabelListaCromos, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.TextListaCromos, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -272,9 +289,9 @@
             this.LabelListaCromos.AutoSize = true;
             this.LabelListaCromos.Location = new System.Drawing.Point(3, 5);
             this.LabelListaCromos.Name = "LabelListaCromos";
-            this.LabelListaCromos.Size = new System.Drawing.Size(67, 13);
+            this.LabelListaCromos.Size = new System.Drawing.Size(60, 13);
             this.LabelListaCromos.TabIndex = 0;
-            this.LabelListaCromos.Text = "Lista Cromos";
+            this.LabelListaCromos.Text = "Lista Faltas";
             // 
             // TextListaCromos
             // 
@@ -282,7 +299,7 @@
             this.TextListaCromos.Location = new System.Drawing.Point(153, 3);
             this.TextListaCromos.Name = "TextListaCromos";
             this.TextListaCromos.ReadOnly = true;
-            this.TextListaCromos.Size = new System.Drawing.Size(838, 20);
+            this.TextListaCromos.Size = new System.Drawing.Size(638, 20);
             this.TextListaCromos.TabIndex = 1;
             // 
             // dataGridViewCaderneta
@@ -292,26 +309,26 @@
             this.dataGridViewCaderneta.AllowUserToResizeColumns = false;
             this.dataGridViewCaderneta.AllowUserToResizeRows = false;
             this.dataGridViewCaderneta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewCaderneta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewCaderneta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewCaderneta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCaderneta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewCaderneta.Name = "dataGridViewCaderneta";
             this.dataGridViewCaderneta.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
-            this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.LightGray;
+            this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewCaderneta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 485);
             this.dataGridViewCaderneta.TabIndex = 5;
@@ -395,5 +412,6 @@
         private System.Windows.Forms.CheckBox CheckBoxHack;
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabelCaderneta;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.CheckBox CBmultiRepetidos;
     }
 }

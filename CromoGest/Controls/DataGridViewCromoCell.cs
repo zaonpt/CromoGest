@@ -77,7 +77,8 @@ namespace CromoGest.Controls
                     graphics.DrawRectangle(new Pen(Color.Black), r);
 
                     TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
-                    TextRenderer.DrawText(graphics, NumCromos.ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 3), corNumCromos, flagsCanto);
+                    if (NumCromos > 1)
+                        TextRenderer.DrawText(graphics, (NumCromos-1).ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 3), corNumCromos, flagsCanto);
                 }
                 else {
                     base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);

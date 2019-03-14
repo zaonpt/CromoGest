@@ -29,14 +29,43 @@ namespace CromoGest.Forms
             ResetComboBox();
         }
 
-
-
         private void ResetComboBox()
         {
             ComboBoxCadernetas.DataSource = null;
             ComboBoxCadernetas.DataSource = cadernetas;
             ComboBoxCadernetas.DisplayMember = "Nome";
             ComboBoxCadernetas.ValueMember = "Id";
+        }
+
+        private void PreencheListas()
+        {
+            TextListaCromos.Text = "";
+            TextListaRepetidos.Text = "";
+
+            foreach (PaginaModelo pagina in ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas)
+            {
+                foreach (CromoModelo cromo in pagina.Cromos)
+                {
+                    if (cromo.Quantidade == 0)
+                        TextListaCromos.Text += $"{charSeparador} { cromo.Numero }";
+                    if (CBmultiRepetidos.Checked)
+                    {
+                        if (cromo.Quantidade > 1)
+                            if (cromo.Quantidade == 2)
+                                TextListaRepetidos.Text += $"{charSeparador} { cromo.Numero }";
+                            else
+                                TextListaRepetidos.Text += $"{charSeparador} { cromo.Quantidade-1 }*{ cromo.Numero }";
+                    }
+                    else
+                    {
+                        TextListaRepetidos.Text += $"{charSeparador} { cromo.Numero }";
+                    }
+                }
+            }
+            if (TextListaCromos.Text.Length > 2)
+                TextListaCromos.Text = TextListaCromos.Text.Substring(2);
+            if (TextListaRepetidos.Text.Length > 2)
+                TextListaRepetidos.Text = TextListaRepetidos.Text.Substring(2);
         }
 
         private void LoadCadernetasGrid()
@@ -69,13 +98,13 @@ namespace CromoGest.Forms
                     {
                         for (int row = 0; row < numPaginas; row++)
                         {
-                            ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col+1]).Value = caderneta.Paginas[row].Cromos[col].Numero;
-                            ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col+1]).NumCromos = caderneta.Paginas[row].Cromos[col].Quantidade;
+                            ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).Value = caderneta.Paginas[row].Cromos[col].Numero;
+                            ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).NumCromos = caderneta.Paginas[row].Cromos[col].Quantidade;
                         }
                     }
                 }
             }
-
+            PreencheListas();
         }
 
         private void ApagaGrid()
@@ -103,6 +132,7 @@ namespace CromoGest.Forms
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadCadernetasGrid();
+            PreencheListas();
         }
 
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -148,7 +178,7 @@ namespace CromoGest.Forms
                 {
                     case MouseButtons.Left:
                         GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada);
-                        ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col-1].Quantidade++;
+                        ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade++;
                         ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
                         ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
                         break;
@@ -156,13 +186,14 @@ namespace CromoGest.Forms
                         if (cromoOldQuantidade > 0)
                         {
                             cromoNewQuantidade = GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
-                            ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col-1].Quantidade--;
+                            ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade--;
                             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos--;
                             ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
                         }
                         break;
                 }
                 dataGridViewCaderneta.Refresh();
+                PreencheListas();
             }
         }
 
