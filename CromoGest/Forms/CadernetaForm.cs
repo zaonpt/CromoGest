@@ -143,6 +143,7 @@ namespace CromoGest.Forms
 
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            toolStripStatusLabel1.Text = "";
             LoadCadernetasGrid();
             PreencheListas();
         }
@@ -182,9 +183,11 @@ namespace CromoGest.Forms
             {
                 int col = e.ColumnIndex;
                 int row = e.RowIndex;
+
                 string cromoNumero = dataGridViewCaderneta.Rows[row].Cells[col].Value.ToString();
                 int idCadernetaSelecionada = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
                 int cromoOldQuantidade = GlobalConfig.Connection.GetCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+
                 AccaoMouse(e, col, row, cromoNumero, idCadernetaSelecionada, cromoOldQuantidade);
                 dataGridViewCaderneta.Refresh();
                 PreencheListas();
