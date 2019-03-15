@@ -29,6 +29,7 @@ namespace CromoGest.Forms
             ResetComboBox();
         }
 
+
         private void ResetComboBox()
         {
             ComboBoxCadernetas.DataSource = null;
@@ -143,9 +144,11 @@ namespace CromoGest.Forms
 
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
-            toolStripStatusLabel1.Text = "";
+            ToolStripStatusLabelCaderneta.Text = "";
             LoadCadernetasGrid();
             PreencheListas();
+            if (((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas.Count==0)
+                ToolStripStatusLabelCaderneta.Text = "Caderneta Incompleta. Entrar em \"Nova Caderneta\" e preencher informação em falta.";
         }
 
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -159,6 +162,7 @@ namespace CromoGest.Forms
             formNova.Show();
             this.Hide();
             cadernetas = GlobalConfig.Connection.GetCadernetas();
+            ResetComboBox();
         }
 
         private void ButtonEntradas_Click(object sender, EventArgs e)
