@@ -382,6 +382,7 @@
             this.Name = "CadernetaForm";
             this.Text = "Caderneta";
             this.Shown += new System.EventHandler(this.CadernetaForm_Shown);
+            this.ResizeEnd += new System.EventHandler(this.CadernetaForm_ResizeEnd);
             this.VisibleChanged += new System.EventHandler(this.CadernetaForm_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

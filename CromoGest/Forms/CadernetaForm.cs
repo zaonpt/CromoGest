@@ -106,16 +106,23 @@ namespace CromoGest.Forms
             for (int i = 0; i < numPaginas; i++)
             {
                 ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[i].Cells[0]).Value = caderneta.Paginas[i].Nome;
-                ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[i].Cells[0]).NumCromos = -1;
+                ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[i].Cells[0]).PaginaCell = true;
             }
 
-            for (int col = 0; col < numMaxCromosNasPaginas; col++)
+            for (int row = 0; row < numPaginas; row++)
             {
-                for (int row = 0; row < numPaginas; row++)
+                for (int col = 0; col < numMaxCromosNasPaginas; col++)
                 {
-                    ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).Value = caderneta.Paginas[row].Cromos[col].Numero;
-                    ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).NumCromos = caderneta.Paginas[row].Cromos[col].Quantidade;
-                    ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).ToolTipText = caderneta.Paginas[row].Cromos[col].Descricao;
+                    if (col < caderneta.Paginas[row].Cromos.Count)
+                    {
+                        ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).Value = caderneta.Paginas[row].Cromos[col].Numero;
+                        ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).NumCromos = caderneta.Paginas[row].Cromos[col].Quantidade;
+                        ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).ToolTipText = caderneta.Paginas[row].Cromos[col].Descricao;
+                    }
+                    else
+                    {
+                        ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).EmptyCell = true;
+                    }
 
                 }
             }
@@ -148,12 +155,15 @@ namespace CromoGest.Forms
         #region Eventos
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
+            dataGridViewCaderneta.RowHeadersVisible = false;
             ToolStripStatusLabelCaderneta.Text = "";
             if (ComboBoxCadernetas.SelectedItem == null) return;
             LoadCadernetasGrid();
             PreencheListas();
             if (((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas.Count == 0)
                 ToolStripStatusLabelCaderneta.Text = "Caderneta Incompleta. Entrar em \"Nova Caderneta\" e preencher informação em falta.";
+            dataGridViewCaderneta.RowHeadersVisible = true;
+
         }
 
         private void dataGridViewCaderneta_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -284,7 +294,12 @@ namespace CromoGest.Forms
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
             ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
         }
+
         #endregion
 
+        private void CadernetaForm_ResizeEnd(object sender, EventArgs e)
+        {
+//            dataGridViewCaderneta.Invalidate();
+        }
     }
 }
