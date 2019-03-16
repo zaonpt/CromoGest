@@ -23,6 +23,8 @@ namespace CromoGest.Forms
         private bool FullyLoaded = false;
         #endregion
 
+
+
         #region Metodos (methods) associados ao carregamento
         public CadernetaForm()
         {
@@ -141,6 +143,8 @@ namespace CromoGest.Forms
         }
         #endregion
 
+
+
         #region Eventos
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -211,19 +215,6 @@ namespace CromoGest.Forms
             FullyLoaded = true;
         }
 
-        #endregion
-
-        #region Metodos de apoio
-        private int GetNumMaxCromosNasPaginas(CadernetaModelo caderneta)
-        {
-            int nMax = 0;
-
-            foreach (PaginaModelo pagina in caderneta.Paginas)
-                nMax = (nMax < pagina.Cromos.Count) ? pagina.Cromos.Count : nMax;
-
-            return nMax;
-        }
-
         private void ButtonNova_Click(object sender, EventArgs e)
         {
             NovaCadernetaForm formNova = new NovaCadernetaForm(this, ComboBoxCadernetas.SelectedIndex);
@@ -236,6 +227,20 @@ namespace CromoGest.Forms
             EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
             entradas.Show();
             this.Hide();
+        }
+        #endregion
+
+
+
+        #region Metodos de apoio
+        private int GetNumMaxCromosNasPaginas(CadernetaModelo caderneta)
+        {
+            int nMax = 0;
+
+            foreach (PaginaModelo pagina in caderneta.Paginas)
+                nMax = (nMax < pagina.Cromos.Count) ? pagina.Cromos.Count : nMax;
+
+            return nMax;
         }
 
         private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
