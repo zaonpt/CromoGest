@@ -52,6 +52,7 @@
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.CheckBoxHack = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -66,16 +67,18 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewCaderneta, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel4, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel3, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewCaderneta, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel5, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
@@ -155,7 +158,7 @@
             this.tableLayoutPanel2.Controls.Add(this.LabelCaderneta, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonNova, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonSair, 6, 0);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -197,6 +200,7 @@
             this.ButtonTrocas.Text = "&Trocas";
             this.toolTip1.SetToolTip(this.ButtonTrocas, "Aceder ao registo de trocas de cromos.");
             this.ButtonTrocas.UseVisualStyleBackColor = true;
+            this.ButtonTrocas.Click += new System.EventHandler(this.ButtonTrocas_Click);
             // 
             // ComboBoxCadernetas
             // 
@@ -312,7 +316,7 @@
             this.dataGridViewCaderneta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewCaderneta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCaderneta.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 43);
+            this.dataGridViewCaderneta.Location = new System.Drawing.Point(3, 73);
             this.dataGridViewCaderneta.Name = "dataGridViewCaderneta";
             this.dataGridViewCaderneta.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -323,7 +327,7 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
             this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCaderneta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 485);
+            this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 455);
             this.dataGridViewCaderneta.TabIndex = 5;
             this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
@@ -355,6 +359,18 @@
             this.CheckBoxHack.Text = "Hack";
             this.CheckBoxHack.UseVisualStyleBackColor = true;
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(994, 30);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "label1";
+            // 
             // CadernetaForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -365,6 +381,8 @@
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "CadernetaForm";
             this.Text = "Caderneta";
+            this.Shown += new System.EventHandler(this.CadernetaForm_Shown);
+            this.VisibleChanged += new System.EventHandler(this.CadernetaForm_VisibleChanged);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -405,5 +423,6 @@
         private System.Windows.Forms.CheckBox CheckBoxHack;
         private System.Windows.Forms.ToolStripStatusLabel ToolStripStatusLabelCaderneta;
         private System.Windows.Forms.CheckBox CBmultiRepetidos;
+        private System.Windows.Forms.Label label1;
     }
 }

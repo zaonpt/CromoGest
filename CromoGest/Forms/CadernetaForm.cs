@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Dynamic;
 using System.Linq;
@@ -16,9 +17,13 @@ namespace CromoGest.Forms
 {
     public partial class CadernetaForm : Form
     {
+        #region Declaracões de atributos (properties)
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
         private char charSeparador;
+        private bool FullyLoaded = false;
+        #endregion
 
+        #region Metodos (methods) associados ao carregamento
         public CadernetaForm()
         {
             InitializeComponent();
@@ -28,7 +33,6 @@ namespace CromoGest.Forms
 
             ResetComboBox();
         }
-
 
         private void ResetComboBox()
         {
@@ -42,6 +46,7 @@ namespace CromoGest.Forms
         {
             TextListaCromos.Text = "";
             TextListaRepetidos.Text = "";
+            if (ComboBoxCadernetas.SelectedItem == null) return;
 
             foreach (PaginaModelo pagina in ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas)
             {
@@ -77,6 +82,7 @@ namespace CromoGest.Forms
 
         private void LoadCadernetasGrid()
         {
+            if (ComboBoxCadernetas.SelectedItem == null) return;
             ApagaGrid();
             foreach (CadernetaModelo caderneta in cadernetas)
             {
@@ -107,6 +113,8 @@ namespace CromoGest.Forms
                 {
                     ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).Value = caderneta.Paginas[row].Cromos[col].Numero;
                     ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).NumCromos = caderneta.Paginas[row].Cromos[col].Quantidade;
+                    ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col + 1]).ToolTipText = caderneta.Paginas[row].Cromos[col].Descricao;
+
                 }
             }
         }
@@ -131,23 +139,16 @@ namespace CromoGest.Forms
             dataGridViewCaderneta.Columns.Clear();
             dataGridViewCaderneta.Refresh();
         }
+        #endregion
 
-        private int GetNumMaxCromosNasPaginas(CadernetaModelo caderneta)
-        {
-            int nMax = 0;
-
-            foreach (PaginaModelo pagina in caderneta.Paginas)
-                nMax = (nMax < pagina.Cromos.Count) ? pagina.Cromos.Count : nMax;
-
-            return nMax;
-        }
-
+        #region Eventos
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
             ToolStripStatusLabelCaderneta.Text = "";
+            if (ComboBoxCadernetas.SelectedItem == null) return;
             LoadCadernetasGrid();
             PreencheListas();
-            if (((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas.Count==0)
+            if (((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas.Count == 0)
                 ToolStripStatusLabelCaderneta.Text = "Caderneta Incompleta. Entrar em \"Nova Caderneta\" e preencher informação em falta.";
         }
 
@@ -155,31 +156,6 @@ namespace CromoGest.Forms
         {
             e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
         }
-
-        private void ButtonNova_Click(object sender, EventArgs e)
-        {
-            NovaCadernetaForm formNova = new NovaCadernetaForm(this, ComboBoxCadernetas.SelectedIndex);
-            formNova.Show();
-            this.Hide();
-            cadernetas = GlobalConfig.Connection.GetCadernetas();
-            ResetComboBox();
-        }
-
-        private void ButtonEntradas_Click(object sender, EventArgs e)
-        {
-            EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
-            entradas.Show();
-            this.Hide();
-        }
-
-        private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
-        {
-            cell.Style.BackColor = backcolor;
-            cell.Style.SelectionBackColor = backcolor;
-            cell.Style.ForeColor = textColor;
-            cell.Style.SelectionForeColor = textColor;
-        }
-
 
         private void dataGridViewCaderneta_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -196,6 +172,78 @@ namespace CromoGest.Forms
                 dataGridViewCaderneta.Refresh();
                 PreencheListas();
             }
+        }
+
+        private void ButtonSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void CBmultiRepetidos_CheckedChanged(object sender, EventArgs e)
+        {
+            PreencheListas();
+        }
+
+        private void ButtonTrocas_Click(object sender, EventArgs e)
+        {
+            TrocasForm trocas = new TrocasForm(this, ComboBoxCadernetas.SelectedIndex);
+            trocas.Show();
+            this.Hide();
+        }
+
+        private void CadernetaForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (this.Visible == true && FullyLoaded) {
+                cadernetas = GlobalConfig.Connection.GetCadernetas();
+                try
+                {
+                    ResetComboBox();
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+            }
+        }
+
+        private void CadernetaForm_Shown(object sender, EventArgs e)
+        {
+            FullyLoaded = true;
+        }
+
+        #endregion
+
+        #region Metodos de apoio
+        private int GetNumMaxCromosNasPaginas(CadernetaModelo caderneta)
+        {
+            int nMax = 0;
+
+            foreach (PaginaModelo pagina in caderneta.Paginas)
+                nMax = (nMax < pagina.Cromos.Count) ? pagina.Cromos.Count : nMax;
+
+            return nMax;
+        }
+
+        private void ButtonNova_Click(object sender, EventArgs e)
+        {
+            NovaCadernetaForm formNova = new NovaCadernetaForm(this, ComboBoxCadernetas.SelectedIndex);
+            formNova.Show();
+            this.Hide();
+        }
+
+        private void ButtonEntradas_Click(object sender, EventArgs e)
+        {
+            EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
+            entradas.Show();
+            this.Hide();
+        }
+
+        private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
+        {
+            cell.Style.BackColor = backcolor;
+            cell.Style.SelectionBackColor = backcolor;
+            cell.Style.ForeColor = textColor;
+            cell.Style.SelectionForeColor = textColor;
         }
 
         private void AccaoMouse(DataGridViewCellMouseEventArgs e, int col, int row, string cromoNumero, int idCadernetaSelecionada, int cromoOldQuantidade)
@@ -231,15 +279,7 @@ namespace CromoGest.Forms
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
             ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
         }
+        #endregion
 
-        private void ButtonSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void CBmultiRepetidos_CheckedChanged(object sender, EventArgs e)
-        {
-            PreencheListas();
-        }
     }
 }

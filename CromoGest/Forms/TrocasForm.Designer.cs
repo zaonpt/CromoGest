@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.DataGridViewTrocas = new System.Windows.Forms.DataGridView();
             this.Editar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.IdTroca = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,26 +41,42 @@
             this.Destinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CromosRecebidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CromosEnviados = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ButtonSair = new System.Windows.Forms.Button();
-            this.StatusStripTrocas = new System.Windows.Forms.StatusStrip();
-            this.ButtonAlterarSelecao = new System.Windows.Forms.Button();
-            this.GroupBoxProgresso = new System.Windows.Forms.GroupBox();
-            this.LabelTroca = new System.Windows.Forms.Label();
-            this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
-            this.ButtonAlterarStatus = new System.Windows.Forms.Button();
-            this.ButtonCriar = new System.Windows.Forms.Button();
-            this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.LabelTrocaTitulo = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.ButtonTrocas = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTrocas)).BeginInit();
-            this.panel1.SuspendLayout();
-            this.GroupBoxProgresso.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Controls.Add(this.DataGridViewTrocas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(953, 610);
+            this.tableLayoutPanel1.TabIndex = 14;
             // 
             // DataGridViewTrocas
             // 
             this.DataGridViewTrocas.AllowUserToAddRows = false;
-            this.DataGridViewTrocas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.DataGridViewTrocas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewTrocas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Editar,
@@ -70,9 +88,10 @@
             this.Destinatario,
             this.CromosRecebidos,
             this.CromosEnviados});
-            this.DataGridViewTrocas.Location = new System.Drawing.Point(10, 72);
+            this.DataGridViewTrocas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DataGridViewTrocas.Location = new System.Drawing.Point(3, 43);
             this.DataGridViewTrocas.Name = "DataGridViewTrocas";
-            this.DataGridViewTrocas.Size = new System.Drawing.Size(941, 210);
+            this.DataGridViewTrocas.Size = new System.Drawing.Size(947, 459);
             this.DataGridViewTrocas.TabIndex = 1;
             // 
             // Editar
@@ -144,147 +163,125 @@
             this.CromosEnviados.HeaderText = "Cromos Enviados";
             this.CromosEnviados.Name = "CromosEnviados";
             // 
-            // panel1
+            // statusStrip1
             // 
-            this.panel1.Controls.Add(this.ButtonSair);
-            this.panel1.Controls.Add(this.StatusStripTrocas);
-            this.panel1.Controls.Add(this.ButtonAlterarSelecao);
-            this.panel1.Controls.Add(this.GroupBoxProgresso);
-            this.panel1.Controls.Add(this.ButtonCriar);
-            this.panel1.Controls.Add(this.LabelTrocaTitulo);
-            this.panel1.Controls.Add(this.DataGridViewTrocas);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(10);
-            this.panel1.Size = new System.Drawing.Size(961, 429);
-            this.panel1.TabIndex = 2;
+            this.statusStrip1.Location = new System.Drawing.Point(0, 588);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(953, 22);
+            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.Text = "statusStrip1";
             // 
-            // ButtonSair
+            // comboBox1
             // 
-            this.ButtonSair.ForeColor = System.Drawing.Color.Black;
-            this.ButtonSair.Location = new System.Drawing.Point(10, 359);
-            this.ButtonSair.Name = "ButtonSair";
-            this.ButtonSair.Size = new System.Drawing.Size(100, 23);
-            this.ButtonSair.TabIndex = 13;
-            this.ButtonSair.Text = "&Sair";
-            this.TrocasToolTip.SetToolTip(this.ButtonSair, "PLACEHOLDER");
-            this.ButtonSair.UseVisualStyleBackColor = true;
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(443, 6);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(281, 21);
+            this.comboBox1.TabIndex = 1;
             // 
-            // StatusStripTrocas
+            // label1
             // 
-            this.StatusStripTrocas.Location = new System.Drawing.Point(10, 397);
-            this.StatusStripTrocas.Name = "StatusStripTrocas";
-            this.StatusStripTrocas.Size = new System.Drawing.Size(941, 22);
-            this.StatusStripTrocas.TabIndex = 12;
-            this.StatusStripTrocas.Text = "statusStrip1";
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(402, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
-            // ButtonAlterarSelecao
+            // tableLayoutPanel2
             // 
-            this.ButtonAlterarSelecao.ForeColor = System.Drawing.Color.Black;
-            this.ButtonAlterarSelecao.Location = new System.Drawing.Point(10, 330);
-            this.ButtonAlterarSelecao.Name = "ButtonAlterarSelecao";
-            this.ButtonAlterarSelecao.Size = new System.Drawing.Size(100, 23);
-            this.ButtonAlterarSelecao.TabIndex = 8;
-            this.ButtonAlterarSelecao.Text = "&Alterar Seleção";
-            this.TrocasToolTip.SetToolTip(this.ButtonAlterarSelecao, "PLACEHOLDER");
-            this.ButtonAlterarSelecao.UseVisualStyleBackColor = true;
+            this.tableLayoutPanel2.ColumnCount = 7;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ButtonTrocas, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 3, 0);
+            this.tableLayoutPanel2.Controls.Add(this.comboBox1, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button2, 6, 0);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(947, 34);
+            this.tableLayoutPanel2.TabIndex = 3;
             // 
-            // GroupBoxProgresso
+            // ButtonTrocas
             // 
-            this.GroupBoxProgresso.Controls.Add(this.LabelTroca);
-            this.GroupBoxProgresso.Controls.Add(this.ComboBoxStatus);
-            this.GroupBoxProgresso.Controls.Add(this.ButtonAlterarStatus);
-            this.GroupBoxProgresso.Location = new System.Drawing.Point(313, 320);
-            this.GroupBoxProgresso.Name = "GroupBoxProgresso";
-            this.GroupBoxProgresso.Size = new System.Drawing.Size(521, 66);
-            this.GroupBoxProgresso.TabIndex = 11;
-            this.GroupBoxProgresso.TabStop = false;
-            this.GroupBoxProgresso.Text = "Alterar Progresso";
+            this.ButtonTrocas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ButtonTrocas.ForeColor = System.Drawing.Color.Black;
+            this.ButtonTrocas.Location = new System.Drawing.Point(3, 5);
+            this.ButtonTrocas.Name = "ButtonTrocas";
+            this.ButtonTrocas.Size = new System.Drawing.Size(104, 23);
+            this.ButtonTrocas.TabIndex = 12;
+            this.ButtonTrocas.Text = "&Trocas";
+            this.ButtonTrocas.UseVisualStyleBackColor = true;
             // 
-            // LabelTroca
+            // button1
             // 
-            this.LabelTroca.AutoSize = true;
-            this.LabelTroca.Location = new System.Drawing.Point(16, 30);
-            this.LabelTroca.Name = "LabelTroca";
-            this.LabelTroca.Size = new System.Drawing.Size(148, 13);
-            this.LabelTroca.TabIndex = 12;
-            this.LabelTroca.Text = "Novo Status para o progresso";
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(113, 5);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(104, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "&Trocas";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // ComboBoxStatus
+            // button2
             // 
-            this.ComboBoxStatus.FormattingEnabled = true;
-            this.ComboBoxStatus.Location = new System.Drawing.Point(177, 27);
-            this.ComboBoxStatus.Name = "ComboBoxStatus";
-            this.ComboBoxStatus.Size = new System.Drawing.Size(183, 21);
-            this.ComboBoxStatus.TabIndex = 11;
+            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(840, 5);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(104, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "&Trocas";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // ButtonAlterarStatus
+            // button3
             // 
-            this.ButtonAlterarStatus.ForeColor = System.Drawing.Color.Black;
-            this.ButtonAlterarStatus.Location = new System.Drawing.Point(394, 25);
-            this.ButtonAlterarStatus.Name = "ButtonAlterarStatus";
-            this.ButtonAlterarStatus.Size = new System.Drawing.Size(100, 23);
-            this.ButtonAlterarStatus.TabIndex = 10;
-            this.ButtonAlterarStatus.Text = "Alterar";
-            this.ButtonAlterarStatus.UseVisualStyleBackColor = true;
+            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.button3.ForeColor = System.Drawing.Color.Black;
+            this.button3.Location = new System.Drawing.Point(223, 5);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(104, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "&Trocas";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // ButtonCriar
-            // 
-            this.ButtonCriar.ForeColor = System.Drawing.Color.Black;
-            this.ButtonCriar.Location = new System.Drawing.Point(10, 301);
-            this.ButtonCriar.Name = "ButtonCriar";
-            this.ButtonCriar.Size = new System.Drawing.Size(100, 23);
-            this.ButtonCriar.TabIndex = 9;
-            this.ButtonCriar.Text = "&Nova";
-            this.TrocasToolTip.SetToolTip(this.ButtonCriar, "Criar um registo novo de Troca");
-            this.ButtonCriar.UseVisualStyleBackColor = true;
-            // 
-            // LabelTrocaTitulo
-            // 
-            this.LabelTrocaTitulo.AutoSize = true;
-            this.LabelTrocaTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LabelTrocaTitulo.ForeColor = System.Drawing.Color.White;
-            this.LabelTrocaTitulo.Location = new System.Drawing.Point(418, 24);
-            this.LabelTrocaTitulo.Name = "LabelTrocaTitulo";
-            this.LabelTrocaTitulo.Size = new System.Drawing.Size(68, 24);
-            this.LabelTrocaTitulo.TabIndex = 7;
-            this.LabelTrocaTitulo.Text = "Trocas";
-            // 
-            // Trocas
+            // TrocasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(961, 429);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(953, 610);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.White;
-            this.MaximumSize = new System.Drawing.Size(2000, 468);
             this.MinimumSize = new System.Drawing.Size(860, 468);
-            this.Name = "Trocas";
+            this.Name = "TrocasForm";
             this.Text = "Trocas";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTrocas)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.GroupBoxProgresso.ResumeLayout(false);
-            this.GroupBoxProgresso.PerformLayout();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView DataGridViewTrocas;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button ButtonCriar;
-        private System.Windows.Forms.Button ButtonAlterarSelecao;
-        private System.Windows.Forms.StatusStrip StatusStripTrocas;
-        private System.Windows.Forms.GroupBox GroupBoxProgresso;
-        private System.Windows.Forms.Label LabelTroca;
-        private System.Windows.Forms.ComboBox ComboBoxStatus;
-        private System.Windows.Forms.Button ButtonAlterarStatus;
         private System.Windows.Forms.ToolTip TrocasToolTip;
-        private System.Windows.Forms.Button ButtonSair;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.DataGridView DataGridViewTrocas;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Editar;
         private System.Windows.Forms.DataGridViewTextBoxColumn IdTroca;
         private System.Windows.Forms.DataGridViewTextBoxColumn Progresso;
@@ -294,6 +291,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Destinatario;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosRecebidos;
         private System.Windows.Forms.DataGridViewTextBoxColumn CromosEnviados;
-        private System.Windows.Forms.Label LabelTrocaTitulo;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ButtonTrocas;
+        private System.Windows.Forms.Button button2;
     }
 }

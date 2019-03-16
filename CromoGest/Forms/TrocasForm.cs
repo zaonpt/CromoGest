@@ -17,6 +17,13 @@ namespace CromoGest.Forms
             InitializeComponent();
         }
 
-   
+
+        public TrocasForm(CadernetaForm cadernetaIN, int cbIndex)
+        {
+            InitializeComponent();
+
+        }
+
+
     }
 }
