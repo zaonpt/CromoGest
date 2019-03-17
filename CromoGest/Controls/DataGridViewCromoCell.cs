@@ -42,17 +42,39 @@ namespace CromoGest.Controls
             DataGridViewPaintParts paintParts)
         {
 
-            //if (EmptyCell) return;
-
             TextFormatFlags flagsCanto = TextFormatFlags.Bottom | TextFormatFlags.Right | TextFormatFlags.RightToLeft;
             TextFormatFlags flagsCentro = TextFormatFlags.HorizontalCenter | TextFormatFlags.VerticalCenter;
             Font FontValue = new Font(cellStyle.Font.FontFamily, 9, cellStyle.Font.Style, GraphicsUnit.Pixel);
             Font FontNum = new Font(cellStyle.Font.FontFamily, 7, cellStyle.Font.Style, GraphicsUnit.Pixel);
             this.UseColumnTextForButtonValue = true;
-            SolidBrush background;
-            Color corNumCromos;
-            Color corVal;
 
+            SetColors(out SolidBrush background, out Color corNumCromos, out Color corVal);
+
+            if (PaginaCell)
+            {
+                base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
+                return;
+            }
+
+            if (EmptyCell)
+            {
+
+                graphics.FillRectangle(new SolidBrush(Color.FromArgb(171, 171, 171)), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height));
+                return;
+            }
+
+            Rectangle r = new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 2, cellBounds.Height - 2);
+            graphics.DrawRectangle(new Pen(Color.FromArgb(171, 171, 171)), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 1));
+            graphics.FillRectangle(background, r);
+            graphics.DrawRectangle(new Pen(Color.Black), r);
+
+            TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
+            if (NumCromos > 1)
+                TextRenderer.DrawText(graphics, (NumCromos - 1).ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 3), corNumCromos, flagsCanto);
+        }
+
+        private void SetColors(out SolidBrush background, out Color corNumCromos, out Color corVal)
+        {
             switch (NumCromos)
             {
                 case 0:
@@ -71,28 +93,6 @@ namespace CromoGest.Controls
                     corVal = Color.White;
                     break;
             }
-
-            if (PaginaCell)
-            {
-                base.Paint(graphics, clipBounds, cellBounds, rowIndex, elementState, value, formattedValue, errorText, cellStyle, advancedBorderStyle, paintParts);
-                return;
-            }
-
-            if (EmptyCell)
-            {
-
-                graphics.FillRectangle(new SolidBrush(Color.FromArgb(171, 171, 171)), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width , cellBounds.Height));
-                return;
-            }
-
-            Rectangle r = new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 2, cellBounds.Height - 2);
-            graphics.DrawRectangle(new Pen(Color.FromArgb(171, 171, 171)), new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 1));
-            graphics.FillRectangle(background, r);
-            graphics.DrawRectangle(new Pen(Color.Black), r);
-
-            TextRenderer.DrawText(graphics, Value.ToString(), FontValue, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width, cellBounds.Height), corVal, flagsCentro);
-            if (NumCromos > 1)
-                TextRenderer.DrawText(graphics, (NumCromos - 1).ToString(), FontNum, new Rectangle(cellBounds.X, cellBounds.Y, cellBounds.Width - 1, cellBounds.Height - 3), corNumCromos, flagsCanto);
         }
     }
 }

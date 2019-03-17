@@ -296,10 +296,5 @@ namespace CromoGest.Forms
         }
 
         #endregion
-
-        private void CadernetaForm_ResizeEnd(object sender, EventArgs e)
-        {
-//            dataGridViewCaderneta.Invalidate();
-        }
     }
 }
