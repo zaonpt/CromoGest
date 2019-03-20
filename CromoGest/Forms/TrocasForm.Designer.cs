@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.DataGridViewTrocas = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTrocas = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button3 = new System.Windows.Forms.Button();
@@ -41,7 +42,7 @@
             this.CadernetasComboBox = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTrocas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrocas)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +50,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.DataGridViewTrocas, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewTrocas, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -65,15 +66,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 657);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
-            // DataGridViewTrocas
+            // dataGridViewTrocas
             // 
-            this.DataGridViewTrocas.AllowUserToAddRows = false;
-            this.DataGridViewTrocas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewTrocas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DataGridViewTrocas.Location = new System.Drawing.Point(3, 43);
-            this.DataGridViewTrocas.Name = "DataGridViewTrocas";
-            this.DataGridViewTrocas.Size = new System.Drawing.Size(1142, 506);
-            this.DataGridViewTrocas.TabIndex = 1;
+            this.dataGridViewTrocas.AllowUserToAddRows = false;
+            this.dataGridViewTrocas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewTrocas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewTrocas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewTrocas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewTrocas.Location = new System.Drawing.Point(3, 43);
+            this.dataGridViewTrocas.Name = "dataGridViewTrocas";
+            this.dataGridViewTrocas.Size = new System.Drawing.Size(1142, 506);
+            this.dataGridViewTrocas.TabIndex = 1;
             // 
             // statusStrip1
             // 
@@ -183,7 +193,7 @@
             this.Text = "Trocas";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTrocas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrocas)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
@@ -193,7 +203,7 @@
         #endregion
         private System.Windows.Forms.ToolTip TrocasToolTip;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.DataGridView DataGridViewTrocas;
+        private System.Windows.Forms.DataGridView dataGridViewTrocas;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label CadernetasLabel;
