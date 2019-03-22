@@ -243,19 +243,25 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="IdCaderneta">Quantidade de cromos populados</param>
         /// <returns></returns>
-        public int TotalCromos(CadernetaModelo idCaderneta)
+        public int TotalCromos(CadernetaModelo Caderneta)
         {
-            if (idCaderneta == null) return 0;
+            if (Caderneta == null) return 0;
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
-                p.Add("@IdCaderneta", idCaderneta.Id);
+                p.Add("@IdCaderneta", Caderneta.Id);
 
                 int r = connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
                 return r;
             }
         }
 
+        /// <summary>
+        /// Verifica se existe o cromo na caderneta
+        /// </summary>
+        /// <param name="cromo"></param>
+        /// <param name="idCaderneta"></param>
+        /// <returns>booleano que diz se é valido ou não</returns>
         public bool IsValidCromo(string cromo, int idCaderneta)
         {
             if (cromo == null) return false;
@@ -264,5 +270,37 @@ namespace CromoGestLibrary.SQL
             return true;
         }
 
+
+        /// <summary>
+        /// Procura e devolve as trocas de existentes de uma dada caderneta.
+        /// </summary>
+        /// <param name="caderneta">Caderneta das trocas</param>
+        /// <returns>Trocas da cadernta</returns>
+        public List<TrocaModelo> GetTrocas(CadernetaModelo caderneta)
+        {
+            if (caderneta == null) return null;
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@IdCaderneta", caderneta.Id);
+
+                List<TrocaModelo> trocas = connection.Query<TrocaModelo>("spGetTrocas", p, commandType: CommandType.StoredProcedure).ToList();
+
+                foreach(TrocaModelo troca in trocas)
+                {
+                    p = new DynamicParameters();
+                    p.Add("@Id", troca.Id);
+                    p.Add("@IsRecebido", "0");
+                    troca.CromosEnviados = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
+                    p.Add("@IsRecebido", "1");
+                    troca.CromosRecebidos = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
+
+                }
+
+                return trocas;
+            }
+
+
+        }
     }
 }

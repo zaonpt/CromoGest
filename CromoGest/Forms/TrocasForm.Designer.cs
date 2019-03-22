@@ -39,7 +39,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.ButtonTrocas = new System.Windows.Forms.Button();
             this.CadernetasLabel = new System.Windows.Forms.Label();
-            this.CadernetasComboBox = new System.Windows.Forms.ComboBox();
+            this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrocas)).BeginInit();
@@ -107,7 +107,7 @@
             this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.ButtonTrocas, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.CadernetasLabel, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.CadernetasComboBox, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 4, 0);
             this.tableLayoutPanel2.Controls.Add(this.button2, 6, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
@@ -160,14 +160,15 @@
             this.CadernetasLabel.TabIndex = 0;
             this.CadernetasLabel.Text = "Cadernetas";
             // 
-            // CadernetasComboBox
+            // ComboBoxCadernetas
             // 
-            this.CadernetasComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.CadernetasComboBox.FormattingEnabled = true;
-            this.CadernetasComboBox.Location = new System.Drawing.Point(443, 6);
-            this.CadernetasComboBox.Name = "CadernetasComboBox";
-            this.CadernetasComboBox.Size = new System.Drawing.Size(476, 21);
-            this.CadernetasComboBox.TabIndex = 1;
+            this.ComboBoxCadernetas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComboBoxCadernetas.FormattingEnabled = true;
+            this.ComboBoxCadernetas.Location = new System.Drawing.Point(443, 6);
+            this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(476, 21);
+            this.ComboBoxCadernetas.TabIndex = 1;
+            this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.CadernetasComboBox_SelectedIndexChanged);
             // 
             // button2
             // 
@@ -207,7 +208,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label CadernetasLabel;
-        private System.Windows.Forms.ComboBox CadernetasComboBox;
+        private System.Windows.Forms.ComboBox ComboBoxCadernetas;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ButtonTrocas;
