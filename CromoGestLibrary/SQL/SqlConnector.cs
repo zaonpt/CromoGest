@@ -294,13 +294,9 @@ namespace CromoGestLibrary.SQL
                     troca.CromosEnviados = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
                     p.Add("@IsRecebido", "1");
                     troca.CromosRecebidos = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
-
                 }
-
                 return trocas;
             }
-
-
         }
     }
 }

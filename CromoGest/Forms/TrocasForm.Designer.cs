@@ -192,6 +192,7 @@
             this.MinimumSize = new System.Drawing.Size(860, 468);
             this.Name = "TrocasForm";
             this.Text = "Trocas";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrocasForm_FormClosing);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrocas)).EndInit();
