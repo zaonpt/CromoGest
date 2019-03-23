@@ -20,7 +20,7 @@ namespace CromoGest
             Application.SetCompatibleTextRenderingDefault(false);
             GlobalConfig.InicializarConns(ConnType.LOCALDB);
             Application.Run(new CadernetaForm());
-        //    Application.Run(new Form1());
+            //Application.Run(new NovaTrocaForm());
 
         }
     }

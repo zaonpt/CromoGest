@@ -421,6 +421,7 @@ namespace CromoGest.Forms
         {
             this.Hide();
             caderneta.Show();
+            this.Close();
         }
     }
 }

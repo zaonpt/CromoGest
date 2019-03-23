@@ -164,5 +164,23 @@ namespace CromoGest.Forms
 
         #endregion
 
+        private void ButtonNova_Click(object sender, EventArgs e)
+        {
+            if ((CadernetaModelo)ComboBoxCadernetas.SelectedItem != null)
+            {
+                this.Hide();
+                NovaTrocaForm formNova = new NovaTrocaForm(this, ((CadernetaModelo)ComboBoxCadernetas.SelectedItem));
+                formNova.Show();
+                this.Hide();
+            }
+        }
+
+        private void TrocasForm_VisibleChanged(object sender, EventArgs e)
+        {
+            if (Visible)
+            {
+                LoadTrocasToGrid();
+            }
+        }
     }
 }

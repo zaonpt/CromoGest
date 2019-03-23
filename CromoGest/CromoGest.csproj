@@ -46,16 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CadernetasBDDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Controls\DataGridViewCromoCell.cs" />
     <Compile Include="Controls\DataGridViewCromoColumn.cs" />
-    <Compile Include="Controls\VerticalLabel.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Forms\CadernetaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CadernetaForm.Designer.cs">
       <DependentUpon>CadernetaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DestinatarioPickerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DestinatarioPickerForm.Designer.cs">
+      <DependentUpon>DestinatarioPickerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\NovaCaderntaForm.cs">
       <SubType>Form</SubType>
@@ -92,6 +100,9 @@
     <EmbeddedResource Include="Forms\CadernetaForm.resx">
       <DependentUpon>CadernetaForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DestinatarioPickerForm.resx">
+      <DependentUpon>DestinatarioPickerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\NovaCaderntaForm.resx">
       <DependentUpon>NovaCaderntaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,6 +127,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="CadernetasBDDataSet.xsc">
+      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CadernetasBDDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CadernetasBDDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CadernetasBDDataSet.xss">
+      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
