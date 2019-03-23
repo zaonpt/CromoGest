@@ -452,7 +452,6 @@
             // 
             // DataGridViewCromos
             // 
-            this.DataGridViewCromos.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewCromos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewCromos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Numero,
@@ -510,7 +509,6 @@
             // 
             // DataGridViewPaginas
             // 
-            this.DataGridViewPaginas.BackgroundColor = System.Drawing.Color.White;
             this.DataGridViewPaginas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewPaginas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nome,

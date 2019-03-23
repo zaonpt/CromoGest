@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TrocasToolTip = new System.Windows.Forms.ToolTip(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewTrocas = new System.Windows.Forms.DataGridView();
@@ -82,6 +83,11 @@
             this.dataGridViewTrocas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewTrocas.Location = new System.Drawing.Point(3, 43);
             this.dataGridViewTrocas.Name = "dataGridViewTrocas";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.dataGridViewTrocas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTrocas.Size = new System.Drawing.Size(1142, 506);
             this.dataGridViewTrocas.TabIndex = 1;
             // 

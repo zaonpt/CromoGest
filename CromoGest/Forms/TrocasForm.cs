@@ -56,7 +56,7 @@ namespace CromoGest.Forms
         /// </summary>
         private void SetupGrid()
         {
-            dataGridViewTrocas.AutoGenerateColumns = true;
+            dataGridViewTrocas.AutoGenerateColumns = false;
 
             DataGridViewTextBoxColumn col1 = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn col2 = new DataGridViewTextBoxColumn();
@@ -73,33 +73,33 @@ namespace CromoGest.Forms
             DataGridViewTextBoxColumn col13 = new DataGridViewTextBoxColumn();
             DataGridViewTextBoxColumn col14 = new DataGridViewTextBoxColumn();
 
-            col1.Name = "NumTroca";
+            col1.DataPropertyName = col1.Name = "NumTroca";
             col1.HeaderText = "Troca";
-            col2.Name = "Progresso";
+            col2.DataPropertyName = col2.Name = "Progresso";
             col2.HeaderText = "Progresso";
-            col3.Name = "Dest_Iniciais";
+            col3.DataPropertyName = col3.Name = "Dest_Iniciais";
             col3.HeaderText = $"Dest.{Environment.NewLine}Iniciais";
-            col4.Name = "Dest_Nome";
+            col4.DataPropertyName = col4.Name = "Dest_Nome";
             col4.HeaderText = $"Dest.{Environment.NewLine}Nome";
-            col5.Name = "Dest_Origem";
+            col5.DataPropertyName = col5.Name = "Dest_Origem";
             col5.HeaderText = $"Dest.{Environment.NewLine}Origem";
-            col6.Name = "Dest_Reputacao";
+            col6.DataPropertyName = col6.Name = "Dest_Reputacao";
             col6.HeaderText = $"Dest.{Environment.NewLine}Reputação";
-            col7.Name = "Dest_Morada";
+            col7.DataPropertyName = col7.Name = "Dest_Morada";
             col7.HeaderText = $"Dest.{Environment.NewLine}Morada";
-            col8.Name = "QuantidadeCromosRecebidos";
-            col8.HeaderText = $"Recebidos{Environment.NewLine}#";
-            col9.Name = "ListCromosRecebidos";
+            col8.DataPropertyName = col8.Name = "QuantidadeCromosRecebidos";
+            col8.HeaderText = $"R.{Environment.NewLine}#";
+            col9.DataPropertyName = col9.Name = "ListCromosRecebidos";
             col9.HeaderText = $"Recebidos{Environment.NewLine}Cromos";
-            col10.Name = "QuantidadeCromosEnviados";
-            col10.HeaderText = $"Enviados{Environment.NewLine}#";
-            col11.Name = "ListCromosEnviados";
+            col10.DataPropertyName = col10.Name = "QuantidadeCromosEnviados";
+            col10.HeaderText = $"E.{Environment.NewLine}#";
+            col11.DataPropertyName = col11.Name = "ListCromosEnviados";
             col11.HeaderText = $"Enviados{Environment.NewLine}Cromos";
-            col12.Name = "DataProposta";
+            col12.DataPropertyName = col12.Name = "DataProposta";
             col12.HeaderText = $"Data{Environment.NewLine}Proposto";
-            col13.Name = "DataEnvio";
+            col13.DataPropertyName = col13.Name = "DataEnvio";
             col13.HeaderText = $"Data{Environment.NewLine}Envio";
-            col14.Name = "DataRececao";
+            col14.DataPropertyName = col14.Name = "DataRececao";
             col14.HeaderText = $"Data{Environment.NewLine}Receção";
 
             dataGridViewTrocas.Columns.Add(col1);
@@ -134,11 +134,6 @@ namespace CromoGest.Forms
             if (trocas == null) return;
             dataGridViewTrocas.DataSource = null;
             dataGridViewTrocas.DataSource = trocas;
-            //dataGridViewTrocas.Columns["Id"].Visible = false;
-            //dataGridViewTrocas.Columns["Destinatario"].Visible = false;
-            //dataGridViewTrocas.Columns["CromosEnviados"].Visible = false;
-            //dataGridViewTrocas.Columns["CromosRecebidos"].Visible = false;
-            dataGridViewTrocas.Refresh();
         }
 
 
