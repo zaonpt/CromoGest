@@ -31,13 +31,6 @@ namespace CromoGest.Forms
             return idDest;
         }
 
-
-        private void dataGridViewContatos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            idDest = int.Parse(dataGridViewContatos.Rows[e.RowIndex].Cells[0].Value.ToString());
-            MessageBox.Show(idDest.ToString());
-        }
-
         private void DestinatarioPickerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             formPai.Show();
@@ -48,6 +41,17 @@ namespace CromoGest.Forms
             this.Close();
         }
 
+        private void DestinatarioPickerForm_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'cadernetasBDDataSet1.Destinatario' table. You can move, or remove it, as needed.
+            this.destinatarioTableAdapter1.Fill(this.cadernetasBDDataSet1.Destinatario);
 
+        }
+
+        private void dataGridViewContatos_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            idDest = int.Parse(dataGridViewContatos.Rows[e.RowIndex].Cells[0].Value.ToString());
+            this.Close();
+        }
     }
 }

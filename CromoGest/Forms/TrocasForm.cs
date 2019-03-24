@@ -179,8 +179,11 @@ namespace CromoGest.Forms
         {
             if (Visible)
             {
+                trocas = GlobalConfig.Connection.GetTrocas((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
                 LoadTrocasToGrid();
             }
         }
+
+
     }
 }

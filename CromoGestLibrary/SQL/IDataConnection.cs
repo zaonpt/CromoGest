@@ -34,5 +34,13 @@ namespace CromoGestLibrary.SQL
         int GetCromoId(string numero, int idCadernta);
 
         int DecCromoQuatidade(string cromoNumero, int idCadernetaSelecionada);
+
+        DestinatarioModelo GetDestinatario(int idDest);
+
+        int GetNextTrocaNum(int idCaderneta);
+
+        int SetDestinatario(string Nome, string Iniciais, string Origem, string Reputacao, string Morada);
+
+        int SetTroca(int numTroca, int idDestinatario, string progresso, string dataProposta, string dataEnvio, string dataRececao, int idCaderneta);
     }
 }

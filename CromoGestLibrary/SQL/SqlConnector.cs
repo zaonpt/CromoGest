@@ -66,7 +66,7 @@ namespace CromoGestLibrary.SQL
                 CadernetaModelo caderneta;
                 var p = new DynamicParameters();
                 p.Add("@nome", nome);
-                caderneta = connection.Query<CadernetaModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                caderneta = connection.QuerySingle<CadernetaModelo>("dbo.spGetCadernetaByNome", p, commandType: CommandType.StoredProcedure);
                 return null;
             }
         }
@@ -114,7 +114,7 @@ namespace CromoGestLibrary.SQL
             {
                 var p = new DynamicParameters();
                 p.Add("@Desc", desc);
-                return connection.Query<string>("spGetConfig", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                return connection.QuerySingle<string>("spGetConfig", p, commandType: CommandType.StoredProcedure);
             }
         }
 
@@ -130,7 +130,7 @@ namespace CromoGestLibrary.SQL
                 int id = GetCromoId(numero, idCaderneta);
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                int inseridos = connection.Query<int>("spIncCromoQuantidade", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int inseridos = connection.QuerySingle<int>("spIncCromoQuantidade", p, commandType: CommandType.StoredProcedure);
                 return inseridos;
             }
         }
@@ -147,7 +147,7 @@ namespace CromoGestLibrary.SQL
                 int id = GetCromoId(cromoNumero, idCadernetaSelecionada);
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                int inseridos = connection.Query<int>("spDecCromoQuantidade", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int inseridos = connection.QuerySingle<int>("spDecCromoQuantidade", p, commandType: CommandType.StoredProcedure);
                 return inseridos;
             }
         }
@@ -160,7 +160,7 @@ namespace CromoGestLibrary.SQL
                 int id = GetCromoId(cromo, idCaderneta);
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                int inseridos = connection.Query<int>("spGetCromoCountById", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int inseridos = connection.QuerySingle<int>("spGetCromoCountById", p, commandType: CommandType.StoredProcedure);
                 return inseridos;
             }
         }
@@ -179,9 +179,8 @@ namespace CromoGestLibrary.SQL
                 var p = new DynamicParameters();
                 p.Add("@Numero", numero);
                 p.Add("@IdCaderneta", idCadernta);
-                var result = connection.Query<int>("spGetCromoIdByNumero", p, commandType: CommandType.StoredProcedure);
-                if (result.Count() == 0) return -1;
-                return result.ToList()[0];
+                var result = connection.QuerySingle<int>("spGetCromoIdByNumero", p, commandType: CommandType.StoredProcedure);
+                return result;
             }
         }
 
@@ -198,26 +197,38 @@ namespace CromoGestLibrary.SQL
             {
                 foreach (PaginaModelo pagina in caderneta.Paginas)
                 {
-                    var p = new DynamicParameters();
-                    p.Add("@Nome", pagina.Nome);
-                    p.Add("@IdCaderneta", caderneta.Id);
-                    p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-                    connection.Execute("dbo.spCriaPagina", p, commandType: CommandType.StoredProcedure);
-                    pagina.Id = p.Get<int>("@Id");
+                    DynamicParameters p = CriaPagina(caderneta, connection, pagina);
 
                     foreach (CromoModelo cromo in pagina.Cromos)
                     {
-                        p = new DynamicParameters();
-                        p.Add("@Numero", cromo.Numero);
-                        p.Add("@Descricao", cromo.Descricao);
-                        p.Add("@Quantidade", cromo.Quantidade);
-                        p.Add("@IdPagina", pagina.Id);
-                        p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-                        connection.Execute("dbo.spCriaCromo", p, commandType: CommandType.StoredProcedure);
-                        cromo.Id = p.Get<int>("@Id");
+                        p = CriaCromo(connection, pagina, cromo);
                     }
                 }
             }
+        }
+
+        private static DynamicParameters CriaCromo(IDbConnection connection, PaginaModelo pagina, CromoModelo cromo)
+        {
+            DynamicParameters p = new DynamicParameters();
+            p.Add("@Numero", cromo.Numero);
+            p.Add("@Descricao", cromo.Descricao);
+            p.Add("@Quantidade", cromo.Quantidade);
+            p.Add("@IdPagina", pagina.Id);
+            p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            connection.Execute("dbo.spCriaCromo", p, commandType: CommandType.StoredProcedure);
+            cromo.Id = p.Get<int>("@Id");
+            return p;
+        }
+
+        private static DynamicParameters CriaPagina(CadernetaModelo caderneta, IDbConnection connection, PaginaModelo pagina)
+        {
+            var p = new DynamicParameters();
+            p.Add("@Nome", pagina.Nome);
+            p.Add("@IdCaderneta", caderneta.Id);
+            p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+            connection.Execute("dbo.spCriaPagina", p, commandType: CommandType.StoredProcedure);
+            pagina.Id = p.Get<int>("@Id");
+            return p;
         }
 
         /// <summary>
@@ -233,7 +244,7 @@ namespace CromoGestLibrary.SQL
                 var p = new DynamicParameters();
                 p.Add("@IdCaderneta", idCaderneta.Id);
 
-                int r = connection.Query<int>("spTotalCromosAdquiridos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int r = connection.QuerySingle<int>("spTotalCromosAdquiridos", p, commandType: CommandType.StoredProcedure);
                 return r > 0;
             }
         }
@@ -251,7 +262,7 @@ namespace CromoGestLibrary.SQL
                 var p = new DynamicParameters();
                 p.Add("@IdCaderneta", Caderneta.Id);
 
-                int r = connection.Query<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure).ToList()[0];
+                int r = connection.QuerySingle<int>("spTotalCromos", p, commandType: CommandType.StoredProcedure);
                 return r;
             }
         }
@@ -287,14 +298,106 @@ namespace CromoGestLibrary.SQL
 
                 foreach(TrocaModelo troca in trocas)
                 {
-                    p = new DynamicParameters();
-                    p.Add("@Id", troca.Id);
-                    p.Add("@IsRecebido", "0");
-                    troca.CromosEnviados = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
-                    p.Add("@IsRecebido", "1");
-                    troca.CromosRecebidos = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
+                    p = GetTroca(connection, troca);
                 }
                 return trocas;
+            }
+        }
+
+        private static DynamicParameters GetTroca(IDbConnection connection, TrocaModelo troca)
+        {
+            DynamicParameters p = new DynamicParameters();
+            p.Add("@Id", troca.Id);
+            p.Add("@IsRecebido", "0");
+            troca.CromosEnviados = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
+            p.Add("@IsRecebido", "1");
+            troca.CromosRecebidos = connection.Query<CromoModelo>("spGetCromosDaTroca", p, commandType: CommandType.StoredProcedure).ToList();
+            return p;
+        }
+
+        public DestinatarioModelo GetDestinatario(int idDest)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", idDest);
+
+                DestinatarioModelo r = connection.QuerySingle<DestinatarioModelo>("spGetDestinatario", p, commandType: CommandType.StoredProcedure);
+                return r;
+            }
+        }
+
+        public int GetNextTrocaNum(int idCaderneta)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@IdCaderneta", idCaderneta);
+
+                int r = connection.QuerySingle<int>("spGetNextTrocaNum", p, commandType: CommandType.StoredProcedure);
+                return r;
+            }
+        }
+
+        public int SetDestinatario(string Nome, string Iniciais, string Origem, string Reputacao, string Morada)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                int ID;
+                var p = new DynamicParameters();
+                p.Add("@Nome", Nome);
+                p.Add("@Iniciais", Iniciais);
+                p.Add("@Origem", Origem);
+                p.Add("@Reputacao", Reputacao);
+                p.Add("@Morada", Morada);
+
+                int Dest_existe = DestinatarioCount(connection, p);
+
+                if (Dest_existe > 0)
+                {
+                    ID = DestinatarioGetID(connection, p);
+                }
+                else
+                {
+                    ID = DestinatarioSave(connection, p);
+                }
+                return ID;
+            }
+        }
+
+        private static int DestinatarioSave(IDbConnection connection, DynamicParameters p)
+        {
+            connection.Execute("spSetDestinatario", p, commandType: CommandType.StoredProcedure);
+            int ID = p.Get<int>("@Id");
+            return ID;
+        }
+
+        private static int DestinatarioGetID(IDbConnection connection, DynamicParameters p)
+        {
+            return connection.QuerySingle<int>("spGetDestinatarioId", p, commandType: CommandType.StoredProcedure);
+        }
+
+        private static int DestinatarioCount(IDbConnection connection, DynamicParameters p)
+        {
+            return connection.ExecuteScalar<int>("spGetDestinatarioCount", p, commandType: CommandType.StoredProcedure);
+        }
+
+        public int SetTroca(int numTroca, int idDestinatario, string progresso, string dataProposta, string dataEnvio, string dataRececao, int idCaderneta)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@NumTroca", numTroca);
+                p.Add("@Dest_Id", idDestinatario);
+                p.Add("@Progresso", progresso);
+                p.Add("@DataProposta", DateTime.Parse(dataProposta));
+                p.Add("@DataEnvio", DateTime.Parse(dataEnvio));
+                p.Add("@DataRececao", DateTime.Parse(dataRececao));
+                p.Add("@IdCaderneta", idCaderneta);
+
+                connection.Execute("spSetTroca", p, commandType: CommandType.StoredProcedure);
+                int ID = p.Get<int>("@Id");
+                return ID;
             }
         }
     }

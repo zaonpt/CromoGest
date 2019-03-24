@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadernetasBDDataSet.Designer.cs">
+    <Compile Include="CadernetasBDDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+      <DependentUpon>CadernetasBDDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Controls\DataGridViewCromoCell.cs" />
     <Compile Include="Controls\DataGridViewCromoColumn.cs" />
@@ -127,16 +127,16 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="CadernetasBDDataSet.xsc">
-      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+    <None Include="CadernetasBDDataSet1.xsc">
+      <DependentUpon>CadernetasBDDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="CadernetasBDDataSet.xsd">
+    <None Include="CadernetasBDDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CadernetasBDDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>CadernetasBDDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="CadernetasBDDataSet.xss">
-      <DependentUpon>CadernetasBDDataSet.xsd</DependentUpon>
+    <None Include="CadernetasBDDataSet1.xss">
+      <DependentUpon>CadernetasBDDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

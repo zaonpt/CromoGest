@@ -18,6 +18,7 @@ namespace CromoGest.Forms
         private TrocasForm formPai;
         private CadernetaModelo caderneta;
         private DestinatarioPickerForm FormFilhoDest;
+        private char charSeparador;
 
         public NovaTrocaForm()
         {
@@ -33,6 +34,8 @@ namespace CromoGest.Forms
                 formArgPai.Show();
                 this.Close();
             }
+
+            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
             formPai = formArgPai;
             caderneta = cadernetaArg;
@@ -62,15 +65,23 @@ namespace CromoGest.Forms
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
             if (!EntradasValidas()) { return; }
-            int numTroca = GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id);
+            int numTroca = GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1 ;
             int idDestinatario = GlobalConfig.Connection.SetDestinatario(textBoxNome.Text, textBoxIniciais.Text,
                 textBoxOrigem.Text, textBoxReputacao.Text, textBoxMorada.Text);
-            GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
+            int idTroca = GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
                 dateTimePickerProposta.Text, dateTimePickerEnvio.Text, dateTimePickerRececao.Text, caderneta.Id);
+
+
+            foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
+            {
+
+            }
+            this.Close();
         }
 
         private bool EntradasValidas()
         {
+            // TODO : VALIDAR!!!
             return true;
         }
 
@@ -92,10 +103,9 @@ namespace CromoGest.Forms
                     textBoxNome.Text = destinatario.Nome;
                     textBoxIniciais.Text = destinatario.Iniciais;
                     textBoxOrigem.Text = destinatario.Origem;
-                    textBoxReputacao.Text = destinatario.Reputacao;
-
+                    textBoxReputacao.Text = destinatario.Reputação;
+                    textBoxMorada.Text = destinatario.Morada;
                 }
-                textBoxMorada.Text = destinatario.Morada;
             }
         }
 

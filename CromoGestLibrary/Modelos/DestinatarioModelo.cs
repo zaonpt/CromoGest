@@ -32,7 +32,7 @@ namespace CromoGestLibrary.Modelos
         /// <summary>
         /// Reputação do destinatário usada pelo forum de trocas
         /// </summary>
-        public string Reputacao { get; set; }
+        public string Reputação { get; set; }
 
         /// <summary>
         /// Morada do Destinatário

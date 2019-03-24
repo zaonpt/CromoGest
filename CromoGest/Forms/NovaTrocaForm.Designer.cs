@@ -346,6 +346,7 @@ namespace CromoGest.Forms
             this.comboBoxProgresso.Name = "comboBoxProgresso";
             this.comboBoxProgresso.Size = new System.Drawing.Size(320, 21);
             this.comboBoxProgresso.TabIndex = 6;
+            this.comboBoxProgresso.Text = "Propor";
             // 
             // textBoxCromosEnviados
             // 
