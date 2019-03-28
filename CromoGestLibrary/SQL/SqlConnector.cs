@@ -157,10 +157,15 @@ namespace CromoGestLibrary.SQL
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
+                int inseridos;
                 int id = GetCromoId(cromo, idCaderneta);
                 var p = new DynamicParameters();
                 p.Add("@Id", id);
-                int inseridos = connection.QuerySingle<int>("spGetCromoCountById", p, commandType: CommandType.StoredProcedure);
+                try
+                {
+                    inseridos = connection.QuerySingle<int>("spGetCromoCountById", p, commandType: CommandType.StoredProcedure);
+                }
+                catch { return 0; }
                 return inseridos;
             }
         }
@@ -170,7 +175,7 @@ namespace CromoGestLibrary.SQL
         /// </summary>
         /// <param name="numero">Numero do cromo</param>
         /// <param name="idCadernta">Identificador da caderneta</param>
-        /// <returns></returns>
+        /// <returns>Id do cromo</returns>
         public int GetCromoId(string numero, int idCadernta)
         {
             //if (numero == null) return n;
@@ -371,6 +376,7 @@ namespace CromoGestLibrary.SQL
 
         private static int DestinatarioSave(IDbConnection connection, DynamicParameters p)
         {
+            p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
             connection.Execute("spSetDestinatario", p, commandType: CommandType.StoredProcedure);
             int ID = p.Get<int>("@Id");
             return ID;
