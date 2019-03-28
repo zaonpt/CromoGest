@@ -156,12 +156,12 @@ namespace CromoGest.Forms
         private void ComboBoxCadernetas_SelectedIndexChanged(object sender, EventArgs e)
         {
             dataGridViewCaderneta.RowHeadersVisible = false;
-            ToolStripStatusLabelCaderneta.Text = "";
+            toolStripStatusLabel1.Text = "";
             if (ComboBoxCadernetas.SelectedItem == null) return;
             LoadCadernetasGrid();
             PreencheListas();
             if (((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas.Count == 0)
-                ToolStripStatusLabelCaderneta.Text = "Caderneta Incompleta. Entrar em \"Nova Caderneta\" e preencher informação em falta.";
+                toolStripStatusLabel1.Text = "Caderneta Incompleta. Entrar em \"Nova Caderneta\" e preencher informação em falta.";
             dataGridViewCaderneta.RowHeadersVisible = true;
 
         }
@@ -200,9 +200,15 @@ namespace CromoGest.Forms
 
         private void ButtonTrocas_Click(object sender, EventArgs e)
         {
-            TrocasForm trocas = new TrocasForm(this, ComboBoxCadernetas.SelectedIndex);
-            trocas.Show();
-            this.Hide();
+            if (ComboBoxCadernetas.SelectedItem != null)
+            {
+                TrocasForm trocas = new TrocasForm(this, ComboBoxCadernetas.SelectedIndex);
+                trocas.Show();
+                this.Hide();
+               
+            }
+            else toolStripStatusLabel1.Text = "Sem cadernetas. Criar uma nova.   ";
+
         }
 
         private void CadernetaForm_VisibleChanged(object sender, EventArgs e)
@@ -212,6 +218,7 @@ namespace CromoGest.Forms
                 try
                 {
                     ResetComboBox();
+                    toolStripStatusLabel1.Text = "";
                 }
                 catch (Exception)
                 {
@@ -234,9 +241,14 @@ namespace CromoGest.Forms
 
         private void ButtonEntradas_Click(object sender, EventArgs e)
         {
-            EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
-            entradas.Show();
-            this.Hide();
+            if ((CadernetaModelo)ComboBoxCadernetas.SelectedItem != null)
+            {
+                EntradasForm entradas = new EntradasForm(this, ComboBoxCadernetas.SelectedIndex);
+                entradas.Show();
+                this.Hide();
+            }
+            else toolStripStatusLabel1.Text = "Sem cadernetas. Criar uma nova.   ";
+
         }
         #endregion
 
@@ -283,7 +295,7 @@ namespace CromoGest.Forms
             int cromoNewQuantidade = GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
             ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade--;
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos--;
-            ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
+            toolStripStatusLabel1.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
             return cromoNewQuantidade;
         }
 
@@ -292,7 +304,7 @@ namespace CromoGest.Forms
             GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada);
             ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade++;
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
-            ToolStripStatusLabelCaderneta.Text = $"Cromo { cromoNumero } adicionado.";
+            toolStripStatusLabel1.Text = $"Cromo { cromoNumero } adicionado.";
         }
 
         #endregion

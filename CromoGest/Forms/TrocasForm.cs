@@ -146,9 +146,6 @@ namespace CromoGest.Forms
 
         #endregion
 
-
-
-
         #region Eventos
         private void CadernetasComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -185,7 +182,6 @@ namespace CromoGest.Forms
 
 
         #endregion
-
 
     }
 }
