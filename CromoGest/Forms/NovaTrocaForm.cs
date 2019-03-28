@@ -64,26 +64,61 @@ namespace CromoGest.Forms
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            if (!EntradasValidas()) { return; }
-            int numTroca = GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1 ;
-            int idDestinatario = GlobalConfig.Connection.SetDestinatario(textBoxNome.Text, textBoxIniciais.Text,
-                textBoxOrigem.Text, textBoxReputacao.Text, textBoxMorada.Text);
+            int idDestinatario;
+            int isRecebido;
+
+            int numTroca = GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1;
+
+            //if (!DestinararioVazio())
+                idDestinatario = GlobalConfig.Connection.SetDestinatario(
+                    textBoxNome.Text, textBoxIniciais.Text, textBoxOrigem.Text, textBoxReputacao.Text, textBoxMorada.Text);
+            //else idDestinatario = 0;
+
             int idTroca = GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
                 dateTimePickerProposta.Text, dateTimePickerEnvio.Text, dateTimePickerRececao.Text, caderneta.Id);
 
-
-            foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
+            if (!EntradasValidas(idTroca))
             {
-
+                return;
             }
+
+            //RECEBIDOS
+            if (textBoxCromosRecebidos.Text.Length > 0)
+                foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
+                {
+                    isRecebido = 1;
+                    int idCromo = GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
+                    int idCromoDaTroca = GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
+                    GlobalConfig.Connection.IncCromoQuatidade(numCromo, caderneta.Id);
+                }
+            //ENVIADOS
+            if (textBoxCromosEnviados.Text.Length > 0)
+                foreach (string numCromo in textBoxCromosEnviados.Text.ToString().Split(charSeparador))
+                {
+                    isRecebido = 0;
+                    int idCromo = GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
+                    int idCromoDaTroca = GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
+                    GlobalConfig.Connection.DecCromoQuatidade(numCromo, caderneta.Id);
+                }
             this.Close();
         }
 
-        private bool EntradasValidas()
+        private bool EntradasValidas(int idTroca)
         {
-            // TODO : VALIDAR!!!
+
+
             return true;
         }
+
+        private bool DestinararioVazio()
+        {
+            return
+                textBoxIniciais.Text.Length > 0 &&
+                textBoxOrigem.Text.Length > 0 &&
+                textBoxReputacao.Text.Length > 0 &&
+                textBoxMorada.Text.Length > 0;
+        }
+
 
         private void buttonExistentes_Click(object sender, EventArgs e)
         {
@@ -94,7 +129,7 @@ namespace CromoGest.Forms
 
         private void buttonExistentes_VisibleChanged(object sender, EventArgs e)
         {
-            if (Visible && FormFilhoDest!=null)
+            if (Visible && FormFilhoDest != null && FormFilhoDest.GetIdDest() != -1)
             {
                 int idDest = FormFilhoDest.GetIdDest();
                 DestinatarioModelo destinatario = GlobalConfig.Connection.GetDestinatario(idDest);

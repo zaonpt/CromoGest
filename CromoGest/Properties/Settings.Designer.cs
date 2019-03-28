@@ -33,5 +33,16 @@ namespace CromoGest.Properties {
                 return ((string)(this["CadernetasBDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\jhorta\\OneDrive\\C#_r" +
+            "epos\\CromoGest\\CromoGestLibrary\\SQL\\CadernetasBD.mdf;Integrated Security=True")]
+        public string CadernetasBDConnectionString1 {
+            get {
+                return ((string)(this["CadernetasBDConnectionString1"]));
+            }
+        }
     }
 }

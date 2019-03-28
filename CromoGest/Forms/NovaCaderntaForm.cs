@@ -90,9 +90,13 @@ namespace CromoGest.Forms
 
         private void ResetGridPaginas()
         {
-            DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
-            DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
-            DataGridViewPaginas.Columns["Id"].Visible = false;
+            try
+            {
+                DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+                DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
+                DataGridViewPaginas.Columns["Id"].Visible = false;
+            }
+            catch { }
         }
 
         private void LigaLista()
@@ -421,7 +425,6 @@ namespace CromoGest.Forms
         {
             this.Hide();
             caderneta.Show();
-            this.Close();
         }
     }
 }

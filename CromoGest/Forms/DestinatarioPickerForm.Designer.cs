@@ -28,29 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.destinatarioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.button2 = new System.Windows.Forms.Button();
             this.buttonSair = new System.Windows.Forms.Button();
             this.dataGridViewContatos = new System.Windows.Forms.DataGridView();
-            this.cadernetasBDDataSet1 = new CromoGest.CadernetasBDDataSet1();
-            this.destinatarioBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.destinatarioTableAdapter1 = new CromoGest.CadernetasBDDataSet1TableAdapters.DestinatarioTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iniciaisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.origemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reputaçãoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.moradaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.destinatarioBindingSource)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContatos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cadernetasBDDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.destinatarioBindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -109,17 +95,8 @@
             // 
             // dataGridViewContatos
             // 
-            this.dataGridViewContatos.AutoGenerateColumns = false;
             this.dataGridViewContatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             this.dataGridViewContatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewContatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nomeDataGridViewTextBoxColumn,
-            this.iniciaisDataGridViewTextBoxColumn,
-            this.origemDataGridViewTextBoxColumn,
-            this.reputaçãoDataGridViewTextBoxColumn,
-            this.moradaDataGridViewTextBoxColumn});
-            this.dataGridViewContatos.DataSource = this.destinatarioBindingSource1;
             this.dataGridViewContatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewContatos.Location = new System.Drawing.Point(3, 37);
             this.dataGridViewContatos.Name = "dataGridViewContatos";
@@ -134,63 +111,6 @@
             this.dataGridViewContatos.TabIndex = 2;
             this.dataGridViewContatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewContatos_CellClick_1);
             // 
-            // cadernetasBDDataSet1
-            // 
-            this.cadernetasBDDataSet1.DataSetName = "CadernetasBDDataSet1";
-            this.cadernetasBDDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // destinatarioBindingSource1
-            // 
-            this.destinatarioBindingSource1.DataMember = "Destinatario";
-            this.destinatarioBindingSource1.DataSource = this.cadernetasBDDataSet1;
-            // 
-            // destinatarioTableAdapter1
-            // 
-            this.destinatarioTableAdapter1.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Width = 41;
-            // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.Width = 60;
-            // 
-            // iniciaisDataGridViewTextBoxColumn
-            // 
-            this.iniciaisDataGridViewTextBoxColumn.DataPropertyName = "Iniciais";
-            this.iniciaisDataGridViewTextBoxColumn.HeaderText = "Iniciais";
-            this.iniciaisDataGridViewTextBoxColumn.Name = "iniciaisDataGridViewTextBoxColumn";
-            this.iniciaisDataGridViewTextBoxColumn.Width = 64;
-            // 
-            // origemDataGridViewTextBoxColumn
-            // 
-            this.origemDataGridViewTextBoxColumn.DataPropertyName = "Origem";
-            this.origemDataGridViewTextBoxColumn.HeaderText = "Origem";
-            this.origemDataGridViewTextBoxColumn.Name = "origemDataGridViewTextBoxColumn";
-            this.origemDataGridViewTextBoxColumn.Width = 65;
-            // 
-            // reputaçãoDataGridViewTextBoxColumn
-            // 
-            this.reputaçãoDataGridViewTextBoxColumn.DataPropertyName = "Reputação";
-            this.reputaçãoDataGridViewTextBoxColumn.HeaderText = "Reputação";
-            this.reputaçãoDataGridViewTextBoxColumn.Name = "reputaçãoDataGridViewTextBoxColumn";
-            this.reputaçãoDataGridViewTextBoxColumn.Width = 85;
-            // 
-            // moradaDataGridViewTextBoxColumn
-            // 
-            this.moradaDataGridViewTextBoxColumn.DataPropertyName = "Morada";
-            this.moradaDataGridViewTextBoxColumn.HeaderText = "Morada";
-            this.moradaDataGridViewTextBoxColumn.Name = "moradaDataGridViewTextBoxColumn";
-            this.moradaDataGridViewTextBoxColumn.Width = 68;
-            // 
             // DestinatarioPickerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,13 +122,9 @@
             this.Name = "DestinatarioPickerForm";
             this.Text = "DistinatarioPickerForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DestinatarioPickerForm_FormClosing);
-            this.Load += new System.EventHandler(this.DestinatarioPickerForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.destinatarioBindingSource)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewContatos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cadernetasBDDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.destinatarioBindingSource1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -218,16 +134,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button buttonSair;
-        private System.Windows.Forms.BindingSource destinatarioBindingSource;
         private System.Windows.Forms.DataGridView dataGridViewContatos;
-        private CadernetasBDDataSet1 cadernetasBDDataSet1;
-        private System.Windows.Forms.BindingSource destinatarioBindingSource1;
-        private CadernetasBDDataSet1TableAdapters.DestinatarioTableAdapter destinatarioTableAdapter1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iniciaisDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn origemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn reputaçãoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn moradaDataGridViewTextBoxColumn;
     }
 }

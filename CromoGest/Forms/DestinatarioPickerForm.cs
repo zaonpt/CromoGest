@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CromoGestLibrary;
+using CromoGestLibrary.Modelos;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +15,7 @@ namespace CromoGest.Forms
     public partial class DestinatarioPickerForm : Form
     {
         NovaTrocaForm formPai;
+        List<DestinatarioModelo> destinatarios = GlobalConfig.Connection.GetDestinatarios();
         private int idDest { get; set; }
 
         public DestinatarioPickerForm()
@@ -23,7 +26,10 @@ namespace CromoGest.Forms
         public DestinatarioPickerForm(NovaTrocaForm formArgPai)
         {
             InitializeComponent();
+            idDest = -1;
             formPai = formArgPai;
+            dataGridViewContatos.AutoGenerateColumns = true;
+            dataGridViewContatos.DataSource = destinatarios;
         }
 
         public int GetIdDest()
@@ -39,13 +45,6 @@ namespace CromoGest.Forms
         private void buttonSair_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void DestinatarioPickerForm_Load(object sender, EventArgs e)
-        {
-            // TODO: This line of code loads data into the 'cadernetasBDDataSet1.Destinatario' table. You can move, or remove it, as needed.
-            this.destinatarioTableAdapter1.Fill(this.cadernetasBDDataSet1.Destinatario);
-
         }
 
         private void dataGridViewContatos_CellClick_1(object sender, DataGridViewCellEventArgs e)

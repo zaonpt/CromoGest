@@ -49,6 +49,7 @@ namespace CromoGest.Forms
             caderneta = cadernetaIN;
             SetupGrid();
             ResetComboBox();
+            ComboBoxCadernetas.SelectedIndex = cbIndex;
         }
 
         /// <summary>
@@ -162,8 +163,6 @@ namespace CromoGest.Forms
             caderneta.Show();
         }
 
-        #endregion
-
         private void ButtonNova_Click(object sender, EventArgs e)
         {
             if ((CadernetaModelo)ComboBoxCadernetas.SelectedItem != null)
@@ -183,6 +182,9 @@ namespace CromoGest.Forms
                 LoadTrocasToGrid();
             }
         }
+
+
+        #endregion
 
 
     }

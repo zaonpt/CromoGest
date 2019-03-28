@@ -18,7 +18,7 @@ namespace CromoGestLibrary.SQL
         int TotalCromos(CadernetaModelo idCaderneta);
 
         List<TrocaModelo> GetTrocas(CadernetaModelo caderneta);
-
+        List<DestinatarioModelo> GetDestinatarios();
         bool GotCromos(CadernetaModelo idcaderneta);
 
         void DeleteCaderneta(int id);
@@ -42,5 +42,6 @@ namespace CromoGestLibrary.SQL
         int SetDestinatario(string Nome, string Iniciais, string Origem, string Reputacao, string Morada);
 
         int SetTroca(int numTroca, int idDestinatario, string progresso, string dataProposta, string dataEnvio, string dataRececao, int idCaderneta);
+        int CriaCromoDaTroca(int idCromo, int idTroca, int isRecebido);
     }
 }

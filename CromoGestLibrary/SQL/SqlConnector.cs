@@ -13,7 +13,7 @@ namespace CromoGestLibrary.SQL
     {
         private const string bdCasa = "CromoGestBDCasa";
         private const string bdLuso = "CromoGestBDLuso";
-        private const string bd = bdCasa;
+        private const string bd = bdLuso;
 
         /// <summary>
         /// Apaga da BD toda a informação sobre esta caderneta. Incluido paginas e cromos.
@@ -52,7 +52,7 @@ namespace CromoGestLibrary.SQL
                 caderneta.Id = p.Get<int>("@id");
             }
         }
-                     
+
         /// <summary>
         /// Procura e retorna os dados de uma caderneta, dado um nome
         /// </summary>
@@ -296,7 +296,7 @@ namespace CromoGestLibrary.SQL
                 p.Add("@IdCaderneta", caderneta.Id);
                 List<TrocaModelo> trocas = connection.Query<TrocaModelo>("spGetTrocas", p, commandType: CommandType.StoredProcedure).ToList();
 
-                foreach(TrocaModelo troca in trocas)
+                foreach (TrocaModelo troca in trocas)
                 {
                     p = GetTroca(connection, troca);
                 }
@@ -332,9 +332,13 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
+                int r;
                 p.Add("@IdCaderneta", idCaderneta);
-
-                int r = connection.QuerySingle<int>("spGetNextTrocaNum", p, commandType: CommandType.StoredProcedure);
+                try
+                {
+                    r = connection.QuerySingle<int>("spGetNextTrocaNum", p, commandType: CommandType.StoredProcedure);
+                }
+                catch { r = 0; }
                 return r;
             }
         }
@@ -387,17 +391,46 @@ namespace CromoGestLibrary.SQL
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
             {
                 var p = new DynamicParameters();
+                p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
                 p.Add("@NumTroca", numTroca);
-                p.Add("@Dest_Id", idDestinatario);
                 p.Add("@Progresso", progresso);
                 p.Add("@DataProposta", DateTime.Parse(dataProposta));
                 p.Add("@DataEnvio", DateTime.Parse(dataEnvio));
                 p.Add("@DataRececao", DateTime.Parse(dataRececao));
                 p.Add("@IdCaderneta", idCaderneta);
+                if (idDestinatario == 0)
+                    p.Add("@Dest_Id", null);
+                else
+                    p.Add("@Dest_Id", idDestinatario);
 
                 connection.Execute("spSetTroca", p, commandType: CommandType.StoredProcedure);
                 int ID = p.Get<int>("@Id");
                 return ID;
+            }
+        }
+
+        public int CriaCromoDaTroca(int idCromo, int idTroca, int isRecebido)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@idCromo", idCromo);
+                p.Add("@idTroca", idTroca);
+                p.Add("@isRecebido", isRecebido);
+
+                connection.Execute("spCriaCromoDaTroca", p, commandType: CommandType.StoredProcedure);
+                int ID = p.Get<int>("@Id");
+                return ID;
+            }
+        }
+
+        public List<DestinatarioModelo> GetDestinatarios()
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                List<DestinatarioModelo> destinatarios = connection.Query<DestinatarioModelo>("spGetDestinatarios", commandType: CommandType.StoredProcedure).ToList();
+                return destinatarios;
             }
         }
     }

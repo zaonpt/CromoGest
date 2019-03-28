@@ -226,7 +226,6 @@ namespace CromoGest
         {
             this.Hide();
             caderneta.Show();
-            this.Close();
         }
     }
 }
