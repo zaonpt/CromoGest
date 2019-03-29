@@ -77,7 +77,6 @@ namespace CromoGest
         {
             if (!CromosValidos()) return;
             bool IsNovo;
-            int oldQuant;
             int rows = dataGridViewCromos.Rows.Count - 1;
 
             LimpaResultados();
@@ -89,7 +88,6 @@ namespace CromoGest
                     string[] cromos = row.Replace(" ", string.Empty).Split(charSeparador);
                     foreach (string cromo in cromos)
                     {
-                        oldQuant = GetCromoQuantidade(cromo);
                         IsNovo = (IncCromoQuantidade(cromo)==1);
                         AddCromoToResults(cromo, IsNovo);
                     }
@@ -97,7 +95,6 @@ namespace CromoGest
                 else
                 {
                     string cromo = row;
-                    oldQuant = GetCromoQuantidade(cromo);
                     IsNovo = (IncCromoQuantidade(cromo) == 1);
                     AddCromoToResults(cromo, IsNovo);
                 }
