@@ -64,19 +64,24 @@
             this.LabelEliminar = new System.Windows.Forms.Label();
             this.TableLayoutPanelPag_Crom = new System.Windows.Forms.TableLayoutPanel();
             this.DataGridViewCromos = new System.Windows.Forms.DataGridView();
-            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LabelPaginas = new System.Windows.Forms.Label();
             this.LabelCromos = new System.Windows.Forms.Label();
             this.DataGridViewPaginas = new System.Windows.Forms.DataGridView();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TableLayoutPanelButtons_Paginas = new System.Windows.Forms.TableLayoutPanel();
             this.LabelAceitar = new System.Windows.Forms.Label();
             this.TableLayoutPanelButtons_Cromos = new System.Windows.Forms.TableLayoutPanel();
             this.label6 = new System.Windows.Forms.Label();
             this.ToolStripNovaCaderneta = new System.Windows.Forms.ToolStrip();
             this.ToolStripLabelNovaCaderneta = new System.Windows.Forms.ToolStripLabel();
+            this.Numero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdPagina = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IdCaderneta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QuantidadeCromos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ids = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.GroupBoxCaderneta.SuspendLayout();
             this.GroupBoxCarteira.SuspendLayout();
             this.TableLayoutPanelTitulo.SuspendLayout();
@@ -455,6 +460,9 @@
             this.DataGridViewCromos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewCromos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Numero,
+            this.Quantidade,
+            this.IdPagina,
+            this.Id,
             this.Descricao});
             this.DataGridViewCromos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewCromos.Enabled = false;
@@ -463,27 +471,6 @@
             this.DataGridViewCromos.Size = new System.Drawing.Size(330, 476);
             this.DataGridViewCromos.TabIndex = 5;
             this.DataGridViewCromos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.DataGridViewCromos_KeyUp);
-            // 
-            // Numero
-            // 
-            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Numero.DataPropertyName = "Numero";
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
-            this.Numero.HeaderText = "Cromo";
-            this.Numero.Name = "Numero";
-            this.Numero.Width = 70;
-            // 
-            // Descricao
-            // 
-            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Descricao.DataPropertyName = "Descricao";
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Descricao.HeaderText = "Descrição";
-            this.Descricao.Name = "Descricao";
             // 
             // LabelPaginas
             // 
@@ -512,33 +499,15 @@
             this.DataGridViewPaginas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridViewPaginas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Nome,
-            this.Quantidade});
+            this.IdCaderneta,
+            this.QuantidadeCromos,
+            this.Ids});
             this.DataGridViewPaginas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DataGridViewPaginas.Enabled = false;
             this.DataGridViewPaginas.Location = new System.Drawing.Point(3, 33);
             this.DataGridViewPaginas.Name = "DataGridViewPaginas";
             this.DataGridViewPaginas.Size = new System.Drawing.Size(329, 476);
             this.DataGridViewPaginas.TabIndex = 4;
-            // 
-            // Nome
-            // 
-            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nome.DataPropertyName = "Nome";
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.Nome.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Nome.HeaderText = "Pagina";
-            this.Nome.Name = "Nome";
-            // 
-            // Quantidade
-            // 
-            this.Quantidade.DataPropertyName = "Quantidade";
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.Quantidade.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Quantidade.HeaderText = "Quantidade Cromos";
-            this.Quantidade.Name = "Quantidade";
-            this.Quantidade.Width = 80;
             // 
             // TableLayoutPanelButtons_Paginas
             // 
@@ -610,6 +579,79 @@
             this.ToolStripLabelNovaCaderneta.Size = new System.Drawing.Size(204, 22);
             this.ToolStripLabelNovaCaderneta.Text = "Preencher a informação da caderneta";
             this.ToolStripLabelNovaCaderneta.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // Numero
+            // 
+            this.Numero.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Numero.DataPropertyName = "Numero";
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.Numero.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Numero.HeaderText = "Cromo";
+            this.Numero.Name = "Numero";
+            this.Numero.Width = 70;
+            // 
+            // Quantidade
+            // 
+            this.Quantidade.HeaderText = "Quantidade";
+            this.Quantidade.Name = "Quantidade";
+            this.Quantidade.Visible = false;
+            // 
+            // IdPagina
+            // 
+            this.IdPagina.HeaderText = "IdPagina";
+            this.IdPagina.Name = "IdPagina";
+            this.IdPagina.Visible = false;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Visible = false;
+            // 
+            // Descricao
+            // 
+            this.Descricao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Descricao.DataPropertyName = "Descricao";
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Descricao.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Descricao.HeaderText = "Descrição";
+            this.Descricao.Name = "Descricao";
+            // 
+            // Nome
+            // 
+            this.Nome.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Nome.DataPropertyName = "Nome";
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            this.Nome.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Nome.HeaderText = "Pagina";
+            this.Nome.Name = "Nome";
+            // 
+            // IdCaderneta
+            // 
+            this.IdCaderneta.DataPropertyName = "IdCaderneta";
+            this.IdCaderneta.HeaderText = "IdCaderneta";
+            this.IdCaderneta.Name = "IdCaderneta";
+            this.IdCaderneta.Visible = false;
+            // 
+            // QuantidadeCromos
+            // 
+            this.QuantidadeCromos.DataPropertyName = "Quantidade";
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.QuantidadeCromos.DefaultCellStyle = dataGridViewCellStyle4;
+            this.QuantidadeCromos.HeaderText = "Quantidade Cromos";
+            this.QuantidadeCromos.Name = "QuantidadeCromos";
+            this.QuantidadeCromos.Width = 80;
+            // 
+            // Ids
+            // 
+            this.Ids.DataPropertyName = "Id";
+            this.Ids.HeaderText = "ID";
+            this.Ids.Name = "Ids";
+            this.Ids.Visible = false;
             // 
             // NovaCadernetaForm
             // 
@@ -684,15 +726,20 @@
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons_Paginas;
         private System.Windows.Forms.TableLayoutPanel TableLayoutPanelButtons_Cromos;
         private System.Windows.Forms.Button ButtonLimpar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
         private System.Windows.Forms.Label LabelNova;
         private System.Windows.Forms.Label LabelLimpar;
         private System.Windows.Forms.Label LabelEliminar;
         private System.Windows.Forms.Label LabelAceitar;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Numero;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantidade;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdPagina;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Descricao;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IdCaderneta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn QuantidadeCromos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Ids;
     }
 }
 

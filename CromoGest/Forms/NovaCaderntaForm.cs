@@ -32,6 +32,7 @@ namespace CromoGest.Forms
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             caderneta = cadernetaIN;
             ComboBoxCadernetas.SelectedIndex = cbIndex;
+            DataGridViewCromos.AutoGenerateColumns = false;
         }
 
         private void LigaTextboxes(bool ligar)
@@ -88,21 +89,19 @@ namespace CromoGest.Forms
             ComboBoxCadernetas.ValueMember = "Id";
         }
 
-        private void ResetGridPaginas()
+        private void WireDataGridPagina()
         {
-            try
-            {
+            DataGridViewPaginas.AutoGenerateColumns = false;
+            DataGridViewPaginas.DataSource = null;
+            if (ComboBoxCadernetas.SelectedItem != null)
                 DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
-                DataGridViewPaginas.Columns["IdCaderneta"].Visible = false;
-                DataGridViewPaginas.Columns["Id"].Visible = false;
-            }
-            catch { }
         }
+
 
         private void LigaLista()
         {
             ResetComboBox();
-            ResetGridPaginas();
+            WireDataGridPagina();
         }
 
         private void ButtonCriar_Click(object sender, EventArgs e)
@@ -140,12 +139,11 @@ namespace CromoGest.Forms
 
         private void LimpaGrids()
         {
-            DataGridViewPaginas.AutoGenerateColumns = false;
             DataGridViewPaginas.DataSource = null;
-            DataGridViewCromos.AutoGenerateColumns = false;
             DataGridViewCromos.DataSource = null;
-            LimparGrid(DataGridViewPaginas);
-            LimparGrid(DataGridViewCromos);
+
+            //LimparGrid(DataGridViewPaginas);
+            //LimparGrid(DataGridViewCromos);
         }
 
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -169,7 +167,7 @@ namespace CromoGest.Forms
                 else
                 {
                     DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
-                    FillCromos();
+                    WireGridCromos();
                     LigaGrid(DataGridViewCromos,false);
                     LigaButtonsCromos(false);
 
@@ -191,7 +189,7 @@ namespace CromoGest.Forms
             }
         }
 
-        private void FillCromos()
+        private void WireGridCromos()
         {
             CromosCadernetaSelecionada = new List<CromoModelo>();
             foreach (PaginaModelo pagina in ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas)
@@ -201,10 +199,9 @@ namespace CromoGest.Forms
                     CromosCadernetaSelecionada.Add(cromo);
                 }
             }
+            DataGridViewCromos.AutoGenerateColumns = false;
+            DataGridViewCromos.DataSource = null;
             DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
-            DataGridViewCromos.Columns["Id"].Visible = false;
-            DataGridViewCromos.Columns["Quantidade"].Visible = false;
-            DataGridViewCromos.Columns["IdPagina"].Visible = false;
         }
 
         private void LigaGridPaginas()
@@ -220,7 +217,7 @@ namespace CromoGest.Forms
         {
             return DataGridViewPaginas.Rows.
                         Cast<DataGridViewRow>().
-                        Sum(t => Convert.ToInt32(t.Cells["Quantidade"].Value));
+                        Sum(t => Convert.ToInt32(t.Cells["QuantidadeCromos"].Value));
         }
 
         private void ButtonAceitarPaginas_Click(object sender, EventArgs e)
@@ -247,7 +244,7 @@ namespace CromoGest.Forms
                         
                     novaPagina = new PaginaModelo(nome: novaPaginaNome, idCaderneta: caderneta.Id);
                     caderneta.Paginas.Add(novaPagina);
-                    int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["Quantidade"].Value);
+                    int cromos = Convert.ToInt32(DataGridViewPaginas.Rows[p].Cells["QuantidadeCromos"].Value);
                     for (int c = 0;  c < cromos; c++)
                     {
                         string novoCromoNumero = (cromosTotal++).ToString();
@@ -257,10 +254,8 @@ namespace CromoGest.Forms
                         CromosCadernetaSelecionada.Add(novoCromo);
                     }
                 }
+                DataGridViewCromos.DataSource = null;
                 DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
-                DataGridViewCromos.Columns["Id"].Visible = false;
-                DataGridViewCromos.Columns["Quantidade"].Visible = false;
-                DataGridViewCromos.Columns["IdPagina"].Visible = false;
                 DataGridViewCromos.Refresh();
                 ToolStripLabelNovaCaderneta.Text = "Criação da Caderneta terminada.";
                 ToolStripNovaCaderneta.Update();
@@ -331,6 +326,17 @@ namespace CromoGest.Forms
             LigaButtonsCromos(false);
             LigaTextboxes(true);
             LigaBotoes(true);
+            WireDataGridPagina();
+            ResetGridCromos();
+        }
+
+        private void ResetGridCromos()
+        {
+            if (ComboBoxCadernetas.SelectedItem != null)
+            {
+                DataGridViewCromos.DataSource = null;
+                DataGridViewCromos.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
+            }
         }
 
         private void LimpaTexts()
@@ -423,8 +429,18 @@ namespace CromoGest.Forms
 
         private void NovaCaderneta_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ApagaCadernetasVazias();
             this.Hide();
             caderneta.Show();
+        }
+
+        private void ApagaCadernetasVazias()
+        {
+            foreach (CadernetaModelo caderneta in cadernetasExistentes)
+            {
+                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
+                    GlobalConfig.Connection.DeleteCaderneta(caderneta.Id);
+            }
         }
     }
 }
