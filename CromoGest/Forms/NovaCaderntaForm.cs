@@ -51,6 +51,8 @@ namespace CromoGest.Forms
                 {
                     c.DefaultCellStyle.SelectionForeColor = Color.Black;
                     c.DefaultCellStyle.ForeColor = Color.Black;
+                    c.DefaultCellStyle.SelectionBackColor = Color.White;
+                    c.DefaultCellStyle.BackColor = Color.White;
                 }
             }
             else
@@ -61,6 +63,8 @@ namespace CromoGest.Forms
                 {
                     c.DefaultCellStyle.SelectionForeColor = Color.Gray;
                     c.DefaultCellStyle.ForeColor = Color.Gray;
+                    c.DefaultCellStyle.SelectionBackColor = Color.White;
+                    c.DefaultCellStyle.BackColor = Color.White;
                 }
             }
         }
@@ -78,6 +82,7 @@ namespace CromoGest.Forms
 
         private void LigaButtonsCromos(bool liga) {
             DataGridViewCromos.Enabled = liga;
+
             ButtonConcluir.Enabled = liga;
         }
 
@@ -91,10 +96,11 @@ namespace CromoGest.Forms
 
         private void WireDataGridPagina()
         {
-            DataGridViewPaginas.AutoGenerateColumns = false;
-            DataGridViewPaginas.DataSource = null;
             if (ComboBoxCadernetas.SelectedItem != null)
+            {
+                DataGridViewPaginas.AutoGenerateColumns = false;
                 DataGridViewPaginas.DataSource = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas;
+            }
         }
 
 
@@ -139,11 +145,10 @@ namespace CromoGest.Forms
 
         private void LimpaGrids()
         {
+            DataGridViewPaginas.AutoGenerateColumns = false;
+            DataGridViewCromos.AutoGenerateColumns = false;
             DataGridViewPaginas.DataSource = null;
             DataGridViewCromos.DataSource = null;
-
-            //LimparGrid(DataGridViewPaginas);
-            //LimparGrid(DataGridViewCromos);
         }
 
         private void CadernetasComboBox_SelectedValueChanged(object sender, EventArgs e)
@@ -200,7 +205,6 @@ namespace CromoGest.Forms
                 }
             }
             DataGridViewCromos.AutoGenerateColumns = false;
-            DataGridViewCromos.DataSource = null;
             DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
         }
 
@@ -254,7 +258,7 @@ namespace CromoGest.Forms
                         CromosCadernetaSelecionada.Add(novoCromo);
                     }
                 }
-                DataGridViewCromos.DataSource = null;
+                //DataGridViewCromos.DataSource = null;
                 DataGridViewCromos.DataSource = CromosCadernetaSelecionada;
                 DataGridViewCromos.Refresh();
                 ToolStripLabelNovaCaderneta.Text = "Criação da Caderneta terminada.";
