@@ -9,18 +9,30 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CromoGest.Forms
 {
+    public static class ExtensionMethods
+    {
+        public static void DoubleBuffered(this DataGridView dgv, bool setting)
+        {
+            Type dgvType = dgv.GetType();
+            PropertyInfo pi = dgvType.GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic);
+            pi.SetValue(dgv, setting, null);
+        }
+    }
+
     public partial class CadernetaForm : Form
     {
         #region Declaracões de atributos (properties)
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
         private char charSeparador;
         private bool FullyLoaded = false;
+
         #endregion
 
 
@@ -34,6 +46,7 @@ namespace CromoGest.Forms
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
             ResetComboBox();
+            dataGridViewCaderneta.DoubleBuffered(true);
         }
 
         private void ResetComboBox()
