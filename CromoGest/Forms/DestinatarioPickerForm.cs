@@ -14,7 +14,8 @@ namespace CromoGest.Forms
 {
     public partial class DestinatarioPickerForm : Form
     {
-        NovaTrocaForm formPai;
+        EditarTrocaForm editarTrocaForm;
+        NovaTrocaForm novaTrocaForm;
         List<DestinatarioModelo> destinatarios = GlobalConfig.Connection.GetDestinatarios();
         private int idDest { get; set; }
 
@@ -22,12 +23,21 @@ namespace CromoGest.Forms
         {
             InitializeComponent();
         }
-
-        public DestinatarioPickerForm(NovaTrocaForm formArgPai)
+               
+        public DestinatarioPickerForm(EditarTrocaForm formEditarTroca)
         {
             InitializeComponent();
             idDest = -1;
-            formPai = formArgPai;
+            editarTrocaForm = formEditarTroca;
+            dataGridViewContatos.AutoGenerateColumns = true;
+            dataGridViewContatos.DataSource = destinatarios;
+        }
+
+        public DestinatarioPickerForm(NovaTrocaForm formNovaTroca)
+        {
+            InitializeComponent();
+            idDest = -1;
+            novaTrocaForm = formNovaTroca;
             dataGridViewContatos.AutoGenerateColumns = true;
             dataGridViewContatos.DataSource = destinatarios;
         }
@@ -39,7 +49,10 @@ namespace CromoGest.Forms
 
         private void DestinatarioPickerForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            formPai.Show();
+            if (editarTrocaForm != null)
+                editarTrocaForm.Show();
+            if (novaTrocaForm != null)
+                novaTrocaForm.Show();
         }
 
         private void buttonSair_Click(object sender, EventArgs e)

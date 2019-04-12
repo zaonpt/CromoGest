@@ -17,7 +17,7 @@ namespace CromoGest
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         char charSeparador;
-        CadernetaForm caderneta;
+        DashboardForm caderneta;
 
         public EntradasForm()
         {
@@ -26,7 +26,7 @@ namespace CromoGest
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
         }
 
-        public EntradasForm(CadernetaForm cadernetaIN, int cbIndex)
+        public EntradasForm(DashboardForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
             ResetComboBox();

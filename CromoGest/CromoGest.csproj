@@ -48,11 +48,11 @@
   <ItemGroup>
     <Compile Include="Controls\DataGridViewCromoCell.cs" />
     <Compile Include="Controls\DataGridViewCromoColumn.cs" />
-    <Compile Include="Forms\CadernetaForm.cs">
+    <Compile Include="Forms\DashboardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CadernetaForm.Designer.cs">
-      <DependentUpon>CadernetaForm.cs</DependentUpon>
+    <Compile Include="Forms\DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\DestinatarioPickerForm.cs">
       <SubType>Form</SubType>
@@ -78,6 +78,12 @@
     <Compile Include="Forms\EntradasForm.Designer.cs">
       <DependentUpon>EntradasForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\EditarTrocaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditarTrocaForm.Designer.cs">
+      <DependentUpon>EditarTrocaForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\NovaTrocaForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,8 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\CadernetaForm.resx">
-      <DependentUpon>CadernetaForm.cs</DependentUpon>
+    <Compile Include="Suport\ExtensionMethods.cs" />
+    <EmbeddedResource Include="Forms\DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\DestinatarioPickerForm.resx">
       <DependentUpon>DestinatarioPickerForm.cs</DependentUpon>
@@ -106,6 +113,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EntradasForm.resx">
       <DependentUpon>EntradasForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\EditarTrocaForm.resx">
+      <DependentUpon>EditarTrocaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\NovaTrocaForm.resx">
       <DependentUpon>NovaTrocaForm.cs</DependentUpon>

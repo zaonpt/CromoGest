@@ -16,7 +16,7 @@ namespace CromoGest.Forms
     {
         private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
         private List<CromoModelo> cromosCadernetaSelecionada = new List<CromoModelo>();
-        private CadernetaForm caderneta;
+        private DashboardForm caderneta;
                
         public NovaCadernetaForm()
         { 
@@ -25,7 +25,7 @@ namespace CromoGest.Forms
             DataGridViewCromos.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
         }
 
-        public NovaCadernetaForm(CadernetaForm cadernetaIN, int cbIndex)
+        public NovaCadernetaForm(DashboardForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
             LigaLista();

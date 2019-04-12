@@ -18,7 +18,7 @@ namespace CromoGest.Forms
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
         private List<TrocaModelo> trocas = new List<TrocaModelo>();
         private char charSeparador;
-        CadernetaForm caderneta;
+        DashboardForm caderneta;
         #endregion
 
         #region Metodos de Arranque
@@ -41,7 +41,7 @@ namespace CromoGest.Forms
         /// </summary>
         /// <param name="cadernetaIN"></param>
         /// <param name="cbIndex"></param>
-        public TrocasForm(CadernetaForm cadernetaIN, int cbIndex)
+        public TrocasForm(DashboardForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
 

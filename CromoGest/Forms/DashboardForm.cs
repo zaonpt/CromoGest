@@ -1,6 +1,7 @@
 ﻿using CromoGest.Controls;
 using CromoGestLibrary;
 using CromoGestLibrary.Modelos;
+using CromoGest.Suport;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,21 +16,23 @@ using System.Windows.Forms;
 
 namespace CromoGest.Forms
 {
-    public partial class CadernetaForm : Form
+    public partial class DashboardForm : Form
     {
         #region Declaracões de atributos (properties)
+
         private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
         private char charSeparador;
         private bool FullyLoaded = false;
+
         #endregion
 
 
-
         #region Metodos (methods) associados ao carregamento
-        public CadernetaForm()
+
+        public DashboardForm()
         {
             InitializeComponent();
-
+            dataGridViewCaderneta.DoubleBuffered(true);
             dataGridViewCaderneta.AutoGenerateColumns = false;
             charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
