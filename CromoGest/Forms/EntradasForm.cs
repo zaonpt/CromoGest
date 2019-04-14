@@ -15,7 +15,7 @@ namespace CromoGest
 {
     public partial class EntradasForm : Form
     {
-        private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
+        private List<CadernetaModelo> cadernetasExistentes = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
         char charSeparador;
         DashboardForm caderneta;
 
@@ -23,14 +23,14 @@ namespace CromoGest
         {
             InitializeComponent();
             ResetComboBox();
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
         }
 
         public EntradasForm(DashboardForm cadernetaIN, int cbIndex)
         {
             InitializeComponent();
             ResetComboBox();
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
             caderneta = cadernetaIN;
             ComboBoxCadernetas.SelectedIndex = cbIndex;
         }
@@ -64,13 +64,13 @@ namespace CromoGest
         int IncCromoQuantidade(string cromo)
         {
             int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
-            return GlobalConfig.Connection.IncCromoQuatidade(cromo, idCaderneta);
+            return CromoGestLibrary.GlobalConfig.Connection.IncCromoQuatidade(cromo, idCaderneta);
         }
 
         int GetCromoQuantidade(string cromo)
         {
             int idCaderneta = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
-            return GlobalConfig.Connection.GetCromoQuatidade(cromo, idCaderneta);
+            return CromoGestLibrary.GlobalConfig.Connection.GetCromoQuatidade(cromo, idCaderneta);
         }
 
         private void ButtonIntroduzir_Click(object sender, EventArgs e)
@@ -114,7 +114,7 @@ namespace CromoGest
 
         private bool CromoValido(string cromo)
         {
-            return GlobalConfig.Connection.IsValidCromo(
+            return CromoGestLibrary.GlobalConfig.Connection.IsValidCromo(
                 cromo: cromo, 
                 idCaderneta: ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id
             );
@@ -129,7 +129,7 @@ namespace CromoGest
             }
 
             CadernetaModelo caderneta = (CadernetaModelo)ComboBoxCadernetas.SelectedItem;
-            if (GlobalConfig.Connection.TotalCromos(caderneta) == 0) {
+            if (CromoGestLibrary.GlobalConfig.Connection.TotalCromos(caderneta) == 0) {
                 MessageBox.Show("Caderneta existe mas não está populada com informacão das paginas e cromos. " +
                     "Por favor sair e ir 'Nova Caderneta' selecionar esta caderneta e preencher a informação em falta.");
                 LimpaListas();

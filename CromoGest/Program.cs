@@ -18,7 +18,7 @@ namespace CromoGest
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            GlobalConfig.InicializarConns(ConnType.LOCALDB);
+            CromoGestLibrary.GlobalConfig.InicializarConns(ConnType.LOCALDB);
             Application.Run(new DashboardForm());
 
         }

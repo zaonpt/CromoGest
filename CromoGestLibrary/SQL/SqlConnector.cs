@@ -439,5 +439,17 @@ namespace CromoGestLibrary.SQL
                 return destinatarios;
             }
         }
+
+        public void SetConfig(string desc, string val)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Desc", desc);
+                p.Add("@Val", val);
+                connection.Execute("spSetConfig", p, commandType: CommandType.StoredProcedure);
+                return;
+            }
+        }
     }
 }

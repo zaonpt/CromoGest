@@ -49,7 +49,10 @@
             this.TextListaCromos = new System.Windows.Forms.TextBox();
             this.dataGridViewCaderneta = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonRepetidos = new System.Windows.Forms.Button();
+            this.buttonTem = new System.Windows.Forms.Button();
             this.CheckBoxHack = new System.Windows.Forms.CheckBox();
+            this.buttonFalta = new System.Windows.Forms.Button();
             this.trocasLabel = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -81,11 +84,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 651);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(821, 651);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -102,7 +105,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(994, 24);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(815, 24);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // LabelListaRepetido
@@ -121,7 +124,7 @@
             this.TextListaRepetidos.Location = new System.Drawing.Point(153, 3);
             this.TextListaRepetidos.Name = "TextListaRepetidos";
             this.TextListaRepetidos.ReadOnly = true;
-            this.TextListaRepetidos.Size = new System.Drawing.Size(638, 20);
+            this.TextListaRepetidos.Size = new System.Drawing.Size(459, 20);
             this.TextListaRepetidos.TabIndex = 1;
             // 
             // CBmultiRepetidos
@@ -130,7 +133,7 @@
             this.CBmultiRepetidos.Checked = true;
             this.CBmultiRepetidos.CheckState = System.Windows.Forms.CheckState.Checked;
             this.CBmultiRepetidos.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CBmultiRepetidos.Location = new System.Drawing.Point(797, 3);
+            this.CBmultiRepetidos.Location = new System.Drawing.Point(618, 3);
             this.CBmultiRepetidos.Name = "CBmultiRepetidos";
             this.CBmultiRepetidos.Size = new System.Drawing.Size(194, 18);
             this.CBmultiRepetidos.TabIndex = 2;
@@ -162,7 +165,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(994, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(815, 34);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // ButtonInfo
@@ -204,11 +207,11 @@
             // 
             // ComboBoxCadernetas
             // 
-            this.ComboBoxCadernetas.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.ComboBoxCadernetas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxCadernetas.FormattingEnabled = true;
             this.ComboBoxCadernetas.Location = new System.Drawing.Point(443, 6);
             this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
-            this.ComboBoxCadernetas.Size = new System.Drawing.Size(201, 21);
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(149, 21);
             this.ComboBoxCadernetas.TabIndex = 16;
             this.toolTip1.SetToolTip(this.ComboBoxCadernetas, "Selecionar caderneta.");
             this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.ComboBoxCadernetas_SelectedIndexChanged);
@@ -227,7 +230,7 @@
             // 
             this.ButtonNova.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ButtonNova.ForeColor = System.Drawing.Color.Black;
-            this.ButtonNova.Location = new System.Drawing.Point(777, 5);
+            this.ButtonNova.Location = new System.Drawing.Point(598, 5);
             this.ButtonNova.Name = "ButtonNova";
             this.ButtonNova.Size = new System.Drawing.Size(104, 23);
             this.ButtonNova.TabIndex = 15;
@@ -240,7 +243,7 @@
             // 
             this.ButtonSair.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ButtonSair.ForeColor = System.Drawing.Color.Black;
-            this.ButtonSair.Location = new System.Drawing.Point(887, 5);
+            this.ButtonSair.Location = new System.Drawing.Point(708, 5);
             this.ButtonSair.Name = "ButtonSair";
             this.ButtonSair.Size = new System.Drawing.Size(104, 23);
             this.ButtonSair.TabIndex = 18;
@@ -262,7 +265,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(994, 24);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(815, 24);
             this.tableLayoutPanel3.TabIndex = 3;
             // 
             // LabelListaCromos
@@ -281,7 +284,7 @@
             this.TextListaCromos.Location = new System.Drawing.Point(153, 3);
             this.TextListaCromos.Name = "TextListaCromos";
             this.TextListaCromos.ReadOnly = true;
-            this.TextListaCromos.Size = new System.Drawing.Size(638, 20);
+            this.TextListaCromos.Size = new System.Drawing.Size(459, 20);
             this.TextListaCromos.TabIndex = 1;
             // 
             // dataGridViewCaderneta
@@ -312,37 +315,95 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.LightGray;
             this.dataGridViewCaderneta.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewCaderneta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewCaderneta.Size = new System.Drawing.Size(994, 455);
+            this.dataGridViewCaderneta.Size = new System.Drawing.Size(815, 451);
             this.dataGridViewCaderneta.TabIndex = 5;
             this.dataGridViewCaderneta.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCaderneta_CellMouseClick);
             this.dataGridViewCaderneta.ColumnAdded += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridViewCaderneta_ColumnAdded);
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnCount = 7;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel5.Controls.Add(this.CheckBoxHack, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonRepetidos, 2, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonTem, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.CheckBoxHack, 6, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonFalta, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 534);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 530);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(994, 24);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(815, 28);
             this.tableLayoutPanel5.TabIndex = 6;
+            // 
+            // buttonRepetidos
+            // 
+            this.buttonRepetidos.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRepetidos.BackColor = System.Drawing.Color.Green;
+            this.buttonRepetidos.FlatAppearance.BorderSize = 0;
+            this.buttonRepetidos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRepetidos.ForeColor = System.Drawing.Color.White;
+            this.buttonRepetidos.Location = new System.Drawing.Point(245, 3);
+            this.buttonRepetidos.Name = "buttonRepetidos";
+            this.buttonRepetidos.Size = new System.Drawing.Size(60, 22);
+            this.buttonRepetidos.TabIndex = 3;
+            this.buttonRepetidos.Text = "Repetido";
+            this.buttonRepetidos.UseVisualStyleBackColor = false;
+            this.buttonRepetidos.MouseEnter += new System.EventHandler(this.ButtonRepetidos_MouseEnter);
+            this.buttonRepetidos.MouseLeave += new System.EventHandler(this.ButtonRepetidos_MouseLeave);
+            this.buttonRepetidos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonRepetidos_MouseUp);
+            // 
+            // buttonTem
+            // 
+            this.buttonTem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonTem.BackColor = System.Drawing.Color.LightGreen;
+            this.buttonTem.FlatAppearance.BorderSize = 0;
+            this.buttonTem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTem.ForeColor = System.Drawing.Color.Black;
+            this.buttonTem.Location = new System.Drawing.Point(135, 3);
+            this.buttonTem.Name = "buttonTem";
+            this.buttonTem.Size = new System.Drawing.Size(60, 22);
+            this.buttonTem.TabIndex = 2;
+            this.buttonTem.Text = "Tem";
+            this.buttonTem.UseVisualStyleBackColor = false;
+            this.buttonTem.MouseEnter += new System.EventHandler(this.ButtonTem_MouseEnter);
+            this.buttonTem.MouseLeave += new System.EventHandler(this.ButtonTem_MouseLeave);
+            this.buttonTem.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonTem_MouseUp);
             // 
             // CheckBoxHack
             // 
             this.CheckBoxHack.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.CheckBoxHack.AutoSize = true;
-            this.CheckBoxHack.Location = new System.Drawing.Point(887, 3);
+            this.CheckBoxHack.Location = new System.Drawing.Point(708, 5);
             this.CheckBoxHack.Name = "CheckBoxHack";
             this.CheckBoxHack.Size = new System.Drawing.Size(52, 17);
             this.CheckBoxHack.TabIndex = 0;
             this.CheckBoxHack.Text = "Hack";
             this.CheckBoxHack.UseVisualStyleBackColor = true;
+            // 
+            // buttonFalta
+            // 
+            this.buttonFalta.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonFalta.BackColor = System.Drawing.Color.Tomato;
+            this.buttonFalta.FlatAppearance.BorderSize = 0;
+            this.buttonFalta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFalta.ForeColor = System.Drawing.Color.Black;
+            this.buttonFalta.Location = new System.Drawing.Point(25, 3);
+            this.buttonFalta.Name = "buttonFalta";
+            this.buttonFalta.Size = new System.Drawing.Size(60, 22);
+            this.buttonFalta.TabIndex = 1;
+            this.buttonFalta.Text = "Falta";
+            this.buttonFalta.UseCompatibleTextRendering = true;
+            this.buttonFalta.UseVisualStyleBackColor = false;
+            this.buttonFalta.MouseEnter += new System.EventHandler(this.ButtonFalta_MouseEnter);
+            this.buttonFalta.MouseLeave += new System.EventHandler(this.ButtonFalta_MouseLeave);
+            this.buttonFalta.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ButtonFalta_MouseUp);
             // 
             // trocasLabel
             // 
@@ -354,7 +415,7 @@
             this.trocasLabel.ForeColor = System.Drawing.Color.White;
             this.trocasLabel.Location = new System.Drawing.Point(3, 0);
             this.trocasLabel.Name = "trocasLabel";
-            this.trocasLabel.Size = new System.Drawing.Size(994, 30);
+            this.trocasLabel.Size = new System.Drawing.Size(815, 30);
             this.trocasLabel.TabIndex = 7;
             this.trocasLabel.Text = "Dashboard";
             this.trocasLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -365,7 +426,7 @@
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 629);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1000, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(821, 22);
             this.statusStrip1.TabIndex = 8;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -376,15 +437,16 @@
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(0, 17);
             // 
-            // CadernetaForm
+            // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1000, 651);
+            this.ClientSize = new System.Drawing.Size(821, 651);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.White;
-            this.Name = "CadernetaForm";
+            this.MinimumSize = new System.Drawing.Size(837, 690);
+            this.Name = "DashboardForm";
             this.Text = "Caderneta";
             this.Shown += new System.EventHandler(this.CadernetaForm_Shown);
             this.VisibleChanged += new System.EventHandler(this.CadernetaForm_VisibleChanged);
@@ -429,5 +491,8 @@
         private System.Windows.Forms.Label trocasLabel;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button buttonRepetidos;
+        private System.Windows.Forms.Button buttonTem;
+        private System.Windows.Forms.Button buttonFalta;
     }
 }

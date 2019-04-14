@@ -14,7 +14,7 @@ namespace CromoGest.Forms
 { 
     public partial class NovaCadernetaForm : Form
     {
-        private List<CadernetaModelo> cadernetasExistentes = GlobalConfig.Connection.GetCadernetas();
+        private List<CadernetaModelo> cadernetasExistentes = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
         private List<CromoModelo> cromosCadernetaSelecionada = new List<CromoModelo>();
         private DashboardForm caderneta;
                
@@ -126,7 +126,7 @@ namespace CromoGest.Forms
                     TextQuantidade.Text, 
                     TextQuantidadeCarteira.Text, 
                     TextCarteiraCusto.Text);
-                GlobalConfig.Connection.NewCaderneta(caderneta);
+                CromoGestLibrary.GlobalConfig.Connection.NewCaderneta(caderneta);
                 cadernetasExistentes.Add(caderneta);
                 LigaLista();
                 
@@ -167,7 +167,7 @@ namespace CromoGest.Forms
                 TextQuantidade.Text = caderneta.QuantidadeCromos.ToString();
                 TextQuantidadeCarteira.Text = caderneta.QuantidadeCromosCarteira.ToString();
                 TextCarteiraCusto.Text = caderneta.CustoCarteira.ToString();
-                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
+                if (CromoGestLibrary.GlobalConfig.Connection.TotalCromos(caderneta) == 0)
                 {
                     LimpaGrids();
                     LigaGrid(DataGridViewPaginas,true);
@@ -309,7 +309,7 @@ namespace CromoGest.Forms
                         }
                     }
                 }
-                GlobalConfig.Connection.PopulateCaderneta(caderneta);
+                CromoGestLibrary.GlobalConfig.Connection.PopulateCaderneta(caderneta);
                 MessageBox.Show("Caderneta Criada com sucesso!");
             }
         }
@@ -376,7 +376,7 @@ namespace CromoGest.Forms
         {
             if (ConfirmadoEliminar())
             {
-                GlobalConfig.Connection.DeleteCaderneta(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
+                CromoGestLibrary.GlobalConfig.Connection.DeleteCaderneta(((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id);
                 cadernetasExistentes.Remove((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
                 ResetComboBox();
                 LimpaGrids();
@@ -450,8 +450,8 @@ namespace CromoGest.Forms
         {
             foreach (CadernetaModelo caderneta in cadernetasExistentes)
             {
-                if (GlobalConfig.Connection.TotalCromos(caderneta) == 0)
-                    GlobalConfig.Connection.DeleteCaderneta(caderneta.Id);
+                if (CromoGestLibrary.GlobalConfig.Connection.TotalCromos(caderneta) == 0)
+                    CromoGestLibrary.GlobalConfig.Connection.DeleteCaderneta(caderneta.Id);
             }
         }
     }

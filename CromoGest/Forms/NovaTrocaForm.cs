@@ -35,7 +35,7 @@ namespace CromoGest.Forms
                 this.Close();
             }
 
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
             formPai = formArgPai;
             caderneta = cadernetaArg;
@@ -69,12 +69,12 @@ namespace CromoGest.Forms
 
             if (!EntradasValidas()) return;
 
-            int numTroca = GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1;
+            int numTroca = CromoGestLibrary.GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1;
 
-            idDestinatario = GlobalConfig.Connection.SetDestinatario(
+            idDestinatario = CromoGestLibrary.GlobalConfig.Connection.SetDestinatario(
                     textBoxNome.Text, textBoxIniciais.Text, textBoxOrigem.Text, textBoxReputacao.Text, textBoxMorada.Text);
 
-            int idTroca = GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
+            int idTroca = CromoGestLibrary.GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
                 dateTimePickerProposta.Text, dateTimePickerEnvio.Text, dateTimePickerRececao.Text, caderneta.Id);
 
             //RECEBIDOS
@@ -82,18 +82,18 @@ namespace CromoGest.Forms
                 foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
                 {
                     isRecebido = 1;
-                    int idCromo = GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
-                    int idCromoDaTroca = GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
-                    GlobalConfig.Connection.IncCromoQuatidade(numCromo, caderneta.Id);
+                    int idCromo = CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
+                    int idCromoDaTroca = CromoGestLibrary.GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
+                    CromoGestLibrary.GlobalConfig.Connection.IncCromoQuatidade(numCromo, caderneta.Id);
                 }
             //ENVIADOS
             if (textBoxCromosEnviados.Text.Length > 0)
                 foreach (string numCromo in textBoxCromosEnviados.Text.ToString().Split(charSeparador))
                 {
                     isRecebido = 0;
-                    int idCromo = GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
-                    int idCromoDaTroca = GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
-                    GlobalConfig.Connection.DecCromoQuatidade(numCromo, caderneta.Id);
+                    int idCromo = CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
+                    int idCromoDaTroca = CromoGestLibrary.GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
+                    CromoGestLibrary.GlobalConfig.Connection.DecCromoQuatidade(numCromo, caderneta.Id);
                 }
             this.Close();
         }
@@ -106,12 +106,12 @@ namespace CromoGest.Forms
                 foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
                 {
                     //verificar se o cromo existe
-                    try { GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id); }
+                    try { CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id); }
                     catch {
                         MessageBox.Show($"Cromo {numCromo} invalido");
                         return false;
                     }
-                    quantidade = GlobalConfig.Connection.GetCromoQuatidade(numCromo, caderneta.Id);
+                    quantidade = CromoGestLibrary.GlobalConfig.Connection.GetCromoQuatidade(numCromo, caderneta.Id);
                     if (quantidade > 0)
                     {
                         DialogResult dr = MessageBox.Show($"Já tem o Cromo {numCromo}. Deseja continuar?","ALERTA",MessageBoxButtons.YesNo);
@@ -123,13 +123,13 @@ namespace CromoGest.Forms
                 foreach (string numCromo in textBoxCromosEnviados.Text.ToString().Split(charSeparador))
                 {
                     //verificar se o cromo existe
-                    try { GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id); }
+                    try { CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id); }
                     catch {
                         MessageBox.Show($"Cromo {numCromo} invalido");
                         return false;
                     }
 
-                    quantidade = GlobalConfig.Connection.GetCromoQuatidade(numCromo, caderneta.Id);
+                    quantidade = CromoGestLibrary.GlobalConfig.Connection.GetCromoQuatidade(numCromo, caderneta.Id);
                     if (quantidade < 2)
                     {
                         MessageBox.Show($"Quantidade insuficiente para enviar o Cromo {numCromo}.");
@@ -161,7 +161,7 @@ namespace CromoGest.Forms
             if (Visible && FormFilhoDest != null && FormFilhoDest.GetIdDest() != -1)
             {
                 int idDest = FormFilhoDest.GetIdDest();
-                DestinatarioModelo destinatario = GlobalConfig.Connection.GetDestinatario(idDest);
+                DestinatarioModelo destinatario = CromoGestLibrary.GlobalConfig.Connection.GetDestinatario(idDest);
                 if (destinatario != null)
                 {
                     textBoxNome.Text = destinatario.Nome;

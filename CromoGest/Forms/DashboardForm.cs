@@ -20,11 +20,11 @@ namespace CromoGest.Forms
     {
         #region Declaracões de atributos (properties)
 
-        private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
+        private List<CadernetaModelo> cadernetas = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
         private char charSeparador;
         private bool FullyLoaded = false;
 
-        #endregion
+        #endregion Declaracões de atributos (properties)
 
 
         #region Metodos (methods) associados ao carregamento
@@ -34,9 +34,20 @@ namespace CromoGest.Forms
             InitializeComponent();
             dataGridViewCaderneta.DoubleBuffered(true);
             dataGridViewCaderneta.AutoGenerateColumns = false;
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
-
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            LoadButtonColors();
             ResetComboBox();
+        }
+
+        private void LoadButtonColors()
+        {
+            // TODO : CARREGAR DA BASE DE DADOS AS CORES
+            buttonFalta.BackColor = CromoGest.GlobalConfig.CorBackgroudFalta = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorBackgroudFalta"));
+            buttonFalta.ForeColor = CromoGest.GlobalConfig.CorForegroudFalta = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorForegroudFalta"));
+            buttonTem.BackColor = CromoGest.GlobalConfig.CorBackgroudTem = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorBackgroudTem"));
+            buttonTem.ForeColor = CromoGest.GlobalConfig.CorForegroudTem = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorForegroudTem"));
+            buttonRepetidos.BackColor = CromoGest.GlobalConfig.CorBackgroudRepetidos = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorBackgroudRepetidos"));
+            buttonRepetidos.ForeColor = CromoGest.GlobalConfig.CorForegroudRepetidos = ColorTranslator.FromHtml(CromoGestLibrary.GlobalConfig.Connection.GetConfig("CorForegroudRepetidos"));
         }
 
         private void ResetComboBox()
@@ -151,8 +162,7 @@ namespace CromoGest.Forms
             dataGridViewCaderneta.Columns.Clear();
             dataGridViewCaderneta.Refresh();
         }
-        #endregion
-
+        #endregion Metodos (methods) associados ao carregamento
 
 
         #region Eventos
@@ -183,7 +193,7 @@ namespace CromoGest.Forms
 
                 string cromoNumero = dataGridViewCaderneta.Rows[row].Cells[col].Value.ToString();
                 int idCadernetaSelecionada = ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Id;
-                int cromoOldQuantidade = GlobalConfig.Connection.GetCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+                int cromoOldQuantidade = CromoGestLibrary.GlobalConfig.Connection.GetCromoQuatidade(cromoNumero, idCadernetaSelecionada);
 
                 AccaoMouse(e, col, row, cromoNumero, idCadernetaSelecionada, cromoOldQuantidade);
                 dataGridViewCaderneta.Refresh();
@@ -217,7 +227,7 @@ namespace CromoGest.Forms
         private void CadernetaForm_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible == true && FullyLoaded) {
-                cadernetas = GlobalConfig.Connection.GetCadernetas();
+                cadernetas = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
                 try
                 {
                     ResetComboBox();
@@ -253,11 +263,103 @@ namespace CromoGest.Forms
             else toolStripStatusLabel1.Text = "Sem cadernetas. Criar uma nova.   ";
 
         }
-        #endregion
 
+        private void ButtonFalta_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    buttonFalta.BackColor = CromoGest.GlobalConfig.CorBackgroudFalta = AskForColor(CromoGest.GlobalConfig.CorBackgroudFalta);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorBackgroudFalta", ColorTranslator.ToHtml(buttonFalta.BackColor));
+                    break;
+                case MouseButtons.Right:
+                    buttonFalta.ForeColor = CromoGest.GlobalConfig.CorForegroudFalta = AskForColor(CromoGest.GlobalConfig.CorForegroudFalta);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorForegroudFalta", ColorTranslator.ToHtml(buttonFalta.ForeColor));
+                    break;
+                default: return;
+            }
+            dataGridViewCaderneta.Invalidate();
+        }
 
+        private void ButtonTem_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    buttonTem.BackColor = CromoGest.GlobalConfig.CorBackgroudTem = AskForColor(CromoGest.GlobalConfig.CorBackgroudTem);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorBackgroudTem", ColorTranslator.ToHtml(buttonTem.BackColor));
+                    break;
+                case MouseButtons.Right:
+                    buttonTem.ForeColor = CromoGest.GlobalConfig.CorForegroudTem = AskForColor(CromoGest.GlobalConfig.CorForegroudTem);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorForegroudTem", ColorTranslator.ToHtml(buttonTem.ForeColor));
+                    break;
+                default: return;
+            }
+            dataGridViewCaderneta.Invalidate();
+        }
+
+        private void ButtonRepetidos_MouseUp(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    buttonRepetidos.BackColor = CromoGest.GlobalConfig.CorBackgroudRepetidos = AskForColor(CromoGest.GlobalConfig.CorBackgroudRepetidos);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorBackgroudRepetidos", ColorTranslator.ToHtml(buttonRepetidos.BackColor));
+                    break;
+                case MouseButtons.Right:
+                    buttonRepetidos.ForeColor = CromoGest.GlobalConfig.CorForegroudRepetidos = AskForColor(CromoGest.GlobalConfig.CorForegroudRepetidos);
+                    CromoGestLibrary.GlobalConfig.Connection.SetConfig("CorForegroudRepetidos", ColorTranslator.ToHtml(buttonRepetidos.ForeColor));
+                    break;
+                default: return;
+            }
+            dataGridViewCaderneta.Invalidate();
+        }
+        private void ButtonFalta_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "LeftClick para alterar a cor do Backgroup e RightClick para alterar cor do Texto";
+        }
+
+        private void ButtonFalta_MouseLeave(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "";
+        }
+
+        private void ButtonTem_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "LeftClick para alterar a cor do Backgroup e RightClick para alterar cor do Texto";
+        }
+
+        private void ButtonTem_MouseLeave(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "";
+        }
+
+        private void ButtonRepetidos_MouseEnter(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "LeftClick para alterar a cor do Backgroup e RightClick para alterar cor do Texto";
+        }
+
+        private void ButtonRepetidos_MouseLeave(object sender, EventArgs e)
+        {
+            toolStripStatusLabel1.Text = "";
+        }
+
+        #endregion Eventos
+        
 
         #region Metodos de apoio
+
+        private Color AskForColor(Color c)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                return colorDialog.Color;
+            }
+            return c;
+        }
+
         private int GetNumMaxCromosNasPaginas(CadernetaModelo caderneta)
         {
             int nMax = 0;
@@ -268,13 +370,13 @@ namespace CromoGest.Forms
             return nMax;
         }
 
-        private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
-        {
-            cell.Style.BackColor = backcolor;
-            cell.Style.SelectionBackColor = backcolor;
-            cell.Style.ForeColor = textColor;
-            cell.Style.SelectionForeColor = textColor;
-        }
+        //private void SetCromosColors(Color backcolor, Color textColor, DataGridViewCell cell)
+        //{
+        //    cell.Style.BackColor = backcolor;
+        //    cell.Style.SelectionBackColor = backcolor;
+        //    cell.Style.ForeColor = textColor;
+        //    cell.Style.SelectionForeColor = textColor;
+        //}
 
         private void AccaoMouse(DataGridViewCellMouseEventArgs e, int col, int row, string cromoNumero, int idCadernetaSelecionada, int cromoOldQuantidade)
         {
@@ -295,7 +397,7 @@ namespace CromoGest.Forms
 
         private int AccaoDecCromo(int col, int row, string cromoNumero, int idCadernetaSelecionada)
         {
-            int cromoNewQuantidade = GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+            int cromoNewQuantidade = CromoGestLibrary.GlobalConfig.Connection.DecCromoQuatidade(cromoNumero, idCadernetaSelecionada);
             ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade--;
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos--;
             toolStripStatusLabel1.Text = $"Cromo { cromoNumero } foi reduzida a quantidade.";
@@ -304,12 +406,17 @@ namespace CromoGest.Forms
 
         private void AccaoIncCromo(int col, int row, string cromoNumero, int idCadernetaSelecionada)
         {
-            GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada);
+            CromoGestLibrary.GlobalConfig.Connection.IncCromoQuatidade(cromoNumero, idCadernetaSelecionada);
             ((CadernetaModelo)ComboBoxCadernetas.SelectedItem).Paginas[row].Cromos[col - 1].Quantidade++;
             ((DataGridViewCromoCell)dataGridViewCaderneta.Rows[row].Cells[col]).NumCromos++;
             toolStripStatusLabel1.Text = $"Cromo { cromoNumero } adicionado.";
         }
 
-        #endregion
+
+
+
+
+        #endregion Metodos de apoio
+
     }
 }

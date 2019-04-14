@@ -15,7 +15,7 @@ namespace CromoGest.Forms
     public partial class TrocasForm : Form
     {
         #region Atributos
-        private List<CadernetaModelo> cadernetas = GlobalConfig.Connection.GetCadernetas();
+        private List<CadernetaModelo> cadernetas = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
         private List<TrocaModelo> trocas = new List<TrocaModelo>();
         private char charSeparador;
         DashboardForm caderneta;
@@ -29,7 +29,7 @@ namespace CromoGest.Forms
         {
             InitializeComponent();
 
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
             SetupGrid();
             ResetComboBox();
@@ -45,7 +45,7 @@ namespace CromoGest.Forms
         {
             InitializeComponent();
 
-            charSeparador = GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
             caderneta = cadernetaIN;
             SetupGrid();
             ResetComboBox();
@@ -150,7 +150,7 @@ namespace CromoGest.Forms
         private void CadernetasComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ComboBoxCadernetas.SelectedItem == null) return;
-            trocas = GlobalConfig.Connection.GetTrocas((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
+            trocas = CromoGestLibrary.GlobalConfig.Connection.GetTrocas((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
             LoadTrocasToGrid();
         }
 
@@ -175,13 +175,18 @@ namespace CromoGest.Forms
         {
             if (Visible)
             {
-                trocas = GlobalConfig.Connection.GetTrocas((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
+                trocas = CromoGestLibrary.GlobalConfig.Connection.GetTrocas((CadernetaModelo)ComboBoxCadernetas.SelectedItem);
                 LoadTrocasToGrid();
             }
         }
 
 
+
         #endregion
 
+        private void DataGridViewTrocas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

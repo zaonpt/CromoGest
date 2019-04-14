@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using CromoGest.Forms;
 
 namespace CromoGest.Controls
 {
@@ -78,19 +79,19 @@ namespace CromoGest.Controls
             switch (NumCromos)
             {
                 case 0:
-                    background = new SolidBrush(Color.Tomato);
-                    corNumCromos = Color.Black;
-                    corVal = Color.Black;
+                    background = new SolidBrush(CromoGest.GlobalConfig.CorBackgroudFalta);
+                    corNumCromos = CromoGest.GlobalConfig.CorForegroudFalta;
+                    corVal = CromoGest.GlobalConfig.CorForegroudFalta;
                     break;
                 case 1:
-                    background = new SolidBrush(Color.LightGreen);
-                    corNumCromos = Color.Black;
-                    corVal = Color.Black;
+                    background = new SolidBrush(CromoGest.GlobalConfig.CorBackgroudTem);
+                    corNumCromos = CromoGest.GlobalConfig.CorForegroudTem;
+                    corVal = CromoGest.GlobalConfig.CorForegroudTem;
                     break;
                 default:
-                    background = new SolidBrush(Color.Green);
-                    corNumCromos = Color.White;
-                    corVal = Color.White;
+                    background = new SolidBrush(CromoGest.GlobalConfig.CorBackgroudRepetidos);
+                    corNumCromos = CromoGest.GlobalConfig.CorForegroudRepetidos;
+                    corVal = CromoGest.GlobalConfig.CorForegroudRepetidos;
                     break;
             }
         }

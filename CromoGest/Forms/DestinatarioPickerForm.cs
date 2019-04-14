@@ -16,7 +16,7 @@ namespace CromoGest.Forms
     {
         EditarTrocaForm editarTrocaForm;
         NovaTrocaForm novaTrocaForm;
-        List<DestinatarioModelo> destinatarios = GlobalConfig.Connection.GetDestinatarios();
+        List<DestinatarioModelo> destinatarios = CromoGestLibrary.GlobalConfig.Connection.GetDestinatarios();
         private int idDest { get; set; }
 
         public DestinatarioPickerForm()

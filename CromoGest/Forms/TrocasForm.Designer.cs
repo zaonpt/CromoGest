@@ -36,12 +36,11 @@
             this.dataGridViewTrocas = new System.Windows.Forms.DataGridView();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.ButtonNova = new System.Windows.Forms.Button();
             this.CadernetasLabel = new System.Windows.Forms.Label();
             this.ComboBoxCadernetas = new System.Windows.Forms.ComboBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.labelTrocas = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTrocas)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
@@ -51,20 +50,19 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewTrocas, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewTrocas, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.statusStrip1, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.labelTrocas, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 4;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1148, 657);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1073, 657);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
             // dataGridViewTrocas
@@ -81,69 +79,46 @@
             this.dataGridViewTrocas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewTrocas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewTrocas.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTrocas.Location = new System.Drawing.Point(3, 43);
+            this.dataGridViewTrocas.Location = new System.Drawing.Point(3, 73);
             this.dataGridViewTrocas.Name = "dataGridViewTrocas";
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.dataGridViewTrocas.RowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewTrocas.Size = new System.Drawing.Size(1142, 506);
+            this.dataGridViewTrocas.Size = new System.Drawing.Size(1067, 556);
             this.dataGridViewTrocas.TabIndex = 1;
+            this.dataGridViewTrocas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTrocas_CellContentDoubleClick);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Location = new System.Drawing.Point(0, 635);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1148, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1073, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tableLayoutPanel2
             // 
-            this.tableLayoutPanel2.ColumnCount = 7;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
+            this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 110F));
-            this.tableLayoutPanel2.Controls.Add(this.button3, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel2.Controls.Add(this.ButtonNova, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.CadernetasLabel, 3, 0);
-            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 4, 0);
-            this.tableLayoutPanel2.Controls.Add(this.button2, 6, 0);
+            this.tableLayoutPanel2.Controls.Add(this.CadernetasLabel, 1, 0);
+            this.tableLayoutPanel2.Controls.Add(this.ComboBoxCadernetas, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.button2, 4, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 33);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1142, 34);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1067, 34);
             this.tableLayoutPanel2.TabIndex = 3;
-            // 
-            // button3
-            // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(223, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(104, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "&Trocas";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(113, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(104, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "&Trocas";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // ButtonNova
             // 
@@ -161,7 +136,7 @@
             // 
             this.CadernetasLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.CadernetasLabel.AutoSize = true;
-            this.CadernetasLabel.Location = new System.Drawing.Point(376, 10);
+            this.CadernetasLabel.Location = new System.Drawing.Point(156, 10);
             this.CadernetasLabel.Name = "CadernetasLabel";
             this.CadernetasLabel.Size = new System.Drawing.Size(61, 13);
             this.CadernetasLabel.TabIndex = 0;
@@ -171,9 +146,9 @@
             // 
             this.ComboBoxCadernetas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.ComboBoxCadernetas.FormattingEnabled = true;
-            this.ComboBoxCadernetas.Location = new System.Drawing.Point(443, 6);
+            this.ComboBoxCadernetas.Location = new System.Drawing.Point(223, 6);
             this.ComboBoxCadernetas.Name = "ComboBoxCadernetas";
-            this.ComboBoxCadernetas.Size = new System.Drawing.Size(476, 21);
+            this.ComboBoxCadernetas.Size = new System.Drawing.Size(711, 21);
             this.ComboBoxCadernetas.TabIndex = 1;
             this.ComboBoxCadernetas.SelectedIndexChanged += new System.EventHandler(this.CadernetasComboBox_SelectedIndexChanged);
             // 
@@ -181,19 +156,33 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(1035, 5);
+            this.button2.Location = new System.Drawing.Point(960, 5);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(104, 23);
             this.button2.TabIndex = 14;
             this.button2.Text = "&Trocas";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // labelTrocas
+            // 
+            this.labelTrocas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelTrocas.AutoSize = true;
+            this.labelTrocas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTrocas.Location = new System.Drawing.Point(3, 0);
+            this.labelTrocas.Name = "labelTrocas";
+            this.labelTrocas.Size = new System.Drawing.Size(1067, 30);
+            this.labelTrocas.TabIndex = 4;
+            this.labelTrocas.Text = "Trocas";
+            this.labelTrocas.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TrocasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(1148, 657);
+            this.ClientSize = new System.Drawing.Size(1073, 657);
             this.Controls.Add(this.tableLayoutPanel1);
             this.ForeColor = System.Drawing.Color.White;
             this.MinimumSize = new System.Drawing.Size(860, 468);
@@ -218,9 +207,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label CadernetasLabel;
         private System.Windows.Forms.ComboBox ComboBoxCadernetas;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button ButtonNova;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label labelTrocas;
     }
 }
