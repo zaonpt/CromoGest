@@ -36,9 +36,13 @@ namespace CromoGestLibrary.Modelos
         }
         
        /// <summary>
-       /// Destinatário da troca
+       /// ID do Destinatário (unico)
        /// </summary>
         public int Dest_Id { get; set; }
+
+        /// <summary>
+        /// Nome do Destinatário
+        /// </summary>
         private string _dest_Nome;
         public string Dest_Nome
         {
@@ -210,11 +214,10 @@ namespace CromoGestLibrary.Modelos
         private void OnPropertyChanged(string propertyName)
         {
             var handler = PropertyChanged;
-
-        if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            if (handler != null)
+                {
+                    handler(this, new PropertyChangedEventArgs(propertyName));
+                }
         }
     }
 }

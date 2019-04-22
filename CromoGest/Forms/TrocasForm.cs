@@ -22,9 +22,9 @@ namespace CromoGest.Forms
 
         private char charSeparador=CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
 
-        DashboardForm caderneta;
+        private DashboardForm caderneta;
 
-        #endregion
+        #endregion Atributos
 
         #region Metodos de Arranque
         /// <summary>
@@ -139,13 +139,13 @@ namespace CromoGest.Forms
         }
 
 
-        #endregion
+        #endregion Metodos de Arranque
 
         #region Métodos suporte
 
 
 
-        #endregion
+        #endregion Métodos suporte
 
         #region Eventos
         private void CadernetasComboBox_SelectedIndexChanged(object sender, EventArgs e)

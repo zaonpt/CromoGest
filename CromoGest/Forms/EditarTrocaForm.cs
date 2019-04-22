@@ -39,7 +39,7 @@ namespace CromoGest.Forms
             formPai = formArgPai;
             caderneta = cadernetaArg;
             cadernetaLabel.Text = $"Caderneta: {caderneta.Nome}";
-            textBoxNome.DataBindings.Add("Text",trocaEditada.Dest_Nome, "Dest_Nome");
+            textBoxNome.DataBindings.Add("Text",trocaEditada, "Dest_Nome");
         }
 
         private void buttonSair_Click(object sender, EventArgs e)
