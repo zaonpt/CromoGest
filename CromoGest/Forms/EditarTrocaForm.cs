@@ -18,14 +18,15 @@ namespace CromoGest.Forms
         private TrocasForm formPai;
         private CadernetaModelo caderneta;
         private DestinatarioPickerForm FormFilhoDest;
-        private char charSeparador;
+        private readonly char charSeparador=CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+        private TrocaModelo trocaEditada;
 
         public EditarTrocaForm()
         {
             InitializeComponent();
         }
 
-        public EditarTrocaForm(TrocasForm formArgPai, CadernetaModelo cadernetaArg)
+        public EditarTrocaForm(TrocasForm formArgPai, CadernetaModelo cadernetaArg, TrocaModelo troca)
         {
             InitializeComponent();
             if (cadernetaArg == null)
@@ -34,12 +35,11 @@ namespace CromoGest.Forms
                 formArgPai.Show();
                 this.Close();
             }
-
-            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
-
+            trocaEditada = troca;
             formPai = formArgPai;
             caderneta = cadernetaArg;
             cadernetaLabel.Text = $"Caderneta: {caderneta.Nome}";
+            textBoxNome.DataBindings.Add("Text",trocaEditada.Dest_Nome, "Dest_Nome");
         }
 
         private void buttonSair_Click(object sender, EventArgs e)

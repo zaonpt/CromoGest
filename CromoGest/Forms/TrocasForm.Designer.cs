@@ -88,7 +88,7 @@
             this.dataGridViewTrocas.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewTrocas.Size = new System.Drawing.Size(1067, 556);
             this.dataGridViewTrocas.TabIndex = 1;
-            this.dataGridViewTrocas.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTrocas_CellContentDoubleClick);
+            this.dataGridViewTrocas.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewTrocas_CellDoubleClick);
             // 
             // statusStrip1
             // 

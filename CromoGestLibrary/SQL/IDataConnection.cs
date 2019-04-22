@@ -29,5 +29,6 @@ namespace CromoGestLibrary.SQL
         int SetTroca(int numTroca, int idDestinatario, string progresso, string dataProposta, string dataEnvio, string dataRececao, int idCaderneta);
         int CriaCromoDaTroca(int idCromo, int idTroca, int isRecebido);
         void SetConfig(string desc, string val);
+        TrocaModelo GetTrocaByNum(CadernetaModelo caderneta, int numTroca);
     }
 }

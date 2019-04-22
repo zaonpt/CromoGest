@@ -15,10 +15,15 @@ namespace CromoGest.Forms
     public partial class TrocasForm : Form
     {
         #region Atributos
+
         private List<CadernetaModelo> cadernetas = CromoGestLibrary.GlobalConfig.Connection.GetCadernetas();
+
         private List<TrocaModelo> trocas = new List<TrocaModelo>();
-        private char charSeparador;
+
+        private char charSeparador=CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
+
         DashboardForm caderneta;
+
         #endregion
 
         #region Metodos de Arranque
@@ -28,13 +33,9 @@ namespace CromoGest.Forms
         public TrocasForm()
         {
             InitializeComponent();
-
-            charSeparador = CromoGestLibrary.GlobalConfig.Connection.GetConfig(ConfigCategory.CharSeparador.Value)[0];
-
             SetupGrid();
             ResetComboBox();
         }
-
 
         /// <summary>
         /// construtor chamado apartir da form Cadernetas.
@@ -180,13 +181,23 @@ namespace CromoGest.Forms
             }
         }
 
+        private void DataGridViewTrocas_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+             TrocaModelo troca = CromoGestLibrary.GlobalConfig.Connection.GetTrocaByNum(
+                caderneta: (CadernetaModelo)ComboBoxCadernetas.SelectedItem,
+                numTroca: int.Parse(dataGridViewTrocas.Rows[e.RowIndex].Cells[0].Value.ToString()));
 
+            EditarTrocaForm editarTrocaForm = new EditarTrocaForm(
+                formArgPai:this,
+                cadernetaArg:(CadernetaModelo)ComboBoxCadernetas.SelectedItem,
+                troca: troca);
+            editarTrocaForm.Show();
+            Hide();
+        }
 
         #endregion
 
-        private void DataGridViewTrocas_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
     }
 }

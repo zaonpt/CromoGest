@@ -451,5 +451,27 @@ namespace CromoGestLibrary.SQL
                 return;
             }
         }
+
+        public TrocaModelo GetTrocaByNum(CadernetaModelo caderneta, int numTroca)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@Id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+                p.Add("@Num", numTroca);
+                p.Add("@IdCaderneta", caderneta.Id);
+
+                TrocaModelo troca = connection.QuerySingle<TrocaModelo>("spGetTrocaByNum", p, commandType: CommandType.StoredProcedure);
+                GetTroca(connection, troca);
+                DestinatarioModelo destinatario = GetDestinatario(troca.Dest_Id);
+                troca.Dest_Iniciais = destinatario.Iniciais;
+                troca.Dest_Morada = destinatario.Morada;
+                troca.Dest_Nome = destinatario.Nome;
+                troca.Dest_Origem = destinatario.Origem;
+                troca.Dest_Reputacao = destinatario.Reputação;
+
+                return troca;
+            }
+        }
     }
 }
