@@ -39,7 +39,24 @@ namespace CromoGest.Forms
             formPai = formArgPai;
             caderneta = cadernetaArg;
             cadernetaLabel.Text = $"Caderneta: {caderneta.Nome}";
+
             textBoxNome.DataBindings.Add("Text",trocaEditada, "Dest_Nome");
+            textBoxIniciais.DataBindings.Add("Text", trocaEditada, "Dest_Iniciais");
+            textBoxOrigem.DataBindings.Add("Text", trocaEditada, "Dest_Origem");
+            textBoxReputacao.DataBindings.Add("Text", trocaEditada, "Dest_Reputacao");
+            textBoxMorada.DataBindings.Add("Text", trocaEditada, "Dest_Morada");
+            dateTimePickerProposta.DataBindings.Add("Text", trocaEditada, "DataProposta");
+            dateTimePickerEnvio.DataBindings.Add("Text", trocaEditada, "DataEnvio");
+            dateTimePickerRececao.DataBindings.Add("Text", trocaEditada, "DataRececao");
+
+            trocaEditada.ProgressoProvisorio = trocaEditada.Progresso;
+            comboBoxProgresso.DataBindings.Add("Text", trocaEditada, "ProgressoProvisorio");
+
+            trocaEditada.ListCromosEnviadosProvisoria = trocaEditada.ListCromosEnviados;
+            textBoxCromosEnviados.DataBindings.Add("Text", trocaEditada, "ListCromosEnviadosProvisoria");
+
+            trocaEditada.ListCromosRecebidosProvisoria = trocaEditada.ListCromosRecebidos;
+            textBoxCromosRecebidos.DataBindings.Add("Text", trocaEditada, "ListCromosRecebidosProvisoria");
         }
 
         private void buttonSair_Click(object sender, EventArgs e)

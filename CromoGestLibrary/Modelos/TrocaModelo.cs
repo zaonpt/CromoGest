@@ -128,16 +128,17 @@ namespace CromoGestLibrary.Modelos
         /// <summary>
         /// Progresso da troca (Altenativas recolhidas da BD)
         /// </summary>
-        private string _progresso;
-        public string Progresso
+        public string Progresso { get; set; }
+        private string _progressoProvisorio;
+        public string ProgressoProvisorio
         {
-            get { return _progresso; }
+            get { return _progressoProvisorio; }
             set
             {
-                if (_progresso != value)
+                if (_progressoProvisorio != value)
                 {
-                    _progresso = value;
-                    OnPropertyChanged("Progresso");
+                    _progressoProvisorio = value;
+                    OnPropertyChanged("ProgressoProvisorio");
                 }
             }
         }
@@ -198,6 +199,20 @@ namespace CromoGestLibrary.Modelos
         /// </summary>
         public List<CromoModelo> CromosEnviados { get; set; } = new List<CromoModelo>();
         public string ListCromosEnviados { get {return String.Join($"{charSeparador.ToString()} ", CromosEnviados.Select(num => num.Numero)); } }
+
+        private string _listCromosEnviadosProvisoria;
+        public string ListCromosEnviadosProvisoria
+        {
+            get { return _listCromosEnviadosProvisoria; }
+            set
+            {
+                if (_listCromosEnviadosProvisoria != value)
+                {
+                    _listCromosEnviadosProvisoria = value;
+                    OnPropertyChanged("ListCromosEnviadosProvisoria");
+                }
+            }
+        }
         public int QuantidadeCromosEnviados { get { return CromosEnviados.Count; } }
 
         /// <summary>
@@ -205,6 +220,20 @@ namespace CromoGestLibrary.Modelos
         /// </summary>
         public List<CromoModelo> CromosRecebidos { get; set; } = new List<CromoModelo>();
         public string ListCromosRecebidos { get { return String.Join($"{charSeparador.ToString()} ", CromosRecebidos.Select(num => num.Numero)); } }
+
+        private string _listCromosRecebidosProvisoria;
+        public string ListCromosRecebidosProvisoria
+        {
+            get { return _listCromosRecebidosProvisoria; }
+            set
+            {
+                if (_listCromosRecebidosProvisoria != value)
+                {
+                    _listCromosRecebidosProvisoria = value;
+                    OnPropertyChanged("ListCromosRecebidosProvisoria");
+                }
+            }
+        }
         public int QuantidadeCromosRecebidos { get { return CromosRecebidos.Count; } }
 
         public TrocaModelo(){}
