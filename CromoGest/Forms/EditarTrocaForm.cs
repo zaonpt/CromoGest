@@ -81,38 +81,17 @@ namespace CromoGest.Forms
 
         private void buttonSalvar_Click(object sender, EventArgs e)
         {
-            int idDestinatario;
-            int isRecebido;
-
-            if (!EntradasValidas()) return;
-
-            int numTroca = CromoGestLibrary.GlobalConfig.Connection.GetNextTrocaNum(caderneta.Id) + 1;
-
-            idDestinatario = CromoGestLibrary.GlobalConfig.Connection.SetDestinatario(
-                    textBoxNome.Text, textBoxIniciais.Text, textBoxOrigem.Text, textBoxReputacao.Text, textBoxMorada.Text);
-
-            int idTroca = CromoGestLibrary.GlobalConfig.Connection.SetTroca(numTroca, idDestinatario, comboBoxProgresso.Text,
-                dateTimePickerProposta.Text, dateTimePickerEnvio.Text, dateTimePickerRececao.Text, caderneta.Id);
-
-            //RECEBIDOS
-            if (textBoxCromosRecebidos.Text.Length > 0)
-                foreach (string numCromo in textBoxCromosRecebidos.Text.ToString().Split(charSeparador))
-                {
-                    isRecebido = 1;
-                    int idCromo = CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
-                    int idCromoDaTroca = CromoGestLibrary.GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
-                    CromoGestLibrary.GlobalConfig.Connection.IncCromoQuatidade(numCromo, caderneta.Id);
-                }
-            //ENVIADOS
-            if (textBoxCromosEnviados.Text.Length > 0)
-                foreach (string numCromo in textBoxCromosEnviados.Text.ToString().Split(charSeparador))
-                {
-                    isRecebido = 0;
-                    int idCromo = CromoGestLibrary.GlobalConfig.Connection.GetCromoId(numCromo, caderneta.Id);
-                    int idCromoDaTroca = CromoGestLibrary.GlobalConfig.Connection.CriaCromoDaTroca(idCromo, idTroca, isRecebido);
-                    CromoGestLibrary.GlobalConfig.Connection.DecCromoQuatidade(numCromo, caderneta.Id);
-                }
+            if(FoiAlterado())
+            {
+                //if (!EntradasValidas()) return;
+                CromoGestLibrary.GlobalConfig.Connection.GravaTrocaExistente(trocaEditada);
+            }
             this.Close();
+        }
+
+        private bool FoiAlterado()
+        {
+            return true;
         }
 
         private bool EntradasValidas()

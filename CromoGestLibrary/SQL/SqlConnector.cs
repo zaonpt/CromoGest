@@ -473,5 +473,32 @@ namespace CromoGestLibrary.SQL
                 return troca;
             }
         }
+
+        public void GravaTrocaExistente(TrocaModelo trocaEditada)
+        {
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(GlobalConfig.CnnStringLocalDB(bd)))
+            {
+                var p = new DynamicParameters();
+                p.Add("@NumTroca", trocaEditada.NumTroca);
+                p.Add("@Progresso", trocaEditada.ProgressoProvisorio);
+                p.Add("@DataEnvio", trocaEditada.DataEnvio);
+                p.Add("@DataProposta", trocaEditada.DataProposta);
+                p.Add("@DataRececao", trocaEditada.DataRececao);
+                p.Add("@Id", trocaEditada.Id);
+
+                sdfsdfs
+
+                TrocaModelo troca = connection.QuerySingle<TrocaModelo>("spGetTrocaByNum", p, commandType: CommandType.StoredProcedure);
+                GetTroca(connection, troca);
+                DestinatarioModelo destinatario = GetDestinatario(troca.Dest_Id);
+                troca.Dest_Iniciais = destinatario.Iniciais;
+                troca.Dest_Morada = destinatario.Morada;
+                troca.Dest_Nome = destinatario.Nome;
+                troca.Dest_Origem = destinatario.Origem;
+                troca.Dest_Reputacao = destinatario.Reputação;
+
+                return;
+            }
+        }
     }
 }
